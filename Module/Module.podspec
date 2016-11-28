@@ -25,8 +25,16 @@ end
 s.subspec 'Second' do |se|
     se.source_files = 'Second/**/*.{h,m}'
     se.public_header_files = '**/Module*.h'
-    #se.resource_bundles = {'First' => ['Second/Resources/**/*.png']}
+    #se.resource_bundles = {'Second' => ['Second/Resources/**/*.png']}
     se.resources = ['Second/Resources/**/*.*']
+    #se.frameworks = 'CoreGraphics'
+end
+
+s.subspec 'Third' do |se|
+    se.source_files = 'Third/**/*.{h,m}'
+    se.public_header_files = '**/Module*.h'
+    #se.resource_bundles = {'Third' => ['Third/Resources/**/*.png']}
+    se.resources = ['Third/Resources/**/*.*']
     #se.frameworks = 'CoreGraphics'
 end
 

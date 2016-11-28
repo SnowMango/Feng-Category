@@ -39,7 +39,7 @@
     ModuleModel * f = self.functions[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
-    cell.textLabel.text = f.name;
+    cell.textLabel.text = f.title;
     cell.detailTextLabel.text = f.detail;
     cell.imageView.image = [UIImage imageNamed:f.loadingImage];
     return cell;
@@ -69,6 +69,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ModuleModel *function = self.functions[indexPath.row];
+   
     [self.navigationController  pushViewController:function.rootViewController animated:YES];
 }
 

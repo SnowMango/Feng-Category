@@ -83,7 +83,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../../Module/First/Resources/login/login_user_1@2x.png"
   install_resource "../../Module/First/Resources/login/login_user_2@2x.png"
   install_resource "../../Module/First/Resources/login/login_user_3@2x.png"
+  install_resource "../../Module/Second/Resources/Alcohole.ttf"
+  install_resource "../../Module/Second/Resources/Firenze.TTF"
   install_resource "../../Module/Second/Resources/SecondMain.storyboard"
+  install_resource "../../Module/Third/Resources/ThirdMain.storyboard"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../../Module/First/Resources/FirstMain.storyboard"
@@ -95,7 +98,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../../Module/First/Resources/login/login_user_1@2x.png"
   install_resource "../../Module/First/Resources/login/login_user_2@2x.png"
   install_resource "../../Module/First/Resources/login/login_user_3@2x.png"
+  install_resource "../../Module/Second/Resources/Alcohole.ttf"
+  install_resource "../../Module/Second/Resources/Firenze.TTF"
   install_resource "../../Module/Second/Resources/SecondMain.storyboard"
+  install_resource "../../Module/Third/Resources/ThirdMain.storyboard"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

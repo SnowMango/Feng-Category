@@ -10,7 +10,7 @@
 
 @implementation Module (First)
 
-module_synthesize(First_name)
+module_synthesize(First_title)
 module_synthesize(First_loadingImage)
 module_synthesize(First_identifier)
 module_synthesize(First_version)
@@ -19,7 +19,7 @@ module_synthesize(First_rootViewController)
 
 - (void)First_loadModule
 {
-    self.First_name = @"绘图";
+    self.First_title = @"绘图";
     self.First_loadingImage = @"login_1";
     self.First_identifier = @"identifier";
     self.First_version = @"1.0.0";

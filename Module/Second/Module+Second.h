@@ -10,7 +10,7 @@
 
 @interface Module (Second)
 
-@property (nonatomic, readonly) NSString * Second_name;
+@property (nonatomic, readonly) NSString * Second_title;
 @property (nonatomic, strong) NSString * Second_loadingImage;
 @property (nonatomic, strong) NSString * Second_identifier;
 @property (nonatomic, strong) NSString * Second_detail;

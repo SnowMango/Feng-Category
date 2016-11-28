@@ -7,8 +7,11 @@
   "authors": {
     "zhengfeng": "164804868@qq.com"
   },
+  "platforms": {
+    "ios": "6.0"
+  },
   "source": {
-    "path": "~"
+    "path": "~/Desktop/feng/Module"
   },
   "requires_arc": true,
   "exclude_files": "*.podspec",
@@ -18,12 +21,6 @@
     "UIKit",
     "Foundation"
   ],
-  "platforms": {
-    "osx": null,
-    "ios": null,
-    "tvos": null,
-    "watchos": null
-  },
   "subspecs": [
     {
       "name": "First",
@@ -39,7 +36,15 @@
       "source_files": "Second/**/*.{h,m}",
       "public_header_files": "**/Module*.h",
       "resources": [
-        "Second/Resources/**/*.{png,storyboard,xib}"
+        "Second/Resources/**/*.*"
+      ]
+    },
+    {
+      "name": "Third",
+      "source_files": "Third/**/*.{h,m}",
+      "public_header_files": "**/Module*.h",
+      "resources": [
+        "Third/Resources/**/*.*"
       ]
     }
   ]

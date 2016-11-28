@@ -18,8 +18,10 @@ PODS:
   - Module (1.0.0):
     - Module/First (= 1.0.0)
     - Module/Second (= 1.0.0)
+    - Module/Third (= 1.0.0)
   - Module/First (1.0.0)
   - Module/Second (1.0.0)
+  - Module/Third (1.0.0)
   - Mycategory (1.0.0)
   - SDWebImage (4.0.0-beta2):
     - SDWebImage/Core (= 4.0.0-beta2)
@@ -47,7 +49,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  Module: ba286d41abe32890b5d2eb827abd7a950a03c7e7
+  Module: 11ad02cd4659bcb7dcdd58781ac34a30b1d75f77
   Mycategory: b8833a728aa04511c6fff5bb79c6a3d234a431de
   SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
 

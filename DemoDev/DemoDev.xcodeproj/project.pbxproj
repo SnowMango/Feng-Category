@@ -10,6 +10,9 @@
 		6A1B72831DD9953900041ADD /* Module+Second.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B72821DD9953900041ADD /* Module+Second.m */; };
 		6A1B72871DD996F100041ADD /* SecondMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1B72861DD996F100041ADD /* SecondMain.storyboard */; };
 		6A1B728A1DD9971500041ADD /* SecondRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B72891DD9971500041ADD /* SecondRootViewController.m */; };
+		6AAC36CA1DEBFFF700730D95 /* Module+Third.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC36C91DEBFFF700730D95 /* Module+Third.m */; };
+		6AAC36CD1DEC002000730D95 /* ThirdRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC36CC1DEC002000730D95 /* ThirdRootViewController.m */; };
+		6AAC36D01DEC024D00730D95 /* ThirdMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAC36CF1DEC024D00730D95 /* ThirdMain.storyboard */; };
 		6AE53E541DD2DDE500CF5183 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53E531DD2DDE500CF5183 /* main.m */; };
 		6AE53E571DD2DDE500CF5183 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53E561DD2DDE500CF5183 /* AppDelegate.m */; };
 		6AE53E5A1DD2DDE500CF5183 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53E591DD2DDE500CF5183 /* ViewController.m */; };
@@ -50,6 +53,11 @@
 		6A1B72861DD996F100041ADD /* SecondMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SecondMain.storyboard; sourceTree = "<group>"; };
 		6A1B72881DD9971500041ADD /* SecondRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondRootViewController.h; sourceTree = "<group>"; };
 		6A1B72891DD9971500041ADD /* SecondRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondRootViewController.m; sourceTree = "<group>"; };
+		6AAC36C81DEBFFF700730D95 /* Module+Third.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Module+Third.h"; sourceTree = "<group>"; };
+		6AAC36C91DEBFFF700730D95 /* Module+Third.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Module+Third.m"; sourceTree = "<group>"; };
+		6AAC36CB1DEC002000730D95 /* ThirdRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdRootViewController.h; sourceTree = "<group>"; };
+		6AAC36CC1DEC002000730D95 /* ThirdRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdRootViewController.m; sourceTree = "<group>"; };
+		6AAC36CF1DEC024D00730D95 /* ThirdMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ThirdMain.storyboard; sourceTree = "<group>"; };
 		6AE53E4F1DD2DDE500CF5183 /* DemoDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AE53E531DD2DDE500CF5183 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6AE53E551DD2DDE500CF5183 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -144,6 +152,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		6AAC36C71DEBFFD700730D95 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				6AAC36CE1DEC002900730D95 /* Resources */,
+				6AAC36C81DEBFFF700730D95 /* Module+Third.h */,
+				6AAC36C91DEBFFF700730D95 /* Module+Third.m */,
+				6AAC36CB1DEC002000730D95 /* ThirdRootViewController.h */,
+				6AAC36CC1DEC002000730D95 /* ThirdRootViewController.m */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		6AAC36CE1DEC002900730D95 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6AAC36CF1DEC024D00730D95 /* ThirdMain.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		6AE53E461DD2DDE500CF5183 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +224,7 @@
 				6AE53EA01DD2EF6600CF5183 /* Module */,
 				6AE53E841DD2DF0300CF5183 /* First */,
 				6A1B72801DD994FF00041ADD /* Second */,
+				6AAC36C71DEBFFD700730D95 /* Third */,
 			);
 			name = Module;
 			path = ../Module;
@@ -338,6 +367,7 @@
 				6AE53E5F1DD2DDE500CF5183 /* Assets.xcassets in Resources */,
 				6AEF2A581DD5954C006A8E44 /* login_2.png in Resources */,
 				6AEF2A601DD5A6A8006A8E44 /* FirstMain.storyboard in Resources */,
+				6AAC36D01DEC024D00730D95 /* ThirdMain.storyboard in Resources */,
 				6AEBAEFB1DE81A9E00FE9990 /* Firenze.TTF in Resources */,
 				6AEF2A5D1DD5954C006A8E44 /* login_user_2@2x.png in Resources */,
 				6AEF2A591DD5954C006A8E44 /* login_3.png in Resources */,
@@ -402,6 +432,7 @@
 			files = (
 				6AE53E5A1DD2DDE500CF5183 /* ViewController.m in Sources */,
 				6AE53E571DD2DDE500CF5183 /* AppDelegate.m in Sources */,
+				6AAC36CD1DEC002000730D95 /* ThirdRootViewController.m in Sources */,
 				6AE53EAA1DD2EF6600CF5183 /* ModuleHandle.m in Sources */,
 				6AEF2A6B1DD5BB6A006A8E44 /* BezierView.m in Sources */,
 				6AEF2A681DD5AD74006A8E44 /* FShowViewController.m in Sources */,
@@ -411,6 +442,7 @@
 				6AE53E8C1DD2DF0300CF5183 /* Module+First.m in Sources */,
 				6AE53EB01DD2FBFE00CF5183 /* RootViewController.m in Sources */,
 				6A1B728A1DD9971500041ADD /* SecondRootViewController.m in Sources */,
+				6AAC36CA1DEBFFF700730D95 /* Module+Third.m in Sources */,
 				6AE53EA81DD2EF6600CF5183 /* Module.m in Sources */,
 				6AE53E541DD2DDE500CF5183 /* main.m in Sources */,
 				6AE53E8D1DD2DF0300CF5183 /* TestViewController.m in Sources */,
@@ -457,6 +489,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -505,6 +538,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

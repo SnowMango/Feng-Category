@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D058B89EB3B3DF45457A2DCD3971AFFE"
-               BuildableName = "libMBProgressHUD.a"
-               BlueprintName = "MBProgressHUD"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "6AEF2A021DD58272006A8E44"
+               BuildableName = "First.bundle"
+               BlueprintName = "First"
+               ReferencedContainer = "container:DemoDev.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D058B89EB3B3DF45457A2DCD3971AFFE"
-            BuildableName = "libMBProgressHUD.a"
-            BlueprintName = "MBProgressHUD"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "6AEF2A021DD58272006A8E44"
+            BuildableName = "First.bundle"
+            BlueprintName = "First"
+            ReferencedContainer = "container:DemoDev.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6AEF2A021DD58272006A8E44"
+            BuildableName = "First.bundle"
+            BlueprintName = "First"
+            ReferencedContainer = "container:DemoDev.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

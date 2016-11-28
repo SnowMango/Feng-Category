@@ -51,12 +51,30 @@ _Pragma("clang diagnostic pop") \
     if (self) {
         self.module = [[Module alloc] init];
         _modules  = [self mg_loadModules];
+        
+        int numClasses;
+        Class *classes = NULL;
+        numClasses = objc_getClassList(NULL,0);
+        
+        if (numClasses >0 )
+        {
+            classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
+            numClasses = objc_getClassList(classes, numClasses);
+            for (int i = 0; i < numClasses; i++) {
+                if (class_getSuperclass(classes[i]) == [Module class]){
+                    NSLog(@"%@", NSStringFromClass(classes[i]));
+                }
+            }  
+            free(classes);  
+        }
     }
     return self;
 }
 
 - (BOOL)containsModule:(NSString *)moduleName
 {
+    
+    
     BOOL ret =[self.moduleNames containsObject:moduleName];
     return ret;
 }
@@ -83,6 +101,7 @@ _Pragma("clang diagnostic pop") \
     NSLog(@"Load class = %@",class.allKeys);
     for (NSString *classStr in class.allKeys) {
         ModuleModel *fun = [[ModuleModel alloc] init];
+        fun.name = classStr;
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@_loadModule", classStr]);
         if ([self.module respondsToSelector:selector]) {
             SuppressPerformSelectorLeakWarning([self.module performSelector:selector withObject:nil]);
@@ -117,7 +136,7 @@ _Pragma("clang diagnostic pop") \
 - (id)copyWithZone:(NSZone *)zone
 {
     ModuleModel  * mm = [ModuleModel allocWithZone:zone];
-    mm.name = [self.name copy];
+    mm.title = [self.title copy];
     mm.detail = [self.detail copy];
     mm.identifier = [self.identifier copy];
     mm.version = [self.version copy];
@@ -130,7 +149,7 @@ _Pragma("clang diagnostic pop") \
 - (id)mutableCopyWithZone:(NSZone *)zone
 {
     ModuleModel  * mm = [ModuleModel allocWithZone:zone];
-    mm.name = [self.name mutableCopy];
+    mm.title = [self.title mutableCopy];
     mm.detail = [self.detail mutableCopy];
     mm.identifier = [self.identifier mutableCopy];
     mm.version = [self.version mutableCopy];

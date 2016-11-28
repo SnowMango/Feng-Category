@@ -10,7 +10,7 @@
 
 @implementation Module (Second)
 
-module_synthesize(Second_name)
+module_synthesize(Second_title)
 module_synthesize(Second_loadingImage)
 module_synthesize(Second_identifier)
 module_synthesize(Second_version)
@@ -19,9 +19,9 @@ module_synthesize(Second_rootViewController)
 
 - (void)Second_loadModule
 {
-    self.Second_name = @"2222";
+    self.Second_title = @"2222";
     self.Second_loadingImage = @"login_1";
-    self.Second_identifier = @"identifier";
+    self.Second_identifier = @"Second";
     self.Second_version = @"1.0.0";
     self.Second_detail = @"this is a Second module detail";
     self.Second_rootViewController = [UIStoryboard storyboardWithName:@"SecondMain" bundle:nil].instantiateInitialViewController;

@@ -17,7 +17,7 @@
 
 - (void)loadModule
 {
-    self.name = @"Basic: Module name";
+    self.title = @"Basic: Module name";
     self.loadingImage = @"Icon: module icon";
     self.identifier = @"identifier";
     self.version = @"1.0.0";

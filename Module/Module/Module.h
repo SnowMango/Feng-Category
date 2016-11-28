@@ -25,14 +25,14 @@
 - (id)property { return property_get(#property);}
 
 @protocol ModuleRootViewControllerDelegate <NSObject>
-
+@optional
 - (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args;
 
 @end
 
 @interface Module : NSObject
 
-@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * loadingImage;
 @property (nonatomic, strong) NSString * identifier;
 @property (nonatomic, strong) NSString * detail;
