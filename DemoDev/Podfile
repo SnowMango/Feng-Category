@@ -1,0 +1,9 @@
+platform :ios, '8.0'
+inhibit_all_warnings!
+
+target 'DemoDev’ do
+    pod 'AFNetworking', :path => '../master/AFNetworking-master'
+    pod 'Mycategory', :path => '../Mycategory'
+    pod 'MBProgressHUD', :path => '../master/MBProgressHUD-master'
+    pod 'SDWebImage', :path => '../master/SDWebImage-master'
+end

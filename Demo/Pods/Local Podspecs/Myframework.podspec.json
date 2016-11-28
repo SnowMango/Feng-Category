@@ -1,0 +1,32 @@
+{
+  "name": "Myframework",
+  "version": "1.0.0",
+  "summary": "A short description of category.",
+  "homepage": "https://github.com/SnowMango",
+  "license": "MIT",
+  "authors": {
+    "zhengfeng": "164804868@qq.com"
+  },
+  "source": {
+    "path": "~/Desktop/framework"
+  },
+  "requires_arc": true,
+  "exclude_files": "*.podspec",
+  "libraries": [
+    "bz2",
+    "z1.2.5",
+    "iconv"
+  ],
+  "frameworks": [
+    "OpenAL",
+    "VideoToolbox",
+    "AudioToolbox"
+  ],
+  "vendored_frameworks": "Player/UlucuPlayer.framework",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}

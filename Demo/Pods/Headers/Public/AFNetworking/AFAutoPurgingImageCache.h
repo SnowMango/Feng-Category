@@ -1,0 +1,1 @@
+../../../../../master/AFNetworking-master/UIKit+AFNetworking/AFAutoPurgingImageCache.h

@@ -1,0 +1,1 @@
+../../../../../master/SDWebImage-master/SDWebImage/SDWebImageOperation.h
