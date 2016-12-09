@@ -24,11 +24,6 @@
 -(void)set##property:(id)value {  property_set(#property , value);}\
 - (id)property { return property_get(#property);}
 
-@protocol ModuleRootViewControllerDelegate <NSObject>
-@optional
-- (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args;
-
-@end
 
 @interface Module : NSObject
 
@@ -41,4 +36,5 @@
 
 - (void)loadModule;
 
+- (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args;
 @end

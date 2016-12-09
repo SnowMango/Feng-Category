@@ -12,19 +12,32 @@
 
 + (void)load
 {
-    
+   
 }
 
 - (void)loadModule
 {
     self.title = @"Basic: Module name";
-    self.loadingImage = @"Icon: module icon";
+    self.loadingImage = @"Icon: module icon"; 
     self.identifier = @"identifier";
     self.version = @"1.0.0";
     self.detail = @"this is a basic module detail";
     self.rootViewController = nil;
     
+}
 
+- (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args
+{
+    NSString *moduleSELstr = [NSString stringWithFormat:@"%@_%@",moduleName, sel];
+    SEL moduleSEL = NSSelectorFromString(moduleSELstr);
+    if ([self respondsToSelector:moduleSEL]) {
+        
+#pragma clang diagnostic
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        return [self performSelector:moduleSEL withObject:args];
+#pragma clang diagnostic pop
+    }
+    return nil;
 }
 
 @end

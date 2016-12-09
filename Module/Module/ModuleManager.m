@@ -52,21 +52,6 @@ _Pragma("clang diagnostic pop") \
         self.module = [[Module alloc] init];
         _modules  = [self mg_loadModules];
         
-        int numClasses;
-        Class *classes = NULL;
-        numClasses = objc_getClassList(NULL,0);
-        
-        if (numClasses >0 )
-        {
-            classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
-            numClasses = objc_getClassList(classes, numClasses);
-            for (int i = 0; i < numClasses; i++) {
-                if (class_getSuperclass(classes[i]) == [Module class]){
-                    NSLog(@"%@", NSStringFromClass(classes[i]));
-                }
-            }  
-            free(classes);  
-        }
     }
     return self;
 }
@@ -77,6 +62,11 @@ _Pragma("clang diagnostic pop") \
     
     BOOL ret =[self.moduleNames containsObject:moduleName];
     return ret;
+}
+
+- (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args
+{
+   return [self.module performAction:moduleName selector:sel args:args];
 }
 
 - (NSMutableArray *)mg_loadModules

@@ -30,5 +30,4 @@
 @property (nonatomic, strong) NSString * detail;
 @property (nonatomic, strong) NSString * version;
 @property (nonatomic, strong) UIViewController* rootViewController;
-- (id)performSelector:(NSString *)sel args:(id)args;
 @end
