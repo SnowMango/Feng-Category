@@ -10,6 +10,7 @@
 		6A1B72831DD9953900041ADD /* Module+Second.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B72821DD9953900041ADD /* Module+Second.m */; };
 		6A1B72871DD996F100041ADD /* SecondMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A1B72861DD996F100041ADD /* SecondMain.storyboard */; };
 		6A1B728A1DD9971500041ADD /* SecondRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B72891DD9971500041ADD /* SecondRootViewController.m */; };
+		6A58444B1E276BA500D081E2 /* APPIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A58444A1E276BA500D081E2 /* APPIcon.png */; };
 		6AAC36CA1DEBFFF700730D95 /* Module+Third.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC36C91DEBFFF700730D95 /* Module+Third.m */; };
 		6AAC36CD1DEC002000730D95 /* ThirdRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC36CC1DEC002000730D95 /* ThirdRootViewController.m */; };
 		6AAC36D01DEC024D00730D95 /* ThirdMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAC36CF1DEC024D00730D95 /* ThirdMain.storyboard */; };
@@ -53,6 +54,7 @@
 		6A1B72861DD996F100041ADD /* SecondMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SecondMain.storyboard; sourceTree = "<group>"; };
 		6A1B72881DD9971500041ADD /* SecondRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondRootViewController.h; sourceTree = "<group>"; };
 		6A1B72891DD9971500041ADD /* SecondRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondRootViewController.m; sourceTree = "<group>"; };
+		6A58444A1E276BA500D081E2 /* APPIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APPIcon.png; sourceTree = "<group>"; };
 		6AAC36C81DEBFFF700730D95 /* Module+Third.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Module+Third.h"; sourceTree = "<group>"; };
 		6AAC36C91DEBFFF700730D95 /* Module+Third.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Module+Third.m"; sourceTree = "<group>"; };
 		6AAC36CB1DEC002000730D95 /* ThirdRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdRootViewController.h; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				6AEF2A541DD5954C006A8E44 /* login_user_1@2x.png */,
 				6AEF2A551DD5954C006A8E44 /* login_user_2@2x.png */,
 				6AEF2A561DD5954C006A8E44 /* login_user_3@2x.png */,
+				6A58444A1E276BA500D081E2 /* APPIcon.png */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				6AE53E5F1DD2DDE500CF5183 /* Assets.xcassets in Resources */,
 				6AEF2A581DD5954C006A8E44 /* login_2.png in Resources */,
 				6AEF2A601DD5A6A8006A8E44 /* FirstMain.storyboard in Resources */,
+				6A58444B1E276BA500D081E2 /* APPIcon.png in Resources */,
 				6AAC36D01DEC024D00730D95 /* ThirdMain.storyboard in Resources */,
 				6AEBAEFB1DE81A9E00FE9990 /* Firenze.TTF in Resources */,
 				6AEF2A5D1DD5954C006A8E44 /* login_user_2@2x.png in Resources */,
