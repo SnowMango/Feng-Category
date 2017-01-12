@@ -14,6 +14,8 @@
 		6A27F9C31DBDACE300BC2678 /* Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A27F9C11DBDACE300BC2678 /* Demo.xcdatamodeld */; };
 		6A27F9C51DBDACE300BC2678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A27F9C41DBDACE300BC2678 /* Assets.xcassets */; };
 		6A27F9C81DBDACE300BC2678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A27F9C61DBDACE300BC2678 /* LaunchScreen.storyboard */; };
+		6A63FE711E2366DA006B268B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63FE6D1E2366DA006B268B /* LoginViewController.m */; };
+		6A63FE721E2366DA006B268B /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63FE701E2366DA006B268B /* LoginView.m */; };
 		6AA43A831DCC662200E4DB4B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA43A821DCC662200E4DB4B /* RootViewController.m */; };
 		A68A05A028CD81809222247E /* libPods-TargetSetting-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA4FD98A558A65D0220F2DD /* libPods-TargetSetting-Demo.a */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,10 @@
 		6A27F9C41DBDACE300BC2678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A27F9C71DBDACE300BC2678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A27F9C91DBDACE300BC2678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A63FE6C1E2366DA006B268B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		6A63FE6D1E2366DA006B268B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		6A63FE6F1E2366DA006B268B /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		6A63FE701E2366DA006B268B /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		6AA43A811DCC662200E4DB4B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		6AA43A821DCC662200E4DB4B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		7CA4FD98A558A65D0220F2DD /* libPods-TargetSetting-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetSetting-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +84,7 @@
 		6A27F9B41DBDACE300BC2678 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				6A63FE6B1E2366DA006B268B /* Login */,
 				6A27F9B81DBDACE300BC2678 /* AppDelegate.h */,
 				6A27F9B91DBDACE300BC2678 /* AppDelegate.m */,
 				6A27F9BB1DBDACE300BC2678 /* ViewController.h */,
@@ -100,6 +107,25 @@
 				6A27F9B61DBDACE300BC2678 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A63FE6B1E2366DA006B268B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6A63FE6C1E2366DA006B268B /* LoginViewController.h */,
+				6A63FE6D1E2366DA006B268B /* LoginViewController.m */,
+				6A63FE6E1E2366DA006B268B /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		6A63FE6E1E2366DA006B268B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A63FE6F1E2366DA006B268B /* LoginView.h */,
+				6A63FE701E2366DA006B268B /* LoginView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8DF3B0964CBDCC755A4F7C9C /* Pods */ = {
@@ -255,6 +281,8 @@
 			files = (
 				6A27F9BD1DBDACE300BC2678 /* ViewController.m in Sources */,
 				6AA43A831DCC662200E4DB4B /* RootViewController.m in Sources */,
+				6A63FE721E2366DA006B268B /* LoginView.m in Sources */,
+				6A63FE711E2366DA006B268B /* LoginViewController.m in Sources */,
 				6A27F9BA1DBDACE300BC2678 /* AppDelegate.m in Sources */,
 				6A27F9C31DBDACE300BC2678 /* Demo.xcdatamodeld in Sources */,
 				6A27F9B71DBDACE300BC2678 /* main.m in Sources */,

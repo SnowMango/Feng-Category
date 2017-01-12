@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - Module (1.0.0):
     - Module/First (= 1.0.0)
@@ -29,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (from `../master/AFNetworking-master`)
+  - Masonry (from `../master/Masonry-master`)
   - MBProgressHUD (from `../master/MBProgressHUD-master`)
   - Module (from `../Module`)
   - Mycategory (from `../Mycategory`)
@@ -37,6 +39,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   AFNetworking:
     :path: "../master/AFNetworking-master"
+  Masonry:
+    :path: "../master/Masonry-master"
   MBProgressHUD:
     :path: "../master/MBProgressHUD-master"
   Module:
@@ -48,11 +52,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Module: 11ad02cd4659bcb7dcdd58781ac34a30b1d75f77
   Mycategory: b8833a728aa04511c6fff5bb79c6a3d234a431de
   SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
 
-PODFILE CHECKSUM: 38472267ae5edb549b0b8043b487882080573926
+PODFILE CHECKSUM: b1ecb2d46ad764108280688301ea7846b36a8eec
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0.beta.1
