@@ -1,0 +1,27 @@
+PODS:
+  - Module (1.0.0):
+    - Module/First (= 1.0.0)
+    - Module/Second (= 1.0.0)
+    - Module/Third (= 1.0.0)
+  - Module/First (1.0.0)
+  - Module/Second (1.0.0)
+  - Module/Third (1.0.0)
+  - Mycategory (1.0.0)
+
+DEPENDENCIES:
+  - Module (from `../Module`)
+  - Mycategory (from `../Mycategory`)
+
+EXTERNAL SOURCES:
+  Module:
+    :path: "../Module"
+  Mycategory:
+    :path: "../Mycategory"
+
+SPEC CHECKSUMS:
+  Module: 11ad02cd4659bcb7dcdd58781ac34a30b1d75f77
+  Mycategory: b8833a728aa04511c6fff5bb79c6a3d234a431de
+
+PODFILE CHECKSUM: 7c46fbf87ed3c6949b08fb58e9a06b82fa9e6a94
+
+COCOAPODS: 1.1.1

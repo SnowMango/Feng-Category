@@ -1,0 +1,22 @@
+{
+  "name": "Mycategory",
+  "version": "1.0.0",
+  "summary": "A short description of category.",
+  "homepage": "https://github.com/SnowMango",
+  "license": "MIT",
+  "authors": {
+    "zhengfeng": "164804868@qq.com"
+  },
+  "source": {
+    "path": "~"
+  },
+  "requires_arc": true,
+  "exclude_files": "*.podspec",
+  "source_files": "**/**/*.{h,m}",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}
