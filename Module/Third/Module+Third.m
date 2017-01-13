@@ -8,22 +8,20 @@
 
 #import "Module+Third.h"
 
-@implementation Module (Third)
-module_synthesize(Third_title)
-module_synthesize(Third_loadingImage)
-module_synthesize(Third_identifier)
-module_synthesize(Third_version)
-module_synthesize(Third_detail)
-module_synthesize(Third_rootViewController)
+@implementation Third
 
-- (void)Third_loadModule
+
+- (instancetype)init
 {
-    self.Third_title = @"数据库";
-    self.Third_loadingImage = @"login_1";
-    self.Third_identifier = @"Third";
-    self.Third_version = @"1.0.0";
-    self.Third_detail = @"this is a Third module detail";
-    self.Third_rootViewController = [UIStoryboard storyboardWithName:@"ThirdMain" bundle:nil].instantiateInitialViewController;
+    self = [super init];
+    if (self) {
+        self.title = @"数据库";
+        self.loadingImage = @"login_1";
+        self.identifier = @"Third";
+        self.version = @"1.0.0";
+        self.detail = @"this is a Third module detail";
+        self.rootViewController = [UIStoryboard storyboardWithName:@"ThirdMain" bundle:nil].instantiateInitialViewController;
+    }
+    return self;
 }
-
 @end

@@ -8,12 +8,6 @@
 
 #import "Module.h"
 
-@interface Module (Second)
+@interface Second : Module
 
-@property (nonatomic, readonly) NSString * Second_title;
-@property (nonatomic, strong) NSString * Second_loadingImage;
-@property (nonatomic, strong) NSString * Second_identifier;
-@property (nonatomic, strong) NSString * Second_detail;
-@property (nonatomic, strong) NSString * Second_version;
-@property (nonatomic, strong) UIViewController * Second_rootViewController;
 @end

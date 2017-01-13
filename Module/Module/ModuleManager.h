@@ -13,21 +13,16 @@
 @class ModuleModel;
 
 @interface ModuleManager : NSObject
-@property (nonatomic, readonly) NSArray<ModuleModel*> *modules;
+@property (nonatomic, readonly) NSArray<Module*> *modules;
 + (instancetype)shareInstance;
 - (BOOL)containsModule:(NSString *)moduleName;
 
-- (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args;
+- (id)performAction:(NSString *)identifier selector:(NSString *)sel args:(id)args;
 
 @end
 
 
-@interface ModuleModel : NSObject<NSMutableCopying, NSCopying>
-@property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSString * loadingImage;
-@property (nonatomic, strong) NSString * identifier;
-@property (nonatomic, strong) NSString * detail;
-@property (nonatomic, strong) NSString * version;
-@property (nonatomic, strong) UIViewController* rootViewController;
+@interface NSObject (DymicProperty)
++ (id)getPropertyValueWithTarget:(id)target withPropertyName:(NSString *)propertyName;
++ (void)addPropertyWithtarget:(id)target withPropertyName:(NSString *)propertyName withValue:(id)value;
 @end

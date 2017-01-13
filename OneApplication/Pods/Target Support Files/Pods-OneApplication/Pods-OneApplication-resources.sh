@@ -18,6 +18,9 @@ case "${TARGETED_DEVICE_FAMILY}" in
   2)
     TARGET_DEVICE_ARGS="--target-device ipad"
     ;;
+  3)
+    TARGET_DEVICE_ARGS="--target-device tv"
+    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -75,6 +78,7 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../../Module/First/Resources/FirstMain.storyboard"
+  install_resource "../../Module/First/Resources/login/APPIcon.png"
   install_resource "../../Module/First/Resources/login/login_1@2x.png"
   install_resource "../../Module/First/Resources/login/login_2.png"
   install_resource "../../Module/First/Resources/login/login_3.png"
@@ -90,6 +94,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../../Module/First/Resources/FirstMain.storyboard"
+  install_resource "../../Module/First/Resources/login/APPIcon.png"
   install_resource "../../Module/First/Resources/login/login_1@2x.png"
   install_resource "../../Module/First/Resources/login/login_2.png"
   install_resource "../../Module/First/Resources/login/login_3.png"

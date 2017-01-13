@@ -69,51 +69,50 @@
 /* Begin PBXFileReference section */
 		06A2D5BE5C33D9F48E15179042B7A665 /* SecondRootViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SecondRootViewController.h; sourceTree = "<group>"; };
 		073E4336E3563ADAFCB1CE755F36295E /* BezierView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BezierView.h; sourceTree = "<group>"; };
+		089E823AEC38E90A03F6CF105D3D63A3 /* login_user_3@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "login_user_3@2x.png"; sourceTree = "<group>"; };
 		0CA0448E80746E54EE368D072B0557D8 /* Pods-OneApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OneApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		0DFEBAFF1D26386F49160695394C2090 /* UIViewExt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		12F966509586F247FD4D964A886C2787 /* TestViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		1919E4928DB4F6D1ABD7A1AF985BA084 /* Module.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Module.xcconfig; sourceTree = "<group>"; };
-		1EA67A79ED7FBCE81E56DF400CCE8184 /* libMycategory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMycategory.a; path = libMycategory.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2417FF4BB882DE872AA3CB750E0C3C3B /* Alcohole.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = Alcohole.ttf; sourceTree = "<group>"; };
+		1EA67A79ED7FBCE81E56DF400CCE8184 /* libMycategory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMycategory.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2417FF4BB882DE872AA3CB750E0C3C3B /* Alcohole.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = Alcohole.ttf; sourceTree = "<group>"; };
 		2486007D547EB18CA3F09C11B00DCFA8 /* NSString+FirstLetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+FirstLetter.h"; sourceTree = "<group>"; };
 		27EA36750BDD280F2EF0B6BE6B951EFF /* ThirdRootViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ThirdRootViewController.h; sourceTree = "<group>"; };
 		27F80A92224639A330D2D9A78668A511 /* Pods-OneApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OneApplication.release.xcconfig"; sourceTree = "<group>"; };
-		29CAC686152BDFE8AF8BE95749A2CE1C /* ThirdMain.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; path = ThirdMain.storyboard; sourceTree = "<group>"; };
+		29CAC686152BDFE8AF8BE95749A2CE1C /* ThirdMain.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = ThirdMain.storyboard; sourceTree = "<group>"; };
+		2AA8E2726021A6F1E8007E0EF8B40B5C /* login_user_1@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "login_user_1@2x.png"; sourceTree = "<group>"; };
 		3CD82B4D174186A2B427159F946ECCC9 /* NSArray+FirstLetterArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+FirstLetterArray.h"; sourceTree = "<group>"; };
 		3E363BC07752522C801E69493EDD9250 /* ThirdRootViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ThirdRootViewController.m; sourceTree = "<group>"; };
 		469829BE3B89E0DB88A54C2282455C90 /* ModuleHandle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ModuleHandle.m; sourceTree = "<group>"; };
+		46FF34BFABE17404AC2168856BF99EBB /* login_5.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = login_5.png; sourceTree = "<group>"; };
 		476DC2B245F11551E918905C1C22BBA9 /* Module+Second.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Module+Second.h"; sourceTree = "<group>"; };
-		4D5786A3AE98293A7BD8970408CF5477 /* login_user_2@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "login_user_2@2x.png"; sourceTree = "<group>"; };
 		4D9AD02E9CEE9B012A246B3874CF4587 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		582E043CA3A57C9FCF2E754A40565FE3 /* Firenze.TTF */ = {isa = PBXFileReference; includeInIndex = 1; path = Firenze.TTF; sourceTree = "<group>"; };
+		559ED123934455C04ADC50CFDF3FF306 /* login_user_2@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "login_user_2@2x.png"; sourceTree = "<group>"; };
+		582E043CA3A57C9FCF2E754A40565FE3 /* Firenze.TTF */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = Firenze.TTF; sourceTree = "<group>"; };
 		5A51D0B68F19ED0BC95C3E52B42D8FF4 /* NSString+FirstLetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+FirstLetter.m"; sourceTree = "<group>"; };
+		605ED0876E15E01C24BCE85E3C26D0A1 /* APPIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = APPIcon.png; sourceTree = "<group>"; };
+		617340A1ADA951FCA5680D6CEDC03794 /* login_2.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = login_2.png; sourceTree = "<group>"; };
 		662C897C262E339BF963BB6369770D84 /* ModuleManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ModuleManager.m; sourceTree = "<group>"; };
 		66E752E54CED15F7567A1334D8B1FF36 /* Module-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Module-prefix.pch"; sourceTree = "<group>"; };
+		68CE6F9E742B2BE68A8CB7BB8F8DBC48 /* FirstMain.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = FirstMain.storyboard; sourceTree = "<group>"; };
 		695DA86B20FEA7BF7EA40FA7DB65A479 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		6C327F44793CB11581D53DEACC7516D2 /* DrawView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
-		74D3B104CED7CC4DF0E76941184B9267 /* libPods-OneApplication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-OneApplication.a"; path = "libPods-OneApplication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74D3B104CED7CC4DF0E76941184B9267 /* libPods-OneApplication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneApplication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D1CC5D769298621DC59F04408E0C2A /* FShowViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FShowViewController.m; sourceTree = "<group>"; };
 		77E12F4DF6CD6B8794D9D1F9AE710E02 /* pinyin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
-		785CFC588CF69581E56959489D5968F6 /* login_1@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "login_1@2x.png"; sourceTree = "<group>"; };
 		792165F2CA033667D6F57205316D40A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7F15654033E84856C42137BE614C3378 /* DrawView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
-		811DBA1477378694E68CFD9BA7DCDB1C /* libModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libModule.a; path = libModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		85F9FA44DA0772FCA3B9C11C0FA4E8AF /* login_user_1@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "login_user_1@2x.png"; sourceTree = "<group>"; };
-		86076766F9D45C54125CD66CD3EC0752 /* login_2.png */ = {isa = PBXFileReference; includeInIndex = 1; path = login_2.png; sourceTree = "<group>"; };
+		811DBA1477378694E68CFD9BA7DCDB1C /* libModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A66083858F197B02C391C4D7A9324D /* Pods-OneApplication-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OneApplication-resources.sh"; sourceTree = "<group>"; };
-		8F64B45FEF28676525E12FB6EC9DA684 /* login_user_3@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "login_user_3@2x.png"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95442B88AD1FCA52DD772B961A0D8AE3 /* Module-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Module-dummy.m"; sourceTree = "<group>"; };
-		97F2D5208E6F729DFF463AE5859A7471 /* SecondMain.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; path = SecondMain.storyboard; sourceTree = "<group>"; };
-		9823C1088E81437882C110F83AC58639 /* FirstMain.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; path = FirstMain.storyboard; sourceTree = "<group>"; };
+		97F2D5208E6F729DFF463AE5859A7471 /* SecondMain.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = SecondMain.storyboard; sourceTree = "<group>"; };
 		9A9ADF7617D6BE9334FB417D444E2F50 /* Module+Second.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Module+Second.m"; sourceTree = "<group>"; };
-		9BFA65590BA8AEC3445F2F617EDEF4F8 /* login_3.png */ = {isa = PBXFileReference; includeInIndex = 1; path = login_3.png; sourceTree = "<group>"; };
 		9F6B43279AD600F566DA7DD08040A2F2 /* Module.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
 		A1CB6C67C5421C591D2366F8482ABBDE /* Module+Third.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Module+Third.m"; sourceTree = "<group>"; };
 		A31D61239D10ABAF15F5D8C64579D384 /* Module.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Module.m; sourceTree = "<group>"; };
 		AB441042DEF361B3F2C06BE023F51E0C /* FShowViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FShowViewController.h; sourceTree = "<group>"; };
-		AB9B9DA35B4781A033817660820A3D3C /* login_5.png */ = {isa = PBXFileReference; includeInIndex = 1; path = login_5.png; sourceTree = "<group>"; };
-		B16041093EC62F412450D553B2D4DFF7 /* login_6.png */ = {isa = PBXFileReference; includeInIndex = 1; path = login_6.png; sourceTree = "<group>"; };
+		ACD14E54C792C25E387C440E6C9FD5A6 /* login_6.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = login_6.png; sourceTree = "<group>"; };
 		B5C927501992E6DDD5B81B06666FB536 /* NSArray+FirstLetterArray.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FirstLetterArray.m"; sourceTree = "<group>"; };
 		B69571167D1ACAFB20EF55706ECCD775 /* pinyin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = pinyin.m; sourceTree = "<group>"; };
 		B70724AB488565F762D8B415E9C5D824 /* Pods-OneApplication-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OneApplication-frameworks.sh"; sourceTree = "<group>"; };
@@ -121,11 +120,13 @@
 		BD8EA16393F21F035A0B0045AC681FEB /* Module+First.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Module+First.m"; sourceTree = "<group>"; };
 		C5466D4EEB483D4B205A938054A3897E /* BezierView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BezierView.m; sourceTree = "<group>"; };
 		C694A89E519ADEFE683E7371997D7500 /* SecondRootViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SecondRootViewController.m; sourceTree = "<group>"; };
+		CCDCEFFB3BBE3331A0E659C24B3D6F95 /* login_3.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = login_3.png; sourceTree = "<group>"; };
 		CD00ABBFC25409070D3CC446F16CD44D /* Mycategory.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Mycategory.xcconfig; sourceTree = "<group>"; };
 		CF0543D567006899C9398BAA4A22D576 /* Pods-OneApplication-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OneApplication-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CF1C3A376A1F58528B1DBA8E57E36971 /* Pods-OneApplication-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OneApplication-acknowledgements.plist"; sourceTree = "<group>"; };
 		CF4F886DD086785A3E6742B8CCB885DB /* Pods-OneApplication-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OneApplication-dummy.m"; sourceTree = "<group>"; };
 		D79E5101A42FD479719B61EDDAD4CA2C /* UIViewExt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		DFD0B9E36CB452A371CFEECBAE7EEABD /* login_1@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "login_1@2x.png"; sourceTree = "<group>"; };
 		DFE50A98F001BF1D23FA058168902615 /* Module+Third.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Module+Third.h"; sourceTree = "<group>"; };
 		E31EC6CF8B2F3BB0E6ABACAC1E4035A1 /* ModuleHandle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ModuleHandle.h; sourceTree = "<group>"; };
 		F30CC65877F11102F981C308590EF84D /* Module+First.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Module+First.h"; sourceTree = "<group>"; };
@@ -172,22 +173,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		169AFB363350DEC4D20CF13E7C86A37B /* login */ = {
-			isa = PBXGroup;
-			children = (
-				785CFC588CF69581E56959489D5968F6 /* login_1@2x.png */,
-				86076766F9D45C54125CD66CD3EC0752 /* login_2.png */,
-				9BFA65590BA8AEC3445F2F617EDEF4F8 /* login_3.png */,
-				AB9B9DA35B4781A033817660820A3D3C /* login_5.png */,
-				B16041093EC62F412450D553B2D4DFF7 /* login_6.png */,
-				85F9FA44DA0772FCA3B9C11C0FA4E8AF /* login_user_1@2x.png */,
-				4D5786A3AE98293A7BD8970408CF5477 /* login_user_2@2x.png */,
-				8F64B45FEF28676525E12FB6EC9DA684 /* login_user_3@2x.png */,
-			);
-			name = login;
-			path = login;
-			sourceTree = "<group>";
-		};
 		180ECAA17EDCBA2D13C66C488CD0A341 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +205,6 @@
 				06A2D5BE5C33D9F48E15179042B7A665 /* SecondRootViewController.h */,
 				C694A89E519ADEFE683E7371997D7500 /* SecondRootViewController.m */,
 			);
-			name = Second;
 			path = Second;
 			sourceTree = "<group>";
 		};
@@ -229,7 +213,6 @@
 			children = (
 				AC33A1CC5EC457676FF6F0979A49A955 /* Resources */,
 			);
-			name = Second;
 			path = Second;
 			sourceTree = "<group>";
 		};
@@ -259,7 +242,6 @@
 			children = (
 				29CAC686152BDFE8AF8BE95749A2CE1C /* ThirdMain.storyboard */,
 			);
-			name = Resources;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -268,7 +250,6 @@
 			children = (
 				BC617393775A29EDDCEE157FCF7A4F36 /* FirstLetter */,
 			);
-			name = CCategory;
 			path = CCategory;
 			sourceTree = "<group>";
 		};
@@ -283,17 +264,16 @@
 		4D060DC94FDFBE56B350F0B9828A7479 /* First */ = {
 			isa = PBXGroup;
 			children = (
-				D2225D20C9A64BF6A5F5D509190A5842 /* Resources */,
+				CF165EDCCA21B894F9D3EC93A2328387 /* Resources */,
 			);
-			name = First;
 			path = First;
 			sourceTree = "<group>";
 		};
 		5820274022FFF18CF2ACAF3905657A94 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				B648A0004ECC0E3CEA298ED6564A0D13 /* First */,
 				930FA2406C45F109DCAEF4F8395EDB1F /* Module */,
+				B648A0004ECC0E3CEA298ED6564A0D13 /* First */,
 				D06C1BDA200D52AF881F29D467890C86 /* Second */,
 				224D84E663180970CCE21F67A8A14044 /* Support Files */,
 				A897674BA31EC00C59E4983F4E577134 /* Third */,
@@ -318,7 +298,6 @@
 				27EA36750BDD280F2EF0B6BE6B951EFF /* ThirdRootViewController.h */,
 				3E363BC07752522C801E69493EDD9250 /* ThirdRootViewController.m */,
 			);
-			name = Third;
 			path = Third;
 			sourceTree = "<group>";
 		};
@@ -327,7 +306,6 @@
 			children = (
 				3616BDCAFF4E75D3601AFF1BF1D972FF /* Resources */,
 			);
-			name = Third;
 			path = Third;
 			sourceTree = "<group>";
 		};
@@ -352,7 +330,6 @@
 				F99DDB7443312E3EF83300AF54A9881D /* ModuleManager.h */,
 				662C897C262E339BF963BB6369770D84 /* ModuleManager.m */,
 			);
-			name = Module;
 			path = Module;
 			sourceTree = "<group>";
 		};
@@ -391,7 +368,6 @@
 				582E043CA3A57C9FCF2E754A40565FE3 /* Firenze.TTF */,
 				97F2D5208E6F729DFF463AE5859A7471 /* SecondMain.storyboard */,
 			);
-			name = Resources;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -400,7 +376,6 @@
 			children = (
 				DCE6B01207D3CC1A7F0A6E6D8F2AEE6D /* UIViewExt */,
 			);
-			name = UICategory;
 			path = UICategory;
 			sourceTree = "<group>";
 		};
@@ -413,6 +388,22 @@
 			name = First;
 			sourceTree = "<group>";
 		};
+		B80822DC99F0FAD251A63C606F45948F /* login */ = {
+			isa = PBXGroup;
+			children = (
+				605ED0876E15E01C24BCE85E3C26D0A1 /* APPIcon.png */,
+				DFD0B9E36CB452A371CFEECBAE7EEABD /* login_1@2x.png */,
+				617340A1ADA951FCA5680D6CEDC03794 /* login_2.png */,
+				CCDCEFFB3BBE3331A0E659C24B3D6F95 /* login_3.png */,
+				46FF34BFABE17404AC2168856BF99EBB /* login_5.png */,
+				ACD14E54C792C25E387C440E6C9FD5A6 /* login_6.png */,
+				2AA8E2726021A6F1E8007E0EF8B40B5C /* login_user_1@2x.png */,
+				559ED123934455C04ADC50CFDF3FF306 /* login_user_2@2x.png */,
+				089E823AEC38E90A03F6CF105D3D63A3 /* login_user_3@2x.png */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 		BC617393775A29EDDCEE157FCF7A4F36 /* FirstLetter */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,7 +414,6 @@
 				77E12F4DF6CD6B8794D9D1F9AE710E02 /* pinyin.h */,
 				B69571167D1ACAFB20EF55706ECCD775 /* pinyin.m */,
 			);
-			name = FirstLetter;
 			path = FirstLetter;
 			sourceTree = "<group>";
 		};
@@ -448,6 +438,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CF165EDCCA21B894F9D3EC93A2328387 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				68CE6F9E742B2BE68A8CB7BB8F8DBC48 /* FirstMain.storyboard */,
+				B80822DC99F0FAD251A63C606F45948F /* login */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		D06C1BDA200D52AF881F29D467890C86 /* Second */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,23 +456,12 @@
 			name = Second;
 			sourceTree = "<group>";
 		};
-		D2225D20C9A64BF6A5F5D509190A5842 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9823C1088E81437882C110F83AC58639 /* FirstMain.storyboard */,
-				169AFB363350DEC4D20CF13E7C86A37B /* login */,
-			);
-			name = Resources;
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		DCE6B01207D3CC1A7F0A6E6D8F2AEE6D /* UIViewExt */ = {
 			isa = PBXGroup;
 			children = (
 				0DFEBAFF1D26386F49160695394C2090 /* UIViewExt.h */,
 				D79E5101A42FD479719B61EDDAD4CA2C /* UIViewExt.m */,
 			);
-			name = UIViewExt;
 			path = UIViewExt;
 			sourceTree = "<group>";
 		};
@@ -491,7 +479,6 @@
 				12F966509586F247FD4D964A886C2787 /* TestViewController.h */,
 				BA4B9D652F942280835A2D9BC400A1C0 /* TestViewController.m */,
 			);
-			name = First;
 			path = First;
 			sourceTree = "<group>";
 		};

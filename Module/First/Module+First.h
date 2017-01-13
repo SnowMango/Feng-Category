@@ -9,14 +9,8 @@
 #import "Module.h"
 #import "TestViewController.h"
 
-@interface Module (First)
+@interface First : Module
 
-@property (nonatomic, readonly) NSString * First_title;
-@property (nonatomic, strong) NSString * First_loadingImage;
-@property (nonatomic, strong) NSString * First_identifier;
-@property (nonatomic, strong) NSString * First_detail;
-@property (nonatomic, strong) NSString * First_version;
-@property (nonatomic, strong) UIViewController * First_rootViewController;
 
 @end
 

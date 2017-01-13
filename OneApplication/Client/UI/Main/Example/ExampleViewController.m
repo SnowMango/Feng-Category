@@ -1,38 +1,28 @@
 //
-//  RootViewController.m
-//  Demo
+//  ExampleViewController.m
+//  OneApplication
 //
-//  Created by zhengfeng on 16/11/4.
-//
+//  Created by zhengfeng on 17/1/13.
+//  Copyright © 2017年 zhengfeng. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "ExampleViewController.h"
 #import "ModuleManager.h"
-
-@interface RootViewController ()
-{
-    NSDictionary *_dictCustomerProperty;
-}
-
+@interface ExampleViewController ()
+@property (nonatomic, strong) NSMutableArray *functions;
 @end
 
-@implementation RootViewController
+@implementation ExampleViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"MainBundle->%@", [NSBundle mainBundle].bundlePath);
+    
     self.functions = [NSMutableArray arrayWithArray:[ModuleManager shareInstance].modules];
     self.clearsSelectionOnViewWillAppear = NO;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 60;
-    
-//    [NSObject addPropertyWithtarget:self withPropertyName:@"zfeng" withValue:@"酷"];
-//    id value =  [NSObject getPropertyValueWithTarget:self withPropertyName:@"zfeng"];
-//    NSLog(@"zfeng = %@",value);
 }
-
-
 
 #pragma mark - UITableViewDataSource
 
@@ -48,10 +38,8 @@
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
     cell.textLabel.text = f.title;
     cell.detailTextLabel.text = f.detail;
-    cell.imageView.image = [UIImage imageNamed:f.loadingImage];
     return cell;
 }
-
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
@@ -62,7 +50,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     return YES;
 }
 
@@ -76,10 +64,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Module *function = self.functions[indexPath.row];
-   
+    function.rootViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController  pushViewController:function.rootViewController animated:YES];
 }
-
-
 
 @end

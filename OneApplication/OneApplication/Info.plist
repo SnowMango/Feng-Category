@@ -47,5 +47,10 @@
 	<string>Guide</string>
 	<key>UILoginStoryboardName</key>
 	<string>Login</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

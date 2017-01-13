@@ -8,23 +8,21 @@
 
 #import "Module+First.h"
 
-@implementation Module (First)
+@implementation First
 
-module_synthesize(First_title)
-module_synthesize(First_loadingImage)
-module_synthesize(First_identifier)
-module_synthesize(First_version)
-module_synthesize(First_detail)
-module_synthesize(First_rootViewController)
-
-- (void)First_loadModule
+- (instancetype)init
 {
-    self.First_title = @"绘图";
-    self.First_loadingImage = @"login_1";
-    self.First_identifier = @"identifier";
-    self.First_version = @"1.0.0";
-    self.First_detail = @"this is a first module detail";
-    self.First_rootViewController = [UIStoryboard storyboardWithName:@"FirstMain" bundle:nil].instantiateInitialViewController;
+    self = [super init];
+    if (self) {
+        self.title = @"绘图";
+        self.loadingImage = @"login_1";
+        self.identifier = @"identifier";
+        self.version = @"1.0.0";
+        self.detail = @"this is a first module detail";
+        self.rootViewController = [UIStoryboard storyboardWithName:@"FirstMain" bundle:nil].instantiateInitialViewController;
+    }
+    return self;
 }
+
 
 @end

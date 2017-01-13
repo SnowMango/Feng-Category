@@ -7,9 +7,10 @@
 //
 
 #import "ModuleManager.h"
+#import "ModuleHandle.h"
 #import "Module.h"
 
-#define SuppressPerformSelectorLeakWarning(Stuff) \
+#define mg_SuppressPerformSelectorLeakWarning(Stuff) \
 do { \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
@@ -17,7 +18,7 @@ Stuff; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
-#define GetValueSuppressPerformSelectorLeakWarning(value ,Stuff) \
+#define mg_GetValueSuppressPerformSelectorLeakWarning(value ,Stuff) \
 do { \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
@@ -26,9 +27,8 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 @interface ModuleManager ()
-@property (nonatomic, strong) Module *module;
 
-@property (nonatomic, strong) NSArray *moduleNames;
+@property (nonatomic, strong) NSDictionary *moduleNames;
 @end
 
 @implementation ModuleManager
@@ -49,8 +49,10 @@ _Pragma("clang diagnostic pop") \
 {
     self = [super init];
     if (self) {
-        self.module = [[Module alloc] init];
+
         _modules  = [self mg_loadModules];
+        
+        ModuleHandle *handle = [[ModuleHandle alloc] init];
         
     }
     return self;
@@ -58,95 +60,149 @@ _Pragma("clang diagnostic pop") \
 
 - (BOOL)containsModule:(NSString *)moduleName
 {
-    
-    
-    BOOL ret =[self.moduleNames containsObject:moduleName];
+    BOOL ret =[self.moduleNames.allKeys containsObject:moduleName];
     return ret;
-}
-
-- (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args
-{
-   return [self.module performAction:moduleName selector:sel args:args];
 }
 
 - (NSMutableArray *)mg_loadModules
 {
     NSMutableArray *modules = [NSMutableArray new];
-    NSMutableDictionary *class = [NSMutableDictionary new];
-    unsigned int count;// 记录属性个数
-    objc_property_t *properties = class_copyPropertyList([Module class] , &count);
-    NSMutableArray *basicProperty = [NSMutableArray new];
-    for (int i = 0; i < count; i++) {
-        objc_property_t property = properties[i];
-        NSString *name = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
-        NSString *attributes = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
-        if (![attributes containsString:@"_"] && [name containsString:@"_"]) {
-            NSString * classstr = [name componentsSeparatedByString:@"_"].firstObject;
-            [class setObject:classstr forKey:classstr];
-        }else{
-            [basicProperty addObject:name];
-        }
-    }
-    self.moduleNames = class.allKeys;
-    NSLog(@"Load class = %@",class.allKeys);
-    for (NSString *classStr in class.allKeys) {
-        ModuleModel *fun = [[ModuleModel alloc] init];
-        fun.name = classStr;
-        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@_loadModule", classStr]);
-        if ([self.module respondsToSelector:selector]) {
-            SuppressPerformSelectorLeakWarning([self.module performSelector:selector withObject:nil]);
-        }else{
-            continue;
-        }
-        for (NSString *basic in basicProperty) {
-            SEL basicSelector = NSSelectorFromString([NSString stringWithFormat:@"%@_%@", classStr, basic]);
-            id value = nil;
-            if ([self.module respondsToSelector:basicSelector]) {
-                GetValueSuppressPerformSelectorLeakWarning(value, [self.module performSelector:basicSelector withObject:nil]);
-            }else{
-                NSLog(@"module warning [%@ %@] unselector",NSStringFromClass([self.module class]), NSStringFromSelector(basicSelector));
-            }
-            SEL basicSelector2 = NSSelectorFromString([NSString stringWithFormat:@"set%@:", [basic stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[basic substringToIndex:1] uppercaseString]]]);
+    NSMutableDictionary *classDic = [NSMutableDictionary new];
+    int numClasses;
+    Class *classes = NULL;
+    numClasses = objc_getClassList(NULL,0);
+    
+    if (numClasses >0 )
+    {
+        classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
+        numClasses = objc_getClassList(classes, numClasses);
+        for (int i = 0; i < numClasses; i++) {
+            Class cl = classes[i];
             
-            if ([fun respondsToSelector:basicSelector2]) {
-                SuppressPerformSelectorLeakWarning([fun performSelector:basicSelector2 withObject:value]);
-            }else{
-                NSLog(@"module warning [%@ %@] unselector",NSStringFromClass([fun class]), NSStringFromSelector(basicSelector2));
+            if (class_getSuperclass(cl) == [Module class]){
+                NSString *name = NSStringFromClass(cl);
+                NSLog(@"%@", name);
+                id obj = [[cl alloc] init];
+                [modules addObject:obj];
+                classDic[name] = obj;
             }
-        }
-        [modules addObject:fun];
+        }  
+        free(classes);  
     }
+    
+    
+    self.moduleNames = [classDic copy];
     return modules;
 }
 
+- (id)performAction:(NSString *)identifier selector:(NSString *)sel args:(id)args
+{
+    if (identifier.length) {
+        id obj = self.moduleNames[identifier];
+        if (obj) {
+            mg_SuppressPerformSelectorLeakWarning(return [obj performSelector:NSSelectorFromString(sel) withObject:args]);
+        }
+    }
+    return nil;
+}
+
 
 @end
 
-@implementation ModuleModel
-- (id)copyWithZone:(NSZone *)zone
-{
-    ModuleModel  * mm = [ModuleModel allocWithZone:zone];
-    mm.title = [self.title copy];
-    mm.detail = [self.detail copy];
-    mm.identifier = [self.identifier copy];
-    mm.version = [self.version copy];
-    mm.loadingImage = [self.loadingImage copy];
-    mm.rootViewController = [self.rootViewController copy];
+
+id getter(id self1, SEL _cmd1) {
+    NSString *key = NSStringFromSelector(_cmd1);
+    Ivar ivar = class_getInstanceVariable([self1 class], "_dictCustomerProperty");  //basicsViewController里面有个_dictCustomerProperty属性
+    NSMutableDictionary *dictCustomerProperty = object_getIvar(self1, ivar);
+    return [dictCustomerProperty objectForKey:key];
+}
+
+void setter(id self1, SEL _cmd1, id newValue) {
+    //移除set
+    NSString *key = [NSStringFromSelector(_cmd1) stringByReplacingCharactersInRange:NSMakeRange(0, 3) withString:@""];
+    //首字母小写
+    NSString *head = [key substringWithRange:NSMakeRange(0, 1)];
+    head = [head lowercaseString];
+    key = [key stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:head];
+    //移除后缀 ":"
+    key = [key stringByReplacingCharactersInRange:NSMakeRange(key.length - 1, 1) withString:@""];
     
-    return mm;
+    Ivar ivar = class_getInstanceVariable([self1 class], "_dictCustomerProperty");  //basicsViewController里面有个_dictCustomerProperty属性
+    NSMutableDictionary *dictCustomerProperty = object_getIvar(self1, ivar);
+    if (!dictCustomerProperty) {
+        dictCustomerProperty = [NSMutableDictionary dictionary];
+        object_setIvar(self1, ivar, dictCustomerProperty);
+    }
+    [dictCustomerProperty setObject:newValue forKey:key];
 }
 
-- (id)mutableCopyWithZone:(NSZone *)zone
-{
-    ModuleModel  * mm = [ModuleModel allocWithZone:zone];
-    mm.title = [self.title mutableCopy];
-    mm.detail = [self.detail mutableCopy];
-    mm.identifier = [self.identifier mutableCopy];
-    mm.version = [self.version mutableCopy];
-    mm.loadingImage = [self.loadingImage mutableCopy];
-    mm.rootViewController = [self.rootViewController mutableCopy];
-    return mm;
+
+@implementation NSObject (DymicProperty)
+
++ (void)addPropertyWithtarget:(id)target withPropertyName:(NSString *)propertyName withValue:(id)value {
+    
+    //先判断有没有这个属性，没有就添加，有就直接赋值
+    Ivar ivar = class_getInstanceVariable([target class], [[NSString stringWithFormat:@"_%@", propertyName] UTF8String]);
+    if (ivar) {
+        return;
+    }
+    
+    /*
+     objc_property_attribute_t type = { "T", "@\"NSString\"" };
+     objc_property_attribute_t ownership = { "C", "" }; // C = copy
+     objc_property_attribute_t backingivar  = { "V", "_privateName" };
+     objc_property_attribute_t attrs[] = { type, ownership, backingivar };
+     class_addProperty([SomeClass class], "name", attrs, 3);
+     */
+    
+    //objc_property_attribute_t所代表的意思可以调用getPropertyNameList打印，大概就能猜出
+    objc_property_attribute_t type = { "T", [[NSString stringWithFormat:@"@\"%@\"",NSStringFromClass([value class])] UTF8String] };
+    objc_property_attribute_t ownership = { "&", "N" };
+    objc_property_attribute_t backingivar  = { "V", [[NSString stringWithFormat:@"_%@", propertyName] UTF8String] };
+    objc_property_attribute_t attrs[] = { type, ownership, backingivar };
+    if (class_addProperty([target class], [propertyName UTF8String], attrs, 3)) {
+        
+        //添加get和set方法
+        class_addMethod([target class], NSSelectorFromString(propertyName), (IMP)getter, "@@:");
+        class_addMethod([target class], NSSelectorFromString([NSString stringWithFormat:@"set%@:",[propertyName capitalizedString]]), (IMP)setter, "v@:@");
+        
+        //赋值
+        [target setValue:value forKey:propertyName];
+        NSLog(@"%@", [target valueForKey:propertyName]);
+        
+        
+        
+        NSLog(@"创建属性Property成功");
+    } else {
+        class_replaceProperty([target class], [propertyName UTF8String], attrs, 3);
+        //添加get和set方法
+        class_addMethod([target class], NSSelectorFromString(propertyName), (IMP)getter, "@@:");
+        class_addMethod([target class], NSSelectorFromString([NSString stringWithFormat:@"set%@:",[propertyName capitalizedString]]), (IMP)setter, "v@:@");
+        
+        //赋值
+        [target setValue:value forKey:propertyName];
+    }
 }
+
+
++ (id)getPropertyValueWithTarget:(id)target withPropertyName:(NSString *)propertyName {
+    //先判断有没有这个属性，没有就添加，有就直接赋值
+    Ivar ivar = class_getInstanceVariable([target class], [[NSString stringWithFormat:@"_%@", propertyName] UTF8String]);
+    if (ivar) {
+        return object_getIvar(target, ivar);
+    }
+    
+    ivar = class_getInstanceVariable([target class], "_dictCustomerProperty");  //basicsViewController里面有个_dictCustomerProperty属性
+    NSMutableDictionary *dict = object_getIvar(target, ivar);
+    if (dict && [dict objectForKey:propertyName]) {
+        return [dict objectForKey:propertyName];
+    } else {
+        return nil;
+    }
+}
+
 
 @end
+
+
 
