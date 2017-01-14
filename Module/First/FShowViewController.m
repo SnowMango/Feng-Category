@@ -18,11 +18,13 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
     if (self.showView) {
         [self.scrollView addSubview:self.showView];
     }
+//    [self.view addSubview:self.showView];
 }
 
 

@@ -8,6 +8,6 @@
 
 #import "Module.h"
 
-@interface Second : Module
+@interface Second : ExampleModule
 
 @end

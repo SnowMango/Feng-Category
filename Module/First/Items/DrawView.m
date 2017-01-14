@@ -16,9 +16,9 @@
 
 @implementation DrawView
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
       _imgView =  [[UIImageView alloc] init];
         [self addSubview:_imgView];

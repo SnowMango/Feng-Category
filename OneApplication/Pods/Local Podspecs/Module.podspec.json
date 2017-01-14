@@ -46,6 +46,14 @@
       "resources": [
         "Third/Resources/**/*.*"
       ]
+    },
+    {
+      "name": "Fourth",
+      "source_files": "Fourth/**/*.{h,m}",
+      "public_header_files": "**/Module*.h",
+      "resources": [
+        "Fourth/Resources/**/*.*"
+      ]
     }
   ]
 }

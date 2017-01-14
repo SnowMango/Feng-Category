@@ -7,7 +7,7 @@
 //
 
 #import "GuideViewController.h"
-
+#import "AppDelegate.h"
 @interface GuideViewController ()
 
 @end
@@ -22,6 +22,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    ViewController * vc = (ViewController *)self.view.window.rootViewController;
+    
+    [vc showChildViewController:kRootLoginStoryboardKey];
+    
 }
 
 /*

@@ -21,15 +21,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"MainBundle->%@", [NSBundle mainBundle].bundlePath);
-    self.functions = [NSMutableArray arrayWithArray:[ModuleManager shareInstance].modules];
+    
     self.clearsSelectionOnViewWillAppear = NO;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 60;
     
-//    [NSObject addPropertyWithtarget:self withPropertyName:@"zfeng" withValue:@"酷"];
-//    id value =  [NSObject getPropertyValueWithTarget:self withPropertyName:@"zfeng"];
-//    NSLog(@"zfeng = %@",value);
+    ModuleHandle * example = [ModuleHandle handleWithClass:[ExampleModule class]];
+    [ModuleManager addModuleHandle:example];
+    
+    ModuleHandle * tool = [ModuleHandle handleWithClass:[ToolModule class]];
+    [ModuleManager addModuleHandle:tool];
+    
+    self.functions = [NSMutableArray arrayWithArray:example.modules];
+    [self.functions addObjectsFromArray:tool.modules];
 }
 
 
@@ -76,7 +81,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Module *function = self.functions[indexPath.row];
-   
+    function.rootViewController.title = function.title;
     [self.navigationController  pushViewController:function.rootViewController animated:YES];
 }
 

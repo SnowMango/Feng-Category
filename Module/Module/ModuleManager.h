@@ -8,21 +8,31 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Module.h"
+#import "ModuleHandle.h"
+
+#define mg_SuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
+#define mg_GetValueSuppressPerformSelectorLeakWarning(value ,Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+value = Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
 
 @class ModuleModel;
 
 @interface ModuleManager : NSObject
-@property (nonatomic, readonly) NSArray<Module*> *modules;
+@property (nonatomic, readonly) NSArray<ModuleHandle*> *handles;
 + (instancetype)shareInstance;
-- (BOOL)containsModule:(NSString *)moduleName;
-
-- (id)performAction:(NSString *)identifier selector:(NSString *)sel args:(id)args;
-
+- (id)moduleHandleWithIdentifer:(NSString*)identifer;
++ (void)addModuleHandle:(ModuleHandle*)handle;
++ (void)removeModuleHandle:(ModuleHandle*)handle;
 @end
 
-
-@interface NSObject (DymicProperty)
-+ (id)getPropertyValueWithTarget:(id)target withPropertyName:(NSString *)propertyName;
-+ (void)addPropertyWithtarget:(id)target withPropertyName:(NSString *)propertyName withValue:(id)value;
-@end

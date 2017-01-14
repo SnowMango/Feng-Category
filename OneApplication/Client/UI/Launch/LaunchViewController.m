@@ -7,8 +7,9 @@
 //
 
 #import "LaunchViewController.h"
-
+#import "AppDelegate.h"
 @interface LaunchViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *reminderLabel;
 
 @end
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.reminderLabel.text = @"轻轻点击跳转到Guide...";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +25,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    ViewController * vc = (ViewController *)self.view.window.rootViewController;
+    
+    [vc showChildViewController:kRootGuideStoryboardKey];
+}
 /*
 #pragma mark - Navigation
 

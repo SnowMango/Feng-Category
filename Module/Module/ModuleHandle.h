@@ -7,20 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
-
+#import "Module.h"
 @interface ModuleHandle : NSObject
 
-@property (nonatomic, strong) NSArray * nsArray;
-@property (nonatomic, readonly) NSArray * nrArray;
+@property (nonatomic, readonly) NSString *identifer;
 
-@property (nonatomic, strong) NSDictionary * nsDic;
-@property (nonatomic, readonly) NSDictionary * nrDic;
+@property (nonatomic, readonly) NSArray<Module*> *modules;
 
-@property (nonatomic, strong) NSNumber * number;
-@property (nonatomic, strong) NSString * string;
++(instancetype)handleWithClass:(Class)cls;
 
-@property (assign, nonatomic) BOOL anBool;
+- (BOOL)containsModule:(NSString *)moduleName;
 
+- (id)performAction:(NSString *)moduleName selector:(NSString *)sel args:(id)args;
 @end
+

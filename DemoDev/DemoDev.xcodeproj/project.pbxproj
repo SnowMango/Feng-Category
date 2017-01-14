@@ -23,12 +23,18 @@
 		6AE53E8C1DD2DF0300CF5183 /* Module+First.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53E861DD2DF0300CF5183 /* Module+First.m */; };
 		6AE53E8D1DD2DF0300CF5183 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53E881DD2DF0300CF5183 /* TestViewController.m */; };
 		6AE53EA81DD2EF6600CF5183 /* Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53EA21DD2EF6600CF5183 /* Module.m */; };
-		6AE53EAA1DD2EF6600CF5183 /* ModuleHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53EA51DD2EF6600CF5183 /* ModuleHandle.m */; };
 		6AE53EAB1DD2EF6600CF5183 /* ModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53EA71DD2EF6600CF5183 /* ModuleManager.m */; };
 		6AE53EB01DD2FBFE00CF5183 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE53EAF1DD2FBFE00CF5183 /* RootViewController.m */; };
 		6AEBAED91DE7EF2E00FE9990 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEBAED81DE7EF2E00FE9990 /* LocalAuthentication.framework */; };
 		6AEBAEFB1DE81A9E00FE9990 /* Firenze.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6AEBAEFA1DE8194100FE9990 /* Firenze.TTF */; };
 		6AEBAEFC1DE81A9F00FE9990 /* Alcohole.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AEBAEF81DE816E200FE9990 /* Alcohole.ttf */; };
+		6AEC8F211E29B8DA000CF745 /* ModuleHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F201E29B8DA000CF745 /* ModuleHandle.m */; };
+		6AEC8F271E29CF8F000CF745 /* BezierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F241E29CF8F000CF745 /* BezierView.m */; };
+		6AEC8F281E29CF8F000CF745 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F261E29CF8F000CF745 /* DrawView.m */; };
+		6AEC8F2B1E29CFD3000CF745 /* PieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F2A1E29CFD3000CF745 /* PieView.m */; };
+		6AEC8F2F1E2A0B65000CF745 /* FourthMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEC8F2E1E2A0B65000CF745 /* FourthMain.storyboard */; };
+		6AEC8F321E2A0BC8000CF745 /* FourthRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F311E2A0BC8000CF745 /* FourthRootViewController.m */; };
+		6AEC8F351E2A0D33000CF745 /* Modle+Fourth.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F341E2A0D33000CF745 /* Modle+Fourth.m */; };
 		6AEF2A571DD5954C006A8E44 /* login_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEF2A4F1DD5954C006A8E44 /* login_1@2x.png */; };
 		6AEF2A581DD5954C006A8E44 /* login_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEF2A501DD5954C006A8E44 /* login_2.png */; };
 		6AEF2A591DD5954C006A8E44 /* login_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEF2A511DD5954C006A8E44 /* login_3.png */; };
@@ -38,10 +44,8 @@
 		6AEF2A5D1DD5954C006A8E44 /* login_user_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEF2A551DD5954C006A8E44 /* login_user_2@2x.png */; };
 		6AEF2A5E1DD5954C006A8E44 /* login_user_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AEF2A561DD5954C006A8E44 /* login_user_3@2x.png */; };
 		6AEF2A601DD5A6A8006A8E44 /* FirstMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEF2A5F1DD5A6A8006A8E44 /* FirstMain.storyboard */; };
-		6AEF2A631DD5ABD7006A8E44 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF2A621DD5ABD7006A8E44 /* DrawView.m */; };
 		6AEF2A651DD5ACC6006A8E44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEF2A641DD5ACC6006A8E44 /* CoreGraphics.framework */; };
 		6AEF2A681DD5AD74006A8E44 /* FShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF2A671DD5AD74006A8E44 /* FShowViewController.m */; };
-		6AEF2A6B1DD5BB6A006A8E44 /* BezierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF2A6A1DD5BB6A006A8E44 /* BezierView.m */; };
 		6AEF2A971DD5CA9E006A8E44 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEF2A961DD5CA9E006A8E44 /* QuartzCore.framework */; };
 		D11B87DAA3D6539877EB7056 /* libPods-DemoDev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAB88ABC73A91CC9BA572E4 /* libPods-DemoDev.a */; };
 /* End PBXBuildFile section */
@@ -76,8 +80,6 @@
 		6AE53E881DD2DF0300CF5183 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		6AE53EA11DD2EF6600CF5183 /* Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
 		6AE53EA21DD2EF6600CF5183 /* Module.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Module.m; sourceTree = "<group>"; };
-		6AE53EA41DD2EF6600CF5183 /* ModuleHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleHandle.h; sourceTree = "<group>"; };
-		6AE53EA51DD2EF6600CF5183 /* ModuleHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleHandle.m; sourceTree = "<group>"; };
 		6AE53EA61DD2EF6600CF5183 /* ModuleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleManager.h; sourceTree = "<group>"; };
 		6AE53EA71DD2EF6600CF5183 /* ModuleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleManager.m; sourceTree = "<group>"; };
 		6AE53EAC1DD2F00A00CF5183 /* Module.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Module.podspec; sourceTree = "<group>"; };
@@ -86,6 +88,19 @@
 		6AEBAED81DE7EF2E00FE9990 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		6AEBAEF81DE816E200FE9990 /* Alcohole.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alcohole.ttf; sourceTree = "<group>"; };
 		6AEBAEFA1DE8194100FE9990 /* Firenze.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Firenze.TTF; sourceTree = "<group>"; };
+		6AEC8F1F1E29B8DA000CF745 /* ModuleHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleHandle.h; sourceTree = "<group>"; };
+		6AEC8F201E29B8DA000CF745 /* ModuleHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleHandle.m; sourceTree = "<group>"; };
+		6AEC8F231E29CF8F000CF745 /* BezierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierView.h; sourceTree = "<group>"; };
+		6AEC8F241E29CF8F000CF745 /* BezierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierView.m; sourceTree = "<group>"; };
+		6AEC8F251E29CF8F000CF745 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		6AEC8F261E29CF8F000CF745 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		6AEC8F291E29CFD3000CF745 /* PieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieView.h; sourceTree = "<group>"; };
+		6AEC8F2A1E29CFD3000CF745 /* PieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieView.m; sourceTree = "<group>"; };
+		6AEC8F2E1E2A0B65000CF745 /* FourthMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FourthMain.storyboard; sourceTree = "<group>"; };
+		6AEC8F301E2A0BC8000CF745 /* FourthRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthRootViewController.h; sourceTree = "<group>"; };
+		6AEC8F311E2A0BC8000CF745 /* FourthRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthRootViewController.m; sourceTree = "<group>"; };
+		6AEC8F331E2A0D33000CF745 /* Modle+Fourth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Modle+Fourth.h"; sourceTree = "<group>"; };
+		6AEC8F341E2A0D33000CF745 /* Modle+Fourth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Modle+Fourth.m"; sourceTree = "<group>"; };
 		6AEF2A4F1DD5954C006A8E44 /* login_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_1@2x.png"; sourceTree = "<group>"; };
 		6AEF2A501DD5954C006A8E44 /* login_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_2.png; sourceTree = "<group>"; };
 		6AEF2A511DD5954C006A8E44 /* login_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_3.png; sourceTree = "<group>"; };
@@ -95,13 +110,9 @@
 		6AEF2A551DD5954C006A8E44 /* login_user_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_user_2@2x.png"; sourceTree = "<group>"; };
 		6AEF2A561DD5954C006A8E44 /* login_user_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_user_3@2x.png"; sourceTree = "<group>"; };
 		6AEF2A5F1DD5A6A8006A8E44 /* FirstMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstMain.storyboard; sourceTree = "<group>"; };
-		6AEF2A611DD5ABD7006A8E44 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
-		6AEF2A621DD5ABD7006A8E44 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
 		6AEF2A641DD5ACC6006A8E44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6AEF2A661DD5AD74006A8E44 /* FShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FShowViewController.h; sourceTree = "<group>"; };
 		6AEF2A671DD5AD74006A8E44 /* FShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FShowViewController.m; sourceTree = "<group>"; };
-		6AEF2A691DD5BB6A006A8E44 /* BezierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierView.h; sourceTree = "<group>"; };
-		6AEF2A6A1DD5BB6A006A8E44 /* BezierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierView.m; sourceTree = "<group>"; };
 		6AEF2A961DD5CA9E006A8E44 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EDAB88ABC73A91CC9BA572E4 /* libPods-DemoDev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DemoDev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -227,6 +238,7 @@
 				6AE53E841DD2DF0300CF5183 /* First */,
 				6A1B72801DD994FF00041ADD /* Second */,
 				6AAC36C71DEBFFD700730D95 /* Third */,
+				6AEC8F2C1E2A0B2B000CF745 /* Fourth */,
 			);
 			name = Module;
 			path = ../Module;
@@ -235,6 +247,7 @@
 		6AE53E841DD2DF0300CF5183 /* First */ = {
 			isa = PBXGroup;
 			children = (
+				6AEC8F221E29CF5A000CF745 /* Items */,
 				6AEF2A4D1DD5954C006A8E44 /* Resources */,
 				6AE53E851DD2DF0300CF5183 /* Module+First.h */,
 				6AE53E861DD2DF0300CF5183 /* Module+First.m */,
@@ -242,10 +255,6 @@
 				6AE53E881DD2DF0300CF5183 /* TestViewController.m */,
 				6AEF2A661DD5AD74006A8E44 /* FShowViewController.h */,
 				6AEF2A671DD5AD74006A8E44 /* FShowViewController.m */,
-				6AEF2A611DD5ABD7006A8E44 /* DrawView.h */,
-				6AEF2A621DD5ABD7006A8E44 /* DrawView.m */,
-				6AEF2A691DD5BB6A006A8E44 /* BezierView.h */,
-				6AEF2A6A1DD5BB6A006A8E44 /* BezierView.m */,
 			);
 			path = First;
 			sourceTree = "<group>";
@@ -255,12 +264,45 @@
 			children = (
 				6AE53EA11DD2EF6600CF5183 /* Module.h */,
 				6AE53EA21DD2EF6600CF5183 /* Module.m */,
-				6AE53EA41DD2EF6600CF5183 /* ModuleHandle.h */,
-				6AE53EA51DD2EF6600CF5183 /* ModuleHandle.m */,
+				6AEC8F1F1E29B8DA000CF745 /* ModuleHandle.h */,
+				6AEC8F201E29B8DA000CF745 /* ModuleHandle.m */,
 				6AE53EA61DD2EF6600CF5183 /* ModuleManager.h */,
 				6AE53EA71DD2EF6600CF5183 /* ModuleManager.m */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		6AEC8F221E29CF5A000CF745 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				6AEC8F231E29CF8F000CF745 /* BezierView.h */,
+				6AEC8F241E29CF8F000CF745 /* BezierView.m */,
+				6AEC8F251E29CF8F000CF745 /* DrawView.h */,
+				6AEC8F261E29CF8F000CF745 /* DrawView.m */,
+				6AEC8F291E29CFD3000CF745 /* PieView.h */,
+				6AEC8F2A1E29CFD3000CF745 /* PieView.m */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		6AEC8F2C1E2A0B2B000CF745 /* Fourth */ = {
+			isa = PBXGroup;
+			children = (
+				6AEC8F2D1E2A0B44000CF745 /* Resources */,
+				6AEC8F301E2A0BC8000CF745 /* FourthRootViewController.h */,
+				6AEC8F311E2A0BC8000CF745 /* FourthRootViewController.m */,
+				6AEC8F331E2A0D33000CF745 /* Modle+Fourth.h */,
+				6AEC8F341E2A0D33000CF745 /* Modle+Fourth.m */,
+			);
+			path = Fourth;
+			sourceTree = "<group>";
+		};
+		6AEC8F2D1E2A0B44000CF745 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6AEC8F2E1E2A0B65000CF745 /* FourthMain.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		6AEF2A4D1DD5954C006A8E44 /* Resources */ = {
@@ -376,6 +418,7 @@
 				6AEF2A5D1DD5954C006A8E44 /* login_user_2@2x.png in Resources */,
 				6AEF2A591DD5954C006A8E44 /* login_3.png in Resources */,
 				6AE53E5D1DD2DDE500CF5183 /* Main.storyboard in Resources */,
+				6AEC8F2F1E2A0B65000CF745 /* FourthMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,18 +480,21 @@
 				6AE53E5A1DD2DDE500CF5183 /* ViewController.m in Sources */,
 				6AE53E571DD2DDE500CF5183 /* AppDelegate.m in Sources */,
 				6AAC36CD1DEC002000730D95 /* ThirdRootViewController.m in Sources */,
-				6AE53EAA1DD2EF6600CF5183 /* ModuleHandle.m in Sources */,
-				6AEF2A6B1DD5BB6A006A8E44 /* BezierView.m in Sources */,
 				6AEF2A681DD5AD74006A8E44 /* FShowViewController.m in Sources */,
 				6A1B72831DD9953900041ADD /* Module+Second.m in Sources */,
 				6AE53EAB1DD2EF6600CF5183 /* ModuleManager.m in Sources */,
-				6AEF2A631DD5ABD7006A8E44 /* DrawView.m in Sources */,
 				6AE53E8C1DD2DF0300CF5183 /* Module+First.m in Sources */,
 				6AE53EB01DD2FBFE00CF5183 /* RootViewController.m in Sources */,
 				6A1B728A1DD9971500041ADD /* SecondRootViewController.m in Sources */,
+				6AEC8F211E29B8DA000CF745 /* ModuleHandle.m in Sources */,
 				6AAC36CA1DEBFFF700730D95 /* Module+Third.m in Sources */,
 				6AE53EA81DD2EF6600CF5183 /* Module.m in Sources */,
+				6AEC8F271E29CF8F000CF745 /* BezierView.m in Sources */,
+				6AEC8F351E2A0D33000CF745 /* Modle+Fourth.m in Sources */,
+				6AEC8F2B1E29CFD3000CF745 /* PieView.m in Sources */,
+				6AEC8F321E2A0BC8000CF745 /* FourthRootViewController.m in Sources */,
 				6AE53E541DD2DDE500CF5183 /* main.m in Sources */,
+				6AEC8F281E29CF8F000CF745 /* DrawView.m in Sources */,
 				6AE53E8D1DD2DF0300CF5183 /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

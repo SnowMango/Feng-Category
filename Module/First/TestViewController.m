@@ -20,16 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
-    UIImage *image = [UIImage imageNamed:@"login_1"];
-    UIImageView * iv = [[UIImageView alloc] initWithImage: image];
-    iv.frame = CGRectMake(0, 0, 30, 30);
-    iv.center = self.view.center;
-    iv.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:iv];
     self.tableView.rowHeight = 60;
     self.tableView.tableFooterView = [UIView new];
-    self.drawTypes = @[@{@"CoreGraphics":@"DrawView"}, @{@"UIBezierPath":@"BezierView"}];
+    self.drawTypes = @[@{@"CoreGraphics":@"DrawView"},
+                       @{@"UIBezierPath":@"BezierView"},
+                       @{@"Pie Chart":@"PieShowView"}];
 }
 
 #pragma mark - UITableViewDataSource
@@ -47,13 +42,12 @@
     return cell;
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSString *classStr = [self.drawTypes[indexPath.row] allValues].firstObject;
-    UIView *showView = [[NSClassFromString(classStr) alloc] init];
-    showView.frame = self.view.bounds;
+    UIView *showView = [[NSClassFromString(classStr) alloc] initWithFrame:self.view.bounds];
     FShowViewController *vc = (FShowViewController *)self.navigationController.topViewController;
     vc.showView = showView;
     vc.title = [self.drawTypes[indexPath.row] allKeys].firstObject;
@@ -64,4 +58,6 @@
 {
     return YES;
 }
+
+
 @end

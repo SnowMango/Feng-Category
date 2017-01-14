@@ -13,7 +13,7 @@
 {
     self = [super init];
     if (self) {
-        self.title = @"2222";
+        self.title = @"视频播放";
         self.loadingImage = @"login_1";
         self.identifier = @"Second";
         self.version = @"1.0.0";

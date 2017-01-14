@@ -8,20 +8,6 @@
 
 #import "Module.h"
 
-
-#define property_set(key, value)  objc_setAssociatedObject(self, key, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-#define property_get(key)  objc_getAssociatedObject(self, key)
-
-/**
- 使用runtime自动为属性创建 setter和getter方法
- @param type     属性类型
- @param property 属性
- */
-#define module_synthesize(property) \
--(void)set##property:(id)value {  property_set(#property , value);}\
-- (id)property { return property_get(#property);}
-
-
 @implementation Module
 
 - (instancetype)init
@@ -56,6 +42,17 @@
     }
     return nil;
 }
+
+@end
+
+@implementation ExampleModule
+
+
+
+@end
+
+@implementation ToolModule
+
 
 @end
 

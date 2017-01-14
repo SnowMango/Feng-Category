@@ -22,6 +22,7 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
     UIViewController *login;
     UIViewController *main;
 
+    NSDictionary * children;
     UIViewController *currentChild;
     UIInterfaceOrientation supportedInterface;
 }
@@ -31,22 +32,33 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
 @implementation ViewController
 
 
+
 #pragma mark - Public
 - (void)exitLogin
 {
-    [self showLoginUI];
-    [main removeFromParentViewController];
-    main = [UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController;
-    [self addChildViewController:main];
-    
+    [self showChildViewController:kRootLoginStoryboardKey];
 }
 - (void)login
 {
-    [self showMainUI];
+    [self showChildViewController:kRootMainStoryboardKey];
 }
-- (void)reLogin
+
+
+- (void)showChildViewController:(NSString*)storyboardKey
 {
-    [self showLoginUI];
+    UIViewController * newVC = children[storyboardKey];
+    if (newVC && ![newVC isKindOfClass:[NSNull class]] && ![newVC isEqual:currentChild]) {
+        [self transitionFromOldViewController:currentChild toNewViewController:newVC];
+    }
+}
+
+- (UIViewController*)rootChildViewController:(const NSString *)storyboardKey
+{
+    UIViewController * vc = children[storyboardKey];
+    if ([vc isKindOfClass:[NSNull class]]) {
+        vc = nil;
+    }
+    return vc;
 }
 #pragma mark -
 
@@ -57,18 +69,6 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
     [self loadChildrenViewController];
 }
 
-- (void)showLoginUI
-{
-    if (![currentChild isEqual:login]) {
-        [self transitionFromOldViewController:currentChild toNewViewController:login];
-    }
-}
-- (void)showMainUI
-{
-    if (![currentChild isEqual:main]) {
-        [self transitionFromOldViewController:currentChild toNewViewController:main];
-    }
-}
 
 //设置childViewControllerd的frame
 - (void)fitFrameForChildViewController:(UIViewController *)chileViewController{
@@ -96,23 +96,33 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
 #pragma mark - ChildrenViewController
 - (void)loadChildrenViewController
 {
+    NSMutableDictionary * mutableDic = [@{kRootMainStoryboardKey: [NSNull null],
+                                          kRootLoginStoryboardKey: [NSNull null],
+                                          kRootGuideStoryboardKey: [NSNull null],
+                                          kRootLaunchStoryboardKey: [NSNull null]} mutableCopy];
     main = [self viewControllerWithKey:kRootMainStoryboardKey];
     if (main) {
+        mutableDic[kRootMainStoryboardKey] = main;
         [self addChildViewController:main];
     }
+    
     login = [self viewControllerWithKey:kRootLoginStoryboardKey];
     if (login) {
+        mutableDic[kRootLoginStoryboardKey] = login;
         [self addChildViewController:login];
     }
     guide = [self viewControllerWithKey:kRootGuideStoryboardKey];
     if (guide) {
+        mutableDic[kRootGuideStoryboardKey] = guide;
         [self addChildViewController:guide];
     }
     launch = [self viewControllerWithKey:kRootLaunchStoryboardKey];
     if (launch) {
+        mutableDic[kRootLaunchStoryboardKey] = launch;
         [self addChildViewController:launch];
     }
-    currentChild = login;
+    currentChild = launch;
+    children = [mutableDic copy];
     if (currentChild) {
         [self.view addSubview:currentChild.view];
     }
@@ -124,6 +134,7 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
     NSString *storyboardName = [[NSBundle mainBundle] infoDictionary][key];
     if ([self checkStoryboardName:storyboardName]) {
         vc = [UIStoryboard storyboardWithName:storyboardName bundle:nil].instantiateInitialViewController;
+        
     }
     return vc;
 }

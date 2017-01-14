@@ -17,7 +17,9 @@ extern NSString * const kRootMainStoryboardKey;
 
 - (void)exitLogin;
 - (void)login;
-- (void)reLogin;
 
+- (void)showChildViewController:(NSString*)storyboardKey;
+
+- (UIViewController *)rootChildViewController:(const NSString *)storyboardKey;
 @end
 

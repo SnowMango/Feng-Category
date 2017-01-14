@@ -9,7 +9,7 @@
 #import "Module.h"
 #import "TestViewController.h"
 
-@interface First : Module
+@interface First : ExampleModule
 
 
 @end
