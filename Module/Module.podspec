@@ -35,7 +35,7 @@ s.subspec 'Third' do |se|
     se.public_header_files = '**/Module*.h'
     #se.resource_bundles = {'Third' => ['Third/Resources/**/*.png']}
     se.resources = ['Third/Resources/**/*.*']
-    #se.frameworks = 'CoreGraphics'
+    se.frameworks = 'CoreData'
 end
 
 s.subspec 'Fourth' do |se|

@@ -13,7 +13,6 @@
     NSMutableDictionary * ivar_list;
 }
 
-- (void)setValuesForKeysWithDictionary:(NSDictionary<NSString *,id> *)keyedValues;
 
 - (void)setValue:(id)value forKey:(NSString *)key;
 

@@ -7,9 +7,12 @@
 //
 
 #import "RootViewController.h"
-#import "Module/ModuleManager.h"
+#import "ModuleManager.h"
 
 @interface RootViewController ()
+{
+    NSDictionary *_dictCustomerProperty;
+}
 
 @end
 
@@ -18,11 +21,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"MainBundle->%@", [NSBundle mainBundle].bundlePath);
-    self.functions = [NSMutableArray arrayWithArray:[ModuleManager shareInstance].modules];
+    
     self.clearsSelectionOnViewWillAppear = NO;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 60;
+    
+    ModuleHandle * example = [ModuleHandle handleWithClass:[ExampleModule class]];
+    [ModuleManager addModuleHandle:example];
+    
+    ModuleHandle * tool = [ModuleHandle handleWithClass:[ToolModule class]];
+    [ModuleManager addModuleHandle:tool];
+    
+    self.functions = [NSMutableArray arrayWithArray:example.modules];
+    [self.functions addObjectsFromArray:tool.modules];
 }
 
 
@@ -36,11 +48,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][3];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    ModuleModel * f = self.functions[indexPath.row];
+    Module * f = self.functions[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
-    cell.textLabel.text = f.name;
+    cell.textLabel.text = f.title;
     cell.detailTextLabel.text = f.detail;
+    cell.imageView.image = [UIImage imageNamed:f.loadingImage];
     return cell;
 }
 
@@ -54,7 +67,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     return YES;
 }
 
@@ -67,7 +80,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ModuleModel *function = self.functions[indexPath.row];
+    Module *function = self.functions[indexPath.row];
+    function.rootViewController.title = function.title;
     [self.navigationController  pushViewController:function.rootViewController animated:YES];
 }
 

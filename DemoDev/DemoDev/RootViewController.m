@@ -67,7 +67,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     return YES;
 }
 
@@ -82,6 +82,9 @@
 {
     Module *function = self.functions[indexPath.row];
     function.rootViewController.title = function.title;
+    
+//    [self addChildViewController:function.rootViewController];
+//    [self.view addSubview:function.rootViewController.view];
     [self.navigationController  pushViewController:function.rootViewController animated:YES];
 }
 

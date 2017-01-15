@@ -143,7 +143,7 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
 {
     BOOL ret = NO;
     if (name.length) {
-       ret = [[NSBundle mainBundle] pathForResource:name ofType:@"storyboardc"];
+       ret = [[NSBundle mainBundle] pathForResource:name ofType:@"storyboardc"].length ;
     }
     return ret;
 }
