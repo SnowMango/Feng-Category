@@ -15,19 +15,33 @@
 
 - (void)addStudentsObject:(Student *)value
 {
-    
+    if (![self.students containsObject:value]) {
+        value.teacher = self;
+        NSMutableSet *set = [NSMutableSet setWithSet:self.students];
+        [set addObject:value];
+        self.students = [set copy];
+    }
 }
 - (void)removeStudentsObject:(Student *)value
 {
-    
+    if ([self.students containsObject:value]) {
+        value.teacher = nil;
+        NSMutableSet *set = [NSMutableSet setWithSet:self.students];
+        [set removeObject:value];
+        self.students = [set copy];
+    }
 }
 - (void)addStudents:(NSSet<Student *> *)values
 {
-    
+    for (Student *s in [values allObjects]) {
+        [self addStudents:s];
+    }
 }
 - (void)removeStudents:(NSSet<Student *> *)values
 {
-    
+    for (Student *s in [values allObjects]) {
+        [self removeStudents:s];
+    }
 }
 
 @end

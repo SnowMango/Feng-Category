@@ -1,0 +1,1 @@
+../../../../../Module/Third/CoreData/Entity/NSManagedObject+Base.h

@@ -3,5 +3,6 @@ inhibit_all_warnings!
 
 target 'OneApplication’ do
     pod 'Mycategory', :path => '../Mycategory'
+    pod ‘Server’, :path => '../Server'
     pod 'Module', :path => '../Module'
 end

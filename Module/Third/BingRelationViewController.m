@@ -37,6 +37,12 @@
     [self updateInfoLabel];
     
 }
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[CoreDataManager shareInstance] synchronize];
+    
+}
 - (void)updateInfoLabel
 {
     NSString *text = nil;
@@ -54,7 +60,7 @@
         text = [NSString stringWithFormat:@"%@\n%@:%@",text,@"grade",s.grade];
         text = [NSString stringWithFormat:@"%@\n%@:%@",text,@"teacher",s.teacher.name];
     }
-
+    
     self.infoLabel.text = text;
 }
 #pragma mark - UITableViewDataSource
@@ -68,7 +74,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][0];
+    NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][1];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
@@ -107,16 +113,22 @@
     if (self.isTeacherOfInfo) {
         data = self.students[indexPath.row];
         Teacher *t = (Teacher *)self.info;
-        NSMutableSet *mset = [NSMutableSet setWithSet:t.students];
-        [mset addObject:data];
-        t.students = mset;
+        if (![t.students containsObject:data]) {
+            [t addStudentsObject:data];
+        }else{
+            [t removeStudentsObject:data];
+        }
     }else{
         data = self.teachers[indexPath.row];
         Student *s = (Student *)self.info;
-        s.teacher = data;
+        if ([s.teacher isEqual: data]) {
+            s.teacher = nil;
+        }else{
+            s.teacher = data;
+        }
     }
     [self updateInfoLabel];
-    
+    [[CoreDataManager shareInstance] synchronize];
     [tableView reloadData];
 }
 

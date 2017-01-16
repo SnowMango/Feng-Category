@@ -9,21 +9,30 @@ PODS:
   - Module/Second (1.0.0)
   - Module/Third (1.0.0)
   - Mycategory (1.0.0)
+  - Server (1.0.1):
+    - Server/Http (= 1.0.1)
+    - Server/Socket (= 1.0.1)
+  - Server/Http (1.0.1)
+  - Server/Socket (1.0.1)
 
 DEPENDENCIES:
   - Module (from `../Module`)
   - Mycategory (from `../Mycategory`)
+  - Server (from `../Server`)
 
 EXTERNAL SOURCES:
   Module:
     :path: "../Module"
   Mycategory:
     :path: "../Mycategory"
+  Server:
+    :path: "../Server"
 
 SPEC CHECKSUMS:
-  Module: 97404024d431b24ca3889cc73feda1d19be6a679
+  Module: e3f19f4994a4c3a3e729008c99dd599619f8ed6e
   Mycategory: b8833a728aa04511c6fff5bb79c6a3d234a431de
+  Server: 65d2bddd36a8076ab25871e41d7fe9797bac13d6
 
-PODFILE CHECKSUM: 7c46fbf87ed3c6949b08fb58e9a06b82fa9e6a94
+PODFILE CHECKSUM: f588b012a9f910b71a20253cb05c9077e984f473
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0.rc.1

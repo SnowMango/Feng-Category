@@ -11,6 +11,9 @@
 @interface CoreDataManager ()
 @property (strong) NSString *databaseName;
 @property (nonatomic,strong) NSPersistentContainer *container;
+@property (nonatomic,strong) NSPersistentStoreCoordinator *coordinator;
+@property (nonatomic,strong) NSManagedObjectContext *praviteContext;
+
 @end
 
 @implementation CoreDataManager
@@ -29,7 +32,6 @@
     self = [super init];
     if (self) {
         self.databaseName = @"ThirdCoreData";
-        NSLog(@"%@", self.container);
         
     }
     return self;
@@ -45,24 +47,85 @@
                     NSLog(@"Unresolved error %@, %@", error, error.userInfo);
                     abort();
                 }
-                self.viewContext = _container.viewContext;
             }];
-            NSDictionary *options= @{NSMigratePersistentStoresAutomaticallyOption : @(YES),
-                                     
-                                     NSInferMappingModelAutomaticallyOption:@(YES)};
-            NSURL  *applicationDocumentsDirectory =[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-            
-            NSURL *storeURL = [applicationDocumentsDirectory URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",self.databaseName]];
-            NSError *error = nil;
-            if (![_container.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                abort();
-            }
-
         }
     }
     return _container;
 }
+- (NSURL *)sqliteUrlWithName:(NSString *)name
+{
+    NSURL *url =[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    
+    url = [url URLByAppendingPathComponent:@"zheng/feng"];
+//    NSURL *other = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"feng/%@.sqlite",name]];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:url.path] ) {
+        BOOL ret = [[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:nil];
+        NSLog(@"%@", ret? @"创建成功": @"创建失败");
+    }
+    
+    url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",name]];
+    return url;
+}
+
+
+
+- (NSURL *)momdUrlWithName:(NSString *)name bundle:(NSBundle*)bundle
+{
+    NSURL *url =[NSBundle mainBundle].bundleURL;
+    if (bundle) {
+        url = bundle.bundlePath;
+    }
+    url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.momd",name]];
+    return url;
+}
+- (NSPersistentStoreCoordinator *)coordinator
+{
+    @synchronized (self) {
+        if (_coordinator == nil) {
+
+            NSManagedObjectModel * model = [NSManagedObjectModel mergedModelFromBundles:nil];
+            _coordinator= [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+            NSURL * sqliteURL = [self sqliteUrlWithName:self.databaseName];
+            NSError *error = nil;
+            
+            NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES,
+                                      NSInferMappingModelAutomaticallyOption : @YES};;
+            if (![_coordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                           configuration:nil URL:sqliteURL options:options error:&error]) {
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                abort();
+            }
+        }
+    }
+    return _coordinator;
+}
+
+- (NSManagedObjectContext *)praviteContext
+{
+    @synchronized (self) {
+        if (_praviteContext == nil) {
+            _praviteContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+            
+             _praviteContext.persistentStoreCoordinator = self.coordinator;
+//            NSLog(@"URL= %@", [_praviteContext.persistentStoreCoordinator  URLForPersistentStore:[_praviteContext.persistentStoreCoordinator.persistentStores firstObject]] );
+        }
+    }
+    return _praviteContext;
+}
+
+- (NSManagedObjectContext *)viewContext
+{
+    @synchronized (self) {
+        if (_viewContext == nil) {
+            _viewContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+            self.viewContext.parentContext = self.praviteContext;
+        }
+    }
+    return _viewContext;
+}
+
+
 
 #pragma mark - Core Data Saving support
 - (void)saveContext:(NSManagedObjectContext *)context {
@@ -75,7 +138,7 @@
 - (void)synchronize
 {
     [self saveContext:self.viewContext];
-    [self saveContext:self.viewContext.parentContext];
+    [self saveContext:self.praviteContext];
 }
 
 - (NSArray *)readObjectsWithEntityName:(NSString *)entityName sorts:(NSArray *)sorts predicate:(NSPredicate*)predicate

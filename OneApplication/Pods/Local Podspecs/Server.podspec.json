@@ -1,0 +1,66 @@
+{
+  "name": "Server",
+  "version": "1.0.1",
+  "summary": "A short description of Server.",
+  "homepage": "https://github.com/SnowMango",
+  "license": "MIT",
+  "authors": {
+    "zhengfeng": "164804868@qq.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "path": "~/Desktop/feng/Module"
+  },
+  "requires_arc": true,
+  "exclude_files": "*.podspec",
+  "source_files": "BaseJSON.{h,m}",
+  "public_header_files": "BaseJSON.h",
+  "frameworks": "Foundation",
+  "subspecs": [
+    {
+      "name": "Http",
+      "prefix_header_contents": "#ifndef TARGET_OS_IOS\n    #define TARGET_OS_IOS TARGET_OS_IPHONE\n#endif\n\n#ifndef TARGET_OS_WATCH\n    #define TARGET_OS_WATCH 0\n#endif\n\n#ifndef TARGET_OS_TV\n    #define TARGET_OS_TV 0\n#endif",
+      "platforms": {
+        "ios": "7.0",
+        "osx": "10.9",
+        "watchos": "2.0",
+        "tvos": "9.0"
+      },
+      "source_files": "AFNetworking/*.{h,m}",
+      "public_header_files": "AFNetworking/*.h",
+      "watchos": {
+        "frameworks": [
+          "MobileCoreServices",
+          "CoreGraphics"
+        ]
+      },
+      "ios": {
+        "frameworks": [
+          "MobileCoreServices",
+          "CoreGraphics"
+        ]
+      },
+      "osx": {
+        "frameworks": "CoreServices"
+      },
+      "frameworks": [
+        "SystemConfiguration",
+        "Security"
+      ]
+    },
+    {
+      "name": "Socket",
+      "source_files": "CocoaAsyncSocket/**/*.{h,m}",
+      "public_header_files": "CocoaAsyncSocket/**/*.{h}",
+      "ios": {
+        "frameworks": [
+          "CFNetwork",
+          "UIKit"
+        ]
+      },
+      "frameworks": "Security"
+    }
+  ]
+}

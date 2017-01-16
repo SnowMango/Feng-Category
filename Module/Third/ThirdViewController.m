@@ -10,6 +10,7 @@
 #import "CoreDataManager.h"
 #import "EntityHeader.h"
 #import "BingRelationViewController.h"
+#import <CoreData/CoreData.h>
 
 @interface ThirdViewController ()<UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -25,7 +26,6 @@
     [super viewDidLoad];
     self.tableView.rowHeight = 60;
     self.tableView.tableFooterView = [UIView new];
-    
     
 }
 - (void)viewDidAppear:(BOOL)animated
@@ -56,7 +56,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][0];
+    NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][1];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
@@ -80,7 +80,31 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        id deleteObj = indexPath.section? self.students[indexPath.row]:self.teachers[indexPath.row];
+        [[CoreDataManager shareInstance].viewContext deleteObject:deleteObj];
+        [self updateData];
+        [[CoreDataManager shareInstance] synchronize];
+    }
+}
+
 #pragma mark - UITableViewDelegate
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id sender = indexPath.section? self.students[indexPath.row]:self.teachers[indexPath.row];

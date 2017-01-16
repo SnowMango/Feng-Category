@@ -134,7 +134,7 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
     NSString *storyboardName = [[NSBundle mainBundle] infoDictionary][key];
     if ([self checkStoryboardName:storyboardName]) {
         vc = [UIStoryboard storyboardWithName:storyboardName bundle:nil].instantiateInitialViewController;
-        
+    
     }
     return vc;
 }

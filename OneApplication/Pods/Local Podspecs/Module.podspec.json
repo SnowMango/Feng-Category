@@ -45,7 +45,8 @@
       "public_header_files": "**/Module*.h",
       "resources": [
         "Third/Resources/**/*.*"
-      ]
+      ],
+      "frameworks": "CoreData"
     },
     {
       "name": "Fourth",

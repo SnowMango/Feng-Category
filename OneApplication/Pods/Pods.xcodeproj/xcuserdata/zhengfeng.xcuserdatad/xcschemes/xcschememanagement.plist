@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Server.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -27,12 +32,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>58EC2F08152DD62C22079D4D1DDF15C4</key>
+		<key>37E52A3452E354DB0443C6EA5754E277</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A7D9BF71F22794217DC14DFD5F09BFE</key>
+		<key>5A5844B20210E866CD13547FD4E722A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC00912D79F3D09AD30EA57B489DEF03</key>
 		<dict>
 			<key>primary</key>
 			<true/>
