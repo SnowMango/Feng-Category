@@ -25,6 +25,7 @@
         [self.scrollView addSubview:self.showView];
     }
 //    [self.view addSubview:self.showView];
+
 }
 
 

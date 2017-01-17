@@ -8,7 +8,8 @@
 
 #import "GuideViewController.h"
 #import "AppDelegate.h"
-@interface GuideViewController ()
+#import <BaseJSON.h>
+@interface GuideViewController ()<NSKeyedArchiverDelegate,NSKeyedUnarchiverDelegate>
 
 @end
 
@@ -16,13 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+   
+   
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {

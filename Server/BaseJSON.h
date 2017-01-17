@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BaseJSON : NSObject
+@interface BaseJSON : NSObject<NSCopying, NSMutableCopying, NSCoding>
 {
     NSMutableDictionary * ivar_list;
 }
+
+@property (nonatomic, strong) NSString * identifer;
+
 
 - (void)setValuesForKeysWithDictionary:(NSDictionary<NSString *,id> *)keyedValues;
 
