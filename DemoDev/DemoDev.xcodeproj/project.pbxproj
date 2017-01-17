@@ -53,6 +53,10 @@
 		6A051B6B1E2B3A6900C37900 /* NSManagedObject+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A051B6A1E2B3A6900C37900 /* NSManagedObject+Base.m */; };
 		6A67E6EE1E2BA6D8002FB2D0 /* AddObjViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A67E6ED1E2BA6D8002FB2D0 /* AddObjViewController.m */; };
 		6A67E6F11E2BA894002FB2D0 /* BingRelationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A67E6F01E2BA894002FB2D0 /* BingRelationViewController.m */; };
+		6A8B0D251E2E5BB5009482F5 /* Module+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0D241E2E5BB5009482F5 /* Module+Tools.m */; };
+		6A8B0D281E2E5C47009482F5 /* ToolMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8B0D271E2E5C47009482F5 /* ToolMain.storyboard */; };
+		6A8B0D2B1E2E5D28009482F5 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0D2A1E2E5D28009482F5 /* ToolViewController.m */; };
+		6A8B0D2F1E2E5FBA009482F5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A8B0D2E1E2E5FBA009482F5 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +135,12 @@
 		6A67E6ED1E2BA6D8002FB2D0 /* AddObjViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddObjViewController.m; sourceTree = "<group>"; };
 		6A67E6EF1E2BA894002FB2D0 /* BingRelationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingRelationViewController.h; sourceTree = "<group>"; };
 		6A67E6F01E2BA894002FB2D0 /* BingRelationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingRelationViewController.m; sourceTree = "<group>"; };
+		6A8B0D231E2E5BB5009482F5 /* Module+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Module+Tools.h"; sourceTree = "<group>"; };
+		6A8B0D241E2E5BB5009482F5 /* Module+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Module+Tools.m"; sourceTree = "<group>"; };
+		6A8B0D271E2E5C47009482F5 /* ToolMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolMain.storyboard; sourceTree = "<group>"; };
+		6A8B0D291E2E5D28009482F5 /* ToolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolViewController.h; sourceTree = "<group>"; };
+		6A8B0D2A1E2E5D28009482F5 /* ToolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolViewController.m; sourceTree = "<group>"; };
+		6A8B0D2E1E2E5FBA009482F5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C77E2F7FA971FA45D39D1E28 /* Pods-TargetSetting-DemoDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetSetting-DemoDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetSetting-DemoDev/Pods-TargetSetting-DemoDev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A8B0D2F1E2E5FBA009482F5 /* AVFoundation.framework in Frameworks */,
 				6A051B441E2B072400C37900 /* CoreData.framework in Frameworks */,
 				0DB73E10D367404972F63F8F /* libPods-TargetSetting-DemoDev.a in Frameworks */,
 			);
@@ -150,6 +161,7 @@
 		02631D4727887900ED371CD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A8B0D2E1E2E5FBA009482F5 /* AVFoundation.framework */,
 				6A051B431E2B072400C37900 /* CoreData.framework */,
 				5C4CA64A404F9407D1BC594D /* libPods-TargetSetting-DemoDev.a */,
 			);
@@ -178,6 +190,7 @@
 		6A051AD01E2AFEFE00C37900 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				6A8B0D1F1E2E5B14009482F5 /* Tools */,
 				6A051AFA1E2AFEFE00C37900 /* Module.podspec */,
 				6A051AF31E2AFEFE00C37900 /* Module */,
 				6A051AD11E2AFEFE00C37900 /* First */,
@@ -365,6 +378,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6A8B0D1F1E2E5B14009482F5 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				6A8B0D261E2E5C38009482F5 /* Resources */,
+				6A8B0D231E2E5BB5009482F5 /* Module+Tools.h */,
+				6A8B0D241E2E5BB5009482F5 /* Module+Tools.m */,
+				6A8B0D291E2E5D28009482F5 /* ToolViewController.h */,
+				6A8B0D2A1E2E5D28009482F5 /* ToolViewController.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		6A8B0D261E2E5C38009482F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6A8B0D271E2E5C47009482F5 /* ToolMain.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8DF3B0964CBDCC755A4F7C9C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +487,7 @@
 				6A051B191E2AFEFE00C37900 /* login_3.png in Resources */,
 				6A051B1C1E2AFEFE00C37900 /* login_user_1@2x.png in Resources */,
 				6A051ACA1E2AFE7100C37900 /* Main.storyboard in Resources */,
+				6A8B0D281E2E5C47009482F5 /* ToolMain.storyboard in Resources */,
 				6A051B151E2AFEFE00C37900 /* FirstMain.storyboard in Resources */,
 				6A051AC81E2AFE7100C37900 /* Assets.xcassets in Resources */,
 				6A051AC91E2AFE7100C37900 /* LaunchScreen.storyboard in Resources */,
@@ -546,6 +580,7 @@
 				6A051B301E2AFEFE00C37900 /* ThirdViewController.m in Sources */,
 				6A051B6B1E2B3A6900C37900 /* NSManagedObject+Base.m in Sources */,
 				6A051B251E2AFEFE00C37900 /* ModuleHandle.m in Sources */,
+				6A8B0D2B1E2E5D28009482F5 /* ToolViewController.m in Sources */,
 				6A051B141E2AFEFE00C37900 /* Module+First.m in Sources */,
 				6A051B201E2AFEFE00C37900 /* FourthRootViewController.m in Sources */,
 				6A051B5F1E2B100600C37900 /* Student.m in Sources */,
@@ -553,6 +588,7 @@
 				6A051B661E2B18D200C37900 /* CoreDataManager.m in Sources */,
 				6A051ACF1E2AFE7100C37900 /* ViewController.m in Sources */,
 				6A67E6F11E2BA894002FB2D0 /* BingRelationViewController.m in Sources */,
+				6A8B0D251E2E5BB5009482F5 /* Module+Tools.m in Sources */,
 				6A051B5D1E2B100600C37900 /* Human.m in Sources */,
 				6A051B2B1E2AFEFE00C37900 /* SecondRootViewController.m in Sources */,
 				6A051B421E2B069400C37900 /* ThirdCoreData.xcdatamodeld in Sources */,

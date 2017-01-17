@@ -52,7 +52,7 @@
         <!--Tool-->
         <scene sceneID="fQU-4Q-pbN">
             <objects>
-                <tableViewController id="Rvr-HC-YAB" customClass="ToolViewController" sceneMemberID="viewController">
+                <tableViewController id="Rvr-HC-YAB" customClass="ToolsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gcG-td-ZDb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

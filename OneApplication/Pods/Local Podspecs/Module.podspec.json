@@ -55,6 +55,15 @@
       "resources": [
         "Fourth/Resources/**/*.*"
       ]
+    },
+    {
+      "name": "Tool",
+      "source_files": "Tools/**/*.{h,m}",
+      "public_header_files": "**/Module*.h",
+      "resources": [
+        "Tools/Resources/**/*.*"
+      ],
+      "frameworks": "AVFoundation"
     }
   ]
 }

@@ -25,7 +25,6 @@
 - (void)removeStudentsObject:(Student *)value
 {
     if ([self.students containsObject:value]) {
-        value.teacher = nil;
         NSMutableSet *set = [NSMutableSet setWithSet:self.students];
         [set removeObject:value];
         self.students = [set copy];

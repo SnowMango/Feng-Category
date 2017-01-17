@@ -4,10 +4,12 @@ PODS:
     - Module/Fourth (= 1.0.0)
     - Module/Second (= 1.0.0)
     - Module/Third (= 1.0.0)
+    - Module/Tool (= 1.0.0)
   - Module/First (1.0.0)
   - Module/Fourth (1.0.0)
   - Module/Second (1.0.0)
   - Module/Third (1.0.0)
+  - Module/Tool (1.0.0)
   - Mycategory (1.0.0)
   - Server (1.0.1):
     - Server/Http (= 1.0.1)
@@ -29,10 +31,10 @@ EXTERNAL SOURCES:
     :path: "../Server"
 
 SPEC CHECKSUMS:
-  Module: e3f19f4994a4c3a3e729008c99dd599619f8ed6e
+  Module: fbd3fb3cc4c1aa65f5f05b9ed19f3e1799df8d7d
   Mycategory: b8833a728aa04511c6fff5bb79c6a3d234a431de
   Server: 65d2bddd36a8076ab25871e41d7fe9797bac13d6
 
 PODFILE CHECKSUM: f588b012a9f910b71a20253cb05c9077e984f473
 
-COCOAPODS: 1.2.0.rc.1
+COCOAPODS: 1.1.1

@@ -18,9 +18,6 @@ case "${TARGETED_DEVICE_FAMILY}" in
   2)
     TARGET_DEVICE_ARGS="--target-device ipad"
     ;;
-  3)
-    TARGET_DEVICE_ARGS="--target-device tv"
-    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -92,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../../Module/Third/Resources/ThirdMain.storyboard"
   install_resource "../../Module/Third/Resources/ThirdCoreData.xcdatamodeld"
   install_resource "../../Module/Third/Resources/ThirdCoreData.xcdatamodeld/ThirdCoreData.xcdatamodel"
+  install_resource "../../Module/Tools/Resources/ToolMain.storyboard"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../../Module/First/Resources/FirstMain.storyboard"
@@ -109,6 +107,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../../Module/Third/Resources/ThirdMain.storyboard"
   install_resource "../../Module/Third/Resources/ThirdCoreData.xcdatamodeld"
   install_resource "../../Module/Third/Resources/ThirdCoreData.xcdatamodeld/ThirdCoreData.xcdatamodel"
+  install_resource "../../Module/Tools/Resources/ToolMain.storyboard"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

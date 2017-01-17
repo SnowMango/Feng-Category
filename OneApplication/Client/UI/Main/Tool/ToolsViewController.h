@@ -1,5 +1,5 @@
 //
-//  ToolViewController.h
+//  ToolsViewController.h
 //  OneApplication
 //
 //  Created by zhengfeng on 17/1/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ToolViewController : UITableViewController
+@interface ToolsViewController : UITableViewController
 
 @end

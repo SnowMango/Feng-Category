@@ -57,7 +57,6 @@
     NSURL *url =[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     
     url = [url URLByAppendingPathComponent:@"zheng/feng"];
-//    NSURL *other = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"feng/%@.sqlite",name]];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:url.path] ) {
         BOOL ret = [[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:nil];
@@ -68,17 +67,6 @@
     return url;
 }
 
-
-
-- (NSURL *)momdUrlWithName:(NSString *)name bundle:(NSBundle*)bundle
-{
-    NSURL *url =[NSBundle mainBundle].bundleURL;
-    if (bundle) {
-        url = bundle.bundlePath;
-    }
-    url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.momd",name]];
-    return url;
-}
 - (NSPersistentStoreCoordinator *)coordinator
 {
     @synchronized (self) {
@@ -108,7 +96,6 @@
             _praviteContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
             
              _praviteContext.persistentStoreCoordinator = self.coordinator;
-//            NSLog(@"URL= %@", [_praviteContext.persistentStoreCoordinator  URLForPersistentStore:[_praviteContext.persistentStoreCoordinator.persistentStores firstObject]] );
         }
     }
     return _praviteContext;

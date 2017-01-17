@@ -46,4 +46,11 @@ s.subspec 'Fourth' do |se|
     #se.frameworks = 'CoreGraphics'
 end
 
+s.subspec 'Tool' do |se|
+    se.source_files = 'Tools/**/*.{h,m}'
+    se.public_header_files = '**/Module*.h'
+    se.resources = ['Tools/Resources/**/*.*']
+    se.frameworks = 'AVFoundation'
+end
+
 end

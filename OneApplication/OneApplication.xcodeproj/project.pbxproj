@@ -16,7 +16,7 @@
 		6A84ADCA1E287BDC005A8418 /* example@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A84ADC91E287BDC005A8418 /* example@2x.png */; };
 		6AD959921E288B9F00DFBAC7 /* ExampleNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD959911E288B9F00DFBAC7 /* ExampleNavigationController.m */; };
 		6AD959951E288BD900DFBAC7 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD959941E288BD900DFBAC7 /* ExampleViewController.m */; };
-		6AD959981E288CA600DFBAC7 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD959971E288CA600DFBAC7 /* ToolViewController.m */; };
+		6AD959981E288CA600DFBAC7 /* ToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD959971E288CA600DFBAC7 /* ToolsViewController.m */; };
 		6AD9599B1E288CD600DFBAC7 /* ToolNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD9599A1E288CD600DFBAC7 /* ToolNavigationController.m */; };
 		6AEC8EE21E27D8D1000CF745 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8EE11E27D8D1000CF745 /* LaunchViewController.m */; };
 		6AEC8EE51E27D8DF000CF745 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8EE41E27D8DF000CF745 /* GuideViewController.m */; };
@@ -58,8 +58,8 @@
 		6AD959911E288B9F00DFBAC7 /* ExampleNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleNavigationController.m; sourceTree = "<group>"; };
 		6AD959931E288BD900DFBAC7 /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
 		6AD959941E288BD900DFBAC7 /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
-		6AD959961E288CA600DFBAC7 /* ToolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolViewController.h; sourceTree = "<group>"; };
-		6AD959971E288CA600DFBAC7 /* ToolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolViewController.m; sourceTree = "<group>"; };
+		6AD959961E288CA600DFBAC7 /* ToolsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsViewController.h; sourceTree = "<group>"; };
+		6AD959971E288CA600DFBAC7 /* ToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsViewController.m; sourceTree = "<group>"; };
 		6AD959991E288CD600DFBAC7 /* ToolNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolNavigationController.h; sourceTree = "<group>"; };
 		6AD9599A1E288CD600DFBAC7 /* ToolNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolNavigationController.m; sourceTree = "<group>"; };
 		6AEB830E1E2C5D3F00E36310 /* pod_install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = pod_install.sh; path = ../pod_install.sh; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 			children = (
 				6AD959991E288CD600DFBAC7 /* ToolNavigationController.h */,
 				6AD9599A1E288CD600DFBAC7 /* ToolNavigationController.m */,
-				6AD959961E288CA600DFBAC7 /* ToolViewController.h */,
-				6AD959971E288CA600DFBAC7 /* ToolViewController.m */,
+				6AD959961E288CA600DFBAC7 /* ToolsViewController.h */,
+				6AD959971E288CA600DFBAC7 /* ToolsViewController.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -505,7 +505,7 @@
 				6AD959921E288B9F00DFBAC7 /* ExampleNavigationController.m in Sources */,
 				6AEC8EE51E27D8DF000CF745 /* GuideViewController.m in Sources */,
 				6A63FE871E236FCC006B268B /* ViewController.m in Sources */,
-				6AD959981E288CA600DFBAC7 /* ToolViewController.m in Sources */,
+				6AD959981E288CA600DFBAC7 /* ToolsViewController.m in Sources */,
 				6A63FE841E236FCC006B268B /* AppDelegate.m in Sources */,
 				6A63FE811E236FCC006B268B /* main.m in Sources */,
 				6AD959951E288BD900DFBAC7 /* ExampleViewController.m in Sources */,

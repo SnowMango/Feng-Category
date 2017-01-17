@@ -1,19 +1,19 @@
 //
-//  ToolViewController.m
+//  ToolsViewController.m
 //  OneApplication
 //
 //  Created by zhengfeng on 17/1/13.
 //  Copyright © 2017年 zhengfeng. All rights reserved.
 //
 
-#import "ToolViewController.h"
+#import "ToolsViewController.h"
 #import "ModuleManager.h"
 
-@interface ToolViewController ()
+@interface ToolsViewController ()
 @property (nonatomic, strong) NSMutableArray *tool;
 @end
 
-@implementation ToolViewController
+@implementation ToolsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

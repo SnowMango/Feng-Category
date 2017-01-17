@@ -17,29 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-   
+
    
 }
-
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
     ViewController * vc = (ViewController *)self.view.window.rootViewController;
-    
     [vc showChildViewController:kRootLoginStoryboardKey];
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
