@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "ModuleManager.h"
+#import "Module.h"
 
 @interface RootViewController ()
 {

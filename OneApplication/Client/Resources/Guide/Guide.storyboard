@@ -20,17 +20,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aC1-2p-Crj">
-                                <rect key="frame" x="161" y="321.5" width="53.5" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guide.png" translatesAutoresizingMaskIntoConstraints="NO" id="WV8-Lp-rEg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进入应用" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aC1-2p-Crj">
+                                <rect key="frame" x="127" y="567" width="120" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="0.69143246644295298" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="H6y-Uf-RMk"/>
+                                    <constraint firstAttribute="height" constant="40" id="qTE-Ce-Pho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="X95-KE-rvD" firstAttribute="top" secondItem="aC1-2p-Crj" secondAttribute="bottom" constant="60" id="0uX-iK-SFr"/>
+                            <constraint firstAttribute="bottom" secondItem="WV8-Lp-rEg" secondAttribute="bottom" id="J5d-6I-7cH"/>
                             <constraint firstItem="aC1-2p-Crj" firstAttribute="centerX" secondItem="vIC-Xe-6xk" secondAttribute="centerX" id="NnW-wn-XB0"/>
-                            <constraint firstItem="aC1-2p-Crj" firstAttribute="centerY" secondItem="vIC-Xe-6xk" secondAttribute="centerY" id="Uas-cQ-6se"/>
+                            <constraint firstAttribute="trailing" secondItem="WV8-Lp-rEg" secondAttribute="trailing" id="i6b-9w-rNa"/>
+                            <constraint firstItem="WV8-Lp-rEg" firstAttribute="top" secondItem="vIC-Xe-6xk" secondAttribute="top" id="iFr-jS-wPH"/>
+                            <constraint firstItem="WV8-Lp-rEg" firstAttribute="leading" secondItem="vIC-Xe-6xk" secondAttribute="leading" id="irV-eW-6QX"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,4 +57,7 @@
             <point key="canvasLocation" x="256.80000000000001" y="99.400299850074973"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Guide.png" width="320" height="568"/>
+    </resources>
 </document>
