@@ -9,7 +9,8 @@
 #import "ModuleHandle.h"
 
 #import <objc/runtime.h>
-#import "ModuleManager.h"
+#import "Module.h"
+
 @interface ModuleHandle ()
 
 @property (nonatomic, strong) NSDictionary *moduleNames;
@@ -23,6 +24,7 @@
     if (self) {
         _modules  = [self mg_loadModules:cls];
         _identifer = NSStringFromClass([self class]);
+        [ModuleManager addModuleHandle: self];
     }
     return self;
 }
@@ -57,7 +59,8 @@
             if (class_getSuperclass(cl) == cls){
                 NSString *name = NSStringFromClass(cl);
                 NSLog(@"%@", name);
-                id obj = [[cl alloc] init];
+                Module* obj = [[cl alloc] init];
+                [obj setValue:self forKey:@"handle"];
                 [modules addObject:obj];
                 classDic[name] = obj;
             }

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "ModuleManager.h"
+#import "ModuleHandle.h"
+
 #define mg_SuppressPerformSelectorLeakWarning(Stuff) \
 do { \
 _Pragma("clang diagnostic push") \
@@ -26,6 +29,8 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 @interface Module : NSObject
+
+@property (readonly, strong) ModuleHandle * handle;
 
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * loadingImage;

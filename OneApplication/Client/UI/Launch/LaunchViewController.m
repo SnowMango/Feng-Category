@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.reminderLabel.text = @"轻轻点击跳转到Guide...";
+//    NSRunLoop
 }
 
 - (void)didReceiveMemoryWarning {

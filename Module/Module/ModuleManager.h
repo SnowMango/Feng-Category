@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ModuleHandle.h"
+
+@class ModuleHandle;
 
 #define mg_SuppressPerformSelectorLeakWarning(Stuff) \
 do { \

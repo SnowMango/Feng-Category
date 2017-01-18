@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Module.h"
+
+@class ModuleManager, Module;
+
 @interface ModuleHandle : NSObject
 
 @property (nonatomic, readonly) NSString *identifer;

@@ -29,7 +29,6 @@ const char * IVAR_LIST = "ivar_list";
 #pragma mark - NSMutableCoping
 -(id)mutableCopyWithZone:(NSZone *)zone
 {
-    
     id newObj = [[self class] allocWithZone:zone];
     NSArray *properties = [self objc_properties];
     NSMutableDictionary *propertyDic = [NSMutableDictionary new];
@@ -38,11 +37,8 @@ const char * IVAR_LIST = "ivar_list";
         if ([value conformsToProtocol:@protocol(NSMutableCopying)]) {
             value = [value mutableCopy];
         }
-        if (value) {
-          [propertyDic setObject:value forKey:key];
-        }
+        [newObj setValue:value forKey:key];
     }
-    [newObj setValuesForKeysWithDictionary:propertyDic];
     return newObj;
 }
 #pragma mark - NSCoding
@@ -58,6 +54,8 @@ const char * IVAR_LIST = "ivar_list";
     }];
     [aCoder encodeObject:ivar_list forKey:[NSString stringWithUTF8String:IVAR_LIST]];
 }
+
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
@@ -90,6 +88,7 @@ const char * IVAR_LIST = "ivar_list";
     }
     return properties;
 }
+#pragma mark -
 
 - (instancetype)init
 {
@@ -99,7 +98,11 @@ const char * IVAR_LIST = "ivar_list";
     }
     return self;
 }
-
+#pragma mark - Public
+- (NSArray *)runtimeProperties
+{
+    return ivar_list.allKeys;
+}
 
 - (void)setValuesForKeysAutoObjectWithDictionary:(NSDictionary<NSString *,id> *)keyedValues
 {
@@ -129,14 +132,7 @@ const char * IVAR_LIST = "ivar_list";
     [super setValue:value forKey:key];
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    if ([self checkKeyIsEffective:key]) {
-        [self addPropertyWithName:key value:value];
-    }
-    [super setValue:value forUndefinedKey:key];
-}
-
+#pragma mark -
 // 检查属性是否符合 以_和字母开头
 - (BOOL)checkKeyIsEffective:(NSString *)key
 {
@@ -145,27 +141,35 @@ const char * IVAR_LIST = "ivar_list";
     return [numberPre evaluateWithObject:key];
 }
 //根据valuel类型 runtime添加属性
-- (void)addPropertyWithName:(NSString *)propertyName value:(id)value {
-    if (!value) {
+- (void)addPropertyWithName:(NSString *)propertyName value:(id)newValue {
+    NSString* ivar_name = [NSString stringWithFormat:@"_%@", propertyName];
+    //判断是否是动态属性
+    Ivar user_ivar = class_getInstanceVariable([self class], ivar_name.UTF8String);
+    if (user_ivar) {
         return;
     }
-    //先判断有没有这个属性，没有就添加，有就直接赋值
-    NSString* ivar_name = [NSString stringWithFormat:@"_%@", propertyName];
-    Ivar ivar = class_getInstanceVariable([self class], ivar_name.UTF8String);
-    if (ivar) {
-        return;
+    if (!newValue) {
+        newValue = [NSNull null];
+    }
+    Ivar ivar = class_getInstanceVariable([self class], IVAR_LIST);
+    NSMutableDictionary *propertyList = object_getIvar(self, ivar);
+    id oldValue = [propertyList objectForKey:propertyName];
+    //判断是否添加过动态属性并且class相同，不同就添加
+    if (oldValue && [NSStringFromClass([oldValue class]) isEqualToString:NSStringFromClass([newValue class])]) {
+        return ;
     }
     //属性 attributes (strong, nonatomic)
-    objc_property_attribute_t type = { "T", [[NSString stringWithFormat:@"@\"%@\"",NSStringFromClass([value class])] UTF8String] };
+    objc_property_attribute_t type = { "T", [[NSString stringWithFormat:@"@\"%@\"",NSStringFromClass([newValue class])] UTF8String] };
     objc_property_attribute_t ownership = { "&", "N" };
     objc_property_attribute_t backingivar  = {"V",ivar_name.UTF8String};
     objc_property_attribute_t attrs[] = { type, ownership, backingivar };
     //添加属性
-    if (class_addProperty([self class], [propertyName UTF8String], attrs, 3)) {
-        //添加get和set方法
-        class_addMethod([self class], NSSelectorFromString(propertyName), (IMP)json_getter, "@@:");
-        class_addMethod([self class], NSSelectorFromString([NSString stringWithFormat:@"set%@:",[propertyName capitalizedString]]), (IMP)json_setter, "v@:@");
+    if (!class_addProperty([self class], [propertyName UTF8String], attrs, 3)) {
+        class_replaceProperty([self class], [propertyName UTF8String], attrs, 3);
     }
+    //添加get和set方法
+    class_addMethod([self class], NSSelectorFromString(propertyName), (IMP)json_getter, "@@:");
+    class_addMethod([self class], NSSelectorFromString([NSString stringWithFormat:@"set%@:",[propertyName capitalizedString]]), (IMP)json_setter, "v@:@");
 }
 
 - (NSString *)description
@@ -185,6 +189,7 @@ id json_getter(id sel, SEL cmd) {
 }
 #pragma mark - Getter
 void json_setter(id sel, SEL cmd, id newValue) {
+    
     NSString *property = NSStringFromSelector(cmd);
     property = [property substringWithRange:NSMakeRange(3, property.length - 4)];
     property = [[[property substringToIndex:1] lowercaseString]stringByAppendingString:[property substringFromIndex:1]];
@@ -195,9 +200,9 @@ void json_setter(id sel, SEL cmd, id newValue) {
         object_setIvar(sel, ivar, propertyList);
     }
     if (!newValue) {
-         [propertyList removeObjectForKey:property];
-    }else{
-         [propertyList setObject:newValue forKey:property];
+        newValue= [NSNull null];
     }
+    [propertyList setObject:newValue forKey:property];
+
 }
 

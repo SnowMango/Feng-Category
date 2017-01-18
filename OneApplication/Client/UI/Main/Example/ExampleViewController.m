@@ -7,7 +7,7 @@
 //
 
 #import "ExampleViewController.h"
-#import "ModuleManager.h"
+#import <Module.h>
 #import "BaseJSON.h"
 @interface ExampleViewController ()
 @property (nonatomic, strong) NSMutableArray *example;
@@ -25,6 +25,7 @@
     self.clearsSelectionOnViewWillAppear = NO;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 60;
+    self.tableView.
 }
 
 #pragma mark - UITableViewDataSource

@@ -7,6 +7,7 @@
 //
 
 #import "ModuleManager.h"
+#import "ModuleHandle.h"
 
 @interface ModuleManager ()
 @property (nonatomic, strong) NSDictionary *handleDic;
