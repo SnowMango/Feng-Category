@@ -38,7 +38,9 @@ const char * IVAR_LIST = "ivar_list";
         if ([value conformsToProtocol:@protocol(NSMutableCopying)]) {
             value = [value mutableCopy];
         }
-        [propertyDic setObject:value forKey:key];
+        if (value) {
+          [propertyDic setObject:value forKey:key];
+        }
     }
     [newObj setValuesForKeysWithDictionary:propertyDic];
     return newObj;
@@ -49,8 +51,10 @@ const char * IVAR_LIST = "ivar_list";
     NSArray *properties = [self objc_properties];
     NSMutableDictionary *propertyDic = [[self dictionaryWithValuesForKeys:properties] mutableCopy];
     [propertyDic removeObjectsForKeys:ivar_list.allKeys];
-    [propertyDic enumerateKeysAndObjectsUsingBlock:^(id propertyName, id value, BOOL * _Nonnull stop) {
-        [aCoder encodeObject:value forKey:propertyName];
+    [propertyDic enumerateKeysAndObjectsUsingBlock:^(id propertyName, id value, BOOL * stop) {
+        if (value) {
+            [aCoder encodeObject:value forKey:propertyName];
+        }
     }];
     [aCoder encodeObject:ivar_list forKey:[NSString stringWithUTF8String:IVAR_LIST]];
 }
@@ -94,6 +98,26 @@ const char * IVAR_LIST = "ivar_list";
         ivar_list = [NSMutableDictionary new];
     }
     return self;
+}
+
+
+- (void)setValuesForKeysAutoObjectWithDictionary:(NSDictionary<NSString *,id> *)keyedValues
+{
+    [keyedValues enumerateKeysAndObjectsUsingBlock:^(NSString * key, id value , BOOL * _Nonnull stop) {
+        __block id newValue = value;
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            newValue = [[self class] new];
+            [newValue setValuesForKeysAutoObjectWithDictionary:value];
+        }else if ([value isKindOfClass:[NSArray class]]){
+            [((NSArray *)value) enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj isKindOfClass:[NSDictionary class]]) {
+                    newValue = [[self class] new];
+                    [newValue setValuesForKeysAutoObjectWithDictionary:value];
+                }
+            }];
+        }
+        [self setValue:newValue forKey:key];
+    }];
 }
 
 
@@ -170,6 +194,10 @@ void json_setter(id sel, SEL cmd, id newValue) {
         propertyList = [NSMutableDictionary new];
         object_setIvar(sel, ivar, propertyList);
     }
-    [propertyList setObject:newValue forKey:property];
+    if (!newValue) {
+         [propertyList removeObjectForKey:property];
+    }else{
+         [propertyList setObject:newValue forKey:property];
+    }
 }
 

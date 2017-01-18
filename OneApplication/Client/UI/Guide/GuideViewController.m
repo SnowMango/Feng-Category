@@ -17,8 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-   
+    BaseJSON * base = [BaseJSON new];
+    [base setValuesForKeysAutoObjectWithDictionary:@{@"person":@{@"age":@24,@"name":@"feng"}}];
+    NSLog(@"%@", base);
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
