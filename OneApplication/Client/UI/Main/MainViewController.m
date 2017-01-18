@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 #import <BaseJSON.h>
+#import <AVKit/AVKit.h>
+#import <AVFoundation/AVFoundation.h>
 @interface MainViewController ()
 
 @end
