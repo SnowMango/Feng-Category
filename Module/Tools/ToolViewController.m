@@ -14,13 +14,12 @@
 
 @implementation ToolViewController
 - (IBAction)flashlight:(UIButton *)sender {
-    sender.selected = !sender.selected;
 #if !TARGET_OS_SIMULATOR
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     if ([device hasTorch] && [device hasFlash]){
-        
+        sender.selected = device.torchMode != AVCaptureTorchModeOn;
         [device lockForConfiguration:nil];
-        if (sender.selected) {
+        if (device.torchMode != AVCaptureTorchModeOn) {
             [device setTorchMode:AVCaptureTorchModeOn];
             [device setFlashMode:AVCaptureFlashModeOn];
         } else {

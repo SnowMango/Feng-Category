@@ -25,7 +25,10 @@
     self.clearsSelectionOnViewWillAppear = NO;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 60;
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/master
 }
 
 #pragma mark - UITableViewDataSource

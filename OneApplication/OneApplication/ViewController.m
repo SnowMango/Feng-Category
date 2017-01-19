@@ -64,7 +64,7 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"[[NSBundle mainBundle] infoDictionary] ->%@",[[NSBundle mainBundle] infoDictionary]);
+
     self.view.backgroundColor = [UIColor whiteColor];
     [self loadChildrenViewController];
 }
@@ -81,7 +81,7 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
     currentChild = newViewController;
     [self transitionFromViewController:oldViewController
                       toViewController:newViewController
-                              duration:0.3
+                              duration:0.5
                                options:UIViewAnimationOptionTransitionCrossDissolve
                             animations:nil completion:^(BOOL finished)
      {

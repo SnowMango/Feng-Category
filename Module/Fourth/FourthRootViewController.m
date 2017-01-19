@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic,strong) NSArray *sources;
+
 @end
 
 @implementation FourthRootViewController
@@ -21,28 +23,31 @@
     
     self.tableView.rowHeight = 60;
     self.tableView.tableFooterView = [UIView new];
+    self.sources = @[@{@"System":@"system"}, @{@"Custom":@"custom"}];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.sources.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][0];
+    NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][3];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSDictionary * s = self.sources[indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
-    cell.textLabel.text = @(indexPath.row +1).stringValue;
+    cell.textLabel.text = s.allKeys.firstObject;
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
+    NSDictionary * s = self.sources[indexPath.row];
+    [self performSegueWithIdentifier:s.allValues.firstObject sender:nil];
 }
 
 @end

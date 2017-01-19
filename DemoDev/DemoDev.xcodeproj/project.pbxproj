@@ -57,6 +57,9 @@
 		6A8B0D281E2E5C47009482F5 /* ToolMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8B0D271E2E5C47009482F5 /* ToolMain.storyboard */; };
 		6A8B0D2B1E2E5D28009482F5 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0D2A1E2E5D28009482F5 /* ToolViewController.m */; };
 		6A8B0D2F1E2E5FBA009482F5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A8B0D2E1E2E5FBA009482F5 /* AVFoundation.framework */; };
+		6A8B0DD01E2FC5A2009482F5 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0DCF1E2FC5A2009482F5 /* SystemViewController.m */; };
+		6A8B0DD31E2FCA79009482F5 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0DD21E2FCA79009482F5 /* CustomViewController.m */; };
+		6A8B0DD61E2FCAB0009482F5 /* ImageResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0DD51E2FCAB0009482F5 /* ImageResultViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +144,12 @@
 		6A8B0D291E2E5D28009482F5 /* ToolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolViewController.h; sourceTree = "<group>"; };
 		6A8B0D2A1E2E5D28009482F5 /* ToolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolViewController.m; sourceTree = "<group>"; };
 		6A8B0D2E1E2E5FBA009482F5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6A8B0DCE1E2FC5A2009482F5 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
+		6A8B0DCF1E2FC5A2009482F5 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
+		6A8B0DD11E2FCA79009482F5 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		6A8B0DD21E2FCA79009482F5 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		6A8B0DD41E2FCAB0009482F5 /* ImageResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageResultViewController.h; sourceTree = "<group>"; };
+		6A8B0DD51E2FCAB0009482F5 /* ImageResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageResultViewController.m; sourceTree = "<group>"; };
 		C77E2F7FA971FA45D39D1E28 /* Pods-TargetSetting-DemoDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetSetting-DemoDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetSetting-DemoDev/Pods-TargetSetting-DemoDev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,6 +267,7 @@
 		6A051AEB1E2AFEFE00C37900 /* Fourth */ = {
 			isa = PBXGroup;
 			children = (
+				6A8B0DCD1E2FC580009482F5 /* Items */,
 				6A051AEC1E2AFEFE00C37900 /* FourthRootViewController.h */,
 				6A051AED1E2AFEFE00C37900 /* FourthRootViewController.m */,
 				6A051AEE1E2AFEFE00C37900 /* Modle+Fourth.h */,
@@ -396,6 +406,19 @@
 				6A8B0D271E2E5C47009482F5 /* ToolMain.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6A8B0DCD1E2FC580009482F5 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				6A8B0DCE1E2FC5A2009482F5 /* SystemViewController.h */,
+				6A8B0DCF1E2FC5A2009482F5 /* SystemViewController.m */,
+				6A8B0DD11E2FCA79009482F5 /* CustomViewController.h */,
+				6A8B0DD21E2FCA79009482F5 /* CustomViewController.m */,
+				6A8B0DD41E2FCAB0009482F5 /* ImageResultViewController.h */,
+				6A8B0DD51E2FCAB0009482F5 /* ImageResultViewController.m */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 		8DF3B0964CBDCC755A4F7C9C /* Pods */ = {
@@ -577,14 +600,17 @@
 				6A67E6EE1E2BA6D8002FB2D0 /* AddObjViewController.m in Sources */,
 				6A051B131E2AFEFE00C37900 /* PieView.m in Sources */,
 				6A051B291E2AFEFE00C37900 /* Module+Second.m in Sources */,
+				6A8B0DD31E2FCA79009482F5 /* CustomViewController.m in Sources */,
 				6A051B301E2AFEFE00C37900 /* ThirdViewController.m in Sources */,
 				6A051B6B1E2B3A6900C37900 /* NSManagedObject+Base.m in Sources */,
 				6A051B251E2AFEFE00C37900 /* ModuleHandle.m in Sources */,
 				6A8B0D2B1E2E5D28009482F5 /* ToolViewController.m in Sources */,
 				6A051B141E2AFEFE00C37900 /* Module+First.m in Sources */,
 				6A051B201E2AFEFE00C37900 /* FourthRootViewController.m in Sources */,
+				6A8B0DD01E2FC5A2009482F5 /* SystemViewController.m in Sources */,
 				6A051B5F1E2B100600C37900 /* Student.m in Sources */,
 				6A051B101E2AFEFE00C37900 /* FShowViewController.m in Sources */,
+				6A8B0DD61E2FCAB0009482F5 /* ImageResultViewController.m in Sources */,
 				6A051B661E2B18D200C37900 /* CoreDataManager.m in Sources */,
 				6A051ACF1E2AFE7100C37900 /* ViewController.m in Sources */,
 				6A67E6F11E2BA894002FB2D0 /* BingRelationViewController.m in Sources */,
