@@ -19,8 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIImage * image =  [self.imageInfo objectForKey:UIImagePickerControllerEditedImage];
-    self.imageView = [[UIImageView alloc] initWithImage:image];
+    self.imageView = [[UIImageView alloc] initWithImage:_imageInfo];
     self.scrollView.contentSize = self.imageView.frame.size;
     [self.scrollView addSubview:self.imageView];
 }

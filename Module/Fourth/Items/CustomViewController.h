@@ -8,25 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-@interface CustomViewController : UIViewController <UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
-{
-    IBOutlet UIView *previewView;
-    IBOutlet UISegmentedControl *camerasControl;
-    
-    AVCaptureVideoPreviewLayer *previewLayer;
-    AVCaptureVideoDataOutput *videoDataOutput;
-    AVCaptureStillImageOutput *stillImageOutput;
-    
-    BOOL detectFaces;
-    dispatch_queue_t videoDataOutputQueue;
-    UIView *flashView;
-    
-    UIImage *square;
-    
-    BOOL isUsingFrontFacingCamera;
-    CIDetector *faceDetector;
-    CGFloat beginGestureScale;
-    CGFloat effectiveScale;
-}
+@interface CustomViewController : UIViewController < AVCaptureVideoDataOutputSampleBufferDelegate>
+/**
+ *  AVCaptureSession对象来执行输入设备和输出设备之间的数据传递
+ */
+@property (nonatomic, strong) AVCaptureSession* session;
+/**
+ *  输入设备
+ */
+@property (nonatomic, strong) AVCaptureDeviceInput* videoInput;
+/**
+ *  照片输出流
+ */
+@property (nonatomic, strong) AVCaptureStillImageOutput* stillImageOutput;
+/**
+ *  预览图层
+ */
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer* previewLayer;
 
 @end

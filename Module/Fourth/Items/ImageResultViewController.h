@@ -10,6 +10,6 @@
 
 @interface ImageResultViewController : UIViewController
 
-@property (nonatomic,strong) NSDictionary*imageInfo;
+@property (nonatomic,strong) UIImage*imageInfo;
 
 @end

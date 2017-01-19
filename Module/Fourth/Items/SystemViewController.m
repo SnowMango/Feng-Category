@@ -60,9 +60,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     [picker dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"info = %@",info);
-        
-        [self performSegueWithIdentifier:@"systemImage" sender:info];
+
+        UIImage *image = info[UIImagePickerControllerEditedImage];
+        [self performSegueWithIdentifier:@"systemImage" sender:image];
     }];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -72,7 +72,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    ImageResultViewController *vc = segue.destinationViewController;
-    vc.imageInfo = sender;
+    if ([segue.identifier isEqualToString:@"systemImage"]) {
+        ImageResultViewController *vc = segue.destinationViewController;
+        vc.imageInfo = sender;
+    }
 }
 @end

@@ -41,9 +41,8 @@ end
 s.subspec 'Fourth' do |se|
     se.source_files = 'Fourth/**/*.{h,m}'
     se.public_header_files = '**/Module*.h'
-    #se.resource_bundles = {'Fourth' => ['Fourth/Resources/**/*.png']}
     se.resources = ['Fourth/Resources/**/*.*']
-    #se.frameworks = 'CoreGraphics'
+    se.frameworks = 'AVFoundation','CoreMedia','OpenGLES','Foundation','QuarzCore'
 end
 
 s.subspec 'Tool' do |se|

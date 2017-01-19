@@ -33,13 +33,13 @@
 - (void)addStudents:(NSSet<Student *> *)values
 {
     for (Student *s in [values allObjects]) {
-        [self addStudents:s];
+        [self addStudents:(id)s];
     }
 }
 - (void)removeStudents:(NSSet<Student *> *)values
 {
     for (Student *s in [values allObjects]) {
-        [self removeStudents:s];
+        [self removeStudents:(id)s];
     }
 }
 

@@ -424,8 +424,8 @@ bail:
 	AVCaptureConnection *stillImageConnection = [stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
 	UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
 	AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
-	[stillImageConnection setVideoOrientation:avcaptureOrientation];
-	[stillImageConnection setVideoScaleAndCropFactor:effectiveScale];
+	stillImageConnection.videoOrientation= avcaptureOrientation;
+	stillImageConnection.videoScaleAndCropFactor = effectiveScale;
 	
     BOOL doingFaceDetection = detectFaces && (effectiveScale == 1.0);
 	
