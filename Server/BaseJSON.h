@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+
+//if JSON root object is array type, set key with kJOSNOnlyArrayKey
+extern NSString * const kJOSNOnlyArrayKey;
+
 @interface BaseJSON : NSObject<NSCopying, NSMutableCopying, NSCoding>
 {
     //动态property的key、value存储空间 
@@ -34,6 +38,10 @@
 
 @end
 
+
+@interface SubJSON : BaseJSON
+
+@end
 
 
 

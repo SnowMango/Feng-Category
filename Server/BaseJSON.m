@@ -9,8 +9,10 @@
 #import "BaseJSON.h"
 #import <objc/runtime.h>
 
-id json_getter(id sel, SEL cmd);
-void json_setter(id sel, SEL cmd, id newValue);
+NSString * const kJOSNOnlyArrayKey = @"onlyArray";
+
+static id json_getter(id sel, SEL cmd);
+static void json_setter(id sel, SEL cmd, id newValue);
 
 //与类中定义的存储属性的Dictionary成员变量名一致
 const char * IVAR_LIST = "ivar_list";
@@ -149,7 +151,7 @@ const char * IVAR_LIST = "ivar_list";
         return;
     }
     if (!newValue) {
-        newValue = [NSNull null];
+        newValue = @"";
     }
     Ivar ivar = class_getInstanceVariable([self class], IVAR_LIST);
     NSMutableDictionary *propertyList = object_getIvar(self, ivar);
@@ -158,6 +160,7 @@ const char * IVAR_LIST = "ivar_list";
     if (oldValue && [NSStringFromClass([oldValue class]) isEqualToString:NSStringFromClass([newValue class])]) {
         return ;
     }
+    NSLog(@"new property %@:<%@:%@> ", NSStringFromClass([self class]), propertyName, newValue);
     //属性 attributes (strong, nonatomic)
     objc_property_attribute_t type = { "T", [[NSString stringWithFormat:@"@\"%@\"",NSStringFromClass([newValue class])] UTF8String] };
     objc_property_attribute_t ownership = { "&", "N" };
@@ -177,6 +180,11 @@ const char * IVAR_LIST = "ivar_list";
     NSString *des = [NSString stringWithFormat:@"<%p>=%@", self, ivar_list.description];
     return des;
 }
+
+@end
+
+@implementation SubJSON
+
 
 @end
 

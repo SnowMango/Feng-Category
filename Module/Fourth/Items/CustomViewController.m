@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self showCamera];
+    
 }
 
 
@@ -39,40 +39,8 @@
 //取消
 - (IBAction)doneAction:(id)sender {
     
-    
 }
 
-- (void)showCamera
-{
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        
-        int flag = 0;
-        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
-            flag++;
-        }
-        if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-            flag++;
-            if (flag== 1) {
-                
-            }
-        }
-        if (flag == 1) {
-            self.changeCameraBtn.userInteractionEnabled = NO;
-            [self.changeCameraBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        }
-    }
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-{
-    [picker dismissViewControllerAnimated:NO completion:nil];
-    NSLog(@"info = %@",info);
-    [self performSegueWithIdentifier:@"customImage" sender:info];
-}
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ImageResultViewController *vc = segue.destinationViewController;

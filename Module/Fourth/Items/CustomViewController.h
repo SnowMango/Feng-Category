@@ -7,7 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CustomViewController : UIViewController
+#import <AVFoundation/AVFoundation.h>
+@interface CustomViewController : UIViewController <UIGestureRecognizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+{
+    IBOutlet UIView *previewView;
+    IBOutlet UISegmentedControl *camerasControl;
+    
+    AVCaptureVideoPreviewLayer *previewLayer;
+    AVCaptureVideoDataOutput *videoDataOutput;
+    AVCaptureStillImageOutput *stillImageOutput;
+    
+    BOOL detectFaces;
+    dispatch_queue_t videoDataOutputQueue;
+    UIView *flashView;
+    
+    UIImage *square;
+    
+    BOOL isUsingFrontFacingCamera;
+    CIDetector *faceDetector;
+    CGFloat beginGestureScale;
+    CGFloat effectiveScale;
+}
 
 @end

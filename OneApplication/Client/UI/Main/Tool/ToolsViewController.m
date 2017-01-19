@@ -7,7 +7,7 @@
 //
 
 #import "ToolsViewController.h"
-#import "ModuleManager.h"
+#import <Module.h>
 
 @interface ToolsViewController ()
 @property (nonatomic, strong) NSMutableArray *tool;

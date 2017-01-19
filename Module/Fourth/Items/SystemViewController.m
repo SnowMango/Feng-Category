@@ -52,6 +52,8 @@
         [self presentViewController:self.picker animated:YES completion:^{
             
         }];
+    }else{
+        NSLog(@"Camera is unavailable ");
     }
 }
 

@@ -8,44 +8,26 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>Mycategory.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>Pods-OneApplication.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Server.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>265EAF99A0920822A72701E63CB0FCC1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>37E52A3452E354DB0443C6EA5754E277</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>547DC291D5232F284E207E2D55415738</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -56,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>AC00912D79F3D09AD30EA57B489DEF03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CDECE91F173B44AC480327CF7FDFC56D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
