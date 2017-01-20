@@ -23,7 +23,11 @@
     
     self.tableView.rowHeight = 60;
     self.tableView.tableFooterView = [UIView new];
-    self.sources = @[@{@"System":@"system"}, @{@"Custom":@"custom"}];
+    
+    self.sources = @[@{@"System":@"system"},
+                    @{@"Custom":@"custom"},
+                     @{@"FilterLive":@"cameraDIY"}
+                     ];
 }
 
 #pragma mark - UITableViewDataSource

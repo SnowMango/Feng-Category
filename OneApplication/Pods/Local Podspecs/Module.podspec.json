@@ -54,6 +54,13 @@
       "public_header_files": "**/Module*.h",
       "resources": [
         "Fourth/Resources/**/*.*"
+      ],
+      "frameworks": [
+        "AVFoundation",
+        "CoreMedia",
+        "OpenGLES",
+        "Foundation",
+        "QuartzCore"
       ]
     },
     {

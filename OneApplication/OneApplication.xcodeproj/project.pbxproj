@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A51EB311E2F515F00FBCC62 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A51EB301E2F515F00FBCC62 /* AVKit.framework */; };
 		6A51EB331E2F518000FBCC62 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A51EB321E2F518000FBCC62 /* AVFoundation.framework */; };
 		6A63FE811E236FCC006B268B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63FE801E236FCC006B268B /* main.m */; };
 		6A63FE841E236FCC006B268B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63FE831E236FCC006B268B /* AppDelegate.m */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		08432D366A1C51DFCC6D72D9 /* Pods-OneApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneApplication/Pods-OneApplication.debug.xcconfig"; sourceTree = "<group>"; };
-		6A51EB301E2F515F00FBCC62 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		6A51EB321E2F518000FBCC62 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A63FE7C1E236FCC006B268B /* OneApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A63FE801E236FCC006B268B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A51EB331E2F518000FBCC62 /* AVFoundation.framework in Frameworks */,
-				6A51EB311E2F515F00FBCC62 /* AVKit.framework in Frameworks */,
 				6A84ADAF1E2864AD005A8418 /* PushKit.framework in Frameworks */,
 				C02407A93F42CE4D79548744 /* libPods-OneApplication.a in Frameworks */,
 			);
@@ -250,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				6A51EB321E2F518000FBCC62 /* AVFoundation.framework */,
-				6A51EB301E2F515F00FBCC62 /* AVKit.framework */,
 				6A84ADAE1E2864AD005A8418 /* PushKit.framework */,
 				F6818DB363D03701F6353A06 /* libPods-OneApplication.a */,
 			);

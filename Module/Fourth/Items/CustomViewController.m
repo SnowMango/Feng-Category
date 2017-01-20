@@ -10,6 +10,10 @@
 #import "ImageResultViewController.h"
 #import <AssertMacros.h>
 @interface CustomViewController ()
+{
+    CGFloat beginGestureScale;
+    CGFloat effectiveScale;
+}
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 
 @property (weak, nonatomic) IBOutlet UIButton *changeCameraBtn;
@@ -19,13 +23,19 @@
 @end
 
 @implementation CustomViewController
-
+- (void)dealloc
+{
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 #if !TARGET_OS_SIMULATOR
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
     [self setupCapture];
     [self startRunning];
 #endif
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeviceChange:) name:@"" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -91,6 +101,7 @@
     if ([self.session canAddInput:self.videoInput]) {
         [self.session addInput:self.videoInput];
     }
+    effectiveScale = 0;
     if (error) {
         NSLog(@"%@",error);
         return;
@@ -142,7 +153,7 @@
     UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
     AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
     stillImageConnection.videoOrientation= avcaptureOrientation;
-    stillImageConnection.videoScaleAndCropFactor = 1;
+    stillImageConnection.videoScaleAndCropFactor = effectiveScale;
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:stillImageConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (error) {
             NSLog(@"%@", error);
@@ -184,6 +195,31 @@
         }
     }
 }
+
+#pragma mark - 手势变焦
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if ( [gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] ) {
+        beginGestureScale = effectiveScale;
+    }
+    return YES;
+}
+
+- (IBAction)handlePinchGesture:(UIPinchGestureRecognizer *)recognizer
+{
+    effectiveScale = beginGestureScale * recognizer.scale;
+    if (effectiveScale < 1.0)
+        effectiveScale = 1.0;
+    CGFloat maxScaleAndCropFactor = [[self.stillImageOutput connectionWithMediaType:AVMediaTypeVideo] videoMaxScaleAndCropFactor];
+    if (effectiveScale > maxScaleAndCropFactor)
+        effectiveScale = maxScaleAndCropFactor;
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:.025];
+    [self.previewLayer setAffineTransform:CGAffineTransformMakeScale(effectiveScale, effectiveScale)];
+    [CATransaction commit];
+}
+
 
 #pragma mark - flashlight 闪光灯
 - (BOOL)setDeviceFlash:(AVCaptureFlashMode)mode

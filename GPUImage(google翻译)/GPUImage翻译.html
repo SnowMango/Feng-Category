@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://github.com/BradLarson/GPUImage -->
+<html lang="en" class=" emoji-size-boost is-u2f-enabled translated-ltr"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+
+    <link crossorigin="anonymous" href="./GPUImage翻译_files/frameworks-c07e6f4b02b556d1d85052fb3853caf84c80e6b23dcdb1ae1b00f051da1115a2.css" integrity="sha256-wH5vSwK1VtHYUFL7OFPK+EyA5rI9zbGuGwDwUdoRFaI=" media="all" rel="stylesheet">
+    <link crossorigin="anonymous" href="./GPUImage翻译_files/github-21999e166be3aaa0dccb503b073e22139ed7b944d490c7401a2088527c00bd3d.css" integrity="sha256-IZmeFmvjqqDcy1A7Bz4iE57XuUTUkMdAGiCIUnwAvT0=" media="all" rel="stylesheet">
+    
+    
+    <link crossorigin="anonymous" href="./GPUImage翻译_files/site-293f92180d0a619a750fa2b5eae9e36740f5723a59c0ec308972c70d24e834fc.css" integrity="sha256-KT+SGA0KYZp1D6K16unjZ0D1cjpZwOwwiXLHDSToNPw=" media="all" rel="stylesheet">
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+    
+    <title>GitHub  -  BradLarson / GPUImage：用于基于GPU的图像和视频处理的开源iOS框架</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" href="https://github.com/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://github.com/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://github.com/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://github.com/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://github.com/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/apple-touch-icon-180x180.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="https://avatars1.githubusercontent.com/u/954279?v=3&amp;s=400" name="twitter:image:src"><meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="BradLarson/GPUImage" name="twitter:title"><meta content="GPUImage - An open source iOS framework for GPU-based image and video processing" name="twitter:description">
+      <meta content="https://avatars1.githubusercontent.com/u/954279?v=3&amp;s=400" property="og:image"><meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="BradLarson/GPUImage" property="og:title"><meta content="https://github.com/BradLarson/GPUImage" property="og:url"><meta content="GPUImage - An open source iOS framework for GPU-based image and video processing" property="og:description">
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    
+    <meta name="pjax-timeout" content="1000">
+    
+    <meta name="request-id" content="E2F5:1B25:48F794:74515D:5881CC4F" data-pjax-transient="">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient="">
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host"><meta content="github" name="octolytics-app-id"><meta content="E2F5:1B25:48F794:74515D:5881CC4F" name="octolytics-dimension-request_id">
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;" data-pjax-transient="true" name="analytics-location">
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged Out">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="">
+
+        <meta name="expected-hostname" content="github.com">
+      <meta name="js-proxy-site-detection-payload" content="MTQwMDZmNDcwZmVhNjllODIxMmM5OWMwNzViYmQzMjQxZGNlZjcwNzkyZjA0NmIzMDYwODA2ZTM3NjdiZjRkNXx7InJlbW90ZV9hZGRyZXNzIjoiMTAzLjIwOC4xOTYuNjkiLCJyZXF1ZXN0X2lkIjoiRTJGNToxQjI1OjQ4Rjc5NDo3NDUxNUQ6NTg4MUNDNEYiLCJ0aW1lc3RhbXAiOjE0ODQ5MDE0NTUsImhvc3QiOiJnaXRodWIuY29tIn0=">
+
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
+      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <meta name="html-safe-nonce" content="8ff5800de801900e1bb04e6201686f76c558b9d6">
+
+    <meta http-equiv="x-pjax-version" content="386e78a530a499ac13459eb991b80850">
+    
+
+      
+  <meta name="description" content="GPUImage - An open source iOS framework for GPU-based image and video processing">
+  <meta name="go-import" content="github.com/BradLarson/GPUImage git https://github.com/BradLarson/GPUImage.git">
+
+  <meta content="954279" name="octolytics-dimension-user_id"><meta content="BradLarson" name="octolytics-dimension-user_login"><meta content="3431083" name="octolytics-dimension-repository_id"><meta content="BradLarson/GPUImage" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="3431083" name="octolytics-dimension-repository_network_root_id"><meta content="BradLarson/GPUImage" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/BradLarson/GPUImage/commits/master.atom" rel="alternate" title="最近提交到GPUImage：master" type="application/atom+xml">
+
+
+      <link rel="canonical" href="https://github.com/BradLarson/GPUImage" data-pjax-transient="">
+  <link type="text/css" rel="stylesheet" charset="UTF-8" href="./GPUImage翻译_files/translateelement.css"></head>
+
+
+  <body class="logged-out env-production macintosh vis-public">
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+    <a href="https://github.com/BradLarson/GPUImage#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content"><font><font>跳到内容</font></font></a>
+
+    
+    
+    
+
+
+
+          <header class="site-header js-details-container Details alt-body-font" role="banner">
+  <div class="container-responsive">
+    <a class="header-logo-invertocat" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+    </a>
+
+    <button class="btn-link float-right site-header-toggle js-details-target" type="button" aria-label="Toggle navigation">
+      <svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
+    </button>
+
+    <div class="site-header-menu">
+      <nav class="site-header-nav site-header-nav-main">
+        <a href="https://github.com/personal" class="js-selected-navigation-item nav-item nav-item-personal" data-ga-click="Header, click, Nav menu - item:personal" data-selected-links="/personal /personal"><font><font>
+          个人
+ </font></font></a>        <a href="https://github.com/open-source" class="js-selected-navigation-item nav-item nav-item-opensource" data-ga-click="Header, click, Nav menu - item:opensource" data-selected-links="/open-source /open-source"><font><font>
+          开源
+ </font></font></a>        <a href="https://github.com/business" class="js-selected-navigation-item nav-item nav-item-business" data-ga-click="Header, click, Nav menu - item:business" data-selected-links="/business /business/partners /business/features /business/customers /business"><font><font>
+          业务
+ </font></font></a>        <a href="https://github.com/explore" class="js-selected-navigation-item nav-item nav-item-explore" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship /showcases /explore"><font><font>
+          探索
+</font></font></a>      </nav>
+
+      <div class="site-header-actions">
+            <a class="btn btn-primary site-header-actions-btn" href="https://github.com/join?source=header-repo" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up"><font><font>注册</font></font></a>
+          <a class="btn site-header-actions-btn mr-1" href="https://github.com/login?return_to=%2FBradLarson%2FGPUImage" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in"><font><font>登录</font></font></a>
+      </div>
+
+        <nav class="site-header-nav site-header-nav-secondary mr-md-3">
+          <a class="nav-item" href="https://github.com/pricing"><font><font>定价</font></font></a>
+          <a class="nav-item" href="https://github.com/blog"><font><font>博客</font></font></a>
+          <a class="nav-item" href="https://help.github.com/"><font><font>支持</font></font></a>
+          <a class="nav-item header-search-link" href="https://github.com/search"><font><font>搜索GitHub</font></font></a>
+              <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- '"` --><!-- </textarea></xmp> --><form accept-charset="UTF-8" action="https://github.com/BradLarson/GPUImage/search" class="js-site-search-form" data-scoped-search-url="/BradLarson/GPUImage/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+      <div class="header-search-scope"><font><font>这个存储库</font></font></div>
+      <input type="text" class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" aria-label="Search this repository" data-unscoped-placeholder="Search GitHub" data-scoped-placeholder="Search" autocapitalize="off">
+    </label>
+</form></div>
+
+        </nav>
+    </div>
+  </div>
+</header>
+
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container="">
+      
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+    
+
+<ul class="pagehead-actions">
+
+  <li>
+      <a href="https://github.com/login?return_to=%2FBradLarson%2FGPUImage" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to watch a repository" rel="nofollow">
+    <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg><font><font class="">
+    关注
+   </font></font></a>
+  <a class="social-count" href="https://github.com/BradLarson/GPUImage/watchers" aria-label="673 users are watching this repository"><font><font class="">
+    673
+  </font></font></a>
+
+  </li>
+
+  <li>
+      <a href="https://github.com/login?return_to=%2FBradLarson%2FGPUImage" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to star a repository" rel="nofollow">
+    <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg><font><font>
+    星
+   </font></font></a>
+
+    <a class="social-count js-social-count" href="https://github.com/BradLarson/GPUImage/stargazers" aria-label="14777 users starred this repository"><font><font>
+      14777
+    </font></font></a>
+
+  </li>
+
+  <li>
+      <a href="https://github.com/login?return_to=%2FBradLarson%2FGPUImage" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg><font><font>
+        叉
+       </font></font></a>
+
+    <a href="https://github.com/BradLarson/GPUImage/network" class="social-count" aria-label="3696 users forked this repository"><font><font>
+      3696
+    </font></font></a>
+  </li>
+</ul>
+
+    <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+  <span class="author" itemprop="author"><a href="https://github.com/BradLarson" class="url fn" rel="author"><font><font>BradLarson</font></font></a></span><!--
+--><span class="path-divider"><font><font> / </font></font></span><!--
+--><strong itemprop="name"><a href="https://github.com/BradLarson/GPUImage" data-pjax="#js-repo-pjax-container"><font><font>GPUImage</font></font></a></strong>
+
+</h1>
+
+  </div>
+  <div class="container">
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" data-pjax="#js-repo-pjax-container">
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/BradLarson/GPUImage" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /BradLarson/GPUImage" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
+      <span itemprop="name"><font><font>代码</font></font></span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <font><span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement"><a href="https://github.com/BradLarson/GPUImage/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /BradLarson/GPUImage/issues" itemprop="url"><span itemprop="name"><font>问题</font></span></a></span><span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement"><a href="https://github.com/BradLarson/GPUImage/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /BradLarson/GPUImage/issues" itemprop="url"><span class="counter"><font>789 </font></span></a></span><span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement"><a href="https://github.com/BradLarson/GPUImage/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /BradLarson/GPUImage/pulls" itemprop="url"><span itemprop="name"><font>引入请求</font></span></a></span><span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement"><a href="https://github.com/BradLarson/GPUImage/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /BradLarson/GPUImage/pulls" itemprop="url"><span class="counter"><font>63</font></span></a></span><a href="https://github.com/BradLarson/GPUImage/projects" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /BradLarson/GPUImage/projects"><font> 
+    项目
+    </font></a><a href="https://github.com/BradLarson/GPUImage/projects" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /BradLarson/GPUImage/projects"><span class="counter"><font> 0</font></span></a><a href="https://github.com/BradLarson/GPUImage/wiki" class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /BradLarson/GPUImage/wiki"><font> 
+      维基
+</font></a><a href="https://github.com/BradLarson/GPUImage/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /BradLarson/GPUImage/pulse"><font>
+    脉冲
+</font></a><a href="https://github.com/BradLarson/GPUImage/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /BradLarson/GPUImage/graphs"><font>
+    图
+</font></a></font><span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a href="https://github.com/BradLarson/GPUImage/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /BradLarson/GPUImage/issues" itemprop="url">
+        <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+        <span itemprop="name"><font></font></span>
+        <span class="counter"><font></font></span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/BradLarson/GPUImage/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /BradLarson/GPUImage/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+      <span itemprop="name"><font></font></span>
+      <span class="counter"><font></font></span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+  <a href="https://github.com/BradLarson/GPUImage/projects" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /BradLarson/GPUImage/projects">
+    <svg aria-hidden="true" class="octicon octicon-project" height="16" version="1.1" viewBox="0 0 15 16" width="15"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"></path></svg><font></font><span class="counter"><font></font></span>
+</a>
+    <a href="https://github.com/BradLarson/GPUImage/wiki" class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /BradLarson/GPUImage/wiki">
+      <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path></svg><font></font></a>
+
+  <a href="https://github.com/BradLarson/GPUImage/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /BradLarson/GPUImage/pulse">
+    <svg aria-hidden="true" class="octicon octicon-pulse" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0v2h3.6l.9-1.8.9 5.4L9 8.5l1.6 1.5H14V8z"></path></svg><font></font></a>
+  <a href="https://github.com/BradLarson/GPUImage/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /BradLarson/GPUImage/graphs">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path></svg><font></font></a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+<div class="repository-meta js-details-container Details">
+  <div class="repository-meta-content col-11">
+        <span class="col-11 text-gray-dark" itemprop="about"><font><font>
+          为基于GPU的图像和视频处理一个开源的iOS框架
+         </font></font></span>
+        <span itemprop="url"><a href="http://www.sunsetlakesoftware.com/2012/02/12/introducing-gpuimage-framework" rel="nofollow"><font><font>http://www.sunsetlakesoftware.com/201...</font></font></a></span>
+
+  </div>
+
+</div>
+
+
+
+<div class="overall-summary overall-summary-bottomless">
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax="" href="https://github.com/BradLarson/GPUImage/commits/master">
+            <svg aria-hidden="true" class="octicon octicon-history" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M8 13H6V6h5v2H8v5zM7 1C4.81 1 2.87 2.02 1.59 3.59L0 2v4h4L2.5 4.5C3.55 3.17 5.17 2.3 7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-.34.03-.67.09-1H.08C.03 7.33 0 7.66 0 8c0 3.86 3.14 7 7 7s7-3.14 7-7-3.14-7-7-7z"></path></svg>
+            <span class="num text-emphasized"><font><font>
+              1,082
+            </font></font></span><font><font> 
+            提交
+        </font></font></a>
+      </li>
+      <li>
+        <a data-pjax="" href="https://github.com/BradLarson/GPUImage/branches">
+          <svg aria-hidden="true" class="octicon octicon-git-branch" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+          <span class="num text-emphasized"><font><font>
+            1
+          </font></font></span><font><font> 
+          支
+        </font></font></a>
+      </li>
+
+      <li>
+        <a data-pjax="" href="https://github.com/BradLarson/GPUImage/releases">
+          <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"></path></svg>
+          <span class="num text-emphasized"><font><font>
+            8
+          </font></font></span><font><font> 
+          版本
+        </font></font></a>
+      </li>
+
+      <li>
+          <a href="https://github.com/BradLarson/GPUImage/graphs/contributors">
+  <svg aria-hidden="true" class="octicon octicon-organization" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M16 12.999c0 .439-.45 1-1 1H7.995c-.539 0-.994-.447-.995-.999H1c-.54 0-1-.561-1-1 0-2.634 3-4 3-4s.229-.409 0-1c-.841-.621-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.442.58 2.5 3c.058 2.41-.159 2.379-1 3-.229.59 0 1 0 1s1.549.711 2.42 2.088C9.196 9.369 10 8.999 10 8.999s.229-.409 0-1c-.841-.62-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.437.581 2.495 3c.059 2.41-.158 2.38-1 3-.229.59 0 1 0 1s3.005 1.366 3.005 4"></path></svg>
+    <span class="num text-emphasized"><font><font>
+      128
+    </font></font></span><font><font> 
+    贡献者
+</font></font></a>
+
+      </li>
+        <li>
+          <a href="https://github.com/BradLarson/GPUImage/blob/master/License.txt">
+            <svg aria-hidden="true" class="octicon octicon-law" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 4c-.83 0-1.5-.67-1.5-1.5S6.17 1 7 1s1.5.67 1.5 1.5S7.83 4 7 4zm7 6c0 1.11-.89 2-2 2h-1c-1.11 0-2-.89-2-2l2-4h-1c-.55 0-1-.45-1-1H8v8c.42 0 1 .45 1 1h1c.42 0 1 .45 1 1H3c0-.55.58-1 1-1h1c0-.55.58-1 1-1h.03L6 5H5c0 .55-.45 1-1 1H3l2 4c0 1.11-.89 2-2 2H2c-1.11 0-2-.89-2-2l2-4H1V5h3c0-.55.45-1 1-1h4c.55 0 1 .45 1 1h3v1h-1l2 4zM2.5 7L1 10h3L2.5 7zM13 10l-1.5-3-1.5 3h3z"></path></svg><font><font>
+              BSD-3条款
+          </font></font></a>
+        </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="https://github.com/BradLarson/GPUImage/search?l=objective-c" data-ga-click="Repository, language stats search click, location:repo overview">
+                <span class="color-block language-color" style="background-color:#438eff;"></span>
+                <span class="lang"><font><font>Objective-C的</font></font></span>
+                <span class="percent"><font><font>99.8％</font></font></span>
+              </a>
+          </li>
+          <li>
+              <span class="other">
+                <span class="color-block language-color" style="background-color:#ededed;"></span>
+                <span class="lang"><font><font>其他</font></font></span>
+                <span class="percent"><font><font>0.2％</font></font></span>
+              </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="repository-lang-stats-graph js-toggle-lang-stats" title="点击语言详细信息" data-ga-click="Repository, language bar stats toggle, location:repo overview">
+    <span class="language-color" aria-label="Objective-C 99.8%" style="width:99.8%; background-color:#438eff;" itemprop="keywords"><font><font>Objective-C的</font></font></span>
+    <span class="language-color" aria-label="Other 0.2%" style="width:0.2%; background-color:#ededed;" itemprop="keywords"><font><font>其他</font></font></span>
+  </div>
+
+
+<div class="file-navigation in-mid-page">
+
+    <div class="select-menu get-repo-select-menu js-menu-container float-right select-menu-modal-right">
+  <button class="btn btn-sm btn-primary select-menu-button js-menu-target" title="克隆或下载此存储库" type="button" aria-label="Clone or download this repository" tabindex="0" aria-haspopup="true" aria-expanded="false">
+    <span><font><font>克隆或下载</font></font></span>
+  </button>
+
+  <div class="select-menu-modal-holder dropdown-menu-content js-menu-content" aria-hidden="true" aria-expanded="false">
+    <div class="get-repo-modal dropdown-menu dropdown-menu-sw pb-0 js-toggler-container ">
+      <div class="clone-options https-clone-options">
+
+        <h4 class="mb-1"><font><font>
+          使用HTTPS克隆
+          </font></font><a class="muted-link" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+            <svg aria-hidden="true" class="octicon octicon-question" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M6 10h2v2H6v-2zm4-3.5C10 8.64 8 9 8 9H6c0-.55.45-1 1-1h.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5V7H4c0-1.5 1.5-3 3-3s3 1 3 2.5zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+          </a>
+        </h4>
+        <p class="mb-2 get-repo-decription-text"><font><font>
+          使用Web URL使用Git或与SVN签出。
+        </font></font></p>
+
+        <div class="input-group js-zeroclipboard-container">
+  <input type="text" class="form-control input-monospace input-sm js-zeroclipboard-target js-url-field" value="https://github.com/BradLarson/GPUImage.git" aria-label="Clone this repository at https://github.com/BradLarson/GPUImage.git" readonly="">
+  <div class="input-group-button">
+    <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><svg aria-hidden="true" class="octicon octicon-clippy" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"></path></svg></button>
+  </div>
+</div>
+
+      </div>
+
+
+      <div class="mt-2">
+          <a href="https://mac.github.com/" class="btn btn-outline get-repo-btn tooltipped tooltipped-s tooltipped-multiline" aria-label="Clone BradLarson/GPUImage to your computer and use it in GitHub Desktop."><font><font>
+    打开桌面
+   </font></font></a>
+
+<a href="https://github.com/BradLarson/GPUImage/archive/master.zip" class="btn btn-outline get-repo-btn
+" rel="nofollow" data-ga-click="Repository, download zip, location:repo overview"><font><font>
+  下载ZIP
+</font></font></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="BtnGroup float-right">
+
+    <a href="https://github.com/BradLarson/GPUImage/find/master" class="btn btn-sm empty-icon float-right BtnGroup-item" data-pjax="" data-hotkey="t" data-ga-click="Repository, find file, location:repo overview"><font><font>
+      查找文件
+    </font></font></a>
+  </div>
+
+  
+<div class="select-menu branch-select-menu js-menu-container js-select-menu float-left">
+  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w" type="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <i><font><font>科：</font></font></i>
+    <span class="js-select-button css-truncate-target"><font><font>主</font></font></span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+        <span class="select-menu-title"><font><font>切换分支/标签</font></font></span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="https://github.com/BradLarson/GPUImage#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab"><font><font>分支</font></font></a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="https://github.com/BradLarson/GPUImage#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab"><font><font>标签</font></font></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open selected" href="https://github.com/BradLarson/GPUImage/tree/master" data-name="master" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text"><font><font>
+                主
+              </font></font></span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results"><font><font>没有显示</font></font></div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.7" data-name="0.1.7" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.7"><font><font>
+                0.1.7
+               </font></font></span>
+            </a>
+            <font><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.6" data-name="0.1.6" data-skip-pjax="true" rel="nofollow"><span class="select-menu-item-text css-truncate-target" title="0.1.6"><font>
+                0.1.6
+               </font></span></a><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.5" data-name="0.1.5" data-skip-pjax="true" rel="nofollow"><span class="select-menu-item-text css-truncate-target" title="0.1.5"><font>
+                0.1.5
+               </font></span></a><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.4" data-name="0.1.4" data-skip-pjax="true" rel="nofollow"><span class="select-menu-item-text css-truncate-target" title="0.1.4"><font>
+                0.1.4
+               </font></span></a><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.3" data-name="0.1.3" data-skip-pjax="true" rel="nofollow"><span class="select-menu-item-text css-truncate-target" title="0.1.3"><font>
+                0.1.3
+               </font></span></a><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.2" data-name="0.1.2" data-skip-pjax="true" rel="nofollow"><span class="select-menu-item-text css-truncate-target" title="0.1.2"><font>
+                0.1.2
+               </font></span></a><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.1" data-name="0.1.1" data-skip-pjax="true" rel="nofollow"><span class="select-menu-item-text css-truncate-target" title="0.1.1"><font>
+                0.1.1
+               </font></span></a><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.0" data-name="0.1.0" data-skip-pjax="true" rel="nofollow"><span class="select-menu-item-text css-truncate-target" title="0.1.0"><font>
+                0.1.0
+              </font></span></a></font><a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.6" data-name="0.1.6" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.6"><font></font></span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.5" data-name="0.1.5" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.5"><font></font></span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.4" data-name="0.1.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.4"><font></font></span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.3" data-name="0.1.3" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.3"><font></font></span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.2" data-name="0.1.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.2"><font></font></span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.1" data-name="0.1.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.1"><font></font></span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/BradLarson/GPUImage/tree/0.1.0" data-name="0.1.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="0.1.0"><font></font></span>
+            </a>
+        </div>
+
+        <div class="select-menu-no-results"><font><font>没有显示</font></font></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+      <button type="button" class="btn btn-sm disabled tooltipped tooltipped-n new-pull-request-btn" aria-label="You must be signed in to create a pull request"><font><font>
+        新的请求
+      </font></font></button>
+
+  <div class="breadcrumb">
+    
+  </div>
+</div>
+
+
+
+
+
+  <div class="commit-tease js-details-container">
+    <span class="float-right"><font><font>
+      最新提交
+       </font></font><a class="commit-tease-sha" href="https://github.com/BradLarson/GPUImage/commit/167b0389bc6e9dc4bb0121550f91d8d5d6412c53" data-pjax=""><font><font>
+        167b038
+      </font></font></a>
+      <span itemprop="dateModified"><relative-time datetime="2016-05-26T15:29:42Z" title="2016年5月26日GMT + 8中午11:29">on 26 May 2016</relative-time></span>
+    </span>
+
+
+    <span class="commit-author-section">
+      <img alt="@BradLarson" class="avatar" height="20" src="./GPUImage翻译_files/954279" width="20">
+      <a href="https://github.com/BradLarson" class="user-mention" rel="author"><font><font>BradLarson</font></font></a>
+    </span>
+
+        <a href="https://github.com/BradLarson/GPUImage/commit/167b0389bc6e9dc4bb0121550f91d8d5d6412c53" class="message" data-pjax="true" title="合并拉取请求＃2294从zjx20 / patch-1正确的导入文件在GPUImageVibranceFilter.h"><font><font>合并拉请求</font></font></a> <a href="https://github.com/BradLarson/GPUImage/pull/2294" class="issue-link js-issue-link" data-url="https://github.com/BradLarson/GPUImage/issues/2294" data-id="156998373" data-error-text="Failed to load issue title" data-permission-text="Issue title is private"><font><font>＃2294 </font></font></a> <a href="https://github.com/BradLarson/GPUImage/commit/167b0389bc6e9dc4bb0121550f91d8d5d6412c53" class="message" data-pjax="true" title="合并拉取请求＃2294从zjx20 / patch-1正确的导入文件在GPUImageVibranceFilter.h"><font><font>从zjx20 /补丁1</font></font></a>
+          <span class="hidden-text-expander inline">
+            <button type="button" class="ellipsis-expander js-details-target"><font><font>... ...</font></font></button>
+          </span>
+    
+
+      <div class="commit-desc"><pre class="text-small"><font><font>在GPUImageVibranceFilter.h中正确导入文件</font></font></pre></div>
+  </div>
+
+
+<div class="file-wrap">
+
+  <a href="https://github.com/BradLarson/GPUImage/tree/167b0389bc6e9dc4bb0121550f91d8d5d6412c53" class="d-none js-permalink-shortcut" data-hotkey="y"><font><font>固定链接</font></font></a>
+
+  <table class="files js-navigation-container js-active-navigation-container" data-pjax="">
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg></td>
+        <td class="content" colspan="3"><font><font>无法加载最新提交信息。</font></font></td>
+      </tr>
+
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/tree/master/examples" class="js-navigation-open" id="bfebe34154a0dfd9fc7b447fc9ed74e9-9dcc8ec25d6a84a688ef397c67251ec50444941c" title="例子"><font><font class="">例子</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/b8285f5a583f234ba1db3b24cfa22a90e1b10f14" class="message" data-pjax="true" title="修复了在Mac上破碎的SimpleVideoFilter示例。"><font><font>修复了在Mac上破碎的SimpleVideoFilter示例。</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2016-04-08T15:44:05Z" title="2016年4月8日GMT + 8下午11:44">10 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/tree/master/framework" class="js-navigation-open" id="756457dc85f13450b3dfba2cbc1465e5-75cb0db63901503294aec759a94bbc4ac74c0577" title="框架"><font><font>框架</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/6d038384fd14b388ca1886bc4a284e81f4d20cb5" class="message" data-pjax="true" title="在GPUImageVibranceFilter.h中正确导入文件"><font><font>在GPUImageVibranceFilter.h中正确导入文件</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2016-05-26T14:33:14Z" title="2016年5月26日GMT + 8下午10:33">8 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/blob/master/.gitignore" class="js-navigation-open" id="a084b794bc0759e7a6b77810e01874f2-f12bf8782a432c2bbe634907b4bf7e89371ca844" title=".gitignore"><font><font>.gitignore</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/a2a16ad1ec79f5cd2effac17988bb3e121132da1" class="message" data-pjax="true" title="将.svn添加到混合项目的忽略列表中。"><font><font>将.svn添加到混合项目的忽略列表中。</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2013-09-05T17:40:04Z" title="2013年9月6日GMT + 8上午1:40">3 years ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/blob/master/.travis.yml" class="js-navigation-open" id="354f30a63fb0907d4ad57269548329e3-eb328e5c4faf3e9260f4fe313eb3cf8ebb2b814d" title=".travis.yml"><font><font>.travis.yml</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/809916d0835ed40f48ad51842f816b6782c90452" class="message" data-pjax="true" title="更新travis"><font><font>更新travis</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2016-03-12T15:54:38Z" title="2016年3月12日GMT + 8下午11:54">10 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/blob/master/GPUImage.podspec" class="js-navigation-open" id="b60bdae21e08587a448a6b6bb9cc3360-4e1961cbf21bb567ea37f8db47d88014e742e1cf" title="GPUImage.podspec"><font><font>GPUImage.podspec</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/d5f8f88496333c8b8e4b0b239fe9dff228e9c399" class="message" data-pjax="true" title="从OS X的排除文件中删除“GPUImageMovie”，因为现在支持"><font><font>从OS X的排除文件中删除“GPUImageMovie”，因为它是n ...</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2016-03-06T16:14:40Z" title="2016年3月7日GMT + 8中午12:14">11 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/blob/master/License.txt" class="js-navigation-open" id="dc5cde275269b574b34b1204b9221cb2-e8062d915bcd1af6a6bfdcf1307b069dc1e0da15" itemprop="license" title="License.txt"><font><font>License.txt</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/84061527fd590d35cd3e7d2e6c4d65b7e35fe74a" class="message" data-pjax="true" title="用父项目的副本替换了一切有一些腐败，我无法跟踪"><font><font>使用父项目的副本替换了所有内容</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2012-05-02T22:04:59Z" title="2012年5月3日GMT + 8上午6:04">5 years ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/blob/master/README.md" class="js-navigation-open" id="04c6e90faac2675aa89e2176d2eec7d8-16bc3f64f46e87ea5e6fcbc4c28302800e174b9e" title="README.md"><font><font>README.md</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/36f7c691a205ee685fc586e098ab549dc0b9c602" class="message" data-pjax="true" title="合并拉取请求＃2127从ReadmeCritic / master更新自述"><font><font>合并拉请求</font></font></a> <a href="https://github.com/BradLarson/GPUImage/pull/2127" class="issue-link js-issue-link" data-url="https://github.com/BradLarson/GPUImage/issues/2127" data-id="116144057" data-error-text="Failed to load issue title" data-permission-text="Issue title is private"><font><font>＃2127 </font></font></a> <a href="https://github.com/BradLarson/GPUImage/commit/36f7c691a205ee685fc586e098ab549dc0b9c602" class="message" data-pjax="true" title="合并拉取请求＃2127从ReadmeCritic / master更新自述"><font><font>从ReadmeCritic /主</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2015-12-03T16:32:04Z" title="2015年12月4日GMT + 8中午12:32">a year ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item navigation-focus">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" height="16" src="./GPUImage翻译_files/octocat-spinner-32.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/BradLarson/GPUImage/blob/master/build.sh" class="js-navigation-open" id="0b83f9dedf40d7356e5ca147a077acb4-399c72e2e80e8255d92e4029c62deaf66cd858a3" title="build.sh"><font><font>build.sh</font></font></a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/BradLarson/GPUImage/commit/ebd035bd0c71519d9f9a529f37e8040d857c0099" class="message" data-pjax="true" title="使用ios sdk 9.0，7.0真的老了"><font><font>使用ios sdk 9.0，7.0真的老了</font></font></a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2015-10-06T20:56:18Z" title="2015年10月7日GMT + 8上午4:56">a year ago</time-ago></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+  <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+    <h3>
+      <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path></svg><font><font>
+      README.md
+    </font></font></h3>
+
+      <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-gpuimage" class="anchor" href="https://github.com/BradLarson/GPUImage#gpuimage" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>GPUImage</font></font></h1>
+
+<div><a href="./GPUImage翻译_files/687474703a2f2f73756e7365746c616b65736f6674776172652e636f6d2f73697465732f64656661756c742f66696c65732f475055496d6167654c6f676f2e706e67" target="_blank"><img src="./GPUImage翻译_files/687474703a2f2f73756e7365746c616b65736f6674776172652e636f6d2f73697465732f64656661756c742f66696c65732f475055496d6167654c6f676f2e706e67" data-canonical-src="http://sunsetlakesoftware.com/sites/default/files/GPUImageLogo.png" style="max-width:100%;"></a></div>
+
+<p><a href="https://zenodo.org/record/10416#.U5YGaF773Md"><img src="./GPUImage翻译_files/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f646f692f31302e353238312f7a656e6f646f2e31303431362e737667" data-canonical-src="https://zenodo.org/badge/doi/10.5281/zenodo.10416.svg" style="max-width:100%;"></a></p>
+
+<p><font><font>布拉德拉尔森</font></font></p>
+
+<p><a href="http://www.sunsetlakesoftware.com/"><font><font>http://www.sunsetlakesoftware.com</font></font></a></p>
+
+<p><a href="https://twitter.com/bradlarson"><font><font>@bradlarson</font></font></a></p>
+
+<p><a href="mailto:contact@sunsetlakesoftware.com"><font><font>contact@sunsetlakesoftware.com</font></font></a></p>
+
+<h2><a id="user-content-overview" class="anchor" href="https://github.com/BradLarson/GPUImage#overview" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>概述</font></font></h2>
+
+<p><font><font>GPUImage框架是一个BSD许可的iOS库，允许您对图像，实时摄像机视频和电影应用GPU加速过滤器和其他效果。</font><font>与Core Image（iOS 5.0的一部分）相比，GPUImage允许您编写自己的自定义过滤器，支持部署到iOS 4.0，并且具有更简单的界面。</font><font>然而，它目前缺乏Core Image的一些更高级的功能，例如面部检测。</font></font></p>
+
+<p><font><font>对于诸如处理图像或实况视频帧的大规模并行操作，GPU相对于CPU具有一些显着的性能优点。</font><font>在iPhone 4上，简单的图像滤波器在GPU上的执行速度比等效的基于CPU的滤波器快100多倍。</font></font></p>
+
+<p><font><font>但是，在GPU上运行自定义过滤器需要大量代码来为这些过滤器设置和维护OpenGL ES 2.0渲染目标。</font><font>我创建了一个示例项目来做这个：</font></font></p>
+
+<p><a href="http://www.sunsetlakesoftware.com/2010/10/22/gpu-accelerated-video-processing-mac-and-ios"><font><font>http://www.sunsetlakesoftware.com/2010/10/22/gpu-accelerated-video-processing-mac-and-ios</font></font></a></p>
+
+<p><font><font>并发现有很多样板代码我不得不写在其创作。</font><font>因此，我把这个框架放在一起，封装了处理图像和视频时会遇到的很多常见任务，使得你不需要关心OpenGL ES 2.0基础。</font></font></p>
+
+<p><font><font class="">在处理视频时，这个框架比Core Image好一些，在iPhone 4上只需要2.5 ms就可以从相机上传帧，应用伽马滤波器和显示，而使用Core Image的同一操作则为106 ms。</font><font>基于CPU的处理需要460 ms，使得GPUImage在该硬件上比Core Image快40倍，并且比CPU绑定处理快184倍。</font><font>在iPhone 4S上，GPUImage对于这种情况只比Core Image快4倍，比CPU绑定的处理快102倍。</font><font>然而，对于更复杂的操作，如高斯模糊在更大的半径，Core Image目前超过GPUImage。</font></font></p>
+
+<h2><a id="user-content-license" class="anchor" href="https://github.com/BradLarson/GPUImage#license" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>执照</font></font></h2>
+
+<p><font><font>BSD风格，具有完整的许可证可用于License.txt中的框架。</font></font></p>
+
+<h2><a id="user-content-technical-requirements" class="anchor" href="https://github.com/BradLarson/GPUImage#technical-requirements" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>技术要求</font></font></h2>
+
+<ul>
+<li><font><font>OpenGL ES 2.0：使用它的应用程序不会在原始的iPhone，iPhone 3G，第一和第二代iPod touch上运行</font></font></li>
+<li><font><font>iOS 4.1作为部署目标（4.0没有电影阅读需要一些扩展）。</font><font>如果您希望在拍摄静态照片时显示实时视频预览，则需要iOS 4.3作为部署目标。</font></font></li>
+<li><font><font>iOS 5.0 SDK来构建</font></font></li>
+<li><font><font>设备必须有相机才能使用相机相关功能（显然）</font></font></li>
+<li><font><font>该框架使用自动引用计数（ARC），但应支持使用ARC和手动引用计数（如果作为子项目添加）的项目，如下所述。</font><font>对于面向iOS 4.x的手动引用计数应用程序，您需要在应用程序项目的其他链接器标记中添加-fobjc-arc。</font></font></li>
+</ul>
+
+<h2><a id="user-content-general-architecture" class="anchor" href="https://github.com/BradLarson/GPUImage#general-architecture" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>一般建筑</font></font></h2>
+
+<p><font><font>GPUImage使用OpenGL ES 2.0着色器来执行图像和视频操作比在CPU限制例程中可以做的更快。</font><font class="">但是，它隐藏了在简化的Objective-C接口中与OpenGL ES API交互的复杂性。</font><font>此接口允许您定义图像和视频的输入源，将过滤器附加到链中，并将生成的处理后的图像或视频发送到屏幕，UIImage或磁盘上的电影。</font></font></p>
+
+<p><font><font class="">视频的图像或帧从源对象上传，源对象是GPUImageOutput的子类。</font><font>这些包括GPUImageVideoCamera（用于来自iOS相机的实时视频），GPUImageStillCamera（用于用相机拍摄照片），GPUImagePicture（用于静止图像）和GPUImageMovie（用于电影）。</font><font>源对象将静态图像帧上传到OpenGL ES作为纹理，然后将这些纹理移到处理链中的下一个对象。</font></font></p>
+
+<p><font><font>链中的过滤器和其他后续元素符合GPUImageInput协议，允许它们从链中的上一个链接接收提供或处理的纹理，并对其进行处理。</font><font>对象在链的更下游一步被认为是目标，并且处理可以通过将多个目标添加到单个输出或过滤器来分支。</font></font></p>
+
+<p><font><font>例如，从摄像头接收实时视频，将该视频转换为棕褐色调，然后在屏幕上显示视频的应用程序将建立一个链接，如下所示：</font></font></p>
+
+<pre><code>GPUImageVideoCamera -&gt; GPUImageSepiaFilter -&gt; GPUImageView
+</code></pre>
+
+<h2><a id="user-content-adding-the-static-library-to-your-ios-project" class="anchor" href="https://github.com/BradLarson/GPUImage#adding-the-static-library-to-your-ios-project" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>将静态库添加到您的iOS项目</font></font></h2>
+
+<p><font><font>注意：如果你想在Swift项目中使用它，你需要使用“添加这个框架”部分中的步骤，而不是下面的步骤。</font><font>Swift需要第三方代码的模块。</font></font></p>
+
+<p><font><font>一旦你有最新的框架源代码，它是相当简单的将它添加到你的应用程序。</font><font>首先将GPUImage.xcodeproj文件拖动到应用程序的Xcode项目中，以将框架嵌入项目中。</font><font>接下来，转到应用程序的目标并将GPUImage添加为目标依赖关系。</font><font>最后，您需要将libGPUImage.a库从GPUImage框架的Products文件夹拖动到应用程序目标中的Link Binary With Libraries构建阶段。</font></font></p>
+
+<p><font><font>GPUImage需要一些其他框架链接到你的应用程序，所以你需要添加以下链接库在你的应用程序目标：</font></font></p>
+
+<ul>
+<li><font><font>CoreMedia</font></font></li>
+<li><font><font>CoreVideo</font></font></li>
+<li><font><font>OpenGLES</font></font></li>
+<li><font><font>AVFoundation</font></font></li>
+<li><font><font>QuartzCore</font></font></li>
+</ul>
+
+<p><font><font>您还需要找到框架头文件，因此在项目的构建设置中将标题搜索路径设置为从应用程序到GPUImage源目录中的framework /子目录的相对路径。</font><font>使此标题搜索路径递归。</font></font></p>
+
+<p><font><font>要在应用程序中使用GPUImage类，只需使用以下内容包含核心框架标题：</font></font></p>
+
+<pre><code>#import "GPUImage.h"
+</code></pre>
+
+<p><font><font>注意：如果你尝试使用Interface Builder构建一个接口时遇到错误“未知类GPUImageView在Interface Builder”等等，你可能需要在项目的构建设置中添加-ObjC到你的其他链接器标记。</font></font></p>
+
+<p><font><font>此外，如果您需要将其部署到iOS 4.x，看起来当前版本的Xcode（4.3）要求您弱连接您的最终应用程序中的核心视频框架或您看到崩溃与消息“没有找到符号：_CVOpenGLESTextureCacheCreate“，当您创建一个存档上传到App Store或临时分发。</font><font>为此，转到项目的Build Phases选项卡，展开Link Binary With Libraries组，并在列表中找到CoreVideo.framework。</font><font>将列表最右侧的设置从“必需”更改为“可选”。</font></font></p>
+
+<p><font><font>此外，这是一个支持ARC的框架，所以如果你想在一个手动引用计数应用程序针对iOS 4.x使用这个，你需要添加-fobjc-arc到你的其他链接器标志。</font></font></p>
+
+<h3><a id="user-content-building-a-static-library-at-the-command-line" class="anchor" href="https://github.com/BradLarson/GPUImage#building-a-static-library-at-the-command-line" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>在命令行中构建静态库</font></font></h3>
+
+<p><font><font>如果您不想将项目作为依赖项包括在应用程序的Xcode项目中，则可以为iOS模拟器或设备构建通用静态库。</font><font>要做到这一点，运行</font></font><code>build.sh</code><font><font>在命令行。</font><font>由此产生的库和头文件将位于</font></font><code>build/Release-iphone</code><font><font>。</font><font>您也可以通过改变改变了iOS SDK版本</font></font><code>IOSSDK_VER</code><font><font>变量</font></font><code>build.sh</code><font><font>（所有可用版本可以使用找到</font></font><code>xcodebuild -showsdks</code><font><font>）。</font></font></p>
+
+<h2><a id="user-content-adding-this-as-a-framework-module-to-your-mac-or-ios-project" class="anchor" href="https://github.com/BradLarson/GPUImage#adding-this-as-a-framework-module-to-your-mac-or-ios-project" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>将此作为框架（模块）添加到Mac或iOS项目中</font></font></h2>
+
+<p><font><font>Xcode 6和iOS 8支持使用完整的框架，就像Mac一样，这简化了将它添加到应用程序的过程。</font><font>要将其添加到应用程序中，我建议将.xcodeproj项目文件拖动到应用程序的项目中（就像在静态库目标中一样）。</font></font></p>
+
+<p><font><font>对于您的应用程序，转到其目标构建设置，然后选择构建阶段选项卡。</font><font class="">在目标依赖关系分组下，在iOS上添加GPUImageFramework（而不是GPUImage，它构建静态库）或在Mac上添加GPUImage。</font><font>在链接二进制与库部分下，添加GPUImage.framework。</font></font></p>
+
+<p><font><font>这应该导致GPUImage构建为一个框架。</font><font>在Xcode 6下，这也将构建为一个模块，这将允许您在Swift项目中使用它。</font><font>当设置如上，你应该只需要使用</font></font></p>
+
+<pre><code>import GPUImage
+</code></pre>
+
+<p><font><font>拉进来。</font></font></p>
+
+<p><font><font>然后，您需要添加一个新的复制文件构建阶段，将目标设置为框架，并添加GPUImage.framework构建产品。</font><font>这将允许框架与您的应用程序捆绑（否则，你会看到神秘的“dyld：库未加载：@ rpath / GPUImage.framework / GPUImage”错误执行）。</font></font></p>
+
+<h3><a id="user-content-documentation" class="anchor" href="https://github.com/BradLarson/GPUImage#documentation" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>文档</font></font></h3>
+
+<p><font><font class="">文档是使用appledoc从标题注释生成的。</font><font class="">要构建文档，请切换到Xcode中的“文档”方案。</font><font class="">您应该确保“APPLEDOC_PATH”（用户定义的版本设定）指向一个appledoc二进制文件，可用</font></font><a href="https://github.com/tomaz/appledoc"><font><font class="">Github上</font></font></a><font><font class="">或通过</font></font><a href="https://github.com/Homebrew/homebrew"><font><font class="">家酿</font></font></a><font><font class="">。</font><font>它还将构建和安装一个.docset文件，您可以使用您最喜欢的文档工具查看。</font></font></p>
+
+<h2><a id="user-content-performing-common-tasks" class="anchor" href="https://github.com/BradLarson/GPUImage#performing-common-tasks" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>执行常见任务</font></font></h2>
+
+<h3><a id="user-content-filtering-live-video" class="anchor" href="https://github.com/BradLarson/GPUImage#filtering-live-video" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>过滤实时视频</font></font></h3>
+
+<p><font><font>要从iOS设备的相机中过滤实时视频，您可以使用以下代码：</font></font></p>
+
+<pre><code>GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];<font></font>
+videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;<font></font>
+<font></font>
+GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];<font></font>
+GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, viewWidth, viewHeight)];<font></font>
+<font></font>
+// Add the view somewhere so it's visible<font></font>
+<font></font>
+[videoCamera addTarget:customFilter];<font></font>
+[customFilter addTarget:filteredVideoView];<font></font>
+<font></font>
+[videoCamera startCameraCapture];<font></font>
+</code></pre>
+
+<p><font><font class="">这会设置来自iOS设备的后置摄像头的视频源，使用预设尝试以640x480进行捕获。</font><font>此视频是在接口处于纵向模式时捕获的，其中横向左侧安装的摄像机需要在显示之前旋转视频帧。</font><font>使用来自文件CustomShader.fsh的代码的自定义过滤器随后被设置为来自摄像机的视频帧的目标。</font><font>这些过滤的视频帧最终在UIView子类的帮助下显示在屏幕上，UIView子类可以呈现从该管道得到的过滤的OpenGL ES纹理。</font></font></p>
+
+<p><font><font class="">GPUImageView的填充模式可以通过设置其fillMode属性来改变，因此如果源视频的宽高比与视图的宽高比不同，则视频将被拉伸，以黑条为中心或缩放以填充。</font></font></p>
+
+<p><font><font>对于混合过滤器和其他包含多个图像的过滤器，您可以创建多个输出，并将一个过滤器添加为这两个输出的目标。</font><font>输出被添加为目标的顺序将影响输入图像被混合或以其他方式处理的顺序。</font></font></p>
+
+<p><font><font>此外，如果您希望启用麦克风音频捕获来录制电影，您需要将相机的audioEncodingTarget设置为您的电影作家，例如：</font></font></p>
+
+<pre><code>videoCamera.audioEncodingTarget = movieWriter;
+</code></pre>
+
+<h3><a id="user-content-capturing-and-filtering-a-still-photo" class="anchor" href="https://github.com/BradLarson/GPUImage#capturing-and-filtering-a-still-photo" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>捕获和过滤静止图片</font></font></h3>
+
+<p><font><font>要捕获和过滤静态照片，您可以使用类似于过滤视频的过程。</font><font>而不是一个GPUImageVideoCamera，你使用一个GPUImageStillCamera：</font></font></p>
+
+<pre><code>stillCamera = [[GPUImageStillCamera alloc] init];<font></font>
+stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;<font></font>
+<font></font>
+filter = [[GPUImageGammaFilter alloc] init];<font></font>
+[stillCamera addTarget:filter];<font></font>
+GPUImageView *filterView = (GPUImageView *)self.view;<font></font>
+[filter addTarget:filterView];<font></font>
+<font></font>
+[stillCamera startCameraCapture];<font></font>
+</code></pre>
+
+<p><font><font>这将为您提供静态相机预览视频的实时过滤Feed。</font><font>请注意，此预览视频仅在iOS 4.3及更高版本中提供，因此如果您希望拥有此功能，则可能需要将其设置为部署目标。</font></font></p>
+
+<p><font><font>一旦你想捕获一张照片，你使用一个回调块，如下所示：</font></font></p>
+
+<pre><code>[stillCamera capturePhotoProcessedUpToFilter:filter withCompletionHandler:^(UIImage *processedImage, NSError *error){<font></font>
+    NSData *dataForJPEGFile = UIImageJPEGRepresentation(processedImage, 0.8);<font></font>
+<font></font>
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);<font></font>
+    NSString *documentsDirectory = [paths objectAtIndex:0];<font></font>
+<font></font>
+    NSError *error2 = nil;<font></font>
+    if (![dataForJPEGFile writeToFile:[documentsDirectory stringByAppendingPathComponent:@"FilteredPhoto.jpg"] options:NSAtomicWrite error:&amp;error2])<font></font>
+    {<font></font>
+        return;<font></font>
+    }<font></font>
+}];<font></font>
+</code></pre>
+
+<p><font><font>上述代码捕获由预览视图中使用的相同过滤器链处理的全尺寸照片，并将该照片作为JPEG保存在应用程序的文档目录中的磁盘。</font></font></p>
+
+<p><font><font>请注意，由于纹理大小限制，框架目前无法处理旧设备（iPhone 4S，iPad 2或Retina iPad之前的设备）上大于2048像素宽或更大的图像。</font><font>这意味着，iPhone 4，其相机输出的静态照片大于这个，将无法捕获这样的照片。</font><font>正在实施平铺机制来解决这个问题。</font><font>所有其他设备应该能够使用此方法捕获和过滤照片。</font></font></p>
+
+<h3><a id="user-content-processing-a-still-image" class="anchor" href="https://github.com/BradLarson/GPUImage#processing-a-still-image" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>处理静止图像</font></font></h3>
+
+<p><font><font>有几种方法来处理静态图像和创建结果。</font><font>第一种方法是创建静态图像源对象并手动创建过滤器链：</font></font></p>
+
+<pre><code>UIImage *inputImage = [UIImage imageNamed:@"Lambeau.jpg"];<font></font>
+<font></font>
+GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:inputImage];<font></font>
+GPUImageSepiaFilter *stillImageFilter = [[GPUImageSepiaFilter alloc] init];<font></font>
+<font></font>
+[stillImageSource addTarget:stillImageFilter];<font></font>
+[stillImageFilter useNextFrameForImageCapture];<font></font>
+[stillImageSource processImage];<font></font>
+<font></font>
+UIImage *currentFilteredVideoFrame = [stillImageFilter imageFromCurrentFramebuffer];<font></font>
+</code></pre>
+
+<p><font><font>请注意，对于从过滤器手动捕获图像，您需要设置-useNextFrameForImageCapture，以便告知过滤器您以后需要捕获它。</font><font>默认情况下，GPUImage重用在过滤器内的帧缓冲区以节省内存，所以如果你需要持有一个过滤器的帧缓冲区手动图像捕获，你需要提前知道。</font></font></p>
+
+<p><font><font>对于要应用于图像的单个过滤器，您只需执行以下操作：</font></font></p>
+
+<pre><code>GPUImageSepiaFilter *stillImageFilter2 = [[GPUImageSepiaFilter alloc] init];<font></font>
+UIImage *quickFilteredImage = [stillImageFilter2 imageByFilteringImage:inputImage];<font></font>
+</code></pre>
+
+<h3><a id="user-content-writing-a-custom-filter" class="anchor" href="https://github.com/BradLarson/GPUImage#writing-a-custom-filter" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>编写自定义过滤器</font></font></h3>
+
+<p><font><font>这个框架相对于Core Image（iOS 5.0）的一个显着优点是能够编写自己的自定义图像和视频处理过滤器。</font><font>这些过滤器以OpenGL ES 2.0碎片着色器提供，用类似C的OpenGL着色语言编写。</font></font></p>
+
+<p><font><font>自定义过滤器用代码初始化</font></font></p>
+
+<pre><code>GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
+</code></pre>
+
+<p><font><font>其中用于片段着色器的扩展名是.fsh。</font><font>此外，如果您不希望在应用程序包中运送片段着色器，则可以使用-initWithFragmentShaderFromString：initializer将片段着色器提供为字符串。</font></font></p>
+
+<p><font><font>片段着色器对要在该过滤器阶段渲染的每个像素执行它们的计算。</font><font>他们使用OpenGL着色语言（GLSL）来做到这一点，它是一种类似C语言的语言，增加了2-D和3-D图形。</font><font>片段着色器的示例是以下棕褐色滤波器：</font></font></p>
+
+<pre><code>varying highp vec2 textureCoordinate;<font></font>
+<font></font>
+uniform sampler2D inputImageTexture;<font></font>
+<font></font>
+void main()<font></font>
+{<font></font>
+    lowp vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);<font></font>
+    lowp vec4 outputColor;<font></font>
+    outputColor.r = (textureColor.r * 0.393) + (textureColor.g * 0.769) + (textureColor.b * 0.189);<font></font>
+    outputColor.g = (textureColor.r * 0.349) + (textureColor.g * 0.686) + (textureColor.b * 0.168);    <font></font>
+    outputColor.b = (textureColor.r * 0.272) + (textureColor.g * 0.534) + (textureColor.b * 0.131);<font></font>
+    outputColor.a = 1.0;<font></font>
+<font></font>
+    gl_FragColor = outputColor;<font></font>
+}<font></font>
+</code></pre>
+
+<p><font><font>对于在GPUImage框架内可使用的图像滤波器，需要使纹理坐标变化（对于纹理内的当前坐标，归一化为1.0）和inputImageTexture均匀（对于实际输入图像帧纹理）的前两行。</font></font></p>
+
+<p><font><font>着色器的其余部分抓取传入纹理中该位置处的像素的颜色，以产生棕褐色调的方式操作它，并将该像素颜色写出以用于处理的下一阶段管道。</font></font></p>
+
+<p><font><font>在Xcode项目中添加片段着色器时需要注意的一点是，Xcode认为它们是源代码文件。</font><font>要解决这个问题，您需要手动将您的着色器从编译源构建阶段移动到复制Bundle Resources对象，以使着色器包含在您的应用程序包中。</font></font></p>
+
+<h3><a id="user-content-filtering-and-re-encoding-a-movie" class="anchor" href="https://github.com/BradLarson/GPUImage#filtering-and-re-encoding-a-movie" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>过滤和重新编码电影</font></font></h3>
+
+<p><font><font>电影可以通过GPUImageMovie类加载到框架中，过滤，然后使用GPUImageMovieWriter写出。</font><font>GPUImageMovieWriter也足够快，可以从iPhone 4的摄像头以640x480实时录制视频，因此可以直接过滤视频源。</font><font>目前，GPUImageMovieWriter足够快，可以在iPhone 4上录制高达20 FPS的实时720p视频，以及在iPhone 4S（以及新iPad上）录制720p和1080p视频（30 FPS）。</font></font></p>
+
+<p><font><font>以下是如何加载示例电影，将其传递通过像素滤波器，然后将结果作为480 x 640 h.264电影录制到磁盘的示例：</font></font></p>
+
+<pre><code>movieFile = [[GPUImageMovie alloc] initWithURL:sampleURL];<font></font>
+pixellateFilter = [[GPUImagePixellateFilter alloc] init];<font></font>
+<font></font>
+[movieFile addTarget:pixellateFilter];<font></font>
+<font></font>
+NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];<font></font>
+unlink([pathToMovie UTF8String]);<font></font>
+NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];<font></font>
+<font></font>
+movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(480.0, 640.0)];<font></font>
+[pixellateFilter addTarget:movieWriter];<font></font>
+<font></font>
+movieWriter.shouldPassthroughAudio = YES;<font></font>
+movieFile.audioEncodingTarget = movieWriter;<font></font>
+[movieFile enableSynchronizedEncodingUsingMovieWriter:movieWriter];<font></font>
+<font></font>
+[movieWriter startRecording];<font></font>
+[movieFile startProcessing];<font></font>
+</code></pre>
+
+<p><font><font>录制完成后，您需要从过滤器链中删除录像机，并使用以下代码关闭录制：</font></font></p>
+
+<pre><code>[pixellateFilter removeTarget:movieWriter];<font></font>
+[movieWriter finishRecording];<font></font>
+</code></pre>
+
+<p><font><font>在完成关闭之前，电影将无法使用，因此如果在此时间之前中断，录制将会丢失。</font></font></p>
+
+<h3><a id="user-content-interacting-with-opengl-es" class="anchor" href="https://github.com/BradLarson/GPUImage#interacting-with-opengl-es" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>与OpenGL ES交互</font></font></h3>
+
+<p><font><font>GPUImage可以通过分别使用其GPUImageTextureOutput和GPUImageTextureInput类来从OpenGL ES导出和导入纹理。</font><font>这允许您从OpenGL ES场景录制电影，该场景呈现到具有绑定纹理的帧缓冲区对象，或过滤视频或图像，然后将其作为要在场景中显示的纹理馈送到OpenGL ES。</font></font></p>
+
+<p><font><font>这种方法的一个警告是，这些进程中使用的纹理必须通过共享组或类似的东西在GPUImage的OpenGL ES上下文和任何其他上下文之间共享。</font></font></p>
+
+<h2><a id="user-content-built-in-filters" class="anchor" href="https://github.com/BradLarson/GPUImage#built-in-filters" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>内置过滤器</font></font></h2>
+
+<p><font><font>目前有125个内置过滤器，分为以下类别：</font></font></p>
+
+<h3><a id="user-content-color-adjustments" class="anchor" href="https://github.com/BradLarson/GPUImage#color-adjustments" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>颜色调整</font></font></h3>
+
+<ul>
+<li><p><strong><font><font>GPUImageBrightnessFilter</font></font></strong><font><font>：调整图像的亮度</font></font></p>
+
+<ul>
+<li><em><font><font>亮度</font></font></em><font><font>：调整后的亮度（-1.0 - 1.0，0.0为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageExposureFilter</font></font></strong><font><font>：调整图像的曝光</font></font></p>
+
+<ul>
+<li><em><font><font>曝光</font></font></em><font><font>：调整后曝光（-10.0 - 10.0，与0.0作为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageContrastFilter</font></font></strong><font><font>：调整影像的对比度</font></font></p>
+
+<ul>
+<li><em><font><font>对比</font></font></em><font><font>：调整后的对比度（0.0 - 4.0，1.0为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSaturationFilter</font></font></strong><font><font>：调整图像的饱和度</font></font></p>
+
+<ul>
+<li><em><font><font>饱和</font></font></em><font><font>：饱和或饱和的程度要应用于图像（0.0 - 2.0 1.0作为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageGammaFilter</font></font></strong><font><font>：调整图像的灰度</font></font></p>
+
+<ul>
+<li><em><font><font>伽马</font></font></em><font><font>：伽马调整申请（0.0 - 3.0，1.0为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageLevelsFilter</font></font></strong><font><font>：Photoshop的样水平的调整。</font><font>min，max，minOut和maxOut参数是范围[0，1]中的浮点数。</font><font>如果您有来自Photoshop的参数，范围为[0,255]，则必须首先将它们转换为[0，1]。</font><font>gamma / mid参数是一个float&gt; = 0的值。这与Photoshop的值相匹配。</font><font>如果要对RGB和单个通道应用级别，您需要使用此过滤器两​​次 - 首先用于单个通道，然后用于所有通道。</font></font></p></li>
+<li><p><strong><font><font>GPUImageColorMatrixFilter</font></font></strong><font><font>：通过施加一个矩阵将它们变换的图像的颜色</font></font></p>
+
+<ul>
+<li><em><font><font>嘉洛斯</font></font></em><font><font>：一个4x4矩阵使用的图像变换每种颜色</font></font></li>
+<li><em><font><font>强度</font></font></em><font><font>：对所述新变换颜色替换原来的颜色对每个像素中的程度</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageRGBFilter</font></font></strong><font><font>：调整图像的各个RGB通道</font></font></p>
+
+<ul>
+<li><em><font><font>红</font></font></em><font><font>：是将每个颜色通道乘以标准化值。</font><font>范围是从0.0开始，默认为1.0。</font></font></li>
+<li><em><font><font>绿色</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>蓝色</font></font></em><font><font>：</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHueFilter</font></font></strong><font><font>：调整图像的色调</font></font></p>
+
+<ul>
+<li><em><font><font>色调</font></font></em><font><font>：色调角，单位为度。</font><font>默认为90度</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageVibranceFilter</font></font></strong><font><font>：调整图像的鲜艳</font></font></p>
+
+<ul>
+<li><em><font><font>光彩</font></font></em><font><font>：在光彩调整申请，使用0.0作为默认设置，分别为-1.2左右和1.2，建议最小/最大。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageWhiteBalanceFilter</font></font></strong><font><font>：调整图像的白平衡。</font></font></p>
+
+<ul>
+<li><em><font><font>温度</font></font></em><font><font>：温度由调整图像，在ºK。</font><font>值4000是非常酷，7000非常温暖。</font><font>默认值为5000.请注意，4000和5000之间的刻度与5000和7000之间的刻度几乎相同。</font></font></li>
+<li><em><font><font>色调</font></font></em><font><font>：的色调来调整的图像。</font><font>-200的值是</font></font><em><font><font>非常</font></font></em><font><font>绿色，200是</font></font><em><font><font>非常</font></font></em><font><font>的粉红色。</font><font>默认值为0。</font></font><br></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageToneCurveFilter</font></font></strong><font><font>：基于对每个颜色信道的样条曲线调节图像的颜色。</font></font></p>
+
+<ul>
+<li><em><font><font>redControlPoints</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>greenControlPoints</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>blueControlPoints</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>rgbCompositeControlPoints</font></font></em><font><font>：色调曲线需要在一系列定义样条曲线针对每个颜色成分，或在复合所有三个控制点。</font><font>这些作为NSValue封装的CGPoints存储在NSArray中，标准化的X和Y坐标从0到1.默认值为（0,0），（0.5,0.5），（1,1）。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHighlightShadowFilter</font></font></strong><font><font>：调整图像的阴影和高光</font></font></p>
+
+<ul>
+<li><em><font><font>阴影</font></font></em><font><font>：增加以减轻阴影，从0.0到1.0，0.0为默认值。</font></font></li>
+<li><em><font><font>突出</font></font></em><font><font>：降低变暗的亮点，从1.0到0.0，1.0为默认值。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHighlightShadowTintFilter</font></font></strong><font><font>：允许您使用独立的颜色和强度着色图像的阴影和高光</font></font></p>
+
+<ul>
+<li><em><font><font>shadowTintColor</font></font></em><font><font>：暗影色彩RGB颜色（GPUVector4）。</font><font>默认值：</font></font><code>{1.0f, 0.0f, 0.0f, 1.0f}</code><font><font>（红色）。</font></font></li>
+<li><em><font><font>highlightTintColor</font></font></em><font><font>：高光色调RGB颜色（GPUVector4）。</font><font>默认值：</font></font><code>{0.0f, 0.0f, 1.0f, 1.0f}</code><font><font>（蓝色）。</font></font></li>
+<li><em><font><font>shadowTintIntensity</font></font></em><font><font>：暗影色彩强度，从0.0到1.0。</font><font>默认值：0.0</font></font></li>
+<li><em><font><font>highlightTintIntensity</font></font></em><font><font>：高光色调力度，从0.0到1.0，0.0为默认值。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageLookupFilter</font></font></strong><font><font>：使用RGB彩色查找图像重新映射的颜色的图像。</font><font>首先，使用您最喜欢的照片编辑应用程序将过滤器应用于GPUImage / framework / Resources中的lookup.png。</font><font>为了使其正常工作，每个像素颜色不能依赖于其他像素（例如模糊不会工作）。</font><font>如果您需要更复杂的过滤器，则可以根据需要创建任意数量的查找表。</font><font>准备好后，使用您的新lookup.png文件作为GPUImageLookupFilter的第二个输入。</font></font></p></li>
+<li><p><strong><font><font>GPUImageAmatorkaFilter</font></font></strong><font><font>：基于一个Photoshop采取行动Amatorka一个照片滤镜</font></font><a href="http://amatorka.deviantart.com/art/Amatorka-Action-2-121069631"><font><font>http://amatorka.deviantart.com/art/Amatorka-Action-2-121069631</font></font></a><font><font>。</font><font>如果要使用此效果，您必须将lookup_amatorka.png从GPUImage资源文件夹添加到应用程序包。</font></font></p></li>
+<li><p><strong><font><font>GPUImageMissEtikateFilter</font></font></strong><font><font>：基于一个Photoshop采取行动Etikate小姐照片滤镜</font></font><a href="http://miss-etikate.deviantart.com/art/Photoshop-Action-15-120151961"><font><font>http://miss-etikate.deviantart.com/art/Photoshop-Action-15-120151961</font></font></a><font><font>。</font><font>如果要使用此效果，您必须将lookup_miss_etikate.png从GPUImage资源文件夹添加到应用程序包。</font></font></p></li>
+<li><p><strong><font><font>GPUImageSoftEleganceFilter</font></font></strong><font><font>：另一个基于查找颜色重映射过滤器。</font><font>如果要使用此效果，您必须将lookup_soft_elegance_1.png和lookup_soft_elegance_2.png从GPUImage资源文件夹添加到应用程序包。</font></font></p></li>
+<li><p><strong><font><font>GPUImageSkinToneFilter</font></font></strong><font><font>：一个肤色调整过滤器，会影响光肤色的颜色独特的范围，并相应地调整了粉红色/绿色或粉红色/橙色范围。</font><font>默认值针对公平的白种人皮肤，但可以根据需要进行调整。</font></font></p>
+
+<ul>
+<li><em><font><font>skinToneAdjust</font></font></em><font><font>：金额调整肤色。</font><font>默认值：0.0，建议最小值/最大值：-0.3和0.3。</font></font></li>
+<li><em><font><font>skinHue</font></font></em><font><font>：皮肤色调被检测到。</font><font>默认值：0.05（正常的白种人到微红的皮肤）。</font></font></li>
+<li><em><font><font>skinHueThreshold</font></font></em><font><font>：皮肤的色调变化量。</font><font>默认：40.0。</font></font></li>
+<li><em><font><font>maxHueShift</font></font></em><font><font>：色相的最大量移的允许。</font><font>默认值：0.25。</font></font></li>
+<li><em><font><font>maxSaturationShift</font></font></em><font><font> =饱和的最大金额（使用橙色时）移动。</font><font>默认值：0.4。</font></font></li>
+<li><em><font><font>upperSkinToneColor</font></font></em><font><font> = </font></font><code>GPUImageSkinToneUpperColorGreen</code><font><font>或</font></font><code>GPUImageSkinToneUpperColorOrange</code></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageColorInvertFilter</font></font></strong><font><font>：反转图像的颜色</font></font></p></li>
+<li><p><strong><font><font>GPUImageGrayscaleFilter</font></font></strong><font><font>：成灰度图像转换（略快实现饱和过滤器，无需改变颜色贡献的能力）</font></font></p></li>
+<li><p><strong><font><font>GPUImageMonochromeFilter</font></font></strong><font><font>：将图像转换为单色版本，基于每个像素的亮度</font></font></p>
+
+<ul>
+<li><em><font><font>强度</font></font></em><font><font>：到了特定颜色替换正常的图像色彩度（0.0 - 1.0，1.0为默认）</font></font></li>
+<li><em><font><font>颜色</font></font></em><font><font>：颜色来作为默认为依据使用的效果，用（0.6，0.45，0.3，1.0）。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageFalseColorFilter</font></font></strong><font><font>：使用图像的亮度两个用户指定的颜色之间混</font></font></p>
+
+<ul>
+<li><em><font><font>firstColor</font></font></em><font><font>：第一和第二颜色指定什么颜色分别替换图像的黑暗和明亮区域。</font><font>默认值为（0.0，0.0，0.5）amd（1.0，0.0，0.0）。</font></font></li>
+<li><em><font><font>secondColor</font></font></em><font><font>：</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHazeFilter</font></font></strong><font><font>：用于霾添加或删除（类似的UV过滤器）</font></font></p>
+
+<ul>
+<li><em><font><font>距离</font></font></em><font><font>：应用颜色的强度。</font><font>默认值0. -.3和.3之间的值最好。</font></font></li>
+<li><em><font><font>坡</font></font></em><font><font>：颜色变化量。</font><font>默认值0. -.3和.3之间的值最好。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSepiaFilter</font></font></strong><font><font>：简单的棕褐色调过滤器</font></font></p>
+
+<ul>
+<li><em><font><font>强度</font></font></em><font><font>：到的棕褐色调取代了正常的图像色彩度（0.0 - 1.0，1.0为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageOpacityFilter</font></font></strong><font><font>：调整输入的图像的alpha通道</font></font></p>
+
+<ul>
+<li><em><font><font>不透明度</font></font></em><font><font>：该值通过乘以每个像素的传入阿尔法通道（0.0 - 1.0，以1.0作为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSolidColorGenerator</font></font></strong><font><font>：这个输出用纯色所生成的图像。</font><font>您需要使用-forceProcessingAtSize定义图像大小：</font></font></p>
+
+<ul>
+<li><em><font><font>颜色</font></font></em><font><font>：颜色，在一个四组分的格式，用来填充图像。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageLuminanceThresholdFilter</font></font></strong><font><font>：像素与上述阈值的亮度会出现白色，并低于会变黑</font></font></p>
+
+<ul>
+<li><em><font><font>阈</font></font></em><font><font>：亮度的阈值，从0.0到1.0，以0.5的默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageAdaptiveThresholdFilter</font></font></strong><font><font>：确定围绕像素的局部亮度上，然后才像素的黑色，如果它是一个局部亮度低于白色，如果以上。</font><font>这可以用于在不同的光照条件下挑选文本。</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：用于背景平均像素模糊半径，为4的默认倍数。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageAverageLuminanceThresholdFilter</font></font></strong><font><font>：这适用于一个阈值操作，其中所述阈值基于场景的平均亮度正不断调整。</font></font></p>
+
+<ul>
+<li><em><font><font>thresholdMultiplier</font></font></em><font><font>：这是平均亮度将为了在最后的阈值使用到达相乘的一个因素。</font><font>默认情况下，这是1.0。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHistogramFilter</font></font></strong><font><font>：此分析传入的图像，并创建与每个颜色值出现频率的输出直方图。</font><font>该滤波器的输出是3像素高，256像素宽的图像，其中心（垂直）像素包含对应于发生各种颜色值的频率的像素。</font><font>每个颜色值占据256个宽度位置中的一个，从左边的0到右边的255。</font><font>可以针对各个颜色通道（kGPUImageHistogramRed，kGPUImageHistogramGreen，kGPUImageHistogramBlue），图像的亮度（kGPUImageHistogramLuminance）或者一次针对所有三个颜色通道（kGPUImageHistogramRGB）生成该直方图。</font></font></p>
+
+<ul>
+<li><em><font><font>downsamplingFactor</font></font></em><font><font>：不是每一个像素采样，这决定了图像中的哪个部分进行采样。</font><font>默认情况下，这是16，最小为1.这是需要防止饱和直方图，它只能记录256个像素的每个颜色值，在它变得重载之前。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHistogramGenerator</font></font></strong><font><font>：这是一个特殊的过滤器，因为它的主要目的与GPUImageHistogramFilter工作。</font><font>它生成由GPUImageHistogramFilter生成的颜色直方图的输出表示，但它可以重新用于显示其他类型的值。</font><font>它采取一个图像，看中心（垂直）像素。</font><font>然后它在输出纹理中的单独彩色图表中绘制RGB分量的数值。</font><font>您可能需要强制此过滤器的大小，以使其输出可见。</font></font></p></li>
+<li><p><strong><font><font>GPUImageAverageColor</font></font></strong><font><font>：该处理的输入图像，并确定场景的平均色，通过平均RGBA部件对于图像中的每个像素。</font><font>缩减过程用于在GPU上逐步下采样源图像，随后在CPU上进行短平均计算。</font><font>此过滤器的输出无意义，但您需要将colorAverageProcessingFinishedBlock属性设置为一个包含四个颜色分量和一个帧时间的块，并对它们执行某些操作。</font></font></p></li>
+<li><p><strong><font><font>GPUImageLuminosity</font></font></strong><font><font>：像GPUImageAverageColor，这降低了其平均亮度的图像。</font><font>你需要设置luminosityProcessingFinishedBlock来处理这个过滤器的输出，它只返回一个光度值和一个帧时间。</font></font></p></li>
+<li><p><strong><font><font>GPUImageChromaKeyFilter</font></font></strong><font><font>：对于图像中的一个给定的颜色，设置阿尔法通道为0。这是类似于GPUImageChromaKeyBlendFilter，只是代替在用于匹配的颜色，这并不在第二图像拍摄第二图像的混合，只是把一个给定的颜色透明。</font></font></p>
+
+<ul>
+<li><em><font><font>thresholdSensitivity</font></font></em><font><font>：一个色彩搭配如何接近需要存在的目标颜色进行更换（0.4默认）</font></font></li>
+<li><em><font><font>平滑</font></font></em><font><font>：如何顺利融入了色彩搭配（0.1默认）</font></font></li>
+</ul></li>
+</ul>
+
+<h3><a id="user-content-image-processing" class="anchor" href="https://github.com/BradLarson/GPUImage#image-processing" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>图像处理</font></font></h3>
+
+<ul>
+<li><p><strong><font><font>GPUImageTransformFilter</font></font></strong><font><font>：这适用于任意的2-D或3-D变换的图像</font></font></p>
+
+<ul>
+<li><em><font><font>的AffineTransform</font></font></em><font><font>：这需要在CGAffineTransform在2-D调整图像</font></font></li>
+<li><em><font><font>的Transform3D</font></font></em><font><font>：这需要一个CATransform3D的3-D来操纵图像</font></font></li>
+<li><em><font><font>ignoreAspectRatio</font></font></em><font><font>：缺省情况下，变换图像的纵横比被保持，但是这可以被设置为YES，以使独立的宽高比变换</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageCropFilter</font></font></strong><font><font>：该裁剪图像以一个特定的区域中，然后在过滤器上的下一个阶段只通过该区域</font></font></p>
+
+<ul>
+<li><em><font><font>cropRegion</font></font></em><font><font>：一个矩形区域裁剪的图像，归一化从0.0到坐标- 1.0。</font><font>（0.0，0.0）位置在图像的左上角。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageLanczosResamplingFilter</font></font></strong><font><font>：这可以让你上调或使用兰克泽斯重采样，这将导致比标准的线性或三线性插值明显更优质的下采样图像。</font><font>只需使用-forceProcessingAtSize：设置过滤器的目标输出分辨率，并且将为该新大小重新采样图像。</font></font></p></li>
+<li><p><strong><font><font>GPUImageSharpenFilter</font></font></strong><font><font>：图像锐化</font></font></p>
+
+<ul>
+<li><em><font><font>锐度</font></font></em><font><font>：锐度调整申请（-4.0 - 4.0，0.0为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageUnsharpMaskFilter</font></font></strong><font><font>：适用的USM锐化</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：底层高斯模糊的模糊半径。</font><font>默认值为4.0。</font></font></li>
+<li><em><font><font>强度</font></font></em><font><font>：锐化的强度，从在多达0.0，以1.0的默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageGaussianBlurFilter</font></font></strong><font><font>：硬件优化，变半径高斯模糊</font></font></p>
+
+<ul>
+<li><em><font><font>texelSpacingMultiplier</font></font></em><font><font>：一种用于纹理像素之间的间隔，从在多达0.0，以1.0的默认倍数。</font><font>调整这可能会稍微增加模糊强度，但会在结果中引入伪像。</font><font>强烈建议先使用其他参数，然后触摸此一个。</font></font></li>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：在像素A的半径以用于模糊，具有2.0的默认值。</font><font>这调整了高斯分布函数中的σ变量。</font></font></li>
+<li><em><font><font>blurRadiusAsFractionOfImageWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>blurRadiusAsFractionOfImageHeight</font></font></em><font><font>：设置这些属性将允许模糊半径与图像的大小比例</font></font></li>
+<li><em><font><font>blurPasses</font></font></em><font><font>：的次数，以顺序地模糊输入的图像。</font><font>过程越多，过滤器越慢。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageBoxBlurFilter</font></font></strong><font><font>：硬件优化，变半径框模糊</font></font></p>
+
+<ul>
+<li><em><font><font>texelSpacingMultiplier</font></font></em><font><font>：一种用于纹理像素之间的间隔，从在多达0.0，以1.0的默认倍数。</font><font>调整这可能会稍微增加模糊强度，但会在结果中引入伪像。</font><font>强烈建议先使用其他参数，然后触摸此一个。</font></font></li>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：在像素A的半径以用于模糊，具有2.0的默认值。</font><font>这调整了高斯分布函数中的σ变量。</font></font></li>
+<li><em><font><font>blurRadiusAsFractionOfImageWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>blurRadiusAsFractionOfImageHeight</font></font></em><font><font>：设置这些属性将允许模糊半径与图像的大小比例</font></font></li>
+<li><em><font><font>blurPasses</font></font></em><font><font>：的次数，以顺序地模糊输入的图像。</font><font>过程越多，过滤器越慢。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSingleComponentGaussianBlurFilter</font></font></strong><font><font>：在GPUImageGaussianBlurFilter的修改，只有红色成分上运行</font></font></p>
+
+<ul>
+<li><em><font><font>texelSpacingMultiplier</font></font></em><font><font>：一种用于纹理像素之间的间隔，从在多达0.0，以1.0的默认倍数。</font><font>调整这可能会稍微增加模糊强度，但会在结果中引入伪像。</font><font>强烈建议先使用其他参数，然后触摸此一个。</font></font></li>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：在像素A的半径以用于模糊，具有2.0的默认值。</font><font>这调整了高斯分布函数中的σ变量。</font></font></li>
+<li><em><font><font>blurRadiusAsFractionOfImageWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>blurRadiusAsFractionOfImageHeight</font></font></em><font><font>：设置这些属性将允许模糊半径与图像的大小比例</font></font></li>
+<li><em><font><font>blurPasses</font></font></em><font><font>：的次数，以顺序地模糊输入的图像。</font><font>过程越多，过滤器越慢。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageGaussianSelectiveBlurFilter</font></font></strong><font><font>：高斯模糊，一个圆形区域内保留焦点</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：在像素A的半径以用于模糊，具有5.0的默认值。</font><font>这调整了高斯分布函数中的σ变量。</font></font></li>
+<li><em><font><font>excludeCircleRadius</font></font></em><font><font>：圆形区域的半径被排除在模糊</font></font></li>
+<li><em><font><font>excludeCirclePoint</font></font></em><font><font>：圆形区域的中心被排除在模糊</font></font></li>
+<li><em><font><font>excludeBlurSize</font></font></em><font><font>：区域的模糊部分和清晰圆圈之间的大小</font></font></li>
+<li><em><font><font>的aspectRatio</font></font></em><font><font>：所述图像的纵横比，用于调整在焦区域的圆度。</font><font>默认情况下，这与图像宽高比相匹配，但您可以覆盖此值。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageGaussianBlurPositionFilter</font></font></strong><font><font>：所述GPUImageGaussianSelectiveBlurFilter的倒数，只在一个特定的圆施加模糊</font></font></p>
+
+<ul>
+<li><em><font><font>blurSize</font></font></em><font><font>：一个模糊的规模倍增，从上了0.0，与1.0的默认</font></font></li>
+<li><em><font><font>blurCenter</font></font></em><font><font>：中心模糊，默认为0.5,0.5</font></font></li>
+<li><em><font><font>blurRadius</font></font></em><font><font>：半径为模糊，默认为1.0</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageiOSBlurFilter</font></font></strong><font><font>：试图复制像控制中心的地方在iOS 7中使用的背景虚化。</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：在像素A的半径以用于模糊，用12.0默认。</font><font>这调整了高斯分布函数中的σ变量。</font></font></li>
+<li><em><font><font>饱和度</font></font></em><font><font>：饱和度从0.0（完全地不饱和）到2.0（最大饱和度），0.8范围与正常水平</font></font></li>
+<li><em><font><font>下采样</font></font></em><font><font>：在何种程度上对下采样，然后上采样输入的图像的高斯模糊内最小化计算，以4.0的默认。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageMedianFilter</font></font></strong><font><font>：取三个颜色成分的中间值，在一个3×3的区域</font></font></p></li>
+<li><p><strong><font><font>GPUImageBilateralFilter</font></font></strong><font><font>：双边模糊，它试图模糊相似的颜色值，同时保持锋利的边缘</font></font></p>
+
+<ul>
+<li><em><font><font>texelSpacingMultiplier</font></font></em><font><font>：一个用于文本之间的间距倍增器读取范围从0.0最多，为4.0默认</font></font></li>
+<li><em><font><font>distanceNormalizationFactor</font></font></em><font><font>：中央颜色和样品的颜色，用8.0默认之间的距离归一化因子。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageTiltShiftFilter</font></font></strong><font><font>：一个模拟移轴镜头的效果</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：底层模糊的半径，以像素为单位。</font><font>默认情况下为7.0。</font></font></li>
+<li><em><font><font>topFocusLevel</font></font></em><font><font>：在焦区域中的图像中的顶部的归一化的位置，此值应低于bottomFocusLevel，默认0.4</font></font></li>
+<li><em><font><font>bottomFocusLevel</font></font></em><font><font>：对焦区域在图像中的底部位置归，此值应高于topFocusLevel，默认为0.6</font></font></li>
+<li><em><font><font>focusFallOffRate</font></font></em><font><font>：在该图像变得模糊远离焦点对准区域的比率，默认0.2</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImage3x3ConvolutionFilter</font></font></strong><font><font>：违背了图像一个3x3卷积核</font></font></p>
+
+<ul>
+<li><em><font><font>convolutionKernel</font></font></em><font><font>：卷积内核是值的3×3矩阵应用到像素和其周围的8个像素。</font><font>矩阵以行主要顺序指定，左上角的像素为one.one，右下角为三。</font><font>如果矩阵中的值不等于1.0，则图像可以变亮或变暗。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSobelEdgeDetectionFilter</font></font></strong><font><font>：Sobel边缘检测，边缘为白色高亮</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>edgeStrength</font></font></em><font><font>：调整滤波器的动态范围。</font><font>值越高，边缘越强，但可以使强度色空间饱和。</font><font>默认值为1.0。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImagePrewittEdgeDetectionFilter</font></font></strong><font><font>：普鲁伊特边缘检测，边缘为白色高亮</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>edgeStrength</font></font></em><font><font>：调整滤波器的动态范围。</font><font>值越高，边缘越强，但可以使强度色空间饱和。</font><font>默认值为1.0。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageThresholdEdgeDetectionFilter</font></font></strong><font><font>：执行Sobel边缘检测，但适用的而不是给逐渐强度值阈</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>edgeStrength</font></font></em><font><font>：调整滤波器的动态范围。</font><font>值越高，边缘越强，但可以使强度色空间饱和。</font><font>默认值为1.0。</font></font></li>
+<li><em><font><font>阈值</font></font></em><font><font>：高于此阈值的任何优势将是黑色的，和下方的白色东西。</font><font>范围从0.0到1.0，默认为0.8</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageCannyEdgeDetectionFilter</font></font></strong><font><font>：此使用完整Canny算子过程突出一个像素宽的边缘</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：对于高斯模糊底层的模糊半径。</font><font>默认值为2.0。</font></font></li>
+<li><em><font><font>blurTexelSpacingMultiplier</font></font></em><font><font>：基础模糊纹理像素间距乘数。</font><font>默认值为1.0。</font></font></li>
+<li><em><font><font>upperThreshold</font></font></em><font><font>：高于此阈值的梯度幅值的任何边缘会通过，并在最后的结果显示出来。</font><font>默认值为0.4。</font></font></li>
+<li><em><font><font>lowerThreshold</font></font></em><font><font>：低于这个阈值梯度幅值任何边缘会失败，并从最终结果中删除。</font><font>默认值为0.1。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHarrisCornerDetectionFilter</font></font></strong><font><font>：运行一个输入图像上的Harris角点检测算法，并与角点作为白色像素和其他一切黑色产生图像。</font><font>可以设置cornersDetectedBlock，并且您将在回调中为您想要执行的任何其他操作提供一个角点列表（标准化的0..1 X，Y坐标）。</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：底层高斯模糊的半径。</font><font>默认值为2.0。</font></font></li>
+<li><em><font><font>灵敏度</font></font></em><font><font>：施加到调整在过滤器中产生的cornerness地图的动态范围的内部缩放因子。</font><font>默认值为5.0。</font></font></li>
+<li><em><font><font>阈值</font></font></em><font><font>：在该点被检测为角阈值。</font><font>这可以根据大小，照明条件和iOS设备相机类型显着变化，因此可能需要一些实验来适当的情况。</font><font>默认值为0.20。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageNobleCornerDetectionFilter</font></font></strong><font><font>：运行Harris角探测器上的高贵变种。</font><font>它的行为如上所述的哈里斯检测器。</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：底层高斯模糊的半径。</font><font>默认值为2.0。</font></font></li>
+<li><em><font><font>灵敏度</font></font></em><font><font>：施加到调整在过滤器中产生的cornerness地图的动态范围的内部缩放因子。</font><font>默认值为5.0。</font></font></li>
+<li><em><font><font>阈值</font></font></em><font><font>：在该点被检测为角阈值。</font><font>这可以根据大小，照明条件和iOS设备相机类型显着变化，因此可能需要一些实验来适当的情况。</font><font>默认值为0.2。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageShiTomasiCornerDetectionFilter</font></font></strong><font><font>：运行时，托马西特征检测器。</font><font>它的行为如上所述的哈里斯检测器。</font></font></p>
+
+<ul>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：底层高斯模糊的半径。</font><font>默认值为2.0。</font></font></li>
+<li><em><font><font>灵敏度</font></font></em><font><font>：施加到调整在过滤器中产生的cornerness地图的动态范围的内部缩放因子。</font><font>默认值为1.5。</font></font></li>
+<li><em><font><font>阈值</font></font></em><font><font>：在该点被检测为角阈值。</font><font>这可以根据大小，照明条件和iOS设备相机类型显着变化，因此可能需要一些实验来适当的情况。</font><font>默认值为0.2。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageNonMaximumSuppressionFilter</font></font></strong><font><font>：目前只用作Harris角点检测过滤器的一部分，这将采样1个像素中的每个像素周围并确定中心像素的红色通道是该区域的最大。</font><font>如果是，它停留。</font><font>如果不是，则对于所有颜色分量将其设置为0。</font></font></p></li>
+<li><p><strong><font><font>GPUImageXYDerivativeFilter</font></font></strong><font><font>：Harris角点检测过滤器内的内部组件，该计算的像素以这一个，上面和下面这一个象素的平方差和的这两个不同的产品的左边和右边之间的平方差。</font></font></p></li>
+<li><p><strong><font><font>GPUImageCrosshairGenerator</font></font></strong><font><font>：该绘制一系列十字线的图像上，最常用的用于识别机器视觉功能。</font><font>它不像其他过滤器那样接受标准图像，而是在其-renderCrosshairsFromArray：count：方法中包含一系列点，这是实际绘图。</font><font>您将需要强制此过滤器以您需要的特定输出大小进行渲染。</font></font></p>
+
+<ul>
+<li><em><font><font>crosshairWidth</font></font></em><font><font>：宽度，以像素为单位的十字线将屏幕绘制。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageDilationFilter</font></font></strong><font><font>：此执行图像扩张操作，其中在一个长方形附近红色通道的最大强度被用于该像素的强度。</font><font>初始化时指定要采样的矩形区域的半径，范围为1-4个像素。</font><font>这是为了用于灰度图像，它扩展明亮的区域。</font></font></p></li>
+<li><p><strong><font><font>GPUImageRGBDilationFilter</font></font></strong><font><font>：这是一样的GPUImageDilationFilter，只是此作用于所有颜色通道，不只是红色通道。</font></font></p></li>
+<li><p><strong><font><font>GPUImageErosionFilter</font></font></strong><font><font>：此执行图像侵蚀操作，其中在一个长方形附近红色通道的最小强度用于该像素的强度。</font><font>初始化时指定要采样的矩形区域的半径，范围为1-4个像素。</font><font>这是为了与灰度图像一起使用，它扩展黑暗区域。</font></font></p></li>
+<li><p><strong><font><font>GPUImageRGBErosionFilter</font></font></strong><font><font>：这是一样的GPUImageErosionFilter，只是此作用于所有颜色通道，不只是红色通道。</font></font></p></li>
+<li><p><strong><font><font>GPUImageOpeningFilter</font></font></strong><font><font>：此执行对图像的红色通道的侵蚀，随后由相同的半径的扩张。</font><font>初始化时设置半径，范围为1-4个像素。</font><font>这过滤掉较小的亮区。</font></font></p></li>
+<li><p><strong><font><font>GPUImageRGBOpeningFilter</font></font></strong><font><font>：这是一样的GPUImageOpeningFilter，只是此作用于所有颜色通道，不只是红色通道。</font></font></p></li>
+<li><p><strong><font><font>GPUImageClosingFilter</font></font></strong><font><font>：此执行对图像的红色通道一个扩张，随后用相同的半径的侵蚀。</font><font>初始化时设置半径，范围为1-4个像素。</font><font>这过滤掉较小的暗区。</font></font></p></li>
+<li><p><strong><font><font>GPUImageRGBClosingFilter</font></font></strong><font><font>：这是一样的GPUImageClosingFilter，只是此作用于所有颜色通道，不只是红色通道。</font></font></p></li>
+<li><p><strong><font><font>GPUImageLocalBinaryPatternFilter</font></font></strong><font><font>：该执行8周围像素的红色通道的强度和所述中心之一的比较，编码在成为该像素强度的比特串进行比较的结果。</font><font>最低有效位是右上角比较，逆时针转向以正确的比较结束作为最高有效位。</font></font></p></li>
+<li><p><strong><font><font>GPUImageLowPassFilter</font></font></strong><font><font>：这适用于一个低通滤波器，以输入视频帧。</font><font>这基本上累积了当前帧与当前帧的加权滚动平均值。它可以用于去噪视频，添加运动模糊或用于创建高通滤波器。</font></font></p>
+
+<ul>
+<li><em><font><font>filterStrength</font></font></em><font><font>：这控制由先前的累积帧混合与当前的程度。</font><font>范围从0.0到1.0，默认值为0.5。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHighPassFilter</font></font></strong><font><font>：这适用于一个高通滤波器，以输入视频帧。</font><font>这是低通滤波器的反相，示出了当前帧与先前帧的加权滚动平均值之间的差。</font><font>这对于运动检测最有用。</font></font></p>
+
+<ul>
+<li><em><font><font>filterStrength</font></font></em><font><font>：此控制由该前面的累计帧混合，然后从当前减去的程度。</font><font>范围从0.0到1.0，默认值为0.5。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageMotionDetector</font></font></strong><font><font>：这是基于高通滤波器的运动检测器。</font><font>您设置motionDetectionBlock，并且在每个传入帧，它将给您场景中任何检测到的运动的质心（在标准化的X，Y坐标）以及场景的运动强度。</font></font></p>
+
+<ul>
+<li><em><font><font>lowPassFilterStrength</font></font></em><font><font>：这控制幕后用于建立传入帧相比基线的低通滤波器的强度。</font><font>范围从0.0到1.0，默认值为0.5。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHoughTransformLineDetector</font></font></strong><font><font>：检测利用霍夫图像中的线条转换成平行的坐标空间。</font><font>这种方法完全基于由布尔诺科技大学的Graph @ FIT研究小组开发的PC线路过程，并在其出版物中描述：M.Dubská，J.Havel，和A.Helout。</font><font>使用平行坐标和OpenGL的线的实时检测。</font><font>Proceedings of SCCG 2011，Bratislava，SK，p。</font><font>7（</font></font><a href="http://medusa.fit.vutbr.cz/public/data/papers/2011-SCCG-Dubska-Real-Time-Line-Detection-Using-PC-and-OpenGL.pdf"><font><font>http://medusa.fit.vutbr.cz/public/data/papers/2011-SCCG-Dubska-Real-Time-Line-Detection-Using-PC-and-OpenGL.pdf</font></font></a><font><font>）和M.Dubská，J 。Havel，和A. Herout。</font><font>PClines  - 使用平行坐标的线检测。</font><font>2011 IEEE Con​​ference on Computer Vision and Pattern Recognition（CVPR），p。</font><font>1489- 1494（</font></font><a href="http://medusa.fit.vutbr.cz/public/data/papers/2011-CVPR-Dubska-PClines.pdf"><font><font>http://medusa.fit.vutbr.cz/public/data/papers/2011-CVPR-Dubska-PClines.pdf</font></font></a><font><font>）。</font></font></p>
+
+<ul>
+<li><em><font><font>edgeThreshold</font></font></em><font><font>：对于其中点被检测为属于用于确定线路的边缘的阈值。</font><font>默认值为0.9。</font></font></li>
+<li><em><font><font>lineDetectionThreshold</font></font></em><font><font>：为其局部最大值被检测为在平行坐标空间属于一个行的阈值。</font><font>默认值为0.20。</font></font></li>
+<li><em><font><font>linesDetectedBlock</font></font></em><font><font>：此块叫上检测线，通常在每个处理帧。</font><font>包含m，b对（y = mx + b）中的归一化斜率和截距的AC阵列与所检测的线的数目和视频帧的当前时间戳的计数一起被传入。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageLineGenerator</font></font></strong><font><font>：其产生可以覆盖场景线A辅助类。</font><font>这些线的颜色可以使用-setLineColorRed：green：blue：</font></font></p>
+
+<ul>
+<li><em><font><font>的lineWidth</font></font></em><font><font>：行以像素为单位的宽度，为1.0默认。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageMotionBlurFilter</font></font></strong><font><font>：应用定向运动模糊图像</font></font></p>
+
+<ul>
+<li><em><font><font>blurSize</font></font></em><font><font>：一个模糊的大小乘数，从上了0.0，与1.0的默认</font></font></li>
+<li><em><font><font>blurAngle</font></font></em><font><font>：模糊，在度角的方向。</font><font>0度。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageZoomBlurFilter</font></font></strong><font><font>：应用定向运动模糊图像</font></font></p>
+
+<ul>
+<li><em><font><font>blurSize</font></font></em><font><font>：一个模糊的大小乘数，从上了0.0，与1.0的默认</font></font></li>
+<li><em><font><font>blurCenter</font></font></em><font><font>：模糊的归一化中心。</font><font>（0.5，0.5）</font></font></li>
+</ul></li>
+</ul>
+
+<h3><a id="user-content-blending-modes" class="anchor" href="https://github.com/BradLarson/GPUImage#blending-modes" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>混合模式</font></font></h3>
+
+<ul>
+<li><p><strong><font><font>GPUImageChromaKeyBlendFilter</font></font></strong><font><font>：有选择地替换第一图像中的彩色与第二图像</font></font></p>
+
+<ul>
+<li><em><font><font>thresholdSensitivity</font></font></em><font><font>：一个色彩搭配如何接近需要存在的目标颜色进行更换（0.4默认）</font></font></li>
+<li><em><font><font>平滑</font></font></em><font><font>：如何顺利融入了色彩搭配（0.1默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageDissolveBlendFilter</font></font></strong><font><font>：适用于2个图像的混合溶解</font></font></p>
+
+<ul>
+<li><em><font><font>混合</font></font></em><font><font>：与该第二图像覆盖所述第一度（0.0 - 1.0，以0.5作为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageMultiplyBlendFilter</font></font></strong><font><font>：适用于两个图像的色彩增殖</font></font></p></li>
+<li><p><strong><font><font>GPUImageAddBlendFilter</font></font></strong><font><font>：适用于两个图像的添加剂共混物</font></font></p></li>
+<li><p><strong><font><font>GPUImageSubtractBlendFilter</font></font></strong><font><font>：适用于2个图像的融合消减</font></font></p></li>
+<li><p><strong><font><font>GPUImageDivideBlendFilter</font></font></strong><font><font>：适用于2个图像的融合师</font></font></p></li>
+<li><p><strong><font><font class="">GPUImageOverlayBlendFilter</font></font></strong><font><font class="">：适用于两个图像的叠加融合</font></font></p></li>
+<li><p><strong><font><font class="">GPUImageDarkenBlendFilter</font></font></strong><font><font class="">：通过拍摄的图像之间的每个颜色分量的最小值混纺两个图像</font></font></p></li>
+<li><p><strong><font><font>GPUImageLightenBlendFilter</font></font></strong><font><font>：通过拍摄的图像之间的每个颜色分量的最大值混纺两个图像</font></font></p></li>
+<li><p><strong><font><font>GPUImageColorBurnBlendFilter</font></font></strong><font><font>：适用于两个图像的颜色加深混合</font></font></p></li>
+<li><p><strong><font><font>GPUImageColorDodgeBlendFilter</font></font></strong><font><font>：应用颜色减淡两个图像交融</font></font></p></li>
+<li><p><strong><font><font>GPUImageScreenBlendFilter</font></font></strong><font><font>：适用于两个图像的屏幕融合</font></font></p></li>
+<li><p><strong><font><font>GPUImageExclusionBlendFilter</font></font></strong><font><font>：适用于两幅图像的融合排除</font></font></p></li>
+<li><p><strong><font><font>GPUImageDifferenceBlendFilter</font></font></strong><font><font>：适用于两个图像的差异融合</font></font></p></li>
+<li><p><strong><font><font>GPUImageHardLightBlendFilter</font></font></strong><font><font>：应用强光混合两幅图像的</font></font></p></li>
+<li><p><strong><font><font>GPUImageSoftLightBlendFilter</font></font></strong><font><font>：应用柔和的光线混合两幅图像的</font></font></p></li>
+<li><p><strong><font><font>GPUImageAlphaBlendFilter</font></font></strong><font><font>：共混物基于所述第二的alpha通道在第一第二图像，</font></font></p>
+
+<ul>
+<li><em><font><font>混合</font></font></em><font><font>：与该第二图像覆盖所述第一度（0.0 - 1.0 1.0作为默认）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSourceOverBlendFilter</font></font></strong><font><font>：适用于在两个图像融合的源</font></font></p></li>
+<li><p><strong><font><font>GPUImageColorBurnBlendFilter</font></font></strong><font><font>：适用于两个图像的颜色加深混合</font></font></p></li>
+<li><p><strong><font><font>GPUImageColorDodgeBlendFilter</font></font></strong><font><font>：应用颜色减淡两个图像交融</font></font></p></li>
+<li><p><strong><font><font>GPUImageNormalBlendFilter</font></font></strong><font><font>：适用于2个图像的融合正常</font></font></p></li>
+<li><p><strong><font><font>GPUImageColorBlendFilter</font></font></strong><font><font>：适用于两个图像的彩色融合</font></font></p></li>
+<li><p><strong><font><font>GPUImageHueBlendFilter</font></font></strong><font><font>：适用于两个图像的色相交融</font></font></p></li>
+<li><p><strong><font><font>GPUImageSaturationBlendFilter</font></font></strong><font><font>：适用于两个图像的饱和混合</font></font></p></li>
+<li><p><strong><font><font>GPUImageLuminosityBlendFilter</font></font></strong><font><font>：适用于2个图像的亮度混合</font></font></p></li>
+<li><p><strong><font><font>GPUImageLinearBurnBlendFilter</font></font></strong><font><font>：应用2个图像的线性燃烧混合物</font></font></p></li>
+<li><p><strong><font><font>GPUImagePoissonBlendFilter</font></font></strong><font><font>：适用于2个图像的混合泊松</font></font></p>
+
+<ul>
+<li><em><font><font>混合</font></font></em><font><font>：将范围从0.0（仅图像1）到1.0（仅图像2梯度），1.0为正常水平</font></font></li>
+<li><em><font><font>numIterations</font></font></em><font><font>：的次数来传播梯度。</font><font>如果你想获得任何接近收敛，这个高达100或甚至1000。</font><font>是的，这会很慢。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageMaskFilter</font></font></strong><font><font>：口罩使用另一个图像</font></font></p></li>
+</ul>
+
+<h3><a id="user-content-visual-effects" class="anchor" href="https://github.com/BradLarson/GPUImage#visual-effects" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>视觉效果</font></font></h3>
+
+<ul>
+<li><p><strong><font><font>GPUImagePixellateFilter</font></font></strong><font><font>：适用于图像或视频在像素化的影响</font></font></p>
+
+<ul>
+<li><em><font><font>fractionalWidthOfAPixel</font></font></em><font><font>：像素多大是，作为图像的宽度和高度的一小部分（0.0 - 1.0，默认0.05）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImagePolarPixellateFilter</font></font></strong><font><font>：适用于图像或视频在像素化效果的基础上，极坐标，而不是那些笛卡尔</font></font></p>
+
+<ul>
+<li><em><font><font>中心</font></font></em><font><font>：哪些应用像素化的中心，默认为（0.5,0.5）</font></font></li>
+<li><em><font><font>pixelSize</font></font></em><font><font>：分数像素大小，分割成的宽度和高度的部件。</font><font>默认值为（0.05，0.05）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImagePolkaDotFilter</font></font></strong><font><font>：打破图像成彩色圆点常规网格内</font></font></p>
+
+<ul>
+<li><em><font><font>fractionalWidthOfAPixel</font></font></em><font><font>：圆点多大是，作为图像的宽度和高度的一小部分（0.0 - 1.0，默认0.05）</font></font></li>
+<li><em><font><font>dotScaling</font></font></em><font><font>：正在采取哪些每个网格空间部分由一个点，从0.0到1.0 0.9默认值。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageHalftoneFilter</font></font></strong><font><font>：应用半色调效果的图像，如新闻打印</font></font></p>
+
+<ul>
+<li><em><font><font>fractionalWidthOfAPixel</font></font></em><font><font>：半色调点如何大是，作为图像的宽度和高度的一小部分（0.0 - 1.0，默认0.05）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageCrosshatchFilter</font></font></strong><font><font>：该图像转换成黑-白色交叉线图案</font></font></p>
+
+<ul>
+<li><em><font><font>crossHatchSpacing</font></font></em><font><font>：图像的小数宽度为间隔的剖面线使用。</font><font>默认值为0.03。</font></font></li>
+<li><em><font><font>的lineWidth</font></font></em><font><font>：为交叉阴影线的相对宽度。</font><font>默认值为0.003。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSketchFilter</font></font></strong><font><font>：转换视频，看起来像一个草图。</font><font>这只是Sobel边缘检测滤镜的颜色反转</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>edgeStrength</font></font></em><font><font>：调整滤波器的动态范围。</font><font>值越高，边缘越强，但可以使强度色空间饱和。</font><font>默认值为1.0。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageThresholdSketchFilter</font></font></strong><font><font>：同草图滤波器，仅边缘被阈值化，而不是被灰度</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>edgeStrength</font></font></em><font><font>：调整滤波器的动态范围。</font><font>值越高，边缘越强，但可以使强度色空间饱和。</font><font>默认值为1.0。</font></font></li>
+<li><em><font><font>阈值</font></font></em><font><font>：高于此阈值的任何优势将是黑色的，和下方的白色东西。</font><font>范围从0.0到1.0，默认为0.8</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageToonFilter</font></font></strong><font><font>：这使用Sobel边缘检测周围放置的物体黑色边框，然后将它量化存在于图像中，得到一个卡通类质量的图像的颜色。</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>阈值</font></font></em><font><font>：边缘检测的灵敏度，具有较低的值是更敏感。</font><font>范围从0.0到1.0，默认为0.2</font></font></li>
+<li><em><font><font>quantizationLevels</font></font></em><font><font>：色彩层次的数目在最终图像来表示。</font><font>默认为10.0</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSmoothToonFilter</font></font></strong><font><font>：这里使用一个类似的过程作为GPUImageToonFilter，只有它与之前高斯模糊来平滑噪声香椿效果。</font></font></p>
+
+<ul>
+<li><em><font><font>texelWidth</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>texelHeight</font></font></em><font><font>：这些参数影响检测到的边缘的可见</font></font></li>
+<li><em><font><font>blurRadiusInPixels</font></font></em><font><font>：底层高斯模糊的半径。</font><font>默认值为2.0。</font></font></li>
+<li><em><font><font>阈值</font></font></em><font><font>：边缘检测的灵敏度，具有较低的值是更敏感。</font><font>范围从0.0到1.0，默认为0.2</font></font></li>
+<li><em><font><font>quantizationLevels</font></font></em><font><font>：色彩层次的数目在最终图像来表示。</font><font>默认为10.0</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageEmbossFilter</font></font></strong><font><font>：适用于在图像上的压纹效果</font></font></p>
+
+<ul>
+<li><em><font><font>强度</font></font></em><font><font>：压花的强度，从0.0到4.0，以1.0作为正常水平</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImagePosterizeFilter</font></font></strong><font><font>：这降低了色的动态范围划分成的指定的步骤的数量，从而导致图象的卡通般简单着色。</font></font></p>
+
+<ul>
+<li><em><font><font>colorLevels</font></font></em><font><font>：色彩层次的数量，以减少所述图像空间。</font><font>取值范围为1〜256，缺省值为10。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSwirlFilter</font></font></strong><font><font>：创建图像上的漩涡失真</font></font></p>
+
+<ul>
+<li><em><font><font>半径</font></font></em><font><font>：从中心的半径应用失真，具有0.5的默认</font></font></li>
+<li><em><font><font>中心</font></font></em><font><font>：图像（从0标准坐标- 1.0）的中心约该扭曲，使用默认（0.5，0.5）</font></font></li>
+<li><em><font><font>角度</font></font></em><font><font>：扭转的量应用到图像，具有1.0的默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageBulgeDistortionFilter</font></font></strong><font><font>：创建图像上的隆起变形</font></font></p>
+
+<ul>
+<li><em><font><font>半径</font></font></em><font><font>：从中心的半径应用失真，以0.25的默认</font></font></li>
+<li><em><font><font>中心</font></font></em><font><font>：图像（从0标准坐标- 1.0）的中心约该变形，使用默认（0.5，0.5）</font></font></li>
+<li><em><font><font>比例尺</font></font></em><font><font>：失真的量应用，从-1.0到1.0，与0.5的默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImagePinchDistortionFilter</font></font></strong><font><font>：创建图像的失真捏</font></font></p>
+
+<ul>
+<li><em><font><font>半径</font></font></em><font><font>：从中心的半径应用失真，具有1.0的默认</font></font></li>
+<li><em><font><font>中心</font></font></em><font><font>：图像（从0标准坐标- 1.0）的中心约该变形，使用默认（0.5，0.5）</font></font></li>
+<li><em><font><font>比例尺</font></font></em><font><font>：失真的量应用，从-2.0至2.0，与1.0的默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageStretchDistortionFilter</font></font></strong><font><font>：创建图像的拉伸变形</font></font></p>
+
+<ul>
+<li><em><font><font>中心</font></font></em><font><font>：图像（从0标准坐标- 1.0）的中心约该变形，使用默认（0.5，0.5）</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageSphereRefractionFilter</font></font></strong><font><font>：通过一个玻璃球模拟折射</font></font></p>
+
+<ul>
+<li><em><font><font>中心</font></font></em><font><font>：哪些应用失真中心，拥有一个默认值（0.5，0.5）</font></font></li>
+<li><em><font><font>半径</font></font></em><font><font>：失真的半径，范围从0.0到1.0，以0.25的默认</font></font></li>
+<li><em><font><font>refractiveIndex</font></font></em><font><font>：折射为球体的指数，以0.71默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageGlassSphereFilter</font></font></strong><font><font>：同GPUImageSphereRefractionFilter，只有图像不被反转，并有在玻璃边缘结霜一点点</font></font></p>
+
+<ul>
+<li><em><font><font>中心</font></font></em><font><font>：哪些应用失真中心，拥有一个默认值（0.5，0.5）</font></font></li>
+<li><em><font><font>半径</font></font></em><font><font>：失真的半径，范围从0.0到1.0，以0.25的默认</font></font></li>
+<li><em><font><font>refractiveIndex</font></font></em><font><font>：折射为球体的指数，以0.71默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageVignetteFilter</font></font></strong><font><font>：执行晕影效果，在边缘淡出图像</font></font></p>
+
+<ul>
+<li><em><font><font>vignetteCenter</font></font></em><font><font>：该中心在TEX COORDS（CGPoint）的小插曲，与0.5的默认，0.5</font></font></li>
+<li><em><font><font>vignetteColor</font></font></em><font><font>：颜色用于晕影（GPUVector3），用黑色默认</font></font></li>
+<li><em><font><font>vignetteStart</font></font></em><font><font>：从哪里暗角效果开始中心的标准化距离，用0.5的默认</font></font></li>
+<li><em><font><font>vignetteEnd</font></font></em><font><font>：从那里晕影效果结束中心的归一化距离，为0.75默认</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageKuwaharaFilter</font></font></strong><font><font>：桑原图像抽象，从Kyprianidis的工作，等绘制。</font><font>et al。</font><font>在他们的出版物“各向异性Kuwahara过滤在GPU上”在GPU Pro集合。</font><font>这产生了一个油画式的图像，但它是非常计算昂贵的，所以它可能需要几秒钟来渲染一个框架在iPad 2上。这可能最好用于静止图像。</font></font></p>
+
+<ul>
+<li><em><font><font>半径</font></font></em><font><font>：在整数，指定的像素数出从中心像素施加滤波器时，带4的默认较高的值产生更抽象的图像来进行测试，但在更大的处理时间的成本。</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageKuwaharaRadius3Filter</font></font></strong><font><font>：桑原的过滤器的改良版，优化工作在短短的三个像素半径</font></font></p></li>
+<li><p><strong><font><font>GPUImagePerlinNoiseFilter</font></font></strong><font><font>：生成一个完整的Perlin杂点的图像</font></font></p>
+
+<ul>
+<li><em><font><font>colorStart</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>colorFinish</font></font></em><font><font>：颜色范围的声音所产生的</font></font></li>
+<li><em><font><font>规模</font></font></em><font><font>：噪声的比例正在生成</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageCGAColorspaceFilter</font></font></strong><font><font>：模拟CGA显示器的色彩空间</font></font></p></li>
+<li><p><strong><font><font>GPUImageMosaicFilter</font></font></strong><font><font>：这个过滤器需要一个输入地形设置，瓷砖必须在亮度提升。</font><font>它查看输入图像并根据该瓦片的亮度用输入瓦片替换每个显示瓦片。</font><font>这个想法是复制在其他应用程序中看到的ASCII视频过滤器，但是tileset可以是任何东西。</font></font></p>
+
+<ul>
+<li><em><font><font>inputTileSize</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>numTiles</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>displayTileSize</font></font></em><font><font>：</font></font></li>
+<li><em><font><font>colorOn</font></font></em><font><font>：</font></font></li>
+</ul></li>
+<li><p><strong><font><font class="">GPUImageJFAVoronoiFilter</font></font></strong><font><font class="">：生成的Voronoi图，在稍后阶段使用。</font></font></p>
+
+<ul>
+<li><em><font><font>sizeInPixels</font></font></em><font><font>：各个元件的大小</font></font></li>
+</ul></li>
+<li><p><strong><font><font>GPUImageVoronoiConsumerFilter</font></font></strong><font><font>：取在Voronoi图，并使用该过滤传入的图像。</font></font></p>
+
+<ul>
+<li><em><font><font>sizeInPixels</font></font></em><font><font>：各个元件的大小</font></font></li>
+</ul></li>
+</ul>
+
+<p><font><font>您也可以使用类似C的OpenGL着色语言轻松编写自己的自定义过滤器，如上所述。</font></font></p>
+
+<h2><a id="user-content-sample-applications" class="anchor" href="https://github.com/BradLarson/GPUImage#sample-applications" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>示例应用程序</font></font></h2>
+
+<p><font><font>几个示例应用程序与框架源捆绑在一起。</font><font>大多数兼容iPhone和iPad类设备。</font><font>他们试图展示框架的各个方面，并且应该在框架正在开发的时候用作API的最佳例子。</font><font>这些包括：</font></font></p>
+
+<h3><a id="user-content-simpleimagefilter" class="anchor" href="https://github.com/BradLarson/GPUImage#simpleimagefilter" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>SimpleImageFilter</font></font></h3>
+
+<p><font><font class="">捆绑的JPEG图像在启动时加载到应用程序中，应用滤镜，并将结果呈现到屏幕。</font><font>此外，此示例显示了两种接收图像，过滤图像并将其保存到磁盘的方法。</font></font></p>
+
+<h3><a id="user-content-simplevideofilter" class="anchor" href="https://github.com/BradLarson/GPUImage#simplevideofilter" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>SimpleVideoFilter</font></font></h3>
+
+<p><font><font>像素化滤镜应用于实时视频流，使用UISlider控件，可以调整实时视频的像素大小。</font></font></p>
+
+<h3><a id="user-content-simplevideofilefilter" class="anchor" href="https://github.com/BradLarson/GPUImage#simplevideofilefilter" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>SimpleVideoFileFilter</font></font></h3>
+
+<p><font><font class="">从磁盘加载电影文件，应用非锐化遮罩过滤器，并将过滤的结果重新编码为另一个电影。</font></font></p>
+
+<h3><a id="user-content-multiviewfilterexample" class="anchor" href="https://github.com/BradLarson/GPUImage#multiviewfilterexample" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>MultiViewFilterExample</font></font></h3>
+
+<p><font><font>从单个摄像机馈送，四个视图被填充以应用于摄像机的实时滤波器。</font><font>一个是直接相机视频，一个是预编程的棕褐色调，两个是基于着色程序的自定义过滤器。</font></font></p>
+
+<h3><a id="user-content-filtershowcase" class="anchor" href="https://github.com/BradLarson/GPUImage#filtershowcase" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>FilterShowcase</font></font></h3>
+
+<p><font><font class="">这演示了随GPUImage提供的每个过滤器。</font></font></p>
+
+<h3><a id="user-content-benchmarksuite" class="anchor" href="https://github.com/BradLarson/GPUImage#benchmarksuite" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>基准套件</font></font></h3>
+
+<p><font><font>这用于通过针对CPU限制例程和Core Image进行测试来测试整体框架的性能。</font><font>涉及静止图像和视频的基准针对所有三个，在应用中显示结果。</font></font></p>
+
+<h3><a id="user-content-cubeexample" class="anchor" href="https://github.com/BradLarson/GPUImage#cubeexample" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>CubeExample</font></font></h3>
+
+<p><font><font>这展示了GPUImage与OpenGL ES渲染交互的能力。</font><font>从相机捕获帧，将一个棕褐色滤镜应用于它们，然后将它们输入纹理以应用于可以用手指旋转的立方体的表面。</font><font>这个立方体依次被渲染为纹理背景的帧缓冲对象，并且该纹理被反馈到GPUImage中以在渲染到屏幕之前对其应用像素化滤波器。</font></font></p>
+
+<p><font><font>换句话说，这个应用程序的路径是相机 - &gt;棕褐色调滤波器 - &gt;立方体 - &gt;像素滤波器 - &gt;显示。</font></font></p>
+
+<h3><a id="user-content-colorobjecttracking" class="anchor" href="https://github.com/BradLarson/GPUImage#colorobjecttracking" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><font><font>ColorObjectTracking</font></font></h3>
+
+<p><font><font>从我ColorTracking例子的一个版本</font></font><a href="http://www.sunsetlakesoftware.com/2010/10/22/gpu-accelerated-video-processing-mac-and-ios"><font><font>http://www.sunsetlakesoftware.com/2010/10/22/gpu-accelerated-video-processing-mac-and-ios</font></font></a><font><font>移植跨使用GPUImage，这个应用程序使用颜色在一个场景跟踪来自实时相机馈送的对象。</font><font>您可以切换的四个视图包括原始摄像机馈送，具有匹配白色颜色阈值的像素的摄像机馈送，处理的视频，其中位置被编码为通过阈值测试的像素内的颜色，以及最后的实况视频馈送点跟踪所选颜色。</font><font>点击屏幕会将颜色更改为跟踪，以匹配手指下方像素的颜色。</font><font>点击和拖动屏幕上的颜色阈值或多或少的宽恕。</font><font>这在第二个颜色阈值视图上是最明显的。</font></font></p>
+
+<p><font><font>目前，所有处理的最后一步的颜色平均在CPU上完成，所以这是部分是非常慢。</font></font></p>
+</article>
+  </div>
+
+
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div>
+
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container site-footer-container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links float-right">
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact"><font><font>联系GitHub</font></font></a></li>
+      <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api"><font><font>API</font></font></a></li>
+      <li><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training"><font><font>训练</font></font></a></li>
+      <li><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop"><font><font>店</font></font></a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog"><font><font>博客</font></font></a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about"><font><font>关于</font></font></a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage" class="site-footer-mark" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+    <ul class="site-footer-links">
+      <li><font><font>2017年© </font></font><span title="0.11839s从github-fe-a93be76.cp1-iad.github.net"><font><font>GitHub上</font></font></span><font><font>，公司</font></font></li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms"><font><font>条款</font></font></a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy"><font><font>隐私</font></font></a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security"><font><font>安全</font></font></a></li>
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status"><font><font>状态</font></font></a></li>
+        <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help"><font><font>帮帮我</font></font></a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+
+    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+      </button><font><font>
+      您目前无法执行该操作。
+    </font></font></div>
+
+
+      
+      <script crossorigin="anonymous" integrity="sha256-Zqn56lErl9JUZTnyy9fa4XsjdiJQR9FEbgR0XRkDvc0=" src="./GPUImage翻译_files/frameworks-66a9f9ea512b97d2546539f2cbd7dae17b2376225047d1446e04745d1903bdcd.js"></script>
+      <script async="async" crossorigin="anonymous" integrity="sha256-zmb7gmyhkryKf2rVOyKHrpvObjOsdCqzH4cC4Qa3aF4=" src="./GPUImage翻译_files/github-ce66fb826ca192bc8a7f6ad53b2287ae9bce6e33ac742ab31f8702e106b7685e.js"></script>
+      
+      
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <span class="signed-in-tab-flash"><font><font>您使用其他标签或窗口登录。</font></font><a href="https://github.com/BradLarson/GPUImage"><font><font>刷新</font></font></a><font><font>刷新您的会话。</font></font></span>
+      <span class="signed-out-tab-flash"><font><font>您在另一个标签或窗口中退出。</font></font><a href="https://github.com/BradLarson/GPUImage"><font><font>刷新</font></font></a><font><font>刷新您的会话。</font></font></span>
+    </div>
+    <div class="facebox" id="facebox" style="display:none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+    </button>
+  </div>
+</div><div id="goog-gt-tt" class="goog-tooltip skiptranslate" dir="ltr" style="visibility: hidden; left: 638px; top: 17441px; display: none;"><div style="padding: 8px;"><div><div class="logo"><img src="./GPUImage翻译_files/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text">GPUImageDarkenBlendFilter: Blends two images by taking the minimum value of each color component between the images</div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none; opacity: 0;"></div></div>
+
+  
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

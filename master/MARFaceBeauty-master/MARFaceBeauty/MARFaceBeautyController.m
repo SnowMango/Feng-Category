@@ -56,7 +56,7 @@
 @property (nonatomic, strong) NSDictionary *audioSettings;
 @property (nonatomic, strong) NSMutableDictionary *videoSettings;
 
-//******** GPUImage Property ***********
+//******** GPUImage Property ***********/
 @property (nonatomic, strong) GPUImageStillCamera *videoCamera;
 @property (nonatomic, strong) GPUImageFilterGroup *normalFilter;
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
