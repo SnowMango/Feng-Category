@@ -9,6 +9,9 @@
 #import "CustomViewController.h"
 #import "ImageResultViewController.h"
 #import <AssertMacros.h>
+
+static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+
 @interface CustomViewController ()
 {
     CGFloat beginGestureScale;
@@ -23,9 +26,11 @@
 @end
 
 @implementation CustomViewController
+
 - (void)dealloc
 {
-    
+    [self teardownCapture];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,8 +40,41 @@
     [self setupCapture];
     [self startRunning];
 #endif
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDeviceChange:) name:@"" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didOrientationDeviceChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
+
+- (void)didOrientationDeviceChange:(NSNotification *)noti
+{
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    
+//    CGAffineTransform transform ;
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            
+            [self.previewLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            [self.previewLayer  setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(180.))];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self.previewLayer  setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(90.))];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self.previewLayer  setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(-90.))];
+            break;
+        case UIDeviceOrientationFaceUp:
+        case UIDeviceOrientationFaceDown:
+        default: break; // leave the layer in its last known orientation
+    }
+
+}
+
+
+- (BOOL)shouldAutorotate
+{
+    return ([UIDevice currentDevice].orientation == UIInterfaceOrientationPortrait);
+}
+
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -59,10 +97,7 @@
         [self.flashBtn setTitle:flash?@"开":@"关" forState:UIControlStateNormal];
     }
 }
-- (void)dealloc
-{
-    [self teardownCapture];
-}
+
 - (void)teardownCapture
 {
     self.stillImageOutput = nil;
