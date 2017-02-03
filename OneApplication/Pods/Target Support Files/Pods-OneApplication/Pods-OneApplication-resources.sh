@@ -18,9 +18,6 @@ case "${TARGETED_DEVICE_FAMILY}" in
   2)
     TARGET_DEVICE_ARGS="--target-device ipad"
     ;;
-  3)
-    TARGET_DEVICE_ARGS="--target-device tv"
-    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -88,6 +85,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "../../Module/First/Resources/login/login_user_2@2x.png"
   install_resource "../../Module/First/Resources/login/login_user_3@2x.png"
   install_resource "../../Module/Fourth/Resources/FourthMain.storyboard"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_amatorka.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_miss_etikate.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_soft_elegance_1.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_soft_elegance_2.png"
   install_resource "../../Module/Second/Resources/SecondMain.storyboard"
   install_resource "../../Module/Third/Resources/ThirdMain.storyboard"
   install_resource "../../Module/Third/Resources/ThirdCoreData.xcdatamodeld"
@@ -106,6 +108,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "../../Module/First/Resources/login/login_user_2@2x.png"
   install_resource "../../Module/First/Resources/login/login_user_3@2x.png"
   install_resource "../../Module/Fourth/Resources/FourthMain.storyboard"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_amatorka.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_miss_etikate.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_soft_elegance_1.png"
+  install_resource "../../Module/Fourth/Resources/GPUImageRES/lookup_soft_elegance_2.png"
   install_resource "../../Module/Second/Resources/SecondMain.storyboard"
   install_resource "../../Module/Third/Resources/ThirdMain.storyboard"
   install_resource "../../Module/Third/Resources/ThirdCoreData.xcdatamodeld"

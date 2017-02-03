@@ -20,7 +20,7 @@
     LoginView *view = (LoginView*)self.view;
     NSString * defaultUser = [[self localUserList] firstObject];
     [view loadSubView];
-    view.titleLabel.text = @"我是一只猫头鹰";
+    view.titleLabel.text = [NSString stringWithFormat:@"%@",@"我是一只猫头鹰"];
     view.titleLabel.textColor = [UIColor whiteColor];
     if (defaultUser) {
         view.textField1.text = defaultUser;

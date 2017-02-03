@@ -21,10 +21,8 @@
         [device lockForConfiguration:nil];
         if (device.torchMode != AVCaptureTorchModeOn) {
             [device setTorchMode:AVCaptureTorchModeOn];
-            [device setFlashMode:AVCaptureFlashModeOn];
         } else {
             [device setTorchMode:AVCaptureTorchModeOff];
-            [device setFlashMode:AVCaptureFlashModeOff];
         }
         [device unlockForConfiguration];
     }

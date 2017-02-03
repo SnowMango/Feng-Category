@@ -10,12 +10,34 @@
 #import "ImageResultViewController.h"
 #import <AssertMacros.h>
 
-static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
+static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180.0;};
+static CGContextRef CreateCGBitmapContextForSize(CGSize size);
+static CGContextRef CreateCGBitmapContextForSize(CGSize size)
+{
+    CGContextRef    context = NULL;
+    CGColorSpaceRef colorSpace;
+    int             bitmapBytesPerRow;
+    
+    bitmapBytesPerRow = (size.width * 4);
+    
+    colorSpace = CGColorSpaceCreateDeviceRGB();
+    context = CGBitmapContextCreate (NULL,
+                                     size.width,
+                                     size.height,
+                                     8,      // bits per component
+                                     bitmapBytesPerRow,
+                                     colorSpace,
+                                     kCGImageAlphaPremultipliedLast);
+    CGContextSetAllowsAntialiasing(context, NO);
+    CGColorSpaceRelease( colorSpace );
+    return context;
+}
 
 @interface CustomViewController ()
 {
     CGFloat beginGestureScale;
     CGFloat effectiveScale;
+    UIDeviceOrientation deviceOrientation;
 }
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 
@@ -46,39 +68,35 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 - (void)didOrientationDeviceChange:(NSNotification *)noti
 {
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    
-//    CGAffineTransform transform ;
-    switch (orientation) {
-        case UIDeviceOrientationPortrait:
-            
-            [self.previewLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
-            break;
-        case UIDeviceOrientationPortraitUpsideDown:
-            [self.previewLayer  setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(180.))];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            [self.previewLayer  setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(90.))];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            [self.previewLayer  setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(-90.))];
-            break;
-        case UIDeviceOrientationFaceUp:
-        case UIDeviceOrientationFaceDown:
-        default: break; // leave the layer in its last known orientation
+
+    if (orientation == UIDeviceOrientationPortrait) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        [self.previewLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
+        self.previewLayer.frame = self.previewView.bounds;
+        deviceOrientation = orientation;
+    }else if (UIDeviceOrientationIsLandscape(orientation)){
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        deviceOrientation = orientation;
+        NSInteger angle = 180*orientation-630;
+        [self.previewLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(angle))];
+            self.previewLayer.frame = self.previewView.bounds;
     }
-
 }
-
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
 
 - (BOOL)shouldAutorotate
 {
-    return ([UIDevice currentDevice].orientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self startRunning];
+    [self didOrientationDeviceChange:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -117,10 +135,9 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 {
     //session
     AVCaptureSession * session = [AVCaptureSession new];
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-//        [session setSessionPreset:AVCaptureSessionPreset1280x720];
-//    else
-//        [session setSessionPreset:AVCaptureSessionPresetPhoto];
+    //画质
+    session.sessionPreset = AVCaptureSessionPresetHigh;
+    
     self.session = session;
 
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -136,7 +153,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     if ([self.session canAddInput:self.videoInput]) {
         [self.session addInput:self.videoInput];
     }
-    effectiveScale = 0;
+    effectiveScale = 1;
     if (error) {
         NSLog(@"%@",error);
         return;
@@ -185,10 +202,11 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 - (IBAction)takePicture
 {
     AVCaptureConnection *stillImageConnection = [self.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
-    UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
+    UIDeviceOrientation curDeviceOrientation = deviceOrientation;
     AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
     stillImageConnection.videoOrientation= avcaptureOrientation;
     stillImageConnection.videoScaleAndCropFactor = effectiveScale;
+    BOOL isFront = self.videoInput.device.position == AVCaptureDevicePositionFront;
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:stillImageConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if (error) {
             NSLog(@"%@", error);
@@ -201,9 +219,75 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 //        NSDictionary *attachmentsDic = (__bridge NSDictionary *)attachments;
 //        NSLog(@"attachmentsDic= %@",attachmentsDic);
         UIImage *image = [UIImage imageWithData:jpegData];
+        image = [self newSquareOverlayedImageForCGImage:image.CGImage withOrientation:curDeviceOrientation frontFacing:isFront];
         [self performSegueWithIdentifier:@"customImage" sender:image];
     }];
 }
+/* 修正相机图片的方向 */
+- (UIImage*)newSquareOverlayedImageForCGImage:(CGImageRef)        backgroundImage
+                                 withOrientation:(UIDeviceOrientation)orientation
+                                     frontFacing:(BOOL)isFrontFacing
+{
+    CGImageRef returnImage = NULL;
+    CGRect backgroundImageRect = CGRectMake(0., 0., CGImageGetWidth(backgroundImage), CGImageGetHeight(backgroundImage));
+    CGContextRef bitmapContext = CreateCGBitmapContextForSize(backgroundImageRect.size);
+    CGContextClearRect(bitmapContext, backgroundImageRect);
+    CGContextDrawImage(bitmapContext, backgroundImageRect, backgroundImage);
+    CGFloat rotationDegrees = 0.;
+    
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            rotationDegrees = 90.;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            if (isFrontFacing) rotationDegrees = 180.;
+            else rotationDegrees = 0.;
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            if (isFrontFacing) rotationDegrees = 0.;
+            else rotationDegrees = 180.;
+            break;
+
+        default:break; // leave the layer in its last known orientation
+    }
+
+    returnImage = CGBitmapContextCreateImage(bitmapContext);
+    
+    CGContextRelease (bitmapContext);
+    UIImage *newimage = [UIImage imageWithCGImage:returnImage];
+    newimage = [self imageRotatedByDegrees:rotationDegrees image:newimage];
+    return newimage;
+}
+
+- (UIImage *)imageRotatedByDegrees:(CGFloat)degrees image:(UIImage *)image
+{
+    // calculate the size of the rotated view's containing box for our drawing space
+    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0,image.size.width, image.size.height)];
+    CGAffineTransform t = CGAffineTransformMakeRotation(DegreesToRadians(degrees));
+    rotatedViewBox.transform = t;
+    CGSize rotatedSize = rotatedViewBox.frame.size;
+
+    
+    // Create the bitmap context
+    UIGraphicsBeginImageContext(rotatedSize);
+    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+    
+    // Move the origin to the middle of the image so we will rotate and scale around the center.
+    CGContextTranslateCTM(bitmap, rotatedSize.width/2, rotatedSize.height/2);
+    
+    //   // Rotate the image context
+    CGContextRotateCTM(bitmap, DegreesToRadians(degrees));
+    
+    // Now, draw the rotated/scaled image into the context
+    CGContextScaleCTM(bitmap, 1.0, -1.0);
+    CGContextDrawImage(bitmap, CGRectMake(-image.size.width / 2, -image.size.height / 2, image.size.width, image.size.height), [image CGImage]);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+    
+}
+
 #pragma mark - 切换摄像头
 -(void)switchCamera
 {
@@ -260,9 +344,8 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 - (BOOL)setDeviceFlash:(AVCaptureFlashMode)mode
 {
     AVCaptureDevice *device = self.videoInput.device;
-    if ([device lockForConfiguration:nil]) {
+    if (device.position == AVCaptureDevicePositionBack&&[device lockForConfiguration:nil]) {
         device.torchMode = (NSInteger)mode;
-        device.flashMode = mode;
         [device unlockForConfiguration];
         return YES;
     }
@@ -272,7 +355,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 
 -(AVCaptureFlashMode)deviceFlash
 {
-    return self.videoInput.device.flashMode;
+    return self.videoInput.device.torchMode;
 }
 #pragma mark -
 

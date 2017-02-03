@@ -182,7 +182,7 @@ NSString * const kRootMainStoryboardKey = @"UIMainStoryboardFile";
 }
 - (BOOL)shouldAutorotate
 {
-    return YES;
+    return [[self root_topViewController] shouldAutorotate];
 }
 
 

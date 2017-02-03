@@ -2,9 +2,6 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 
 
-target 'ulucuAutoPatrolShop'  do
-    project '../ulucuAutoPatrolShop/ulucuAutoPatrolShop'
-end
 
 target 'OneApplication’ do
     project 'OneApplication'

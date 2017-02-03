@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ulucuAutoPatrolShop.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Server.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +32,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35AB2F2305329019D69FEDD6AFC36A07</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5A5844B20210E866CD13547FD4E722A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>810229F88D26E0725126A491126D05CD</key>
+		<key>851EC854A84E041A58C7006770498060</key>
 		<dict>
 			<key>primary</key>
 			<true/>
