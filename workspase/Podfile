@@ -1,0 +1,52 @@
+platform :ios, '8.0'
+inhibit_all_warnings!
+
+
+workspace 'MyWorkspace'
+
+target 'CocoapodsDemo'  do
+    project 'CocoapodsDemo/CocoapodsDemo'
+end
+
+target 'Demo1Framework' do
+    project 'Demo1Framework/Demo1Framework'
+
+end
+
+target 'Demo2Framework' do
+    project 'Demo2Framework/Demo2Framework'
+
+end
+
+target 'Demo1Bundle' do
+    project 'Demo1Framework/Demo1Framework'
+    
+end
+
+target 'Reasource' do
+    project 'CocoapodsDemo/CocoapodsDemo'
+    
+end
+
+
+post_install do |installer|
+    names = Array.new
+    APP_NAME = "CocoapodsDemo"
+    installer.pods_project.targets.each do |target|
+        if !(target.name == "Pods-"+APP_NAME)
+            framework_name = target.name.slice(5,target.name.length)
+            names<<framework_name
+        end
+    end
+    puts names
+    
+    File.open("Build-framework.feng", "w") do |aFile|
+        content=""
+        names.each do |name|
+            content += name+"\n"
+        end
+        content[content.length - 1] = ""
+        aFile.syswrite(content)
+    end
+end
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>CocoapodsDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Reasource.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6A66CBAD1E495BFC000C2D46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A66CBC61E495BFC000C2D46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A66CBD11E495BFC000C2D46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A73B7E71E516A1700FF1FB5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AD692A31E4DB275000168D1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
