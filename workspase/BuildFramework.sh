@@ -29,29 +29,23 @@ DESTINATION_PATH="${CONFIGURATION_BUILD_DIR}/$APP_PRODUCT"
 
 source_install()
 {
-    source_file=$0
+    source_file=$1
     #copy bundle
-    cp -R ${SOURCE_PATH}/$source_file ${DESTINATION_PATH}/$source_file
+    rsync -av "${SOURCE_PATH}/$source_file" "${DESTINATION_PATH}"
     #remove info.plist
     rm -rf ${DESTINATION_PATH}/$source_file/info.plist
     #remove 签名
     rm -rf ${DESTINATION_PATH}/$source_file/_CodeSignature
     #remove 可执行文件
     rm -rf ${DESTINATION_PATH}/$source_file/$source_file
-
 }
-
 
 for file in ${ALL_BUILD_FILE}
 do
-    if [[ ${file} == *\.bundle ]]; then
-cat << EOF >> ${outputfile}
-copy ${file}
-EOF
-    source_install $file
+    if [[ "$file" == *\.bundle ]]; then
+        source_install $file
     fi
 done
 
-open ${outputfile}
 
 
