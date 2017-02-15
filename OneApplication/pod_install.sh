@@ -7,5 +7,4 @@
 #  Copyright © 2017年 zhengfeng. All rights reserved.
 
 cd `dirname $0`
-echo `pwd`
 pod install

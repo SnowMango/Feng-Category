@@ -14,17 +14,18 @@
 @end
 
 @implementation LaunchViewController
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.reminderLabel.text = @"轻轻点击跳转到Guide...";
 //    NSRunLoop
+     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
