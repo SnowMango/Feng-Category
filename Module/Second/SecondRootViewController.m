@@ -20,7 +20,7 @@
     
 //    NSArray *familyNames =[[NSArray alloc]initWithArray:[UIFont familyNames]];
    
-    
+//    AVSampleBufferDisplayLayer
 }
 
 - (void)touchId

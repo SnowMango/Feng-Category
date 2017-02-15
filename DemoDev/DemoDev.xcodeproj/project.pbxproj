@@ -223,6 +223,7 @@
 		6A6747E91E31F01100930CE3 /* GPUImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6747E41E31F01100930CE3 /* GPUImageView.m */; };
 		6A67E6EE1E2BA6D8002FB2D0 /* AddObjViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A67E6ED1E2BA6D8002FB2D0 /* AddObjViewController.m */; };
 		6A67E6F11E2BA894002FB2D0 /* BingRelationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A67E6F01E2BA894002FB2D0 /* BingRelationViewController.m */; };
+		6A77B5191E5407EE000786E5 /* FilterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B5181E5407EE000786E5 /* FilterObject.m */; };
 		6A8B0D251E2E5BB5009482F5 /* Module+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0D241E2E5BB5009482F5 /* Module+Tools.m */; };
 		6A8B0D281E2E5C47009482F5 /* ToolMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8B0D271E2E5C47009482F5 /* ToolMain.storyboard */; };
 		6A8B0D2B1E2E5D28009482F5 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B0D2A1E2E5D28009482F5 /* ToolViewController.m */; };
@@ -645,6 +646,8 @@
 		6A67E6ED1E2BA6D8002FB2D0 /* AddObjViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddObjViewController.m; sourceTree = "<group>"; };
 		6A67E6EF1E2BA894002FB2D0 /* BingRelationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingRelationViewController.h; sourceTree = "<group>"; };
 		6A67E6F01E2BA894002FB2D0 /* BingRelationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingRelationViewController.m; sourceTree = "<group>"; };
+		6A77B5171E5407EE000786E5 /* FilterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterObject.h; sourceTree = "<group>"; };
+		6A77B5181E5407EE000786E5 /* FilterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterObject.m; sourceTree = "<group>"; };
 		6A8B0D231E2E5BB5009482F5 /* Module+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Module+Tools.h"; sourceTree = "<group>"; };
 		6A8B0D241E2E5BB5009482F5 /* Module+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Module+Tools.m"; sourceTree = "<group>"; };
 		6A8B0D271E2E5C47009482F5 /* ToolMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolMain.storyboard; sourceTree = "<group>"; };
@@ -1268,6 +1271,8 @@
 		6A8B0DCD1E2FC580009482F5 /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				6A77B5171E5407EE000786E5 /* FilterObject.h */,
+				6A77B5181E5407EE000786E5 /* FilterObject.m */,
 				6A6745FC1E31EF0100930CE3 /* GPUImage */,
 				6A8B0DCE1E2FC5A2009482F5 /* SystemViewController.h */,
 				6A8B0DCF1E2FC5A2009482F5 /* SystemViewController.m */,
@@ -1468,6 +1473,7 @@
 				6A6747791E31F00200930CE3 /* GPUImageHistogramGenerator.m in Sources */,
 				6A6747A21E31F00200930CE3 /* GPUImagePinchDistortionFilter.m in Sources */,
 				6A6747431E31F00200930CE3 /* GPUImageAverageColor.m in Sources */,
+				6A77B5191E5407EE000786E5 /* FilterObject.m in Sources */,
 				6A67476E1E31F00200930CE3 /* GPUImageGaussianSelectiveBlurFilter.m in Sources */,
 				6A6747901E31F00200930CE3 /* GPUImageMedianFilter.m in Sources */,
 				6A6747D11E31F00200930CE3 /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
