@@ -19,13 +19,13 @@
 - (void)dealloc
 {
     self.upd =nil;
-//    self.tcp =nil;
+    self.tcp =nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.upd = [P2PUDPSever new];
-//    self.tcp = [P2PTCPSever new];
+    self.tcp = [P2PTCPSever new];
 }
 
 

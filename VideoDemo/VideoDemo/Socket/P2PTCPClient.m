@@ -45,6 +45,11 @@
     NSLog(@"socket连接成功");
 }
 
+- (void)socket:(GCDAsyncSocket *)socket didWriteDataWithTag:(long)tag
+{
+    
+}
+
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
     NSLog(@"数据读取成功");

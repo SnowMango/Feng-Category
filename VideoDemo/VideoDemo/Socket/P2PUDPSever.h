@@ -13,7 +13,8 @@
     GCDAsyncUdpSocket * udp_sever;
 }
 
-@property (nonatomic) BOOL autoUpdate;
+@property (nonatomic, copy  ) NSString      *socketHost;
+@property (nonatomic, assign) UInt16         socketPort;
 
 - (void)closeUDP;
 

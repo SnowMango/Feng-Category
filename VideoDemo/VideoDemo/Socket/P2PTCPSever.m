@@ -40,14 +40,14 @@
     NSLog(@"AcceptNew");
 }
 
-- (void)socket:(GCDAsyncSocket *)socket didConnectToHost:(NSString *)host port:(uint16_t)port{
-    
-    NSLog(@"didConnect");
-}
-
 - (void)socket:(GCDAsyncSocket *)socket didWriteDataWithTag:(long)tag
 {
-    [self sendMessage:socket];
+    
+}
+
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+    NSLog(@"tcp Read %@", data);
 }
 
 -(void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(nullable NSError *)err

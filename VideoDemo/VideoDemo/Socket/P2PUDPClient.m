@@ -23,30 +23,13 @@
     if (self) {
 //        dispatch_queue_t clientQueue = dispatch_queue_create("com.mango.p2pClient", DISPATCH_QUEUE_SERIAL);
         udp_client = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-        NSError* err = nil;
-        [udp_client bindToPort:9000 error:&err];
-        if (err) {
-            NSLog(@"udp client bind fail");
-        }else{
-            NSLog(@"udp client Receiving success");
-        }
-
-        self.autoUpdate =YES;
-        err =nil;
-        [udp_client beginReceiving:&err];
-        
-        if (err) {
-            NSLog(@"udp client Receiving fail");
-        }else{
-            NSLog(@"udp client Receiving success");
-        }
-        
-//        [self sendMessage];
+        [udp_client bindToPort:9000 error:nil];
+        [udp_client beginReceiving:nil];
     }
     return self;
 }
 
-- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
+- (void)udpSocket:(GCDAsyncUdpSocket *)socket didReceiveData:(NSData *)data
       fromAddress:(NSData *)address
 withFilterContext:(nullable id)filterContext
 {
@@ -55,18 +38,6 @@ withFilterContext:(nullable id)filterContext
     [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
     NSLog(@"udp client data:C->%@, sever address:%@:%d", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], host,port);
 }
-- (void)sendMessage
-{
-    NSData *message = [[UIDevice currentDevice].name dataUsingEncoding:NSUTF8StringEncoding];
-    [udp_client sendData:message toHost:@"172.30.220.17" port:9000 withTimeout:-1 tag:0];
-}
-
-
-- (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError  * _Nullable)error
-{
-    
-}
-
 
 - (void)closeUDP
 {

@@ -13,8 +13,6 @@
     GCDAsyncUdpSocket * udp_client;
 }
 
-@property (nonatomic) BOOL autoUpdate;
-
 - (void)closeUDP;
 
 @end
