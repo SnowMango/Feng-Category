@@ -16,6 +16,8 @@
 @property (nonatomic, copy  ) NSString      *socketHost;
 @property (nonatomic, assign) UInt16         socketPort;
 
+- (void)sendMsg:(NSData *)data withHosts:(NSArray *)hosts;
+
 - (void)closeUDP;
 
 @end

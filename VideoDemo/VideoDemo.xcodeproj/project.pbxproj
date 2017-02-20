@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A66E9441E5730C500B5A02A /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9431E5730C500B5A02A /* LiveViewController.m */; };
+		6A66E9471E5730DF00B5A02A /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9461E5730DF00B5A02A /* PlayerViewController.m */; };
+		6A66E94A1E5730FB00B5A02A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A66E9491E5730FB00B5A02A /* AVFoundation.framework */; };
+		6A66E94C1E57310700B5A02A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A66E94B1E57310700B5A02A /* VideoToolbox.framework */; };
+		6A66E9591E5767C700B5A02A /* NSError+VTPError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9501E5767C700B5A02A /* NSError+VTPError.m */; };
+		6A66E95A1E5767C700B5A02A /* VTPCompressionSession+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9531E5767C700B5A02A /* VTPCompressionSession+Properties.m */; };
+		6A66E95B1E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9551E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m */; };
+		6A66E95C1E5767C700B5A02A /* VTPCompressionSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9571E5767C700B5A02A /* VTPCompressionSession.m */; };
+		6A66E9601E57E57C00B5A02A /* H264Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E95F1E57E57C00B5A02A /* H264Decoder.m */; };
+		6A66E9651E591C0000B5A02A /* AAPLEAGLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9641E591C0000B5A02A /* AAPLEAGLLayer.m */; };
 		6A77B5291E5419FA000786E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B5281E5419FA000786E5 /* main.m */; };
 		6A77B52C1E5419FA000786E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B52B1E5419FA000786E5 /* AppDelegate.m */; };
 		6A77B52F1E5419FA000786E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B52E1E5419FA000786E5 /* ViewController.m */; };
@@ -24,6 +34,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A66E9421E5730C500B5A02A /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
+		6A66E9431E5730C500B5A02A /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
+		6A66E9451E5730DF00B5A02A /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		6A66E9461E5730DF00B5A02A /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		6A66E9491E5730FB00B5A02A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6A66E94B1E57310700B5A02A /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		6A66E94F1E5767C700B5A02A /* NSError+VTPError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+VTPError.h"; sourceTree = "<group>"; };
+		6A66E9501E5767C700B5A02A /* NSError+VTPError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+VTPError.m"; sourceTree = "<group>"; };
+		6A66E9511E5767C700B5A02A /* VideoToolboxPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoToolboxPlus.h; sourceTree = "<group>"; };
+		6A66E9521E5767C700B5A02A /* VTPCompressionSession+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VTPCompressionSession+Properties.h"; sourceTree = "<group>"; };
+		6A66E9531E5767C700B5A02A /* VTPCompressionSession+Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VTPCompressionSession+Properties.m"; sourceTree = "<group>"; };
+		6A66E9541E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VTPCompressionSession+PropertiesFromDictionary.h"; sourceTree = "<group>"; };
+		6A66E9551E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VTPCompressionSession+PropertiesFromDictionary.m"; sourceTree = "<group>"; };
+		6A66E9561E5767C700B5A02A /* VTPCompressionSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTPCompressionSession.h; sourceTree = "<group>"; };
+		6A66E9571E5767C700B5A02A /* VTPCompressionSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTPCompressionSession.m; sourceTree = "<group>"; };
+		6A66E95E1E57E57C00B5A02A /* H264Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264Decoder.h; sourceTree = "<group>"; };
+		6A66E95F1E57E57C00B5A02A /* H264Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264Decoder.m; sourceTree = "<group>"; };
+		6A66E9631E591C0000B5A02A /* AAPLEAGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLEAGLLayer.h; sourceTree = "<group>"; };
+		6A66E9641E591C0000B5A02A /* AAPLEAGLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLEAGLLayer.m; sourceTree = "<group>"; };
 		6A77B5241E5419FA000786E5 /* VideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A77B5281E5419FA000786E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A77B52A1E5419FA000786E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,17 +87,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A66E94C1E57310700B5A02A /* VideoToolbox.framework in Frameworks */,
+				6A66E94A1E5730FB00B5A02A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A66E9481E5730FB00B5A02A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A66E94B1E57310700B5A02A /* VideoToolbox.framework */,
+				6A66E9491E5730FB00B5A02A /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A66E94D1E5767C700B5A02A /* VideoToolboxPlus */ = {
+			isa = PBXGroup;
+			children = (
+				6A66E94F1E5767C700B5A02A /* NSError+VTPError.h */,
+				6A66E9501E5767C700B5A02A /* NSError+VTPError.m */,
+				6A66E9511E5767C700B5A02A /* VideoToolboxPlus.h */,
+				6A66E9521E5767C700B5A02A /* VTPCompressionSession+Properties.h */,
+				6A66E9531E5767C700B5A02A /* VTPCompressionSession+Properties.m */,
+				6A66E9541E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.h */,
+				6A66E9551E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m */,
+				6A66E9561E5767C700B5A02A /* VTPCompressionSession.h */,
+				6A66E9571E5767C700B5A02A /* VTPCompressionSession.m */,
+			);
+			path = VideoToolboxPlus;
+			sourceTree = "<group>";
+		};
+		6A66E95D1E57E55600B5A02A /* H264Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				6A66E95E1E57E57C00B5A02A /* H264Decoder.h */,
+				6A66E95F1E57E57C00B5A02A /* H264Decoder.m */,
+			);
+			path = H264Decoder;
+			sourceTree = "<group>";
+		};
 		6A77B51B1E5419FA000786E5 = {
 			isa = PBXGroup;
 			children = (
 				6A77B5261E5419FA000786E5 /* VideoDemo */,
 				6A77B5251E5419FA000786E5 /* Products */,
+				6A66E9481E5730FB00B5A02A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +149,7 @@
 		6A77B5261E5419FA000786E5 /* VideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6A66E94D1E5767C700B5A02A /* VideoToolboxPlus */,
 				6A77B5411E542343000786E5 /* Socket */,
 				6A77B53E1E542078000786E5 /* Video */,
 				6A77B52A1E5419FA000786E5 /* AppDelegate.h */,
@@ -109,6 +176,9 @@
 		6A77B53E1E542078000786E5 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				6A66E9631E591C0000B5A02A /* AAPLEAGLLayer.h */,
+				6A66E9641E591C0000B5A02A /* AAPLEAGLLayer.m */,
+				6A66E95D1E57E55600B5A02A /* H264Decoder */,
 				6A77B53F1E542078000786E5 /* Client */,
 				6A77B5401E542078000786E5 /* Sever */,
 			);
@@ -120,6 +190,8 @@
 			children = (
 				6A77B5591E5431AC000786E5 /* ClientViewController.h */,
 				6A77B55A1E5431AC000786E5 /* ClientViewController.m */,
+				6A66E9451E5730DF00B5A02A /* PlayerViewController.h */,
+				6A66E9461E5730DF00B5A02A /* PlayerViewController.m */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -129,6 +201,8 @@
 			children = (
 				6A77B55C1E5431D5000786E5 /* SeverViewController.h */,
 				6A77B55D1E5431D5000786E5 /* SeverViewController.m */,
+				6A66E9421E5730C500B5A02A /* LiveViewController.h */,
+				6A66E9431E5730C500B5A02A /* LiveViewController.m */,
 			);
 			path = Sever;
 			sourceTree = "<group>";
@@ -195,7 +269,7 @@
 		6A77B51C1E5419FA000786E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = zhengfeng;
 				TargetAttributes = {
 					6A77B5231E5419FA000786E5 = {
@@ -246,12 +320,20 @@
 				6A77B54F1E542616000786E5 /* P2PUDPSever.m in Sources */,
 				6A77B55E1E5431D5000786E5 /* SeverViewController.m in Sources */,
 				6A77B5521E542632000786E5 /* P2PUDPClient.m in Sources */,
+				6A66E9651E591C0000B5A02A /* AAPLEAGLLayer.m in Sources */,
+				6A66E9471E5730DF00B5A02A /* PlayerViewController.m in Sources */,
+				6A66E9601E57E57C00B5A02A /* H264Decoder.m in Sources */,
 				6A77B52F1E5419FA000786E5 /* ViewController.m in Sources */,
+				6A66E95A1E5767C700B5A02A /* VTPCompressionSession+Properties.m in Sources */,
+				6A66E9441E5730C500B5A02A /* LiveViewController.m in Sources */,
 				6A77B52C1E5419FA000786E5 /* AppDelegate.m in Sources */,
 				6A77B5551E542651000786E5 /* P2PTCPSever.m in Sources */,
+				6A66E95C1E5767C700B5A02A /* VTPCompressionSession.m in Sources */,
 				6A77B5291E5419FA000786E5 /* main.m in Sources */,
 				6A77B5581E54266C000786E5 /* P2PTCPClient.m in Sources */,
+				6A66E95B1E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m in Sources */,
 				6A77B55B1E5431AC000786E5 /* ClientViewController.m in Sources */,
+				6A66E9591E5767C700B5A02A /* NSError+VTPError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +377,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -343,6 +426,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -412,6 +496,7 @@
 				6A77B53D1E5419FA000786E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -21,22 +21,28 @@
 {
     self = [super init];
     if (self) {
-        self.socketHost = @"172.30.220.17";
-        self.socketPort = 8800;
-        
+        tcp_client = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+        self.socketHost = @"192.168.0.101";
         [self socketConnectDeviceServer];
     }
     return self;
 }
 
+- (void)setSocketHost:(NSString *)socketHost
+{
+    if ([_socketHost isEqualToString:socketHost]) {
+        return;
+    }
+    _socketHost = socketHost;
+//    [self socketConnectDeviceServer];
+}
+
 -(void)socketConnectDeviceServer{
     if ([tcp_client isConnected]) {
         [tcp_client disconnect];
-        tcp_client = nil;
     }
-//    dispatch_queue_t clientQueue = dispatch_queue_create("com.mango.tcpClient", DISPATCH_QUEUE_CONCURRENT);
-    tcp_client = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError *error = nil;
+    
     [tcp_client connectToHost:self.socketHost onPort:self.socketPort withTimeout:-1 error:&error];
 }
 

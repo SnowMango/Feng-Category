@@ -9,34 +9,50 @@
 #import "ClientViewController.h"
 #import "P2PTCPClient.h"
 #import "P2PUDPClient.h"
+#import "PlayerViewController.h"
 
-@interface ClientViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) P2PUDPClient* udp;
-@property (nonatomic, strong) P2PTCPClient* tcp;
+@interface ClientViewController ()<UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+//@property (nonatomic, strong) P2PTCPClient* tcp;
 @end
 
 @implementation ClientViewController
 
-- (void)dealloc{
-    self.udp = nil;
-//    self.tcp = nil;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.udp = [P2PUDPClient new];
-//     self.tcp = [P2PTCPClient new];
+//    self.tcp = [P2PTCPClient new];
+//    self.tcp.socketHost = @"192.168.0.101";
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)startLook:(NSString *)ip
 {
-    return 0;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = nil;
-    return cell;
+
+    if (!ip) {
+        ip = @"192.168.0.101";
+    }
+    [self performSegueWithIdentifier:@"Player" sender:ip];
+    
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    if (textField.text) {
+        [self startLook:nil];
+    }
+    return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Player"]) {
+        PlayerViewController *vc = segue.destinationViewController;
+        vc.ip = sender;
+    }
+}
 
 @end

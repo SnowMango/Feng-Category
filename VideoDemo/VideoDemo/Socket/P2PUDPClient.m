@@ -21,7 +21,7 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-//        dispatch_queue_t clientQueue = dispatch_queue_create("com.mango.p2pClient", DISPATCH_QUEUE_SERIAL);
+        dispatch_queue_t clientQueue = dispatch_queue_create("com.mango.p2pClient", DISPATCH_QUEUE_SERIAL);
         udp_client = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
         [udp_client bindToPort:9000 error:nil];
         [udp_client beginReceiving:nil];
@@ -36,7 +36,11 @@ withFilterContext:(nullable id)filterContext
     NSString *host = nil;
     uint16_t port = 0;
     [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
-    NSLog(@"udp client data:C->%@, sever address:%@:%d", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], host,port);
+    NSLog(@"udp client data:C->%@, sever address:%@:%d", @(data.length), host,port);
+    if (self.delegete && [self.delegete respondsToSelector:@selector(udpClient:refreshData:)]) {
+        [self.delegete udpClient:self refreshData:data];
+    }
+    [udp_client beginReceiving:nil];
 }
 
 - (void)closeUDP

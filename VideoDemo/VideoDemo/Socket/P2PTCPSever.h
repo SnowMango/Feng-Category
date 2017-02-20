@@ -15,4 +15,6 @@
 }
 @property (nonatomic, assign) UInt16         socketPort;
 
+- (NSArray *)allContentHost;
++ (NSString *)localIP;
 @end
