@@ -26,7 +26,6 @@
 @implementation PlayerView
 - (void)dealloc{
     self.udp = nil;
-    [self.videoLayer removeObserver:self forKeyPath:@"status"];
 }
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -51,19 +50,11 @@
     self.videoLayer.videoGravity = AVLayerVideoGravityResizeAspect;
     self.videoLayer.backgroundColor = [[UIColor greenColor] CGColor];
     
-    [self.videoLayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    //set Timebase
-       
     // connecting the videolayer with the view
     
     [[self layer] addSublayer:_videoLayer];
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"status"]) {
-        NSLog(@"status == %@ ==", change[NSKeyValueChangeNewKey]);
-    }
-}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -118,7 +109,12 @@
 {
     if (sampleBuffer){
         CFRetain(sampleBuffer);
-        [layer enqueueSampleBuffer:sampleBuffer];
+        if (layer.isReadyForMoreMediaData) {
+            [layer enqueueSampleBuffer:sampleBuffer];
+        }else{
+            NSLog(@"no ready");
+        }
+        
         CFRelease(sampleBuffer);
         if (layer.status == AVQueuedSampleBufferRenderingStatusFailed){
             NSLog(@"ERROR: %@", layer.error);
