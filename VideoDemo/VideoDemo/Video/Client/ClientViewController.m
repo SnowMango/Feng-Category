@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
-//@property (nonatomic, strong) P2PTCPClient* tcp;
 @end
 
 @implementation ClientViewController
@@ -23,15 +22,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.tcp = [P2PTCPClient new];
-//    self.tcp.socketHost = @"192.168.0.101";
 }
 
 - (void)startLook:(NSString *)ip
 {
 
     if (!ip) {
-        ip = @"192.168.0.101";
+        ip = @"172.30.220.250";
     }
     [self performSegueWithIdentifier:@"Player" sender:ip];
     

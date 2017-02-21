@@ -6,6 +6,7 @@ workspace 'MyWorkspace'
 
 target 'CocoapodsDemo'  do
     project 'CocoapodsDemo/CocoapodsDemo'
+
 end
 
 target 'Demo1Framework' do

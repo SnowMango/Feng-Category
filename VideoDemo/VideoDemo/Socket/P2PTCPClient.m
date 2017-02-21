@@ -22,8 +22,7 @@
     self = [super init];
     if (self) {
         tcp_client = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-        self.socketHost = @"192.168.0.101";
-        [self socketConnectDeviceServer];
+        self.socketPort = 8800;
     }
     return self;
 }
@@ -34,7 +33,7 @@
         return;
     }
     _socketHost = socketHost;
-//    [self socketConnectDeviceServer];
+    [self socketConnectDeviceServer];
 }
 
 -(void)socketConnectDeviceServer{
@@ -49,11 +48,13 @@
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"socket连接成功");
+    
+    
 }
 
 - (void)socket:(GCDAsyncSocket *)socket didWriteDataWithTag:(long)tag
 {
-    
+    NSLog(@"sever断开连接");
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag

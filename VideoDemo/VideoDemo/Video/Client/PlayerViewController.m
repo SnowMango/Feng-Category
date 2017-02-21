@@ -12,23 +12,21 @@
 #import "P2PTCPClient.h"
 #import "P2PUDPClient.h"
 #import "H264Decoder.h"
-#import "AAPLEAGLLayer.h"
+
 
 @interface PlayerView : UIView<P2PUDPClientUpdate>
-{
-    AAPLEAGLLayer *_glLayer;
-}
+
 @property (nonatomic, strong) P2PUDPClient* udp;
 @property (nonatomic, strong) AVSampleBufferDisplayLayer *videoLayer;
 
 @property (nonatomic, strong) H264Decoder*decoder;
 
-//@property (nonatomic, weak) IBOutlet UIImageView *showView;
 @end
 
 @implementation PlayerView
 - (void)dealloc{
     self.udp = nil;
+    [self.videoLayer removeObserver:self forKeyPath:@"status"];
 }
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -46,30 +44,88 @@
     self.udp = [P2PUDPClient new];
     self.udp.delegete = self;
     self.decoder = [H264Decoder new];
+
     self.videoLayer = [[AVSampleBufferDisplayLayer alloc] init];
     self.videoLayer.bounds = self.bounds;
     self.videoLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     self.videoLayer.videoGravity = AVLayerVideoGravityResizeAspect;
     self.videoLayer.backgroundColor = [[UIColor greenColor] CGColor];
     
+    [self.videoLayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     //set Timebase
        
     // connecting the videolayer with the view
     
     [[self layer] addSublayer:_videoLayer];
 }
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"status"]) {
+        NSLog(@"status == %@ ==", change[NSKeyValueChangeNewKey]);
+    }
+}
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.videoLayer.bounds = self.bounds;
+    self.videoLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+}
 
 - (void)udpClient:(P2PUDPClient*)client refreshData:(NSData *)data
 {
-//    NSLog(@" length=%@", @(data.length));
-   CMSampleBufferRef sampleBuffer= [self.decoder decode:data];
+    NSLog(@" length=%@", @(data.length));
+//    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
+//    if (PixelBuffer) {
+//        [self dispatchPixelBuffer:PixelBuffer];
+//    }
     
-    size_t length = CMSampleBufferGetTotalSampleSize(sampleBuffer);
-    NSLog( @"sampleBuffer length= %@", @(length));
+    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
     if (sampleBuffer) {
-        [_videoLayer enqueueSampleBuffer:sampleBuffer];
+        CFArrayRef attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, YES);
+        CFMutableDictionaryRef dict = (CFMutableDictionaryRef)CFArrayGetValueAtIndex(attachments, 0);
+        CFDictionarySetValue(dict, kCMSampleAttachmentKey_DisplayImmediately, kCFBooleanTrue);
+        [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
         CFRelease(sampleBuffer);
     }
+    
+}
+- (void)dispatchPixelBuffer:(CVPixelBufferRef) pixelBuffer
+{
+    if (!pixelBuffer){
+        return;
+    }
+    //不设置具体时间信息
+    CMSampleTimingInfo timing = {kCMTimeInvalid, kCMTimeInvalid, kCMTimeInvalid};
+    //获取视频信息
+    CMVideoFormatDescriptionRef videoInfo = NULL;
+    OSStatus result = CMVideoFormatDescriptionCreateForImageBuffer(NULL, pixelBuffer, &videoInfo);
+    NSParameterAssert(result == 0 && videoInfo != NULL);
+    
+    CMSampleBufferRef sampleBuffer = NULL;
+    result = CMSampleBufferCreateForImageBuffer(kCFAllocatorDefault,pixelBuffer, true, NULL, NULL, videoInfo, &timing, &sampleBuffer);
+    NSParameterAssert(result == 0 && sampleBuffer != NULL);
+    CFRelease(pixelBuffer);
+    CFRelease(videoInfo);
+    
+    CFArrayRef attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, YES);
+    CFMutableDictionaryRef dict = (CFMutableDictionaryRef)CFArrayGetValueAtIndex(attachments, 0);
+    CFDictionarySetValue(dict, kCMSampleAttachmentKey_DisplayImmediately, kCFBooleanTrue);
+    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
+    CFRelease(sampleBuffer);
+}
+
+- (void)enqueueSampleBuffer:(CMSampleBufferRef) sampleBuffer toLayer:(AVSampleBufferDisplayLayer*) layer
+{
+    if (sampleBuffer){
+        CFRetain(sampleBuffer);
+        [layer enqueueSampleBuffer:sampleBuffer];
+        CFRelease(sampleBuffer);
+        if (layer.status == AVQueuedSampleBufferRenderingStatusFailed){
+            NSLog(@"ERROR: %@", layer.error);
+        }
+    }else{
+        NSLog(@"ignore null samplebuffer");
+    }  
 }
 
 @end
@@ -82,12 +138,12 @@
 
 @implementation PlayerViewController
 - (void)dealloc{
-//    self.tcp = nil;
+    self.tcp = nil;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.tcp = [P2PTCPClient new];
-//    self.tcp.socketHost = self.ip;
+    self.tcp = [P2PTCPClient new];
+    self.tcp.socketHost = self.ip;
 }
 
 @end

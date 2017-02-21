@@ -37,8 +37,7 @@
     _encodeQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     [self initVideoCaptrue];
     self.upd = [P2PUDPSever new];
-//    self.tcp = [P2PTCPSever new];
-    
+    self.tcp = [P2PTCPSever new];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -238,8 +237,9 @@
 
 - (void)sendData:(NSData *)h264
 {
-    NSLog(@"[%@] length=%@",h264, @(h264.length));
-    [self.upd sendMsg:h264 withHosts:@[@"192.168.0.100"]];
+//    NSLog(@"length=%@", @(h264.length));
+    NSArray * sendIP =[self.tcp allContentHost];
+    [self.upd sendMsg:h264 withHosts:sendIP];
 }
 
 - (NSData *)naluH264Data:(void*)data length:(size_t)length

@@ -84,6 +84,7 @@
 {
     [tcp_client addObject:newSocket];
     NSLog(@"AcceptNew ip:%@", newSocket.connectedHost);
+    
 }
 
 - (void)socket:(GCDAsyncSocket *)socket didWriteDataWithTag:(long)tag

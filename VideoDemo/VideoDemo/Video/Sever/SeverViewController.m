@@ -11,21 +11,17 @@
 #import "P2PUDPSever.h"
 #import "LiveViewController.h"
 @interface SeverViewController ()
-@property (nonatomic, strong) P2PTCPSever *tcp;
+
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;
 @end
 
 @implementation SeverViewController
-- (void)dealloc
-{
-//    self.tcp = nil;
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.ipLabel.text = [P2PTCPSever localIP];
-//    self.tcp = [P2PTCPSever new];
 }
 
 - (IBAction)startLive:(id)sender {

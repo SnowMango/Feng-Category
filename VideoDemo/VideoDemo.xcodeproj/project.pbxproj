@@ -16,7 +16,6 @@
 		6A66E95B1E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9551E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m */; };
 		6A66E95C1E5767C700B5A02A /* VTPCompressionSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9571E5767C700B5A02A /* VTPCompressionSession.m */; };
 		6A66E9601E57E57C00B5A02A /* H264Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E95F1E57E57C00B5A02A /* H264Decoder.m */; };
-		6A66E9651E591C0000B5A02A /* AAPLEAGLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9641E591C0000B5A02A /* AAPLEAGLLayer.m */; };
 		6A77B5291E5419FA000786E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B5281E5419FA000786E5 /* main.m */; };
 		6A77B52C1E5419FA000786E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B52B1E5419FA000786E5 /* AppDelegate.m */; };
 		6A77B52F1E5419FA000786E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B52E1E5419FA000786E5 /* ViewController.m */; };
@@ -51,8 +50,6 @@
 		6A66E9571E5767C700B5A02A /* VTPCompressionSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTPCompressionSession.m; sourceTree = "<group>"; };
 		6A66E95E1E57E57C00B5A02A /* H264Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264Decoder.h; sourceTree = "<group>"; };
 		6A66E95F1E57E57C00B5A02A /* H264Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264Decoder.m; sourceTree = "<group>"; };
-		6A66E9631E591C0000B5A02A /* AAPLEAGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLEAGLLayer.h; sourceTree = "<group>"; };
-		6A66E9641E591C0000B5A02A /* AAPLEAGLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLEAGLLayer.m; sourceTree = "<group>"; };
 		6A77B5241E5419FA000786E5 /* VideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A77B5281E5419FA000786E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A77B52A1E5419FA000786E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -117,7 +114,8 @@
 				6A66E9561E5767C700B5A02A /* VTPCompressionSession.h */,
 				6A66E9571E5767C700B5A02A /* VTPCompressionSession.m */,
 			);
-			path = VideoToolboxPlus;
+			name = VideoToolboxPlus;
+			path = ../VideoToolboxPlus;
 			sourceTree = "<group>";
 		};
 		6A66E95D1E57E55600B5A02A /* H264Decoder */ = {
@@ -149,7 +147,6 @@
 		6A77B5261E5419FA000786E5 /* VideoDemo */ = {
 			isa = PBXGroup;
 			children = (
-				6A66E94D1E5767C700B5A02A /* VideoToolboxPlus */,
 				6A77B5411E542343000786E5 /* Socket */,
 				6A77B53E1E542078000786E5 /* Video */,
 				6A77B52A1E5419FA000786E5 /* AppDelegate.h */,
@@ -176,8 +173,6 @@
 		6A77B53E1E542078000786E5 /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				6A66E9631E591C0000B5A02A /* AAPLEAGLLayer.h */,
-				6A66E9641E591C0000B5A02A /* AAPLEAGLLayer.m */,
 				6A66E95D1E57E55600B5A02A /* H264Decoder */,
 				6A77B53F1E542078000786E5 /* Client */,
 				6A77B5401E542078000786E5 /* Sever */,
@@ -210,6 +205,7 @@
 		6A77B5411E542343000786E5 /* Socket */ = {
 			isa = PBXGroup;
 			children = (
+				6A66E94D1E5767C700B5A02A /* VideoToolboxPlus */,
 				6A77B5421E542598000786E5 /* CocoaAsyncSocket */,
 				6A77B54D1E542616000786E5 /* P2PUDPSever.h */,
 				6A77B54E1E542616000786E5 /* P2PUDPSever.m */,
@@ -320,7 +316,6 @@
 				6A77B54F1E542616000786E5 /* P2PUDPSever.m in Sources */,
 				6A77B55E1E5431D5000786E5 /* SeverViewController.m in Sources */,
 				6A77B5521E542632000786E5 /* P2PUDPClient.m in Sources */,
-				6A66E9651E591C0000B5A02A /* AAPLEAGLLayer.m in Sources */,
 				6A66E9471E5730DF00B5A02A /* PlayerViewController.m in Sources */,
 				6A66E9601E57E57C00B5A02A /* H264Decoder.m in Sources */,
 				6A77B52F1E5419FA000786E5 /* ViewController.m in Sources */,
