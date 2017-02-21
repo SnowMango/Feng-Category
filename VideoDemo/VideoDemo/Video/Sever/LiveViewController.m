@@ -154,11 +154,9 @@
     return 0;
 }
 
-
 // 编码一帧图像，使用queue，防止阻塞系统摄像头采集线程
 - (void) encodeFrame:(CMSampleBufferRef )sampleBuffer
 {
-    
     [_encodeSesion encodeSampleBuffer:sampleBuffer forceKeyframe:NO];
 }
 
@@ -169,12 +167,7 @@
 
 - (void)videoCompressionSession:(VTPCompressionSession *)compressionSession didEncodeSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
-
-    size_t length = CMSampleBufferGetTotalSampleSize(sampleBuffer);
-    
-//    NSData *d = [NSData dataWithBytes:&sampleBuffer length:length];
     [self handleH264:sampleBuffer];
-//    [self sendData:d];
 }
 
 - (void)handleH264:(CMSampleBufferRef )sampleBuffer{

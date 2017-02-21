@@ -71,13 +71,10 @@
 //    }
     
     CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
-    if (sampleBuffer) {
-        CFArrayRef attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, YES);
-        CFMutableDictionaryRef dict = (CFMutableDictionaryRef)CFArrayGetValueAtIndex(attachments, 0);
-        CFDictionarySetValue(dict, kCMSampleAttachmentKey_DisplayImmediately, kCFBooleanTrue);
-        [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
+    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
+    if (sampleBuffer)
         CFRelease(sampleBuffer);
-    }
+    
     
 }
 - (void)dispatchPixelBuffer:(CVPixelBufferRef) pixelBuffer
@@ -98,9 +95,6 @@
     CFRelease(pixelBuffer);
     CFRelease(videoInfo);
     
-    CFArrayRef attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, YES);
-    CFMutableDictionaryRef dict = (CFMutableDictionaryRef)CFArrayGetValueAtIndex(attachments, 0);
-    CFDictionarySetValue(dict, kCMSampleAttachmentKey_DisplayImmediately, kCFBooleanTrue);
     [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
     CFRelease(sampleBuffer);
 }
@@ -108,13 +102,16 @@
 - (void)enqueueSampleBuffer:(CMSampleBufferRef) sampleBuffer toLayer:(AVSampleBufferDisplayLayer*) layer
 {
     if (sampleBuffer){
+        CFArrayRef attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, YES);
+        CFMutableDictionaryRef dict = (CFMutableDictionaryRef)CFArrayGetValueAtIndex(attachments, 0);
+        CFDictionarySetValue(dict, kCMSampleAttachmentKey_DisplayImmediately, kCFBooleanTrue);
+        
         CFRetain(sampleBuffer);
         if (layer.isReadyForMoreMediaData) {
             [layer enqueueSampleBuffer:sampleBuffer];
         }else{
             NSLog(@"no ready");
         }
-        
         CFRelease(sampleBuffer);
         if (layer.status == AVQueuedSampleBufferRenderingStatusFailed){
             NSLog(@"ERROR: %@", layer.error);

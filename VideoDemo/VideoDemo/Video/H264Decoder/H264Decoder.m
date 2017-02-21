@@ -41,7 +41,6 @@ static void didDecompress( void *decompressionOutputRefCon, void *sourceFrameRef
         CFRelease(_decoderFormatDescription);
         _decoderFormatDescription = NULL;
     }
-    
     free(_sps);
     free(_pps);
     _spsSize = _ppsSize = 0;
@@ -57,7 +56,6 @@ static void didDecompress( void *decompressionOutputRefCon, void *sourceFrameRef
     if(data == NULL || dataLen == 0){
         return NULL;
     }
-    int offset = 0;
     while([self nalunitWithData:data andDataLen:dataLen toNALUnit:&nalUnit])
     {
         if(nalUnit.data == NULL || nalUnit.size == 0){
@@ -107,11 +105,6 @@ static void didDecompress( void *decompressionOutputRefCon, void *sourceFrameRef
                 }
             default:
                 break;
-        }
-        
-        offset += nalUnit.size;
-        if(offset >= dataLen){
-            return NULL;
         }
     }
     
