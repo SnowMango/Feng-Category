@@ -136,7 +136,7 @@ static void didDecompress( void *decompressionOutputRefCon, void *sourceFrameRef
                 if(_sps && _pps)
                 {
                     if([self initH264Decoder]){
-                        pixelBufferRef = [self decompressWithNalUint:nalUnit];
+//                        pixelBufferRef = [self decompressWithNalUint:nalUnit];
                         NSLog(@"=== I ==Frame size:%d", nalUnit.size);
                         return pixelBufferRef;
                     }

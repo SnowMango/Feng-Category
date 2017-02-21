@@ -48,7 +48,7 @@
     self.videoLayer.bounds = self.bounds;
     self.videoLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     self.videoLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-    self.videoLayer.backgroundColor = [[UIColor greenColor] CGColor];
+    self.videoLayer.backgroundColor = [[UIColor blackColor] CGColor];
     
     // connecting the videolayer with the view
     
@@ -65,17 +65,16 @@
 - (void)udpClient:(P2PUDPClient*)client refreshData:(NSData *)data
 {
     NSLog(@" length=%@", @(data.length));
-//    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
-//    if (PixelBuffer) {
-//        [self dispatchPixelBuffer:PixelBuffer];
-//    }
     
-    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
-    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
-    if (sampleBuffer)
-        CFRelease(sampleBuffer);
+    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
+    if (PixelBuffer) {
+        [self dispatchPixelBuffer:PixelBuffer];
+    }
     
-    
+//    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
+//    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
+//    if (sampleBuffer)
+//        CFRelease(sampleBuffer);
 }
 - (void)dispatchPixelBuffer:(CVPixelBufferRef) pixelBuffer
 {

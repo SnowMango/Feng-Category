@@ -21,7 +21,6 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-        dispatch_queue_t clientQueue = dispatch_queue_create("com.mango.p2pClient", DISPATCH_QUEUE_SERIAL);
         udp_client = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
         [udp_client bindToPort:9000 error:nil];
         [udp_client beginReceiving:nil];
