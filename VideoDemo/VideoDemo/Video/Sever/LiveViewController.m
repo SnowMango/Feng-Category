@@ -21,6 +21,11 @@
 }
 
 @property (nonatomic, strong)AVCaptureSession           *videoCaptureSession;
+@property (nonatomic)AVCaptureConnection *connection;
+//音频设备输入
+@property(nonatomic,strong)AVCaptureDeviceInput *audioInputDevice;
+@property(nonatomic,strong)AVCaptureAudioDataOutput *audioDataOutput;
+
 @property (nonatomic, strong) P2PUDPSever *upd;
 @property (nonatomic, strong) P2PTCPSever *tcp;
 @end
@@ -102,6 +107,19 @@
         NSLog(@"add video output to video session: %@", dataOutput);
         [self.videoCaptureSession addOutput:dataOutput];
     }
+    //设置音频
+    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    self.audioInputDevice = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:nil];
+    
+    self.audioDataOutput = [[AVCaptureAudioDataOutput alloc]init];
+    if ([self.videoCaptureSession canAddInput:self.audioInputDevice]) {
+        
+        [self.videoCaptureSession addInput:self.audioInputDevice];
+    }
+    if ([self.videoCaptureSession canAddOutput:self.audioDataOutput]) {
+        [self.videoCaptureSession addOutput:self.audioDataOutput];
+    }
+
     
     // 设置采集图像的方向,ps:不设置方向,采集回来的图形会是旋转90度的
     AVCaptureConnection *connection = [dataOutput connectionWithMediaType:AVMediaTypeVideo];
