@@ -91,8 +91,7 @@
 
         [self encodeFrame:sampleBuffer];
     }else{
-        NSLog(@"音频");
-        //AudioToolBox PCM->AAC硬编码
+        //AudioToolBox
         dispatch_sync(_encodeQueue, ^{
 
             [self.aacEncode encodeSampleBuffer:sampleBuffer completionBlock:^(NSData *encodedData, NSError *error) {

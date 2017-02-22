@@ -299,7 +299,6 @@ OSStatus inInputDataProc(AudioConverterRef inAudioConverter, UInt32 *ioNumberDat
             return &desc;
         }
     }
-    
     return nil;
 }
 
@@ -317,15 +316,11 @@ OSStatus inInputDataProc(AudioConverterRef inAudioConverter, UInt32 *ioNumberDat
     int adtsLength = 7;
     char *packet = malloc(sizeof(char) * adtsLength);
     
-    // Variables Recycled by addADTStoPacket
-    //表示使用哪个级别的AAC，有些芯片只支持AAC LC
+    //表示使用哪个级别的AAC 支持AAC LC
     int profile = 2;  //AAC LC
-    //39=MediaCodecInfo.CodecProfileLevel.AACObjectELD;
     /**
-     0: 96000 Hz
-     1: 88200 Hz
-     2: 64000 Hz
-     3: 48000 Hz
+     [0: 96000Hz],[1: 88200 Hz],[2: 64000 Hz],[3: 48000 Hz]
+     
      4: 44100 Hz
      5: 32000 Hz
      6: 24000 Hz

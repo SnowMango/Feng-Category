@@ -71,8 +71,18 @@
 #pragma mark - video capture output delegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    [self encodeFrame:sampleBuffer];
+    if (self.connection == connection) {
+
+        [self encodeFrame:sampleBuffer];
+    }else{
+        dispatch_sync(_encodeQueue, ^{
+            kAudioFileStreamProperty_ReadyToProducePackets
+            kAudioFileAAC_ADTSType
+        });
+    }
     
+    AudioFileStreamParseBytes
+    AudioFileStreamOpen
 }
 
 - (void)initVideoCaptrue
@@ -126,7 +136,7 @@
     connection.videoOrientation = AVCaptureVideoOrientationPortrait;
     
     [self.videoCaptureSession commitConfiguration];
-    
+    self.connection = connection;
     // 添加预览
     CGRect frame = self.view.frame;
     frame.size.height -= 50;
@@ -168,10 +178,9 @@
     return 0;
 }
 
-// 编码一帧图像，使用queue，防止阻塞系统摄像头采集线程
-- (void) encodeFrame:(CMSampleBufferRef )sampleBuffer
+//
+- (void)encodeFrame:(CMSampleBufferRef )sampleBuffer
 {
-    
     [_encodeSesion encodeSampleBuffer:sampleBuffer forceKeyframe:NO];
 }
 
