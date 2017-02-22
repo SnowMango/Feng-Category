@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) H264Decoder*decoder;
 
+@property (nonatomic, weak) UITextView* info;
+
 @end
 
 @implementation PlayerView
@@ -64,17 +66,21 @@
 
 - (void)udpClient:(P2PUDPClient*)client refreshData:(NSData *)data
 {
-    NSLog(@" length=%@", @(data.length));
+    NSLog(@"data length=%@", @(data.length));
+
+//    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
+//    if (PixelBuffer) {
+//        [self dispatchPixelBuffer:PixelBuffer];
+//    }
     
-    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
-    if (PixelBuffer) {
-        [self dispatchPixelBuffer:PixelBuffer];
-    }
-    
-//    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
-//    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
-//    if (sampleBuffer)
-//        CFRelease(sampleBuffer);
+    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
+    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
+    if (sampleBuffer)
+        CFRelease(sampleBuffer);
+    NSString *text = self.info.text;
+    NSString *newtext = [NSString stringWithFormat:@"%@\n data size=%@",text,@(data.length)];
+    self.info.text = newtext;
+    [self.info scrollRangeToVisible:NSMakeRange(text.length, newtext.length - text.length)];
 }
 - (void)dispatchPixelBuffer:(CVPixelBufferRef) pixelBuffer
 {
@@ -125,6 +131,9 @@
 
 @interface PlayerViewController ()
 @property (nonatomic, strong) P2PTCPClient* tcp;
+@property (weak, nonatomic) IBOutlet UITextView *logInfo;
+@property (weak, nonatomic) IBOutlet PlayerView *playView;
+@property (weak, nonatomic) IBOutlet UIButton *controlBtn;
 
 @end
 
@@ -134,8 +143,19 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.playView.info = self.logInfo;
     self.tcp = [P2PTCPClient new];
     self.tcp.socketHost = self.ip;
 }
+
+- (IBAction)controlPlayer:(UIButton*)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [self.tcp dissonnect];
+    }else{
+        self.tcp.socketHost = self.ip;
+    }
+}
+
 
 @end

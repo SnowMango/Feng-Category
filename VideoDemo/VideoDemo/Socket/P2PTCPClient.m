@@ -33,7 +33,9 @@
         return;
     }
     _socketHost = socketHost;
-    [self socketConnectDeviceServer];
+    if (_socketHost) {
+        [self socketConnectDeviceServer];
+    }
 }
 
 -(void)socketConnectDeviceServer{
@@ -43,6 +45,14 @@
     NSError *error = nil;
     
     [tcp_client connectToHost:self.socketHost onPort:self.socketPort withTimeout:-1 error:&error];
+}
+
+- (void)dissonnect
+{
+    if ([tcp_client isConnected]) {
+        [tcp_client disconnect];
+    }
+    self.socketHost = nil;
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port

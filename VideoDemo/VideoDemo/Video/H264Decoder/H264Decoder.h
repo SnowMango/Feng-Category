@@ -24,9 +24,10 @@ typedef enum{
 }NALUType;
 
 @interface H264Decoder : NSObject
-//-(CMSampleBufferRef)decode:(NSData*)h264Data;
 
 - (CVPixelBufferRef)deCompressedCMSampleBufferWithData:(NSData*)frameData;
+
+- (void)deCompressedCMSampleBufferWithData:(NSData*)frameData  finish:(void (^)(CVPixelBufferRef pixelBuffer, NSString *info))finsh;
 
 - (CMSampleBufferRef)sampleBufferWithData:(NSData*)frameData;
 

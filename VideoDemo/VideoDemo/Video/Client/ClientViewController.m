@@ -39,7 +39,7 @@
     [textField resignFirstResponder];
     
     if (textField.text) {
-        [self startLook:nil];
+        [self startLook:textField.text];
     }
     return YES;
 }

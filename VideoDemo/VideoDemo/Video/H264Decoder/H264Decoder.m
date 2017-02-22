@@ -46,6 +46,79 @@ static void didDecompress( void *decompressionOutputRefCon, void *sourceFrameRef
     _spsSize = _ppsSize = 0;
 }
 
+- (void)deCompressedCMSampleBufferWithData:(NSData*)frameData  finish:(void (^)(CVPixelBufferRef pixelBuffer, NSString *info))finsh
+{
+    NALUnit nalUnit;
+    CVPixelBufferRef pixelBufferRef = NULL;
+    char *data = (char*)frameData.bytes;
+    int dataLen = (int)frameData.length;
+    
+    if(data == NULL || dataLen == 0){
+        return ;
+    }
+
+    while([self nalunitWithData:data andDataLen:dataLen toNALUnit:&nalUnit])
+    {
+        if(nalUnit.data == NULL || nalUnit.size == 0){
+            return ;
+        }
+        
+        pixelBufferRef = NULL;
+        [self infalteStartCodeWithNalunitData:&nalUnit];
+        
+        switch (nalUnit.type) {
+            case NALUTypeIFrame://IFrame
+                if(_sps && _pps)
+                {
+                    if([self initH264Decoder]){
+//                        pixelBufferRef = [self decompressWithNalUint:nalUnit];
+                        NSLog(@"=== I ===Frame size:%d", nalUnit.size);
+                        if (finsh) {
+                            finsh(pixelBufferRef,@"=== I ==Frame" );
+                        }
+                    }
+                }
+                break;
+            case NALUTypeSPS://SPS
+                _spsSize = nalUnit.size - 4;
+                if(_spsSize <= 0){
+                    return ;
+                }
+                _sps = (uint8_t*)malloc(_spsSize);
+                memcpy(_sps, nalUnit.data + 4, _spsSize);
+                NSLog(@"=== SPS ===size:%d", nalUnit.size - 4);
+                if (finsh) {
+                    finsh(nil,@"=== I ==Frame size" );
+                }
+                break;
+            case NALUTypePPS://PPS
+                _ppsSize = nalUnit.size - 4;
+                if(_ppsSize <= 0){
+                    return ;
+                }
+                _pps = (uint8_t*)malloc(_ppsSize);
+                memcpy(_pps, nalUnit.data + 4, _ppsSize);
+                NSLog(@"=== PPS ===size:%d", nalUnit.size - 4);
+                if (finsh) {
+                    finsh(nil,@"=== PPS ===Frame" );
+                }
+                break;
+            case NALUTypeBPFrame://B/P Frame
+                if(_sps && _pps)
+                {
+                    if([self initH264Decoder]){
+                        pixelBufferRef = [self decompressWithNalUint:nalUnit];
+                        NSLog(@"=== B/P ===Frame size:%d", nalUnit.size);
+                        if (finsh) {
+                            finsh(pixelBufferRef,@"=== B/P ===Frame" );
+                        }
+                    }
+                }
+            default: break;
+        }
+    }
+}
+
 - (CMSampleBufferRef)sampleBufferWithData:(NSData*)frameData
 {
     NALUnit nalUnit;
@@ -136,7 +209,7 @@ static void didDecompress( void *decompressionOutputRefCon, void *sourceFrameRef
                 if(_sps && _pps)
                 {
                     if([self initH264Decoder]){
-//                        pixelBufferRef = [self decompressWithNalUint:nalUnit];
+                        pixelBufferRef = [self decompressWithNalUint:nalUnit];
                         NSLog(@"=== I ==Frame size:%d", nalUnit.size);
                         return pixelBufferRef;
                     }
