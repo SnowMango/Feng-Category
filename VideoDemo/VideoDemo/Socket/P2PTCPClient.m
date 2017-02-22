@@ -8,6 +8,10 @@
 
 #import "P2PTCPClient.h"
 
+@interface P2PTCPClient ()
+@property (nonatomic, assign) UInt16         socketPort;
+@end
+
 @implementation P2PTCPClient
 
 - (void)dealloc
@@ -58,19 +62,21 @@
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"socket连接成功");
-    
-    
+
 }
 
 - (void)socket:(GCDAsyncSocket *)socket didWriteDataWithTag:(long)tag
 {
-    NSLog(@"sever断开连接");
+    NSLog(@"数据发送成功");
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
     NSLog(@"数据读取成功");
-    NSLog(@"tcp Read %@", data);
+}
+-(void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(nullable NSError *)err
+{
+    NSLog(@"断开连接");
 }
 
 @end

@@ -14,7 +14,6 @@
 }
 
 @property (nonatomic, copy  ) NSString      *socketHost;
-@property (nonatomic, assign) UInt16         socketPort;
 
 - (void)dissonnect;
 

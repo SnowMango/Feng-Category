@@ -18,6 +18,5 @@
 
 - (void)sendMsg:(NSData *)data withHosts:(NSArray *)hosts;
 
-- (void)closeUDP;
 
 @end

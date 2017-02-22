@@ -67,12 +67,12 @@
 - (void)udpClient:(P2PUDPClient*)client refreshData:(NSData *)data
 {
     NSLog(@"data length=%@", @(data.length));
-
-//    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
-//    if (PixelBuffer) {
-//        [self dispatchPixelBuffer:PixelBuffer];
-//    }
-    
+    /*
+    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
+    if (PixelBuffer) {
+        [self dispatchPixelBuffer:PixelBuffer];
+    }
+    */
     CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
     [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
     if (sampleBuffer)

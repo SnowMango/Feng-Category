@@ -27,8 +27,6 @@ typedef enum{
 
 - (CVPixelBufferRef)deCompressedCMSampleBufferWithData:(NSData*)frameData;
 
-- (void)deCompressedCMSampleBufferWithData:(NSData*)frameData  finish:(void (^)(CVPixelBufferRef pixelBuffer, NSString *info))finsh;
-
 - (CMSampleBufferRef)sampleBufferWithData:(NSData*)frameData;
 
 @end

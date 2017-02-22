@@ -42,10 +42,5 @@ withFilterContext:(nullable id)filterContext
     [udp_client beginReceiving:nil];
 }
 
-- (void)closeUDP
-{
-    if (!udp_client.isClosed) {
-        [udp_client closeAfterSending];
-    }
-}
+
 @end

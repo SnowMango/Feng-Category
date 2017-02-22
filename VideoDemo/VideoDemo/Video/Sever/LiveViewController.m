@@ -18,8 +18,6 @@
 {
     VTPCompressionSession *_encodeSesion;
     dispatch_queue_t _encodeQueue;
-    long    _frameCount;
-//    int     _spsppsFound;
 }
 
 @property (nonatomic, strong)AVCaptureSession           *videoCaptureSession;
@@ -54,7 +52,6 @@
 
 - (void)start
 {
-    
     [self startEncodeSession:480 height:640 framerate:25 bitrate:640*1000];
     [self.videoCaptureSession startRunning];// 开始录像
 }
@@ -62,9 +59,7 @@
 - (IBAction)stop
 {
     [self.videoCaptureSession stopRunning];
-    
     [self stopEncodeSession];
-    
 }
 
 #pragma mark - camera
@@ -97,9 +92,10 @@
     
     AVCaptureVideoDataOutput *dataOutput = [[AVCaptureVideoDataOutput alloc] init];
     
-    /* ONLY support pixel format : 420v, 420f, BGRA */
-    dataOutput.videoSettings = [NSDictionary dictionaryWithObject:
-                                [NSNumber numberWithUnsignedInt:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange]forKey:(NSString *)kCVPixelBufferPixelFormatTypeKey];
+    /*  support pixel format : 420v, 420f, BGRA */
+    
+    dataOutput.videoSettings =
+    @{(__bridge NSString *)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)};
     [dataOutput setAlwaysDiscardsLateVideoFrames:YES];
     
     if ([self.videoCaptureSession canAddOutput:dataOutput]) {
@@ -107,7 +103,7 @@
         [self.videoCaptureSession addOutput:dataOutput];
     }
     
-    // 设置采集图像的方向,如果不设置，采集回来的图形会是旋转90度的
+    // 设置采集图像的方向,ps:不设置方向,采集回来的图形会是旋转90度的
     AVCaptureConnection *connection = [dataOutput connectionWithMediaType:AVMediaTypeVideo];
     connection.videoOrientation = AVCaptureVideoOrientationPortrait;
     
@@ -138,7 +134,7 @@
     // h264 profile, 直播一般使用baseline，可减少由于b帧带来的延时
     [_encodeSesion setValue:(__bridge NSString*)kVTProfileLevel_H264_Baseline_AutoLevel forProperty:(__bridge NSString*)kVTCompressionPropertyKey_ProfileLevel error:nil];
     
-    // 设置编码码率(比特率)，如果不设置，默认将会以很低的码率编码，导致编码出来的视频很模糊
+    // 设置编码码率(比特率)
      // bps
     [_encodeSesion setValue:@(bt) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_AverageBitRate error:nil];
     // Bps
@@ -157,6 +153,7 @@
 // 编码一帧图像，使用queue，防止阻塞系统摄像头采集线程
 - (void) encodeFrame:(CMSampleBufferRef )sampleBuffer
 {
+    
     [_encodeSesion encodeSampleBuffer:sampleBuffer forceKeyframe:NO];
 }
 
@@ -174,8 +171,7 @@
     // 判断当前帧是否为关键帧
     bool keyframe = !CFDictionaryContainsKey( (CFArrayGetValueAtIndex(CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, true), 0)), kCMSampleAttachmentKey_NotSync);
     
-    // 获取sps & pps数据. sps pps只需获取一次，保存在h264文件开头即可
-//    NSMutableData *naludata =[NSMutableData data];
+    // 获取sps & pps数据
     if (keyframe)
     {
         size_t spsSize, spsCount;
@@ -190,10 +186,7 @@
         if (err0==noErr && err1==noErr)
         {
             
-//            [naludata appendData:[self naluH264Data:(void *)spsData length:spsSize]];
             [self sendData:[self naluH264Data:(void *)spsData length:spsSize]];
-//            [naludata appendData:[self naluH264Data:(void *)ppsData length:ppsSize]];
-
             [self sendData:[self naluH264Data:(void *)ppsData length:ppsSize]];
 //            NSLog(@"got sps/pps data. Length: sps=%zu, pps=%zu", spsSize, ppsSize);
         }
@@ -208,7 +201,6 @@
     if (error == noErr) {
         size_t offset = 0;
         const int lengthInfoSize = 4; // 返回的nalu数据前四个字节不是0001的startcode，而是大端模式的帧长度length
-        
         // 循环获取nalu数据
         while (offset < totalLength - lengthInfoSize) {
             uint32_t naluLength = 0;
@@ -216,8 +208,7 @@
             
             // 大端模式转化为系统端模式
             naluLength = CFSwapInt32BigToHost(naluLength);
-//            NSLog(@"got nalu data, length=%d, totalLength=%zu", naluLength, totalLength);
-            
+
             // 保存nalu数据到文件
             [self sendData:[self naluH264Data:data+offset+lengthInfoSize length:naluLength]];
             
@@ -230,7 +221,6 @@
 
 - (void)sendData:(NSData *)h264
 {
-//    NSLog(@"length=%@", @(h264.length));
     NSArray * sendIP =[self.tcp allContentHost];
     [self.upd sendMsg:h264 withHosts:sendIP];
 }

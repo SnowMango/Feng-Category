@@ -23,6 +23,5 @@
 
 @property (weak,nonatomic) id<P2PUDPClientUpdate> delegete;
 
-- (void)closeUDP;
 
 @end

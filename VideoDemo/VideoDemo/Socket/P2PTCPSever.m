@@ -28,7 +28,7 @@
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
     int success = 0;
-    // retrieve the current interfaces - returns 0 on success
+    
     success = getifaddrs(&interfaces);
     if (success == 0)
     {
@@ -48,7 +48,6 @@
             temp_addr = temp_addr->ifa_next;
         }
     }
-    // Free memory
     freeifaddrs(interfaces);
     return address;
 }
@@ -83,24 +82,20 @@
 - (void)socket:(GCDAsyncSocket *)socket didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
     [tcp_client addObject:newSocket];
-    NSLog(@"AcceptNew ip:%@", newSocket.connectedHost);
-    
 }
 
 - (void)socket:(GCDAsyncSocket *)socket didWriteDataWithTag:(long)tag
 {
-    
+    NSLog(@"数据发送成功");
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"tcp Read %@", msg);
+    NSLog(@"数据读取成功");
 }
 
 -(void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(nullable NSError *)err
 {
     [tcp_client removeObject:socket];
-    NSLog(@"DidDisconnect");
 }
 @end
