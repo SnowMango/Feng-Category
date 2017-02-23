@@ -11,8 +11,21 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 
+@class AACEncoder;
+
+@protocol AACEncoderDelegate <NSObject>
+
+- (void)audioCompressionSession:(AACEncoder *)encoder didEncoderAACData:(NSData*)aacData;
+
+@end
+
 @interface AACEncoder : NSObject
 
+@property (weak,nonatomic) id<AACEncoderDelegate> delegate;
+
+@property (nonatomic) dispatch_queue_t delegateQueue;
+
+-(void)encodeSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 @end
 
 

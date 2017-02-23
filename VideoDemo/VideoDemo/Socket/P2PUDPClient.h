@@ -13,7 +13,11 @@
 
 @protocol P2PUDPClientUpdate <NSObject>
 
-- (void)udpClient:(P2PUDPClient*)client refreshData:(NSData *)data;
+//- (void)udpClient:(P2PUDPClient*)client refreshData:(NSData *)data;
+
+- (void)udpClient:(P2PUDPClient*)client refreshVideoData:(NSData *)data;
+- (void)udpClient:(P2PUDPClient*)client refreshAudioData:(NSData *)data;
+
 @end
 
 @interface P2PUDPClient : NSObject<GCDAsyncUdpSocketDelegate>

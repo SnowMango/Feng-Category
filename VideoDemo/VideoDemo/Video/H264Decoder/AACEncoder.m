@@ -27,7 +27,6 @@ static OSStatus inInputDataProc(AudioConverterRef inAudioConverter, UInt32 *ioNu
 @property (nonatomic) size_t pcmBufferSize;
 
 @property (nonatomic) dispatch_queue_t encoderQueue;
-@property (nonatomic) dispatch_queue_t callbackQueue;
 
 @end
 
@@ -42,7 +41,7 @@ static OSStatus inInputDataProc(AudioConverterRef inAudioConverter, UInt32 *ioNu
     if (self = [super init]) {
         //创建队列
         _encoderQueue = dispatch_queue_create("AAC Encoder Queue", DISPATCH_QUEUE_SERIAL);
-        _callbackQueue = dispatch_queue_create("AAC Encoder Callback Queue", DISPATCH_QUEUE_SERIAL);
+        _delegateQueue = dispatch_get_main_queue();
         _audioConverter = NULL;
         _pcmBufferSize = 0;
         _pcmBuffer = NULL;
@@ -56,6 +55,7 @@ static OSStatus inInputDataProc(AudioConverterRef inAudioConverter, UInt32 *ioNu
 
 -(void)encodeSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
+    CFRetain(sampleBuffer);
     dispatch_async(_encoderQueue, ^{
         if (!_audioConverter) {
             [self setupEncoderFromSampleBuffer:sampleBuffer];
@@ -101,6 +101,12 @@ static OSStatus inInputDataProc(AudioConverterRef inAudioConverter, UInt32 *ioNu
             error = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
         }
         
+        if (self.delegate) {
+            dispatch_async(_delegateQueue, ^{
+                [self.delegate audioCompressionSession:self didEncoderAACData:data];;
+            });
+        }
+
         CFRelease(sampleBuffer);
         CFRelease(blockBuffer);
     });

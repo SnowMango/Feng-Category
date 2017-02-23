@@ -64,24 +64,37 @@
     self.videoLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 }
 
-- (void)udpClient:(P2PUDPClient*)client refreshData:(NSData *)data
+- (void)udpClient:(P2PUDPClient*)client refreshVideoData:(NSData *)data
 {
-    NSLog(@"data length=%@", @(data.length));
     /*
-    CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
-    if (PixelBuffer) {
-        [self dispatchPixelBuffer:PixelBuffer];
-    }
-    */
+     CVPixelBufferRef PixelBuffer= [self.decoder deCompressedCMSampleBufferWithData:data];
+     if (PixelBuffer) {
+     [self dispatchPixelBuffer:PixelBuffer];
+     }
+     */
     CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
     [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
     if (sampleBuffer)
         CFRelease(sampleBuffer);
     NSString *text = self.info.text;
-    NSString *newtext = [NSString stringWithFormat:@"%@\n data size=%@",text,@(data.length)];
+    NSString *newtext = [NSString stringWithFormat:@"%@\n video data size=%@",text,@(data.length)];
     self.info.text = newtext;
     [self.info scrollRangeToVisible:NSMakeRange(text.length, newtext.length - text.length)];
 }
+
+- (void)udpClient:(P2PUDPClient*)client refreshAudioData:(NSData *)data
+{
+    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
+    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
+    if (sampleBuffer)
+        CFRelease(sampleBuffer);
+    NSString *text = self.info.text;
+    NSString *newtext = [NSString stringWithFormat:@"%@\n audio data size=%@",text,@(data.length)];
+    self.info.text = newtext;
+    [self.info scrollRangeToVisible:NSMakeRange(text.length, newtext.length - text.length)];
+}
+
+
 - (void)dispatchPixelBuffer:(CVPixelBufferRef) pixelBuffer
 {
     if (!pixelBuffer){
@@ -125,6 +138,29 @@
         NSLog(@"ignore null samplebuffer");
     }  
 }
+
+- (void)enqueueAudioSampleBuffer:(CMSampleBufferRef) sampleBuffer toLayer:(AVSampleBufferDisplayLayer*) layer
+{
+    if (sampleBuffer){
+        CFArrayRef attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, YES);
+        CFMutableDictionaryRef dict = (CFMutableDictionaryRef)CFArrayGetValueAtIndex(attachments, 0);
+        CFDictionarySetValue(dict, kCMSampleAttachmentKey_DoNotDisplay, kCFBooleanTrue);
+        
+        CFRetain(sampleBuffer);
+        if (layer.isReadyForMoreMediaData) {
+            [layer enqueueSampleBuffer:sampleBuffer];
+        }else{
+            NSLog(@"no ready");
+        }
+        CFRelease(sampleBuffer);
+        if (layer.status == AVQueuedSampleBufferRenderingStatusFailed){
+            NSLog(@"ERROR: %@", layer.error);
+        }
+    }else{
+        NSLog(@"ignore null samplebuffer");
+    }
+}
+
 
 @end
 

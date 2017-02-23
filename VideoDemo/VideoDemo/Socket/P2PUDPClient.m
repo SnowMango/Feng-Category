@@ -35,10 +35,21 @@ withFilterContext:(nullable id)filterContext
     NSString *host = nil;
     uint16_t port = 0;
     [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
-    NSLog(@"udp client data:C->%@, sever address:%@:%d", @(data.length), host,port);
-    if (self.delegete && [self.delegete respondsToSelector:@selector(udpClient:refreshData:)]) {
-        [self.delegete udpClient:self refreshData:data];
+    
+    NSData *avData = [data subdataWithRange:NSMakeRange(1, data.length - 1)];
+    Byte dataType;
+    NSLog(@"udp client data:%c=%@, sever address:%@:%d",dataType, @(data.length), host,port);
+    [data getBytes:&dataType length:1];
+    if (dataType == 'A') {
+        if (self.delegete && [self.delegete respondsToSelector:@selector(udpClient:refreshAudioData:)]) {
+            [self.delegete udpClient:self refreshAudioData:avData];
+        }
+    }else if (dataType == 'H'){
+        if (self.delegete && [self.delegete respondsToSelector:@selector(udpClient:refreshVideoData:)]) {
+            [self.delegete udpClient:self refreshVideoData:avData];
+        }
     }
+
     [udp_client beginReceiving:nil];
 }
 

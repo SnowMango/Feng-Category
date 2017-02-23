@@ -357,7 +357,9 @@ static void didDecompress( void *decompressionOutputRefCon, void *sourceFrameRef
                                               &_deocderSession);
         CFRelease(attrs);
     } else {
+        _deocderSession = nil;
         NSLog(@"IOS8VT: reset decoder session failed status=%d", status);
+        return NO;
     }
     
     return YES;

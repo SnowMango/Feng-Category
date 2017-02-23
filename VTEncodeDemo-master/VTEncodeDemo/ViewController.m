@@ -231,7 +231,6 @@
                                                               imageBuffer,
                                                               pts, duration,
                                                               NULL, NULL, &flags);
-
         if (statusCode != noErr) {
             NSLog(@"H264: VTCompressionSessionEncodeFrame failed with %d", (int)statusCode);
 

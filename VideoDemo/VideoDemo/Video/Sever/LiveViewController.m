@@ -13,10 +13,12 @@
 #import "P2PUDPSever.h"
 #import "P2PTCPSever.h"
 #import "VideoToolboxPlus.h"
+#import "AACEncoder.h"
 
-@interface LiveViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,VTPCompressionSessionDelegate>
+@interface LiveViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,VTPCompressionSessionDelegate,AACEncoderDelegate,AVCaptureAudioDataOutputSampleBufferDelegate>
 {
-    VTPCompressionSession *_encodeSesion;
+    VTPCompressionSession *_h264EncoderSesion;
+    AACEncoder *_aacEncoderSesion;
     dispatch_queue_t _encodeQueue;
 }
 
@@ -28,6 +30,7 @@
 
 @property (nonatomic, strong) P2PUDPSever *upd;
 @property (nonatomic, strong) P2PTCPSever *tcp;
+
 @end
 
 @implementation LiveViewController
@@ -67,24 +70,24 @@
     [self stopEncodeSession];
 }
 
+- (void)stopEncodeSession
+{
+    _h264EncoderSesion = nil;
+    _aacEncoderSesion = nil;
+}
+
 #pragma mark - camera
 #pragma mark - video capture output delegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
     if (self.connection == connection) {
-
         [self encodeFrame:sampleBuffer];
     }else{
-        dispatch_sync(_encodeQueue, ^{
-            kAudioFileStreamProperty_ReadyToProducePackets
-            kAudioFileAAC_ADTSType
-        });
+        [_aacEncoderSesion encodeSampleBuffer:sampleBuffer];
     }
-    
-    AudioFileStreamParseBytes
-    AudioFileStreamOpen
 }
 
+#pragma mark - 初始化设备
 - (void)initVideoCaptrue
 {
     self.videoCaptureSession = [[AVCaptureSession alloc] init];
@@ -148,47 +151,60 @@
     // 摄像头采集queue
     dispatch_queue_t queue = dispatch_queue_create("VideoCaptureQueue", DISPATCH_QUEUE_SERIAL);
     [dataOutput setSampleBufferDelegate:self queue:queue]; // 摄像头数据输出delegate
+    
+    [self.audioDataOutput setSampleBufferDelegate:self queue:queue];
 }
 
+#pragma mark - AACEncode
+- (void)startAACEncoderSession
+{
+    _aacEncoderSesion = [[AACEncoder alloc] init];
+    _aacEncoderSesion.delegate = self;
+    _aacEncoderSesion.delegateQueue = _encodeQueue;
+}
+//AACEncoderDelegate
+- (void)audioCompressionSession:(AACEncoder *)encoder didEncoderAACData:(NSData*)aacData
+{
+    [self sendAACData:aacData];
+}
 
 #pragma mark - videotoolbox methods
 - (int)startEncodeSession:(int)width height:(int)height framerate:(int)fps bitrate:(int)bt
 {
-    _encodeSesion = [[VTPCompressionSession alloc] initWithWidth:width height:height codec:kCMVideoCodecType_H264 error:nil];
+    [self startAACEncoderSession];
+    _h264EncoderSesion = [[VTPCompressionSession alloc] initWithWidth:width height:height codec:kCMVideoCodecType_H264 error:nil];
     
-    [_encodeSesion setDelegate:self queue:_encodeQueue];
+    [_h264EncoderSesion setDelegate:self queue:_encodeQueue];
     // 设置实时编码输出，降低编码延迟
-    [_encodeSesion setValue:@(YES) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_RealTime error:nil];
+    [_h264EncoderSesion setValue:@(YES) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_RealTime error:nil];
     // h264 profile, 直播一般使用baseline，可减少由于b帧带来的延时
-    [_encodeSesion setValue:(__bridge NSString*)kVTProfileLevel_H264_Baseline_AutoLevel forProperty:(__bridge NSString*)kVTCompressionPropertyKey_ProfileLevel error:nil];
+    [_h264EncoderSesion setValue:(__bridge NSString*)kVTProfileLevel_H264_Baseline_AutoLevel forProperty:(__bridge NSString*)kVTCompressionPropertyKey_ProfileLevel error:nil];
     
     // 设置编码码率(比特率)
      // bps
-    [_encodeSesion setValue:@(bt) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_AverageBitRate error:nil];
+    [_h264EncoderSesion setValue:@(bt) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_AverageBitRate error:nil];
     // Bps
-    [_encodeSesion setValue:@[@(bt*2/8), @1] forProperty:(__bridge NSString*)kVTCompressionPropertyKey_DataRateLimits error:nil];
+    [_h264EncoderSesion setValue:@[@(bt*2/8), @1] forProperty:(__bridge NSString*)kVTCompressionPropertyKey_DataRateLimits error:nil];
     
     // 设置关键帧间隔，即gop size
-    [_encodeSesion setValue:@(fps*2) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_MaxKeyFrameInterval error:nil];
+    [_h264EncoderSesion setValue:@(fps*2) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_MaxKeyFrameInterval error:nil];
     // 设置帧率，只用于初始化session，不是实际FPS
-    [_encodeSesion setValue:@(fps) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_ExpectedFrameRate error:nil];
+    [_h264EncoderSesion setValue:@(fps) forProperty:(__bridge NSString*)kVTCompressionPropertyKey_ExpectedFrameRate error:nil];
     
     // 开始编码
-    [_encodeSesion prepare];
+    [_h264EncoderSesion prepare];
     return 0;
 }
 
-//
+
+
+#pragma mark - video h264 编码
 - (void)encodeFrame:(CMSampleBufferRef )sampleBuffer
 {
-    [_encodeSesion encodeSampleBuffer:sampleBuffer forceKeyframe:NO];
+    [_h264EncoderSesion encodeSampleBuffer:sampleBuffer forceKeyframe:NO];
 }
 
-- (void) stopEncodeSession
-{
-    _encodeSesion = nil;
-}
-
+// VTPCompressionSessionDelegate
 - (void)videoCompressionSession:(VTPCompressionSession *)compressionSession didEncodeSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     [self handleH264:sampleBuffer];
@@ -213,8 +229,8 @@
         if (err0==noErr && err1==noErr)
         {
             
-            [self sendData:[self naluH264Data:(void *)spsData length:spsSize]];
-            [self sendData:[self naluH264Data:(void *)ppsData length:ppsSize]];
+            [self sendH246Data:[self naluH264Data:(void *)spsData length:spsSize]];
+            [self sendH246Data:[self naluH264Data:(void *)ppsData length:ppsSize]];
 //            NSLog(@"got sps/pps data. Length: sps=%zu, pps=%zu", spsSize, ppsSize);
         }
     }
@@ -237,7 +253,7 @@
             naluLength = CFSwapInt32BigToHost(naluLength);
 
             // 保存nalu数据到文件
-            [self sendData:[self naluH264Data:data+offset+lengthInfoSize length:naluLength]];
+            [self sendH246Data:[self naluH264Data:data+offset+lengthInfoSize length:naluLength]];
             
             // 读取下一个nalu，一次回调可能包含多个nalu
             offset += lengthInfoSize + naluLength;
@@ -245,13 +261,7 @@
     }
 }
 
-
-- (void)sendData:(NSData *)h264
-{
-    NSArray * sendIP =[self.tcp allContentHost];
-    [self.upd sendMsg:h264 withHosts:sendIP];
-}
-
+//h264 协议 start code
 - (NSData *)naluH264Data:(void*)data length:(size_t)length
 {
     // 添加4字节的 h264 协议 start code
@@ -261,5 +271,30 @@
     [nalu appendBytes:data length:length];
     return nalu;
 }
+
+#pragma mark - 发送数据
+- (void)sendData:(NSData *)data
+{
+    NSArray * sendIP =[self.tcp allContentHost];
+    [self.upd sendMsg:data withHosts:sendIP];
+}
+
+#define Header_length 1
+- (void)sendAACData:(NSData*)aacData
+{
+    Byte bytes[Header_length] = {'A'};
+    NSMutableData * data = [NSMutableData dataWithBytes:bytes length:sizeof(Byte)*Header_length];
+    [data appendData:aacData];
+    [self sendData:data];
+}
+
+- (void)sendH246Data:(NSData*)h264Data
+{
+    Byte bytes[Header_length] = {'H'};
+    NSMutableData * data = [NSMutableData dataWithBytes:bytes length:sizeof(Byte)*Header_length];
+    [data appendData:h264Data];
+    [self sendData:data];
+}
+
 
 @end
