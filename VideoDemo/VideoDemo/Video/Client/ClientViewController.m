@@ -27,7 +27,7 @@
 - (void)startLook:(NSString *)ip
 {
 
-    if (!ip) {
+    if (!ip.length) {
         ip = @"172.30.220.250";
     }
     [self performSegueWithIdentifier:@"Player" sender:ip];

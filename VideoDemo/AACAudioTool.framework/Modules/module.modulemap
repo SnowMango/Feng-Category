@@ -1,0 +1,6 @@
+framework module AACAudioTool {
+  umbrella header "AACAudioTool.h"
+
+  export *
+  module * { export * }
+}

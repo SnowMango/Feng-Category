@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A3776021E5DB541007A843C /* AACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3776011E5DB541007A843C /* AACEncoder.m */; };
-		6A3776051E5DCF4A007A843C /* AACDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3776041E5DCF4A007A843C /* AACDecoder.m */; };
+		6A5D71051E60166B003968C9 /* AACAudioTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5D71041E60166B003968C9 /* AACAudioTool.framework */; };
 		6A66E9441E5730C500B5A02A /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9431E5730C500B5A02A /* LiveViewController.m */; };
 		6A66E9471E5730DF00B5A02A /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9461E5730DF00B5A02A /* PlayerViewController.m */; };
 		6A66E94A1E5730FB00B5A02A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A66E9491E5730FB00B5A02A /* AVFoundation.framework */; };
@@ -35,10 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6A3776001E5DB541007A843C /* AACEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACEncoder.h; sourceTree = "<group>"; };
-		6A3776011E5DB541007A843C /* AACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACEncoder.m; sourceTree = "<group>"; };
-		6A3776031E5DCF4A007A843C /* AACDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDecoder.h; sourceTree = "<group>"; };
-		6A3776041E5DCF4A007A843C /* AACDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDecoder.m; sourceTree = "<group>"; };
+		6A5D71041E60166B003968C9 /* AACAudioTool.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AACAudioTool.framework; sourceTree = "<group>"; };
 		6A66E9421E5730C500B5A02A /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
 		6A66E9431E5730C500B5A02A /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
 		6A66E9451E5730DF00B5A02A /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
@@ -91,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A66E94C1E57310700B5A02A /* VideoToolbox.framework in Frameworks */,
+				6A5D71051E60166B003968C9 /* AACAudioTool.framework in Frameworks */,
 				6A66E94A1E5730FB00B5A02A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +98,7 @@
 		6A66E9481E5730FB00B5A02A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A5D71041E60166B003968C9 /* AACAudioTool.framework */,
 				6A66E94B1E57310700B5A02A /* VideoToolbox.framework */,
 				6A66E9491E5730FB00B5A02A /* AVFoundation.framework */,
 			);
@@ -129,10 +127,6 @@
 			children = (
 				6A66E95E1E57E57C00B5A02A /* H264Decoder.h */,
 				6A66E95F1E57E57C00B5A02A /* H264Decoder.m */,
-				6A3776001E5DB541007A843C /* AACEncoder.h */,
-				6A3776011E5DB541007A843C /* AACEncoder.m */,
-				6A3776031E5DCF4A007A843C /* AACDecoder.h */,
-				6A3776041E5DCF4A007A843C /* AACDecoder.m */,
 			);
 			path = H264Decoder;
 			sourceTree = "<group>";
@@ -323,7 +317,6 @@
 			files = (
 				6A77B54B1E5425AA000786E5 /* GCDAsyncSocket.m in Sources */,
 				6A77B54C1E5425AA000786E5 /* GCDAsyncUdpSocket.m in Sources */,
-				6A3776051E5DCF4A007A843C /* AACDecoder.m in Sources */,
 				6A77B54F1E542616000786E5 /* P2PUDPSever.m in Sources */,
 				6A77B55E1E5431D5000786E5 /* SeverViewController.m in Sources */,
 				6A77B5521E542632000786E5 /* P2PUDPClient.m in Sources */,
@@ -337,7 +330,6 @@
 				6A66E95C1E5767C700B5A02A /* VTPCompressionSession.m in Sources */,
 				6A77B5291E5419FA000786E5 /* main.m in Sources */,
 				6A77B5581E54266C000786E5 /* P2PTCPClient.m in Sources */,
-				6A3776021E5DB541007A843C /* AACEncoder.m in Sources */,
 				6A66E95B1E5767C700B5A02A /* VTPCompressionSession+PropertiesFromDictionary.m in Sources */,
 				6A77B55B1E5431AC000786E5 /* ClientViewController.m in Sources */,
 				6A66E9591E5767C700B5A02A /* NSError+VTPError.m in Sources */,
@@ -463,6 +455,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8RKD57526R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = VideoDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -477,6 +473,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8RKD57526R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = VideoDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

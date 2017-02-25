@@ -13,39 +13,57 @@
 #import "P2PUDPClient.h"
 #import "H264Decoder.h"
 
+#import <AACAudioTool/AACAudioTool.h>
 
 @interface PlayerView : UIView<P2PUDPClientUpdate>
 
 @property (nonatomic, strong) P2PUDPClient* udp;
 @property (nonatomic, strong) AVSampleBufferDisplayLayer *videoLayer;
 
-@property (nonatomic, strong) H264Decoder*decoder;
-
+@property (nonatomic, strong) H264Decoder*h264Decoder;
+@property (nonatomic, strong) AACAudioPlayer*audioPlayer;
 @property (nonatomic, weak) UITextView* info;
+
+- (void)play;
+
+-(void)stop;
 
 @end
 
 @implementation PlayerView
 - (void)dealloc{
     self.udp = nil;
+    self.audioPlayer = nil;
 }
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
         
-        
-        
     }
     return self;
+}
+
+- (void)play
+{
+    self.udp = [P2PUDPClient new];
+    self.udp.delegete = self;
+    [self.audioPlayer start];
+}
+
+-(void)stop
+{
+    self.udp = nil;
+    [self.audioPlayer stop];
 }
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.udp = [P2PUDPClient new];
-    self.udp.delegete = self;
-    self.decoder = [H264Decoder new];
-
+    
+    
+    self.h264Decoder = [H264Decoder new];
+    self.audioPlayer = [[AACAudioPlayer alloc] init];
+    
     self.videoLayer = [[AVSampleBufferDisplayLayer alloc] init];
     self.videoLayer.bounds = self.bounds;
     self.videoLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
@@ -72,28 +90,30 @@
      [self dispatchPixelBuffer:PixelBuffer];
      }
      */
-    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
+    CMSampleBufferRef sampleBuffer = [self.h264Decoder sampleBufferWithData:data];
     [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
     if (sampleBuffer)
         CFRelease(sampleBuffer);
-    NSString *text = self.info.text;
-    NSString *newtext = [NSString stringWithFormat:@"%@\n video data size=%@",text,@(data.length)];
-    self.info.text = newtext;
-    [self.info scrollRangeToVisible:NSMakeRange(text.length, newtext.length - text.length)];
+    
+    NSString *info =[NSString stringWithFormat:@"video data size=%@", @(data.length)];
+    [self textViewAddInfo:info];
 }
 
 - (void)udpClient:(P2PUDPClient*)client refreshAudioData:(NSData *)data
 {
-    CMSampleBufferRef sampleBuffer = [self.decoder sampleBufferWithData:data];
-    [self enqueueSampleBuffer:sampleBuffer toLayer:self.videoLayer];
-    if (sampleBuffer)
-        CFRelease(sampleBuffer);
+    
+    [self.audioPlayer play:data];
+    NSString *info =[NSString stringWithFormat:@"audio data size=%@", @(data.length)];
+    [self textViewAddInfo:info];
+}
+
+- (void)textViewAddInfo:(NSString *)info
+{
     NSString *text = self.info.text;
-    NSString *newtext = [NSString stringWithFormat:@"%@\n audio data size=%@",text,@(data.length)];
+    NSString *newtext = [NSString stringWithFormat:@"%@\n%@",text,info];
     self.info.text = newtext;
     [self.info scrollRangeToVisible:NSMakeRange(text.length, newtext.length - text.length)];
 }
-
 
 - (void)dispatchPixelBuffer:(CVPixelBufferRef) pixelBuffer
 {
@@ -139,29 +159,6 @@
     }  
 }
 
-- (void)enqueueAudioSampleBuffer:(CMSampleBufferRef) sampleBuffer toLayer:(AVSampleBufferDisplayLayer*) layer
-{
-    if (sampleBuffer){
-        CFArrayRef attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, YES);
-        CFMutableDictionaryRef dict = (CFMutableDictionaryRef)CFArrayGetValueAtIndex(attachments, 0);
-        CFDictionarySetValue(dict, kCMSampleAttachmentKey_DoNotDisplay, kCFBooleanTrue);
-        
-        CFRetain(sampleBuffer);
-        if (layer.isReadyForMoreMediaData) {
-            [layer enqueueSampleBuffer:sampleBuffer];
-        }else{
-            NSLog(@"no ready");
-        }
-        CFRelease(sampleBuffer);
-        if (layer.status == AVQueuedSampleBufferRenderingStatusFailed){
-            NSLog(@"ERROR: %@", layer.error);
-        }
-    }else{
-        NSLog(@"ignore null samplebuffer");
-    }
-}
-
-
 @end
 
 
@@ -182,14 +179,17 @@
     self.playView.info = self.logInfo;
     self.tcp = [P2PTCPClient new];
     self.tcp.socketHost = self.ip;
+    [self.playView play];
 }
 
 - (IBAction)controlPlayer:(UIButton*)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {
         [self.tcp dissonnect];
+        [self.playView stop];
     }else{
         self.tcp.socketHost = self.ip;
+        [self.playView play];
     }
 }
 

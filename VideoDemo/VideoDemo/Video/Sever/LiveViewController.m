@@ -13,12 +13,13 @@
 #import "P2PUDPSever.h"
 #import "P2PTCPSever.h"
 #import "VideoToolboxPlus.h"
-#import "AACEncoder.h"
+
+#import <AACAudioTool/AACAudioTool.h>
 
 @interface LiveViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,VTPCompressionSessionDelegate,AACEncoderDelegate,AVCaptureAudioDataOutputSampleBufferDelegate>
 {
     VTPCompressionSession *_h264EncoderSesion;
-    AACEncoder *_aacEncoderSesion;
+    AACEncoder *_aacEncoder;
     dispatch_queue_t _encodeQueue;
 }
 
@@ -73,7 +74,7 @@
 - (void)stopEncodeSession
 {
     _h264EncoderSesion = nil;
-    _aacEncoderSesion = nil;
+    _aacEncoder = nil;
 }
 
 #pragma mark - camera
@@ -83,7 +84,7 @@
     if (self.connection == connection) {
         [self encodeFrame:sampleBuffer];
     }else{
-        [_aacEncoderSesion encodeSampleBuffer:sampleBuffer];
+        [_aacEncoder encodeSampleBuffer:sampleBuffer];
     }
 }
 
@@ -158,9 +159,9 @@
 #pragma mark - AACEncode
 - (void)startAACEncoderSession
 {
-    _aacEncoderSesion = [[AACEncoder alloc] init];
-    _aacEncoderSesion.delegate = self;
-    _aacEncoderSesion.delegateQueue = _encodeQueue;
+    _aacEncoder = [[AACEncoder alloc] init];
+    _aacEncoder.delegate = self;
+    _aacEncoder.delegateQueue = _encodeQueue;
 }
 //AACEncoderDelegate
 - (void)audioCompressionSession:(AACEncoder *)encoder didEncoderAACData:(NSData*)aacData

@@ -147,7 +147,7 @@ static OSStatus inInputDataProc(AudioConverterRef inAudioConverter, UInt32 *ioNu
     // 设置编码格式
     outAudioStreamDescrip.mFormatID = kAudioFormatMPEG4AAC;
     // 无损编码 ，0表示没有
-    outAudioStreamDescrip.mFormatFlags = kMPEG4Object_AAC_LC;
+    outAudioStreamDescrip.mFormatFlags = kMPEG4Object_AAC_Main;
     // 每一个packet的音频数据大小。如果的动态大小，设置为0。动态大小的格式，需要用AudioStreamPacketDescription 来确定每个packet的大小。
     outAudioStreamDescrip.mBytesPerPacket = 0;
     //每个packet的帧数。如果是未压缩的音频数据，值是1。动态帧率格式，这个值是一个较大的固定数字，比如说AAC的1024。如果是动态大小帧数（比如Ogg格式）设置为0。
