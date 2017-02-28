@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A4DEEC01E6531E100D24F1B /* AACAudioTool.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5D71041E60166B003968C9 /* AACAudioTool.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A5D71051E60166B003968C9 /* AACAudioTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5D71041E60166B003968C9 /* AACAudioTool.framework */; };
 		6A66E9441E5730C500B5A02A /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9431E5730C500B5A02A /* LiveViewController.m */; };
 		6A66E9471E5730DF00B5A02A /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A66E9461E5730DF00B5A02A /* PlayerViewController.m */; };
@@ -32,6 +33,20 @@
 		6A77B55B1E5431AC000786E5 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B55A1E5431AC000786E5 /* ClientViewController.m */; };
 		6A77B55E1E5431D5000786E5 /* SeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B55D1E5431D5000786E5 /* SeverViewController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A4DEEBF1E6531D600D24F1B /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6A4DEEC01E6531E100D24F1B /* AACAudioTool.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A5D71041E60166B003968C9 /* AACAudioTool.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AACAudioTool.framework; sourceTree = "<group>"; };
@@ -253,6 +268,7 @@
 				6A77B5201E5419FA000786E5 /* Sources */,
 				6A77B5211E5419FA000786E5 /* Frameworks */,
 				6A77B5221E5419FA000786E5 /* Resources */,
+				6A4DEEBF1E6531D600D24F1B /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
