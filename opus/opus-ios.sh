@@ -39,9 +39,7 @@ build_arch()
     ARCH_ROOT="${BUILD_ROOT}/opus-${ARCH}"
     ARCH_LIB="${ARCH_ROOT}/lib"
     ARCH_INCLUDE="${ARCH_ROOT}/include"
-    mkdir -p ${ARCH_ROOT}
-    mkdir -p ${ARCH_LIB}
-    mkdir -p ${ARCH_INCLUDE}
+    mkdir -p ${ARCH_LIB} ${ARCH_INCLUDE}
 
     if [ "${ARCH}" == "i386" -o "${ARCH}" == "x86_64" ]
     then
@@ -80,8 +78,7 @@ build_lipo()
 {
     LIPO_ROOT="${BUILD_ROOT}/opus-lipo"
     LIPO_LIB_DIR="${LIPO_ROOT}/lib"
-    mkdir -p ${LIPO_ROOT}
-    mkdir -p ${LIPO_LIB_DIR}
+    mkdir -p ${LIPO_ROOT} ${LIPO_LIB_DIR}
     LIPO_OS="libopus-iphoneos.a"
     LIPO_SIM="libopus-iphonesimulator.a"
     LIPO_All="libopus.a"
