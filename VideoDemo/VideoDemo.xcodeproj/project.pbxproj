@@ -32,6 +32,7 @@
 		6A77B5581E54266C000786E5 /* P2PTCPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B5571E54266C000786E5 /* P2PTCPClient.m */; };
 		6A77B55B1E5431AC000786E5 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B55A1E5431AC000786E5 /* ClientViewController.m */; };
 		6A77B55E1E5431D5000786E5 /* SeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A77B55D1E5431D5000786E5 /* SeverViewController.m */; };
+		6AE2D5231E6E4BA600FC997A /* libspeex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE2D5221E6E4BA600FC997A /* libspeex.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,7 +70,7 @@
 		6A66E95F1E57E57C00B5A02A /* H264Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264Decoder.m; sourceTree = "<group>"; };
 		6A77B5241E5419FA000786E5 /* VideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A77B5281E5419FA000786E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6A77B52A1E5419FA000786E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6A77B52A1E5419FA000786E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		6A77B52B1E5419FA000786E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6A77B52D1E5419FA000786E5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6A77B52E1E5419FA000786E5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -94,6 +95,14 @@
 		6A77B55A1E5431AC000786E5 /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
 		6A77B55C1E5431D5000786E5 /* SeverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeverViewController.h; sourceTree = "<group>"; };
 		6A77B55D1E5431D5000786E5 /* SeverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeverViewController.m; sourceTree = "<group>"; };
+		6AE2D51A1E6E4BA600FC997A /* speex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex.h; sourceTree = "<group>"; };
+		6AE2D51B1E6E4BA600FC997A /* speex_bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_bits.h; sourceTree = "<group>"; };
+		6AE2D51C1E6E4BA600FC997A /* speex_callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_callbacks.h; sourceTree = "<group>"; };
+		6AE2D51D1E6E4BA600FC997A /* speex_config_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_config_types.h; sourceTree = "<group>"; };
+		6AE2D51E1E6E4BA600FC997A /* speex_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_header.h; sourceTree = "<group>"; };
+		6AE2D51F1E6E4BA600FC997A /* speex_stereo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_stereo.h; sourceTree = "<group>"; };
+		6AE2D5201E6E4BA600FC997A /* speex_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_types.h; sourceTree = "<group>"; };
+		6AE2D5221E6E4BA600FC997A /* libspeex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libspeex.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A66E94C1E57310700B5A02A /* VideoToolbox.framework in Frameworks */,
+				6AE2D5231E6E4BA600FC997A /* libspeex.a in Frameworks */,
 				6A5D71051E60166B003968C9 /* AACAudioTool.framework in Frameworks */,
 				6A66E94A1E5730FB00B5A02A /* AVFoundation.framework in Frameworks */,
 			);
@@ -166,9 +176,9 @@
 		6A77B5261E5419FA000786E5 /* VideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6AE2D5171E6E4BA600FC997A /* speex */,
 				6A77B5411E542343000786E5 /* Socket */,
 				6A77B53E1E542078000786E5 /* Video */,
-				6A77B52A1E5419FA000786E5 /* AppDelegate.h */,
 				6A77B52B1E5419FA000786E5 /* AppDelegate.m */,
 				6A77B52D1E5419FA000786E5 /* ViewController.h */,
 				6A77B52E1E5419FA000786E5 /* ViewController.m */,
@@ -192,6 +202,7 @@
 		6A77B53E1E542078000786E5 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				6A77B52A1E5419FA000786E5 /* AppDelegate.h */,
 				6A66E95D1E57E55600B5A02A /* H264Decoder */,
 				6A77B53F1E542078000786E5 /* Client */,
 				6A77B5401E542078000786E5 /* Sever */,
@@ -256,6 +267,46 @@
 				6A77B5491E5425AA000786E5 /* GCDAsyncUdpSocket.m */,
 			);
 			path = GCD;
+			sourceTree = "<group>";
+		};
+		6AE2D5171E6E4BA600FC997A /* speex */ = {
+			isa = PBXGroup;
+			children = (
+				6AE2D5181E6E4BA600FC997A /* include */,
+				6AE2D5211E6E4BA600FC997A /* lib */,
+			);
+			name = speex;
+			path = ../../../speex;
+			sourceTree = "<group>";
+		};
+		6AE2D5181E6E4BA600FC997A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6AE2D5191E6E4BA600FC997A /* speex */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		6AE2D5191E6E4BA600FC997A /* speex */ = {
+			isa = PBXGroup;
+			children = (
+				6AE2D51A1E6E4BA600FC997A /* speex.h */,
+				6AE2D51B1E6E4BA600FC997A /* speex_bits.h */,
+				6AE2D51C1E6E4BA600FC997A /* speex_callbacks.h */,
+				6AE2D51D1E6E4BA600FC997A /* speex_config_types.h */,
+				6AE2D51E1E6E4BA600FC997A /* speex_header.h */,
+				6AE2D51F1E6E4BA600FC997A /* speex_stereo.h */,
+				6AE2D5201E6E4BA600FC997A /* speex_types.h */,
+			);
+			path = speex;
+			sourceTree = "<group>";
+		};
+		6AE2D5211E6E4BA600FC997A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				6AE2D5221E6E4BA600FC997A /* libspeex.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,6 +529,8 @@
 				INFOPLIST_FILE = VideoDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../speex/lib/\"";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ulucu.VideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -496,6 +549,8 @@
 				INFOPLIST_FILE = VideoDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../speex/lib/\"";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ulucu.VideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
