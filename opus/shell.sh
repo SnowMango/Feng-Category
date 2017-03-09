@@ -34,10 +34,11 @@ EOF
 chmod +x $FILE_PATH
 }
 ALL_OPT="create"
-
-if echo "${ALL_OPT[@]}" | grep -w "$1" &>/dev/null
+TAR=`echo ${ALL_OPT[@]} | grep -w "$1"`
+TARS=("$@")
+if [ -n "$TAR" ]
 then
-    shell_$1 $2 $3
+    shell_$1 ${TARS[@]:1}
 else
     echo "============opt=============="
     for opt in $ALL_OPT
