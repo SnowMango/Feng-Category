@@ -12,17 +12,18 @@ FILE_SUF="plist"
 FILE_PATH="$1"
 FILE_ROOT=`dirname $FILE_PATH`
 FILE_NAME=`basename $FILE_PATH .$FILE_SUF`
+
+DISABLE_FILE=". .. .DS_Store"
+
+for file in $DISABLE_FILE
+do
+    if [ "$FILE_NAME" == "$file" -o "$FILE_NAME" == "$file.$FILE_SUF" ]
+    then
+        exit 1
+    fi
+done
+
 FILE_NAME="${FILE_NAME}.$FILE_SUF"
-
-if [ "$FILE_ROOT" == "." ]
-then
-    FILE_PATH="$FILE_NAME"
-fi
-
-if [ "$FILE_NAME" == ".$FILE_SUF" -o "$FILE_NAME" == "." ]
-then
-    exit 1
-fi
 
 if [ "$FILE_ROOT" != "." -a "$FILE_ROOT" != "/" ]
 then
