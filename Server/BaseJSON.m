@@ -46,15 +46,15 @@ const char * IVAR_LIST = "ivar_list";
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    NSArray *properties = [self objc_properties];
-    NSMutableDictionary *propertyDic = [[self dictionaryWithValuesForKeys:properties] mutableCopy];
-    [propertyDic removeObjectsForKeys:ivar_list.allKeys];
-    [propertyDic enumerateKeysAndObjectsUsingBlock:^(id propertyName, id value, BOOL * stop) {
-        if (value) {
-            [aCoder encodeObject:value forKey:propertyName];
-        }
-    }];
-    [aCoder encodeObject:ivar_list forKey:[NSString stringWithUTF8String:IVAR_LIST]];
+    unsigned int ivarCount = 0;
+    Ivar * ivars = class_copyIvarList([self class], &ivarCount);
+    
+    for (int i = 0; i < ivarCount; i++) {
+        const char * name = ivar_getName(ivars[i]);
+        NSString * ivarName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+        id value = [self valueForKey:ivarName];
+        [aCoder encodeObject:value forKey:ivarName];
+    }
 }
 
 
@@ -62,15 +62,15 @@ const char * IVAR_LIST = "ivar_list";
 {
     self = [super init];
     if (self) {
-        unsigned int propertyCount = 0;
-        objc_property_t * properties = class_copyPropertyList( [self class], &propertyCount );
-        for ( NSUInteger i = 0; i < propertyCount; i++ ){
-            const char * name = property_getName(properties[i]);
-            NSString * propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-            id value = [aDecoder decodeObjectForKey:propertyName];
-            [self setValue:value forKey:propertyName];
+        
+        unsigned int ivarCount = 0;
+        Ivar * ivars = class_copyIvarList([self class], &ivarCount);
+        for (int i = 0; i < ivarCount; i++) {
+            const char * name = ivar_getName(ivars[i]);
+            NSString * ivarName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            id value = [aDecoder decodeObjectForKey:ivarName];
+            [self setValue:value forKey:ivarName];
         }
-        ivar_list = [aDecoder decodeObjectForKey:[NSString stringWithUTF8String:IVAR_LIST]];
         [ivar_list enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * _Nonnull stop) {
             [self setValue:obj forKey:key];
         }];
@@ -145,7 +145,7 @@ const char * IVAR_LIST = "ivar_list";
 //根据valuel类型 runtime添加属性
 - (void)addPropertyWithName:(NSString *)propertyName value:(id)newValue {
     NSString* ivar_name = [NSString stringWithFormat:@"_%@", propertyName];
-    //判断是否是动态属性
+    //判断是否是动态属性 动态属性 没有成员变量
     Ivar user_ivar = class_getInstanceVariable([self class], ivar_name.UTF8String);
     if (user_ivar) {
         return;
@@ -156,8 +156,11 @@ const char * IVAR_LIST = "ivar_list";
     Ivar ivar = class_getInstanceVariable([self class], IVAR_LIST);
     NSMutableDictionary *propertyList = object_getIvar(self, ivar);
     id oldValue = [propertyList objectForKey:propertyName];
+    if (oldValue) {
+        oldValue = @"";
+    }
     //判断是否添加过动态属性并且class相同，不同就添加
-    if (oldValue && [NSStringFromClass([oldValue class]) isEqualToString:NSStringFromClass([newValue class])]) {
+    if ([NSStringFromClass([oldValue class]) isEqualToString:NSStringFromClass([newValue class])]) {
         return ;
     }
     NSLog(@"new property %@:<%@:%@> ", NSStringFromClass([self class]), propertyName, newValue);
@@ -178,6 +181,7 @@ const char * IVAR_LIST = "ivar_list";
 - (NSString *)description
 {
     NSString *des = [NSString stringWithFormat:@"<%p>=%@", self, ivar_list.description];
+    
     return des;
 }
 

@@ -24,7 +24,6 @@
 @end
 
 
-
 @implementation UIViewController (BaseViewController)
 
 - (UIStatusBarStyle)preferredStatusBarStyle
