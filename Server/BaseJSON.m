@@ -147,18 +147,12 @@ const char * IVAR_LIST = "ivar_list";
     NSString* ivar_name = [NSString stringWithFormat:@"_%@", propertyName];
     //判断是否是动态属性 动态属性 没有成员变量
     Ivar user_ivar = class_getInstanceVariable([self class], ivar_name.UTF8String);
-    if (user_ivar) {
+    if (user_ivar || !newValue) {
         return;
-    }
-    if (!newValue) {
-        newValue = @"";
     }
     Ivar ivar = class_getInstanceVariable([self class], IVAR_LIST);
     NSMutableDictionary *propertyList = object_getIvar(self, ivar);
     id oldValue = [propertyList objectForKey:propertyName];
-    if (oldValue) {
-        oldValue = @"";
-    }
     //判断是否添加过动态属性并且class相同，不同就添加
     if ([NSStringFromClass([oldValue class]) isEqualToString:NSStringFromClass([newValue class])]) {
         return ;
