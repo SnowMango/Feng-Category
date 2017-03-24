@@ -181,10 +181,6 @@ const char * IVAR_LIST = "ivar_list";
 
 @end
 
-@implementation SubJSON
-
-
-@end
 
 #pragma mark - Setter
 id json_getter(id sel, SEL cmd) {

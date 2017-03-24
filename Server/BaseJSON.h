@@ -19,7 +19,7 @@ extern NSString * const kJOSNOnlyArrayKey;
 @property (nonatomic, strong) NSString * identifer;
 
 /**
- 设置property并将keyedValues中的所有Dictionary转化成self class 对象
+ 设置property并将keyedValues中的所有Dictionary转化成 BaseJSON 对象
  @param keyedValues properties keys and values
  */
 - (void)setValuesForKeysAutoObjectWithDictionary:(NSDictionary<NSString *,id> *)keyedValues;
@@ -38,10 +38,6 @@ extern NSString * const kJOSNOnlyArrayKey;
 
 @end
 
-
-@interface SubJSON : BaseJSON
-
-@end
 
 
 
