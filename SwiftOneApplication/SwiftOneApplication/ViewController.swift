@@ -8,25 +8,35 @@
 
 import UIKit
 
+let kRootLaunchStoryboardKey:NSString = "UILaunchStoryboardName"
+let kRootGuideStoryboardKey:NSString  = "UIGuideStoryboardName"
+let kRootLoginStoryboardKey:NSString  = "UILoginStoryboardName"
+let kRootMainStoryboardKey:NSString   = "UIMainStoryboardFile"
 
 
 class ViewController: UIViewController {
 
+    var launchVC:UIViewController?
+    var guideVC:UIViewController?
+    var loginVC:UIViewController?
+    var mainVC:UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    open func exitLogin() {
+    func exitLogin() {
         
     }
     
-    open func login() {
+    func login() {
         
     }
     
+   
     
-
-
+    
+    
 }
 

@@ -55,6 +55,7 @@ const char * IVAR_LIST = "ivar_list";
         id value = [self valueForKey:ivarName];
         [aCoder encodeObject:value forKey:ivarName];
     }
+    free(ivars);
 }
 
 
@@ -74,6 +75,7 @@ const char * IVAR_LIST = "ivar_list";
         [ivar_list enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * _Nonnull stop) {
             [self setValue:obj forKey:key];
         }];
+        free(ivars);
     }
     return self;
 }
@@ -88,6 +90,7 @@ const char * IVAR_LIST = "ivar_list";
         NSString * propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
         [properties addObject:propertyName];
     }
+    free(propertList);
     return properties;
 }
 #pragma mark -
