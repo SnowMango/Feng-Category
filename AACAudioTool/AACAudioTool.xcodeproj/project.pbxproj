@@ -12,6 +12,7 @@
 		6A5D70FA1E6013CD003968C9 /* AACAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D70F61E6013CD003968C9 /* AACAudioPlayer.m */; };
 		6A5D70FB1E6013CD003968C9 /* AACEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A5D70F71E6013CD003968C9 /* AACEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A5D70FC1E6013CD003968C9 /* AACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D70F81E6013CD003968C9 /* AACEncoder.m */; };
+		6ABC0D661E8F4CDE0009727A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABC0D651E8F4CDE0009727A /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		6A5D70F61E6013CD003968C9 /* AACAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACAudioPlayer.m; sourceTree = "<group>"; };
 		6A5D70F71E6013CD003968C9 /* AACEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACEncoder.h; sourceTree = "<group>"; };
 		6A5D70F81E6013CD003968C9 /* AACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACEncoder.m; sourceTree = "<group>"; };
+		6ABC0D651E8F4CDE0009727A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ABC0D661E8F4CDE0009727A /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				6A5D70EC1E60136B003968C9 /* AACAudioTool */,
 				6A5D70EB1E60136B003968C9 /* Products */,
+				6ABC0D641E8F4CDE0009727A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +66,14 @@
 				6A5D70EE1E60136B003968C9 /* Info.plist */,
 			);
 			path = AACAudioTool;
+			sourceTree = "<group>";
+		};
+		6ABC0D641E8F4CDE0009727A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6ABC0D651E8F4CDE0009727A /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,12 +117,11 @@
 		6A5D70E11E60136B003968C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = zhengfeng;
 				TargetAttributes = {
 					6A5D70E91E60136B003968C9 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 8RKD57526R;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -189,6 +200,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -240,6 +252,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -272,7 +285,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8RKD57526R;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -291,7 +304,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8RKD57526R;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

@@ -33,7 +33,6 @@ const char * IVAR_LIST = "ivar_list";
 {
     id newObj = [[self class] allocWithZone:zone];
     NSArray *properties = [self objc_properties];
-    NSMutableDictionary *propertyDic = [NSMutableDictionary new];
     for (NSString *key in properties) {
         id value = [self valueForKey:key];
         if ([value conformsToProtocol:@protocol(NSMutableCopying)]) {

@@ -7,8 +7,10 @@
 //
 
 #import "ExampleViewController.h"
-#import <Module.h>
+//#import <Module/Module.h>
 #import "BaseJSON.h"
+#import <ReactiveObjC/ReactiveObjC.h>
+
 @interface ExampleViewController ()
 @property (nonatomic, strong) NSMutableArray *example;
 @end
@@ -18,13 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ModuleHandle * handle = [ModuleHandle handleWithClass:[ExampleModule class]];
-    
-    [ModuleManager addModuleHandle:handle];
-    self.example = [NSMutableArray arrayWithArray:handle.modules];
+//    ModuleHandle * handle = [ModuleHandle handleWithClass:[ExampleModule class]];
+//    
+//    [ModuleManager addModuleHandle:handle];
+//    self.example = [NSMutableArray arrayWithArray:handle.modules];
     self.clearsSelectionOnViewWillAppear = NO;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 60;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    button.rac_command = [[RACCommand alloc] initWithSignalBlock:^(id _) {
+        NSLog(@"button was pressed!");
+        return [RACSignal empty];
+    }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -36,11 +44,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellId = @[@"Basic",@"Value1",@"Value2",@"Subtitle"][3];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    ExampleModule * f = self.example[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
-    cell.textLabel.text = f.title;
-    cell.detailTextLabel.text = f.detail;
+//    ExampleModule * f = self.example[indexPath.row];
+//    cell.textLabel.font = [UIFont systemFontOfSize:14];
+//    cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
+//    cell.textLabel.text = f.title;
+//    cell.detailTextLabel.text = f.detail;
     return cell;
 }
 
@@ -48,10 +56,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ExampleModule *example = self.example[indexPath.row];
-    example.rootViewController.hidesBottomBarWhenPushed = YES;
-    example.rootViewController.title = example.title;
-    [self.navigationController  pushViewController:example.rootViewController animated:YES];
+//    ExampleModule *example = self.example[indexPath.row];
+//    example.rootViewController.hidesBottomBarWhenPushed = YES;
+//    example.rootViewController.title = example.title;
+//    [self.navigationController  pushViewController:example.rootViewController animated:YES];
 }
 
 @end

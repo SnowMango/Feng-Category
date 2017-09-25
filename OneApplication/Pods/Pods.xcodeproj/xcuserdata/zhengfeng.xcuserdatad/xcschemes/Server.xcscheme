@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5A5844B20210E866CD13547FD4E722A3'
+               BlueprintIdentifier = '8843A5C06195296C1734F33F40E1DBB9'
                BlueprintName = 'Server'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libServer.a'>
+               BuildableName = 'Server.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

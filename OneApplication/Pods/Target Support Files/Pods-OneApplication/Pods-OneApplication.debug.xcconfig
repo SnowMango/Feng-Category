@@ -1,9 +1,9 @@
-ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Module" "$PODS_CONFIGURATION_BUILD_DIR/Mycategory" "$PODS_CONFIGURATION_BUILD_DIR/Server"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Module" "${PODS_ROOT}/Headers/Public/Mycategory" "${PODS_ROOT}/Headers/Public/Server"
-LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Module" "$PODS_CONFIGURATION_BUILD_DIR/Mycategory" "$PODS_CONFIGURATION_BUILD_DIR/Server"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Module" -isystem "${PODS_ROOT}/Headers/Public/Mycategory" -isystem "${PODS_ROOT}/Headers/Public/Server"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Module" -l"Mycategory" -l"Server" -framework "AVFoundation" -framework "CFNetwork" -framework "CoreData" -framework "CoreGraphics" -framework "CoreMedia" -framework "Foundation" -framework "MobileCoreServices" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Module/Module.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Mycategory/Mycategory.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Server/Server.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Module" -framework "Mycategory" -framework "Server"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods

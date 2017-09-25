@@ -8,11 +8,12 @@
 
 import UIKit
 
-let kRootLaunchStoryboardKey:NSString = "UILaunchStoryboardName"
-let kRootGuideStoryboardKey:NSString  = "UIGuideStoryboardName"
-let kRootLoginStoryboardKey:NSString  = "UILoginStoryboardName"
-let kRootMainStoryboardKey:NSString   = "UIMainStoryboardFile"
-
+struct RootStoryboard {
+    static var LaunchKey:NSString { return "UILaunchStoryboardName"  }
+    static var GuideKey:NSString  { return "UIGuideStoryboardName"   }
+    static var LoginKey:NSString  { return "UILoginStoryboardName"   }
+    static var MainKey:NSString   { return "UIMainStoryboardFile"    }
+}
 
 class ViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -34,7 +36,6 @@ class ViewController: UIViewController {
         
     }
     
-   
     
     
     

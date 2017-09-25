@@ -31,3 +31,10 @@ CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
 - (void) fitInSize: (CGSize) aSize;
 
 @end
+
+@interface UIView (NibLayoutConstraint)
+
+
+
+
+@end

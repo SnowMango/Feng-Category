@@ -32,7 +32,7 @@ extern NSString * const kJOSNOnlyArrayKey;
 /**
   动态属性推荐的设置方式
  */
-- (void)setValue:(nullable id)value forKey:(NSString *)key;
+- (void)setValue:( id)value forKey:(NSString *)key;
 
 - (NSArray *)runtimeProperties;
 

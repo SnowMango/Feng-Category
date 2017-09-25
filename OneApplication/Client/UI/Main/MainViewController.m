@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import <BaseJSON.h>
+#import "BaseJSON.h"
 
 @interface MainViewController ()
 
@@ -24,10 +24,7 @@
     base.identifer = @"base";
     [base setValuesForKeysWithDictionary:@{@"name":@"feng",@"age":@24}];
     NSLog(@"base®%@",base );
-    SubJSON * sub = [SubJSON new];
-    [sub setValue:@"sub" forKey:@"identifer"];
-    [sub setValuesForKeysWithDictionary:@{@"name":@"zfeng",@"age":@23}];
-    NSLog(@"sub®%@",sub );
+    
 }
 
 

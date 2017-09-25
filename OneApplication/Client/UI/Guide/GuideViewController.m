@@ -8,7 +8,6 @@
 
 #import "GuideViewController.h"
 #import "AppDelegate.h"
-#import <BaseJSON.h>
 @interface GuideViewController ()<NSKeyedArchiverDelegate,NSKeyedUnarchiverDelegate>
 
 
@@ -18,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
