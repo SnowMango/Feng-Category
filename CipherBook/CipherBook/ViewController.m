@@ -8,6 +8,17 @@
 
 #import "ViewController.h"
 #import "ZFCipher.h"
+
+typedef enum : NSUInteger {
+    NetworkNone,
+    Network2G,
+    Network3G,
+    Network4G,
+    NetworkLTE,
+    NetworkWIFI
+} ZFNetwork;
+ZFNetwork ZFNetworkType(void);
+
 @interface ViewController ()
 
 @end
@@ -16,13 +27,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"2345678908970");
+    
 }
 
 
 
 
-
 @end
+
+ZFNetwork ZFNetworkType(void){
+    NSArray *subviews = [[[[UIApplication sharedApplication] valueForKey:@"statusBar"] valueForKey:@"foregroundView"]subviews];
+    id dataNetworkItemView = nil;
+
+    for (id subview in subviews) {
+        if([subview isKindOfClass:[NSClassFromString(@"UIStatusBarDataNetworkItemView") class]])
+        {
+            dataNetworkItemView = subview;
+            break;
+        }
+    }
+    ZFNetwork network = [[dataNetworkItemView valueForKey:@"dataNetworkType"] integerValue];
+    return network;
+}
 
 

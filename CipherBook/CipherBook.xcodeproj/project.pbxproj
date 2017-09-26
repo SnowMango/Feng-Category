@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0DED181F79E5D800C13BF2 /* ZFCipherGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0DED171F79E5D800C13BF2 /* ZFCipherGroup.m */; };
+		6A0DED1A1F79ECBE00C13BF2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0DED191F79ECBE00C13BF2 /* SystemConfiguration.framework */; };
+		6A0DED1D1F79F1CB00C13BF2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0DED1C1F79ED8C00C13BF2 /* Reachability.m */; };
 		6A360E3B1F78D9480024A9E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A360E3A1F78D9480024A9E7 /* Foundation.framework */; };
 		6AA914271F78B7A80070D7AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA914261F78B7A80070D7AB /* AppDelegate.m */; };
 		6AA9142A1F78B7A80070D7AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA914291F78B7A80070D7AB /* ViewController.m */; };
@@ -19,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A0DED161F79E5D800C13BF2 /* ZFCipherGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFCipherGroup.h; sourceTree = "<group>"; };
+		6A0DED171F79E5D800C13BF2 /* ZFCipherGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFCipherGroup.m; sourceTree = "<group>"; };
+		6A0DED191F79ECBE00C13BF2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6A0DED1B1F79ED8B00C13BF2 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6A0DED1C1F79ED8C00C13BF2 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6A360E3A1F78D9480024A9E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6AA914221F78B7A80070D7AB /* CipherBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CipherBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA914251F78B7A80070D7AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -41,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A0DED1A1F79ECBE00C13BF2 /* SystemConfiguration.framework in Frameworks */,
 				6A360E3B1F78D9480024A9E7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +60,8 @@
 		6A360E3C1F78DBA20024A9E7 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				6A0DED1B1F79ED8B00C13BF2 /* Reachability.h */,
+				6A0DED1C1F79ED8C00C13BF2 /* Reachability.m */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -96,10 +107,12 @@
 		6AA914531F78C0E70070D7AB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6AA914581F78C1E00070D7AB /* ZFCipher.h */,
-				6AA914591F78C1E00070D7AB /* ZFCipher.m */,
 				6AA9145B1F78C2220070D7AB /* ZFBaseModel.h */,
 				6AA9145C1F78C2220070D7AB /* ZFBaseModel.m */,
+				6AA914581F78C1E00070D7AB /* ZFCipher.h */,
+				6AA914591F78C1E00070D7AB /* ZFCipher.m */,
+				6A0DED161F79E5D800C13BF2 /* ZFCipherGroup.h */,
+				6A0DED171F79E5D800C13BF2 /* ZFCipherGroup.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,6 +141,7 @@
 		6AA914571F78C0E80070D7AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A0DED191F79ECBE00C13BF2 /* SystemConfiguration.framework */,
 				6A360E3A1F78D9480024A9E7 /* Foundation.framework */,
 			);
 			path = Frameworks;
@@ -206,6 +220,8 @@
 			files = (
 				6AA9145D1F78C2220070D7AB /* ZFBaseModel.m in Sources */,
 				6AA9145A1F78C1E00070D7AB /* ZFCipher.m in Sources */,
+				6A0DED181F79E5D800C13BF2 /* ZFCipherGroup.m in Sources */,
+				6A0DED1D1F79F1CB00C13BF2 /* Reachability.m in Sources */,
 				6AA9142A1F78B7A80070D7AB /* ViewController.m in Sources */,
 				6AA914351F78B7A80070D7AB /* main.m in Sources */,
 				6AA914271F78B7A80070D7AB /* AppDelegate.m in Sources */,
@@ -343,7 +359,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TLSHLCLK3Z;
 				INFOPLIST_FILE = CipherBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mango.CipherBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -356,7 +374,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TLSHLCLK3Z;
 				INFOPLIST_FILE = CipherBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mango.CipherBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";

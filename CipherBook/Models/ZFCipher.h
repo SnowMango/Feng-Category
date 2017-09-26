@@ -8,24 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "ZFBaseModel.h"
-
-typedef enum : NSUInteger {
-    NetworkNone,
-    Network2G,
-    Network3G,
-    Network4G,
-    NetworkLTE,
-    NetworkWIFI
-} ZFNetwork;
-ZFNetwork ZFNetworkType(void);
-
+@class ZFCipherGroup;
 @interface ZFCipher : ZFBaseModel
 
-@property (strong, nonatomic) NSString *identifier;
-@property (strong, nonatomic) NSString *password;
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *saveType;
+@property (copy, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSString *account;
+@property (copy, nonatomic) NSString *password;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *remark;
 
+@property (strong, nonatomic) ZFCipherGroup *group;
 @end
 
 
