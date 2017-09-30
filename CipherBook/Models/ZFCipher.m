@@ -8,20 +8,9 @@
 
 #import "ZFCipher.h"
 #import <UIKit/UIKit.h>
+#import "ZFCipherGroup.h"
+
 @implementation ZFCipher
 
 @end
-ZFNetwork ZFNetworkType(void){
-    NSArray *subviews = [[[[UIApplication sharedApplication] valueForKey:@"statusBar"] valueForKey:@"foregroundView"]subviews];
-    id dataNetworkItemView = nil;
-    
-    for (id subview in subviews) {
-        if([subview isKindOfClass:[NSClassFromString(@"UIStatusBarDataNetworkItemView") class]])
-        {
-            dataNetworkItemView = subview;
-            break;
-        }
-    }
-    ZFNetwork network = [[dataNetworkItemView valueForKey:@"dataNetworkType"] integerValue];
-    return network;
-}
+
