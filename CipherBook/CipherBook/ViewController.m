@@ -19,11 +19,18 @@ typedef enum : NSUInteger {
 } ZFNetwork;
 ZFNetwork ZFNetworkType(void);
 
+#import "ZFCipherView.h"
 @interface ViewController ()
+
+@property (nonatomic, strong) ZFCipherView *clipherView;
 
 @end
 
 @implementation ViewController
+- (IBAction)changeStyle:(UISegmentedControl*)sender {
+    self.clipherView.style = sender.selectedSegmentIndex;
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +38,20 @@ ZFNetwork ZFNetworkType(void);
 }
 
 
+- (void)testShow
+{
+    NSMutableArray *temp = [NSMutableArray array];
+    for (int i = 0; i < 30; i++) {
+        ZFCipher * obj = [[ZFCipher alloc] init];
+        obj.title = @(i+1).stringValue;
+        [temp addObject:obj];
+    }
+    self.clipherView = [[ZFCipherView alloc] initWithFrame:self.view.bounds];
+    self.clipherView.items = temp;
+    [self.view addSubview:self.clipherView];
+    [self.clipherView reloadData];
+    [self.view sendSubviewToBack:self.clipherView];
+}
 
 
 @end

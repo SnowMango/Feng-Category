@@ -7,6 +7,7 @@
 //
 
 #import "ZFBaseModel.h"
+
 @class ZFCipher;
 
 @interface ZFCipherGroup : ZFBaseModel

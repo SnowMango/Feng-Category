@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6A0DED181F79E5D800C13BF2 /* ZFCipherGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0DED171F79E5D800C13BF2 /* ZFCipherGroup.m */; };
-		6A0DED1A1F79ECBE00C13BF2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0DED191F79ECBE00C13BF2 /* SystemConfiguration.framework */; };
 		6A0DED1D1F79F1CB00C13BF2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0DED1C1F79ED8C00C13BF2 /* Reachability.m */; };
 		6A360E3B1F78D9480024A9E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A360E3A1F78D9480024A9E7 /* Foundation.framework */; };
 		6AA914271F78B7A80070D7AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA914261F78B7A80070D7AB /* AppDelegate.m */; };
@@ -19,6 +18,10 @@
 		6AA914351F78B7A80070D7AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA914341F78B7A80070D7AB /* main.m */; };
 		6AA9145A1F78C1E00070D7AB /* ZFCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA914591F78C1E00070D7AB /* ZFCipher.m */; };
 		6AA9145D1F78C2220070D7AB /* ZFBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AA9145C1F78C2220070D7AB /* ZFBaseModel.m */; };
+		6AEF99CB1F81D8C300C4C1ED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0DED191F79ECBE00C13BF2 /* SystemConfiguration.framework */; };
+		6AEF99CE1F81DB9B00C4C1ED /* ZFCipherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF99CD1F81DB9B00C4C1ED /* ZFCipherView.m */; };
+		6AEF99D11F8204C600C4C1ED /* ZFCipherViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF99D01F8204C600C4C1ED /* ZFCipherViewCell.m */; };
+		6AEF99D41F832FC700C4C1ED /* ZFCipherFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF99D31F832FC700C4C1ED /* ZFCipherFileHandle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,12 @@
 		6AA914591F78C1E00070D7AB /* ZFCipher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFCipher.m; sourceTree = "<group>"; };
 		6AA9145B1F78C2220070D7AB /* ZFBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFBaseModel.h; sourceTree = "<group>"; };
 		6AA9145C1F78C2220070D7AB /* ZFBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFBaseModel.m; sourceTree = "<group>"; };
+		6AEF99CC1F81DB9B00C4C1ED /* ZFCipherView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFCipherView.h; sourceTree = "<group>"; };
+		6AEF99CD1F81DB9B00C4C1ED /* ZFCipherView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFCipherView.m; sourceTree = "<group>"; };
+		6AEF99CF1F8204C600C4C1ED /* ZFCipherViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFCipherViewCell.h; sourceTree = "<group>"; };
+		6AEF99D01F8204C600C4C1ED /* ZFCipherViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFCipherViewCell.m; sourceTree = "<group>"; };
+		6AEF99D21F832FC700C4C1ED /* ZFCipherFileHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFCipherFileHandle.h; sourceTree = "<group>"; };
+		6AEF99D31F832FC700C4C1ED /* ZFCipherFileHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFCipherFileHandle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A0DED1A1F79ECBE00C13BF2 /* SystemConfiguration.framework in Frameworks */,
 				6A360E3B1F78D9480024A9E7 /* Foundation.framework in Frameworks */,
+				6AEF99CB1F81D8C300C4C1ED /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +122,8 @@
 				6AA914591F78C1E00070D7AB /* ZFCipher.m */,
 				6A0DED161F79E5D800C13BF2 /* ZFCipherGroup.h */,
 				6A0DED171F79E5D800C13BF2 /* ZFCipherGroup.m */,
+				6AEF99D21F832FC700C4C1ED /* ZFCipherFileHandle.h */,
+				6AEF99D31F832FC700C4C1ED /* ZFCipherFileHandle.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,6 +138,10 @@
 		6AA914551F78C0E80070D7AB /* ProductUI */ = {
 			isa = PBXGroup;
 			children = (
+				6AEF99CC1F81DB9B00C4C1ED /* ZFCipherView.h */,
+				6AEF99CD1F81DB9B00C4C1ED /* ZFCipherView.m */,
+				6AEF99CF1F8204C600C4C1ED /* ZFCipherViewCell.h */,
+				6AEF99D01F8204C600C4C1ED /* ZFCipherViewCell.m */,
 			);
 			path = ProductUI;
 			sourceTree = "<group>";
@@ -224,7 +239,10 @@
 				6A0DED1D1F79F1CB00C13BF2 /* Reachability.m in Sources */,
 				6AA9142A1F78B7A80070D7AB /* ViewController.m in Sources */,
 				6AA914351F78B7A80070D7AB /* main.m in Sources */,
+				6AEF99D41F832FC700C4C1ED /* ZFCipherFileHandle.m in Sources */,
 				6AA914271F78B7A80070D7AB /* AppDelegate.m in Sources */,
+				6AEF99CE1F81DB9B00C4C1ED /* ZFCipherView.m in Sources */,
+				6AEF99D11F8204C600C4C1ED /* ZFCipherViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TLSHLCLK3Z;
+				DEVELOPMENT_TEAM = GVH7JZXR3Q;
 				INFOPLIST_FILE = CipherBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -374,7 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TLSHLCLK3Z;
+				DEVELOPMENT_TEAM = GVH7JZXR3Q;
 				INFOPLIST_FILE = CipherBook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
