@@ -8,10 +8,8 @@
 
 #import "ZFBaseModel.h"
 
-@class ZFCipher;
-
 @interface ZFCipherGroup : ZFBaseModel
 @property (copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *title;
-@property (strong, nonatomic) NSArray<ZFCipher*> *ciphers;
+@property (strong, nonatomic) NSArray<NSString*> *ciphers;
 @end

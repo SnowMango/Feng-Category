@@ -20,6 +20,20 @@ typedef enum : NSUInteger {
 ZFNetwork ZFNetworkType(void);
 
 #import "ZFCipherView.h"
+
+BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
+{
+    NSString *filePath = [path stringByAppendingFormat:@"/%@", fileName];
+    NSError * err;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        if (![[NSFileManager defaultManager] removeItemAtPath:filePath error:&err]){
+            NSLog(@"%@",err);
+            return NO;
+        }
+    }
+    return [[NSFileManager defaultManager] createFileAtPath:filePath contents:dat attributes:nil];
+}
+
 @interface ViewController ()
 
 @property (nonatomic, strong) ZFCipherView *clipherView;
@@ -34,7 +48,9 @@ ZFNetwork ZFNetworkType(void);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
+
 }
 
 
