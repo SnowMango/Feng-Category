@@ -7,18 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ZFCipher.h"
+#import "ZFCipherGroup.h"
 @interface ZFCipherManager : NSObject
 
 + (instancetype)defaultManager;
+- (NSArray*)allGroup;
+- (NSArray*)allCipher;
 
 //add
-
+-(BOOL)addGroupWithName:(NSString *)gName;
+-(BOOL)addCipherWithData:(NSDictionary *)cipher;
 //delete
-
-//modify
-
+-(BOOL)deleteGroupWithIdentifier:(NSString *)identifier;
+-(BOOL)deleteCipherWithIdentifier:(NSString *)identifier;
+//update
+-(BOOL)updateGroupWithName:(NSString *)gName;
+-(BOOL)updateCipherWithData:(NSDictionary *)cipher;
 //refer
-
+-(NSArray *)referGroupWithName:(NSString *)gName;
+-(NSArray *)referGroupWithIdentifier:(NSString *)identifier;
+-(NSArray *)referCipherWithIdentifier:(NSString *)identifier;
 
 @end

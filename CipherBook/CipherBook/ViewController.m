@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "ZFCipher.h"
-
+#import "ZFCipherManager.h"
 typedef enum : NSUInteger {
     NetworkNone,
     Network2G,
@@ -46,11 +46,10 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
 
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
-
+    [self testShow];
 }
 
 
@@ -58,12 +57,11 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
 {
     NSMutableArray *temp = [NSMutableArray array];
     for (int i = 0; i < 30; i++) {
-        ZFCipher * obj = [[ZFCipher alloc] init];
-        obj.title = @(i+1).stringValue;
-        [temp addObject:obj];
+        [[ZFCipherManager defaultManager] addCipherWithData:nil];
     }
     self.clipherView = [[ZFCipherView alloc] initWithFrame:self.view.bounds];
-    self.clipherView.items = temp;
+    self.clipherView.items = [[ZFCipherManager defaultManager] allCipher];
+    self.clipherView.style = ZFCipherViewStyleCard;
     [self.view addSubview:self.clipherView];
     [self.clipherView reloadData];
     [self.view sendSubviewToBack:self.clipherView];

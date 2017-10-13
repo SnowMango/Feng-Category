@@ -13,6 +13,8 @@
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *password;
 @property (copy, nonatomic) NSString *remark;
+
+@property (strong, nonatomic) NSString *group;
 @end
 
 

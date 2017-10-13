@@ -48,9 +48,10 @@
     self.listLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     self.cardLayout = [[UICollectionViewFlowLayout alloc] init];
-    self.cardLayout.minimumLineSpacing = 0;
+    self.cardLayout.minimumLineSpacing = 60;
     self.cardLayout.minimumInteritemSpacing = 0;
-    self.cardLayout.itemSize = CGSizeMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+    self.cardLayout.itemSize = CGSizeMake(CGRectGetWidth(self.bounds) - 60, CGRectGetHeight(self.bounds));
+    self.cardLayout.sectionInset = UIEdgeInsetsMake(0, 30, 0, 30);
     self.cardLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
     self.fastLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -65,7 +66,7 @@
        forCellWithReuseIdentifier:@"CellId"];
     self.itemsView.delegate = self;
     self.itemsView.dataSource = self;
-    self.itemsView.backgroundColor = [UIColor lightGrayColor];
+    self.itemsView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     [self addSubview:self.itemsView];
 }
 
@@ -79,7 +80,7 @@
 {
     _style = style;
     NSArray *arr = @[self.listLayout, self.cardLayout,self.fastLayout];
-    [self.itemsView setCollectionViewLayout:arr[self.style] animated:YES];
+    [self.itemsView setCollectionViewLayout:arr[self.style] animated:NO];
     self.itemsView.pagingEnabled = _style&ZFCipherViewStyleCard;
 }
 
