@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ZFCipher.h"
 #import "ZFCipherManager.h"
+#import <CommonCrypto/CommonDigest.h>
 typedef enum : NSUInteger {
     NetworkNone,
     Network2G,
@@ -46,22 +47,33 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
 
 }
 
+- (NSString *)MD5:(NSString *)mdStr
+{
+    const char *original_str = [mdStr UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(original_str, (CC_LONG)strlen(original_str), result);
+    NSMutableString *hash = [NSMutableString string];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [hash appendFormat:@"%02X", result[i]];
+    return [hash lowercaseString];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self testShow];
+
 }
 
 
 - (void)testShow
 {
-    NSMutableArray *temp = [NSMutableArray array];
+//    NSMutableArray *temp = [NSMutableArray array];
     for (int i = 0; i < 30; i++) {
         [[ZFCipherManager defaultManager] addCipherWithData:nil];
     }
     self.clipherView = [[ZFCipherView alloc] initWithFrame:self.view.bounds];
     self.clipherView.items = [[ZFCipherManager defaultManager] allCipher];
-    self.clipherView.style = ZFCipherViewStyleCard;
+    self.clipherView.style = ZFCipherViewStyleFast;
     [self.view addSubview:self.clipherView];
     [self.clipherView reloadData];
     [self.view sendSubviewToBack:self.clipherView];
@@ -71,7 +83,7 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
 @end
 
 ZFNetwork ZFNetworkType(void){
-    NSArray *subviews = [[[[UIApplication sharedApplication] valueForKey:@"statusBar"] valueForKey:@"foregroundView"]subviews];
+    NSArray *subviews = [[[[UIApplication sharedApplication] valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
     id dataNetworkItemView = nil;
 
     for (id subview in subviews) {
