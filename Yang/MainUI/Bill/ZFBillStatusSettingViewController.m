@@ -88,6 +88,9 @@
                 if (!status) {
                     [weakSelf.showData addObject:editStatus];
                 }
+                if ([weakSelf.defaultStatus.identifier isEqualToString:status.identifier]) {
+                    [[ZFLocalDataManager shareInstance] setDefaultBillStatus:editStatus];
+                }
                 weakSelf.isChange = YES;
                 [weakSelf.tableView reloadData];
             }

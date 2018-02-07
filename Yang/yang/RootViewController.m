@@ -26,8 +26,8 @@
 - (void)loadingDefault
 {
     NSString *bundleFilePath = [[NSBundle mainBundle] pathForResource:@"DefaultData" ofType:@"plist"];
-    
     NSString *docFilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/DefaultData.plist"];
+    
     NSFileManager *fm = [NSFileManager defaultManager];
     if (![fm fileExistsAtPath:docFilePath]) {
         NSData *fileData = [fm contentsAtPath:bundleFilePath];

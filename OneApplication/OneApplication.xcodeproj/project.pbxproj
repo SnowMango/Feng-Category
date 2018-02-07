@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38A4AC64FBD8E37BB8A47F75 /* Pods_OneApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE91AFE3A98C75A3A251D6A0 /* Pods_OneApplication.framework */; };
 		6A23BED91F7F439C00172209 /* Pods_OneApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A23BED51F7F437B00172209 /* Pods_OneApplication.framework */; };
 		6A23BEDB1F7F43D600172209 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A23BEDA1F7F43D600172209 /* AVKit.framework */; };
 		6A63FE811E236FCC006B268B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63FE801E236FCC006B268B /* main.m */; };
@@ -96,6 +97,7 @@
 		6AEC8F131E27EDF9000CF745 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AEC8F1D1E29A480000CF745 /* launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch@2x.png"; sourceTree = "<group>"; };
 		D9FFE7638F167FD58550CFF9 /* Pods-OneApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneApplication/Pods-OneApplication.release.xcconfig"; sourceTree = "<group>"; };
+		DE91AFE3A98C75A3A251D6A0 /* Pods_OneApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			files = (
 				6A23BEDB1F7F43D600172209 /* AVKit.framework in Frameworks */,
 				6A23BED91F7F439C00172209 /* Pods_OneApplication.framework in Frameworks */,
+				38A4AC64FBD8E37BB8A47F75 /* Pods_OneApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				6A23BEDA1F7F43D600172209 /* AVKit.framework */,
+				DE91AFE3A98C75A3A251D6A0 /* Pods_OneApplication.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -413,7 +417,7 @@
 				TargetAttributes = {
 					6A63FE7B1E236FCC006B268B = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = GVH7JZXR3Q;
+						DevelopmentTeam = 8RKD57526R;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -655,7 +659,7 @@
 			baseConfigurationReference = 08432D366A1C51DFCC6D72D9 /* Pods-OneApplication.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GVH7JZXR3Q;
+				DEVELOPMENT_TEAM = 8RKD57526R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -676,7 +680,7 @@
 			baseConfigurationReference = D9FFE7638F167FD58550CFF9 /* Pods-OneApplication.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GVH7JZXR3Q;
+				DEVELOPMENT_TEAM = 8RKD57526R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

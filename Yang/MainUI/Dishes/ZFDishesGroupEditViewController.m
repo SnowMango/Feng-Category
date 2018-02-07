@@ -58,10 +58,13 @@
 }
 - (IBAction)doneBtn:(id)sender
 {
-    ZFDishesGroup *save = self.editGroup.mutableCopy;
-    if (self.nameTF.text.length) {
-        save.name = self.nameTF.text;
+    if (!self.nameTF.text.length) {
+        [SVProgressHUD showErrorWithStatus:@"请输入名称"];
+        [SVProgressHUD dismissWithDelay:0.5];
+        return;
     }
+    ZFDishesGroup *save = self.editGroup.mutableCopy;
+     save.name = self.nameTF.text;
     save.dishes = self.showData;
     BOOL ret = [[ZFLocalDataManager shareInstance] saveDishesGroup:save];
     if (!ret) {

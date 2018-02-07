@@ -79,10 +79,13 @@
 
 - (IBAction)doneBtn:(id)sender
 {
-    ZFPriceSystom *save = self.systom.mutableCopy;
-    if (self.nameTF.text.length) {
-        save.name = self.nameTF.text;
+    if (!self.nameTF.text.length) {
+        [SVProgressHUD showErrorWithStatus:@"请输入名称"];
+        [SVProgressHUD dismissWithDelay:0.5];
+        return;
     }
+    ZFPriceSystom *save = self.systom.mutableCopy;
+    save.name = self.nameTF.text;
     NSMutableArray *group = [NSMutableArray array];
     for (ZFDishesGroup* dishesGroup in self.showData) {
         ZFDishesGroup *priceGroup = dishesGroup.mutableCopy;

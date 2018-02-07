@@ -110,6 +110,8 @@
 {
     self.billList = [NSMutableArray arrayWithArray:[[ZFLocalDataManager shareInstance] allBill]];
     [self backgrandUpdateData];
+    [self updatePriceSystomBtn];
+    [self updateStatusBtn];
 }
 
 - (void)backgrandUpdateData

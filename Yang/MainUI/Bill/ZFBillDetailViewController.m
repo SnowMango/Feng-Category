@@ -58,6 +58,12 @@
 {
     self.amountLb.text = [NSString stringWithFormat:@"总计金额：%@",@(self.showBill.amount)];
     self.numberLb.text = [NSString stringWithFormat:@"菜品数量：%@",@(self.showBill.itemCount)];
+    
+    self.systomLb.text = self.showBill.systomName;
+    
+    NSDateFormatter *mat = [[NSDateFormatter alloc] init];
+    mat.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    self.timeLb.text = [mat stringFromDate:self.showBill.time];
     [self updateIncomeBtn];
     
     [self updateStatusBtn];
