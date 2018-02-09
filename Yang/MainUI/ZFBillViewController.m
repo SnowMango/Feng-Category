@@ -230,7 +230,6 @@
     [vc addAction:[UIAlertAction actionWithTitle:@"确 定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action)
     {
         [weakSelf deleteBill:bill];
-        [weakSelf.tableView reloadData];
     }]];
     
     [self presentViewController:vc animated:YES completion:nil];
@@ -245,6 +244,7 @@
         return;
     }
     [self.billList removeObject:bill];
+    
     [self updateData];
 }
 
@@ -390,7 +390,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSArray *billList = self.showInfo[self.showData[section]];
-    return billList.count*2-1;
+    return billList.count? billList.count*2-1: 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
