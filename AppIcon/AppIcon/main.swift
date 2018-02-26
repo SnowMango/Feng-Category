@@ -34,15 +34,13 @@ func checkSource(_ path:String) -> Bool
 
 func checkDestination(_ path:String) -> Bool
 {
-    var ret:Bool = !path.hasSuffix("appiconset")
-
+    var ret:Bool = FileManager.default.fileExists(atPath: path)
+    
+    var dir:ObjCBool = ObjCBool.init(ret)
+    
     if ret {
-        
-        var dir:ObjCBool = ObjCBool.init(ret);
-        
-        ret = FileManager.default.fileExists(atPath: path, isDirectory: &dir)
-
-        if !dir.boolValue && ret {
+        FileManager.default.fileExists(atPath: path, isDirectory: &dir)
+        if !dir.boolValue {
             ret = false
         }
     }
@@ -100,7 +98,7 @@ func drawRadius(_ context:CGContext , rect:CGRect, radius:Float) {
     let r = CGFloat.init(radius)
     context.saveGState()
     
-    context.move(to: CGPoint.init(x: x, y: y+r))
+    context.move(to: CGPoint.init(x: x, y: y))
     //右上角
     context.addArc(tangent1End: CGPoint.init(x: x + w, y: y), tangent2End: CGPoint.init(x: x+w, y: y+r), radius: r)
     //右下角
@@ -109,14 +107,11 @@ func drawRadius(_ context:CGContext , rect:CGRect, radius:Float) {
     context.addArc(tangent1End: CGPoint.init(x: x, y: y+h), tangent2End: CGPoint.init(x: x, y: y+h - r ), radius: r)
     //左上角
     context.addArc(tangent1End: CGPoint.init(x: x, y: y), tangent2End: CGPoint.init(x: x+r, y: y), radius: r)
-    
-    context.drawPath(using: .fillStroke)
+   
+    context.closePath()
     context.restoreGState()
-    if !context.isPathEmpty {
-        context.clip()
-    }else{
-        print("empty")
-    }
+    context.clip()
+    context.drawPath(using: .fillStroke)
     
 }
 
@@ -136,7 +131,7 @@ func parseItem(item:Dictionary<String,String>) -> (fileName:String,size:CGSize) 
     return (fileName,size)
 }
 
-func startParse(resPath:String, souPath:String ,desPath:String)
+func startParse(resPath:String, souPath:String ,desPath:String,_ autoRadius:Bool)
 {
     print("resource path: \(checkResource(resPath))")
     print("source path: \(checkSource(souPath))")
@@ -159,35 +154,55 @@ func startParse(resPath:String, souPath:String ,desPath:String)
     if resImage == nil{
         return
     }
-    let source:Array? = parseSource(path: souPath)
+    var source:Array? = parseSource(path: souPath)
     guard source != nil else {
         return
     }
-    let resultPath:String = "\(desPath)/App Icon"
-    
+    var resultPath:String = "\(desPath)/App Icon"
+    if desPath.hasSuffix("appiconset") {
+        resultPath = desPath
+    }
     if !FileManager.default.fileExists(atPath: resultPath) {
         try!FileManager.default.createDirectory(at:
             URL.init(fileURLWithPath: resultPath),
                                                 withIntermediateDirectories: true,
                                                 attributes: nil)
     }
-    let json:Data = FileManager.default.contents(atPath: resPath)!
-    
-    FileManager.default.createFile(atPath: resultPath.appending("/Content.json"), contents: json, attributes: nil)
+
+    let count = source!.count
     for item in source! {
-        let i = item as! Dictionary<String,String>
+        var i = item as! Dictionary<String,String>
         let info:(String, CGSize) = parseItem(item: i)
         let image:CGImage? = createImage(resImage: resImage!,
                                         size: info.1,
-                                        radius: Float.init(info.1.width/2.0))
-
+                                        radius: autoRadius ? Float.init(info.1.width/2.0):0)
         if image == nil{
             continue
         }
+        i["filename"] = info.0
+        
         let saveImage:NSImage = NSImage.init(cgImage: image!, size: info.1);
         let savePath:String = "\(resultPath)/\(info.0)"
         try! saveImage.tiffRepresentation?.write(to: URL.init(fileURLWithPath: savePath))
+        
+        source?.append(i)
     }
+    source?.removeSubrange(Range.init(NSRange.init(location: 0, length: count))!)
+    
+    var jsonPath:String = souPath
+    
+    if jsonPath.hasSuffix("appiconset") {
+        jsonPath = jsonPath.appending("/Contents.json")
+    }
+    var json:Data = try! Data.init(contentsOf: URL.init(fileURLWithPath: jsonPath), options:.mappedIfSafe);
+    
+    var parse:Dictionary = try! JSONSerialization.jsonObject(with: json, options: .mutableContainers) as! Dictionary<String, Any>
+    
+    parse["images"] = source!
+    
+    json = try! JSONSerialization.data(withJSONObject: parse, options:.prettyPrinted)
+    
+    FileManager.default.createFile(atPath: resultPath.appending("/Content.json"), contents: json, attributes: nil)
 }
 
 func runCommand(launchPath: String, arguments: [String]) -> String {
@@ -230,21 +245,24 @@ func run()
         destinationPath = pwd
         startParse(resPath: resourcePath,
                    souPath: sourcePath,
-                   desPath: destinationPath)
+                   desPath: destinationPath,
+                   false)
     }else if count == 3{
         resourcePath = args[1]
         sourcePath = args[2]
         destinationPath = pwd
         startParse(resPath: resourcePath,
                    souPath: sourcePath,
-                   desPath: destinationPath)
+                   desPath: destinationPath,
+                   false)
     }else if count == 4{
         resourcePath = args[1]
         sourcePath = args[2]
         destinationPath = args[3]
         startParse(resPath: resourcePath,
                    souPath: sourcePath,
-                   desPath: destinationPath)
+                   desPath: destinationPath,
+                   false)
     }else{
         print(showCommandIntroduction())
     }
@@ -262,11 +280,12 @@ func testParseItem() -> Bool {
 func test()
 {
     let resourcePath = "/Users/zhengfeng/Desktop/feng1024.png"
-    let sourcePath = "/Users/zhengfeng/Desktop/GitHub/Yang/yang/Assets.xcassets/AppIcon.appiconset/Contents.json"
+    let sourcePath = "/Users/zhengfeng/Desktop/Simp/Simp/Assets.xcassets/AppIcon.appiconset/Contents.json"
     let destinationPath = "/Users/zhengfeng/Desktop/save"
     startParse(resPath: resourcePath,
                souPath: sourcePath,
-               desPath: destinationPath)
+               desPath: destinationPath,
+               false)
 }
 //run()
 
