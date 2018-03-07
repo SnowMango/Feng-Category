@@ -17,35 +17,6 @@ public func projIdentifier() ->String
     return str
 }
 
-public enum Isa:String  {
-    
-    case buildFile          = "PBXBuildFile"
-    //BuildPhase
-    case appleScript        = "PBXAppleScriptBuildPhase"
-    case copyFiles          = "PBXCopyFilesBuildPhase"
-    case frameworks         = "PBXFrameworksBuildPhase"
-    case headers            = "PBXHeadersBuildPhase"
-    case resources          = "PBXResourcesBuildPhase"
-    case shellScript        = "PBXShellScriptBuildPhase"
-    case sources            = "PBXSourcesBuildPhase"
-    
-    case proxy              = "PBXContainerItemProxy"
-    //FileElement
-    case fileReference      = "PBXFileReference"
-    case group              = "PBXGroup"
-    case variantGroup       = "PBXVariantGroup"
-    //Target
-    case aggregate          = "PBXAggregateTarget"
-    case legacy             = "PBXLegacyTarget"
-    case native             = "PBXNativeTarget"
-    
-    case project            = "PBXProject"
-    case dependency         = "PBXTargetDependency"
-    case buildConfig        = "XCBuildConfiguration"
-    case configList         = "XCConfigurationList"
-    case rules              = "PBXBuildRule"
-}
-
 public class Proj :CustomStringConvertible {
     
     var archiveVersion:String = "1"
@@ -148,16 +119,6 @@ public class NativeTarget : Base, Target {
     var productReference:FileReference?
     var productType:ProductType
     
-    public enum ProductType: String {
-        case application = "com.apple.product-type.application"
-        case staticArchive = "com.apple.product-type.library.static"
-        case dynamicLibrary = "com.apple.product-type.library.dynamic"
-        case framework = "com.apple.product-type.framework"
-        case executable = "com.apple.product-type.tool"
-        case bundle = "com.apple.product-type.bundle"
-        var asString: String { return rawValue }
-    }
-    
     init(productType: ProductType, name: String) {
         self.name = name
         self.productType = productType
@@ -189,29 +150,49 @@ public protocol FileElement {
 public class FileReference :Base,FileElement {
     override var isa:Isa { return Isa.fileReference }
     
-    var fileEncoding:String = "4"
-    var explicitFileType:String = ""
-    var lastKnownFileType:String = ""
-    var name:String = ""
-    var path:String = ""
-    var sourceTree:String = ""
+    var fileEncoding:String?
+    var explicitFileType:Explicit?
+    var lastKnownFileType:String?
+    var lineEnding:String?
+    var usesTabs:String?
+    var includeInIndex:String = "1"
+    
+    var name:String
+    var path:String
+    var sourceTree:PathBase
+    
+    init(name:String,path:String,tree:PathBase) {
+        self.name = name
+        self.path = path
+        self.sourceTree = tree
+    }
     
 }
 // FIXME: -This is the element to group files or groups.
 public class Group : Base {
     override var isa:Isa { return Isa.group }
     
-    var children:[String] = [String]()
-    var name:String = ""
-    var sourceTree:String = ""
+    var children:[FileElement] = [FileElement]()
+    var name:String
+    var sourceTree:PathBase
+    
+    init(name:String,tree:PathBase) {
+        self.name = name
+        self.sourceTree = tree
+    }
 }
 // FIXME: - This is the element for referencing localized resources.
 public class VariantGroup : Base,FileElement {
     override var isa:Isa { return Isa.variantGroup }
     
-    var children:[String] = [String]()
-    var name:String = ""
-    var sourceTree:String = ""
+    var children:[FileReference] = [FileReference]()
+    var name:String
+    var sourceTree:PathBase
+    
+    init(name:String,tree:PathBase) {
+        self.name = name
+        self.sourceTree = tree
+    }
 }
 
 // MARK: - PBXBuildFile
@@ -230,10 +211,10 @@ public class BuildFile: Base{
 
 // MARK: - PBXBuildPhase
 // FIXME: -This element is an abstract parent for specialized build phases.
-
 public protocol BuildPhase {
 
 }
+// MARK: - PBXCopyFilesBuildPhase
 // FIXME: -This is the element for the copy file build phase.
 public class CopyFiles :Base,BuildPhase {
     override var isa:Isa { return Isa.copyFiles }
@@ -245,6 +226,7 @@ public class CopyFiles :Base,BuildPhase {
     var runOnlyForDeploymentPostprocessing:String = "0"
     
 }
+// MARK: - PBXFrameworksBuildPhase
 // FIXME: -This is the element for the framewrok link build phase.
 public class Frameworks :Base,BuildPhase {
     override var isa:Isa { return Isa.frameworks }
