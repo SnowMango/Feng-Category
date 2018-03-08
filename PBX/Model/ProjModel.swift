@@ -1,5 +1,5 @@
 //
-//  PBXProjModel.swift
+//  ProjModel.swift
 //  PBX
 //
 //  Created by zhengfeng on 2018/3/7.
@@ -17,47 +17,30 @@ public func projIdentifier() ->String
     return str
 }
 
-public class Proj :CustomStringConvertible {
+public class Proj {
     
     var archiveVersion:String = "1"
     var classes:[String:Any] = [String:Any]()
     var objectVersion:String = "46"
     var objects:[Base] = [Base]()
-    var rootObject:String = ""
-    
-    public var description: String{
-        get{
-            return """
-            \(Proj.self)={
-            archiveVersion = \(archiveVersion)
-            objectVersion = \(objectVersion)
-            rootObject = \(rootObject)
-            }
-            """
-        }
-    }
+    var rootObject:Project?
 }
 
 public class Base {
-    var identifier:String = projIdentifier()
-    private(set) var isa:Isa = Isa.fileReference
-    
-    func plist() -> Plist{
-        var propreties:[String:Any] = [String:Any]()
-        propreties["isa"] = isa.rawValue
-        return Plist.plistWithObj(propreties)!
-    }
+    public var identifier:String = projIdentifier()
+    private(set) var isa:Isa?
+
 }
 
 // MARK: - PBXProject
 // FIXME: - This is the element for a build target that produces a binary content (application or library).
 public class Project:Base {
-    override var isa:Isa { return Isa.project }
+    override var isa:Isa? { return Isa.project }
     
     var attributes:[String:Any] = ["LastUpgradeCheck":"9999"]
     var buildConfigurationList:ConfigList = ConfigList()
     
-    var compatibilityVersion:String = "Xcode 8.0";
+    var compatibilityVersion:ProjectFomat = .xcode8_0
     var developmentRegion:String = "English"
     var hasScannedForEncodings:String = "0"
     var knownRegions:[String] = ["en"]
@@ -79,33 +62,37 @@ public class Project:Base {
 // MARK: - XCBuildConfiguration
 // FIXME: - This is the element for defining build configuration.
 public class BuildConfig : Base {
-    override var isa:Isa { return Isa.buildConfig }
-    var baseConfigurationReference:String = ""
+    override var isa:Isa? { return Isa.buildConfig }
+    var baseConfigurationReference:FileReference?
     var buildSettings:[String:Any] = [String:Any]()
-    var name:String = ""
+    var name:String
     
+    init(name:String) {
+        self.name = name
+    }
 }
 
 // MARK: - XCConfigurationList
 // FIXME: - This is the element for listing build configurations.
 public class ConfigList : Base {
-    override var isa:Isa { return Isa.configList }
+    override var isa:Isa? { return Isa.configList }
     var buildConfigurations:[BuildConfig] = [BuildConfig]()
     var defaultConfigurationIsVisible:String = "0"
-    var defaultConfigurationName:String = "Release"
+    var defaultConfigurationName:String = "res"
     
 }
 
 // MARK: - PBXTarget
 // FIXME: - This element is an abstract parent for specialized targets.
 public protocol Target {
+    var identifier:String {get set}
     var name:String {get set}
     var productName:String {get set}
 }
 
 // FIXME: - This is the element for a build target that produces a binary content (application or library).
 public class NativeTarget : Base, Target {
-    override var isa:Isa { return Isa.native }
+    override var isa:Isa? { return Isa.native }
     
     var buildConfigurationList:ConfigList = ConfigList()
     var buildPhases:[BuildPhase] = [BuildPhase]()
@@ -127,7 +114,7 @@ public class NativeTarget : Base, Target {
 }
 // FIXME: This is the element for a build target that aggregates several others.
 public class AggregateTarget :Base, Target {
-    override var isa:Isa { return Isa.aggregate }
+    override var isa:Isa? { return Isa.aggregate }
     
     var buildConfigurationList:ConfigList = ConfigList()
     var buildPhases:[BuildPhase] = [BuildPhase]()
@@ -148,14 +135,14 @@ public protocol FileElement {
 }
 // FIXME: - A PBXFileReference is used to track every external file referenced by the project: source files, resource files, libraries, generated application files, and so on.
 public class FileReference :Base,FileElement {
-    override var isa:Isa { return Isa.fileReference }
+    override var isa:Isa? { return Isa.fileReference }
     
     var fileEncoding:String?
     var explicitFileType:Explicit?
     var lastKnownFileType:String?
-    var lineEnding:String?
+    var lineEnding:FileEnding?
     var usesTabs:String?
-    var includeInIndex:String = "1"
+    var includeInIndex:String?
     
     var name:String
     var path:String
@@ -170,7 +157,7 @@ public class FileReference :Base,FileElement {
 }
 // FIXME: -This is the element to group files or groups.
 public class Group : Base {
-    override var isa:Isa { return Isa.group }
+    override var isa:Isa? { return Isa.group }
     
     var children:[FileElement] = [FileElement]()
     var name:String
@@ -183,7 +170,7 @@ public class Group : Base {
 }
 // FIXME: - This is the element for referencing localized resources.
 public class VariantGroup : Base,FileElement {
-    override var isa:Isa { return Isa.variantGroup }
+    override var isa:Isa? { return Isa.variantGroup }
     
     var children:[FileReference] = [FileReference]()
     var name:String
@@ -197,8 +184,11 @@ public class VariantGroup : Base,FileElement {
 
 // MARK: - PBXBuildFile
 // FIXME: This element indicate a file reference that is used in a PBXBuildPhase (either as an include or resource).
+let Public:[String:Any]     = ["ATTRIBUTES":["Public"]]
+let Private:[String:Any]    = ["ATTRIBUTES":["Private"]]
+
 public class BuildFile: Base{
-    override var isa:Isa { return Isa.buildFile }
+    override var isa:Isa? { return Isa.buildFile }
     
     var fileRef:FileElement
     var settings:[String:Any]?
@@ -206,7 +196,10 @@ public class BuildFile: Base{
     init(_ fileRef: FileElement) {
         self.fileRef = fileRef
     }
-
+    //Public，Private or nil
+    func updateSetting(set:[String:Any]?) {
+        settings = set
+    }
 }
 
 // MARK: - PBXBuildPhase
@@ -217,68 +210,78 @@ public protocol BuildPhase {
 // MARK: - PBXCopyFilesBuildPhase
 // FIXME: -This is the element for the copy file build phase.
 public class CopyFiles :Base,BuildPhase {
-    override var isa:Isa { return Isa.copyFiles }
+    override var isa:Isa? { return Isa.copyFiles }
     
-    var buildActionMask:String = String(Int(2^32-1))
-    var dstPath:String = ""
-    var dstSubfolderSpec:String = ""
+    var buildActionMask:BuildActionMask = .def
     var files:[BuildFile] = [BuildFile]()
     var runOnlyForDeploymentPostprocessing:String = "0"
+    
+    var dstPath:String = ""
+    var dstSubfolderSpec:Destination
+   
+    init(spec:Destination) {
+        dstSubfolderSpec = spec
+    }
     
 }
 // MARK: - PBXFrameworksBuildPhase
 // FIXME: -This is the element for the framewrok link build phase.
 public class Frameworks :Base,BuildPhase {
-    override var isa:Isa { return Isa.frameworks }
+    override var isa:Isa? { return Isa.frameworks }
     
-    var buildActionMask:String = String(Int(2^32-1))
-    var files:[String] = [String]()
+    let buildActionMask:BuildActionMask = .def
+    var files:[BuildFile] = [BuildFile]()
     var runOnlyForDeploymentPostprocessing:String = "0"
     
 }
+// MARK: - PBXHeadersBuildPhase
 // FIXME: - This is the element for the framewrok link build phase.
 public class Headers :Base,BuildPhase {
-    override var isa:Isa { return Isa.headers }
+    override var isa:Isa? { return Isa.headers }
     
-    var buildActionMask:String = String(Int(2^32-1))
-    var files:[String] = [String]()
+    let buildActionMask:BuildActionMask = .def
+    var files:[BuildFile] = [BuildFile]()
     var runOnlyForDeploymentPostprocessing:String = "0"
 }
+// MARK: - PBXResourcesBuildPhase
 // FIXME: - This is the element for the resources copy build phase.
 public class Resources :Base,BuildPhase {
-    override var isa:Isa { return Isa.resources }
+    override var isa:Isa? { return Isa.resources }
     
-    var buildActionMask:String = String(Int(2^32-1))
-    var files:[String] = [String]()
+    let buildActionMask:BuildActionMask = .def
+    var files:[BuildFile] = [BuildFile]()
     var runOnlyForDeploymentPostprocessing:String = "0"
 }
+// MARK: - PBXShellScriptBuildPhase
 // FIXME: -This is the element for the resources copy build phase.
 public class ShellScript :Base,BuildPhase {
-    override var isa:Isa { return Isa.shellScript }
+    override var isa:Isa? { return Isa.shellScript }
     
-    var buildActionMask:String = String(Int(2^32-1))
-    var files:[String] = [String]()
+    var buildActionMask:BuildActionMask = .def
+    var files:[BuildFile] = [BuildFile]()
     var runOnlyForDeploymentPostprocessing:String = "0"
-    
+    ///showEnvVarsInLog:"0"、"1" or nil
+    var showEnvVarsInLog:String?
     var inputPaths:[String] = [String]()
     var outputPaths:[String] = [String]()
     
-    var shellPath:String = ""
+    var shellPath:String = "/bin/sh"
     var shellScript:String = ""
 }
+// MARK: - PBXSourcesBuildPhase
 // FIXME: - This is the element for the sources compilation build phase.
 public class Sources :Base,BuildPhase {
-    override var isa:Isa { return Isa.sources }
+    override var isa:Isa? { return Isa.sources }
     
-    var buildActionMask:String = String(Int(2^32-1))
-    var files:[String] = [String]()
+    let buildActionMask:BuildActionMask = .def
+    var files:[BuildFile] = [BuildFile]()
     var runOnlyForDeploymentPostprocessing:String = "0"
 }
 
 // MARK: - PBXTargetDependency
 // FIXME: - This is the element for referencing other target through content proxies.
 public class TargetDependency :Base {
-    override var isa:Isa { return Isa.dependency }
+    override var isa:Isa? { return Isa.dependency }
     
     var target:Target
     var targetProxy:Proxy
@@ -291,7 +294,7 @@ public class TargetDependency :Base {
 // MARK: -PBXContainerItemProxy
 // FIXME: -This is the element for to decorate a target item.
 public class Proxy :Base {
-    override var isa:Isa { return Isa.proxy }
+    override var isa:Isa? { return Isa.proxy }
     
     var containerPortal:Project
     var proxyType:String = "1"
@@ -308,7 +311,7 @@ public class Proxy :Base {
 // MARK: -PBXBuildRule
 // FIXME: -
 public class BuildRules :Base {
-    override var isa:Isa { return Isa.rules }
+    override var isa:Isa? { return Isa.rules }
     
     var compilerSpec:String = ""
     var filePatterns:String?

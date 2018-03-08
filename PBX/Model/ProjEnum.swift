@@ -71,42 +71,115 @@ public enum PathBase: String {
 }
 
 
-enum Explicit: String {
+public enum Explicit {
+    public enum Folder :String {
+        case asset          = "folder.assetcatalog"
+        case stickers       = "folder.stickers"
+        case folder         = "folder"
+    }
     ///other
-    case application    = "wrapper.application"
-    case dsym           = "wrapper.dsym"
-    case cfbundle       = "wrapper.cfbundle"
-    case folder         = "folder"
-    case asset          = "folder.assetcatalog"
-    case stickers       = "folder.stickers"
-    case framework      = "wrapper.framework"
-    case htmld          = "wrapper.htmld"
-    case mpkg           = "wrapper.installer-mpkg"
-    case pkg            = "wrapper.installer-pkg"
-    case plug           = "wrapper.app-extension"
-    case rtfd           = "wrapper.rtfd"
-    case xpc            = "wrapper.xpc-service"
-    case project        = "wrapper.pb-project"
+    public enum Other :String {
+        case application    = "wrapper.application"
+        case dsym           = "wrapper.dsym"
+        case cfbundle       = "wrapper.cfbundle"
+        
+        case framework      = "wrapper.framework"
+        case htmld          = "wrapper.htmld"
+        case mpkg           = "wrapper.installer-mpkg"
+        case pkg            = "wrapper.installer-pkg"
+        case plug           = "wrapper.app-extension"
+        case rtfd           = "wrapper.rtfd"
+        case xpc            = "wrapper.xpc-service"
+        case project        = "wrapper.pb-project"
+    }
     ///CoreData
-    case mapping        = "wrapper.xcmappingmodel"
-    case model          = "wrapper.xcdatamodel"
-    case version        = "wrapper.xcdatamodeld"
+    public enum CoreData :String {
+        case mapping        = "wrapper.xcmappingmodel"
+        case model          = "wrapper.xcdatamodel"
+        case version        = "wrapper.xcdatamodeld"
+    }
+    case folder(Folder)
+    case other(Other)
+    case coreData(CoreData)
+    
+    func serialize() -> String {
+        switch self {
+        case .folder(let item):
+            return item.rawValue
+        case .other(let item):
+            return item.rawValue
+        case .coreData(let item):
+            return item.rawValue
+        }
+    }
+}
+    
+public enum Destination {
+
+    case absolute
+    case products
+    case wrapper
+    case execurables
+    case resources
+    case javaRes
+    case frameworks
+    case shareFrameworks
+    case shareSupport
+    case plug
+    case xpc
+    
+    var asString:String {
+        switch(self){
+        case .absolute:
+            return "0"
+        case .products,.xpc:
+            return "16"
+        case .wrapper:
+            return "1"
+        case .execurables:
+            return "6"
+        case .resources:
+            return "7"
+        case .javaRes:
+            return "15"
+        case .frameworks:
+            return "10"
+        case .shareFrameworks:
+            return "11"
+        case .shareSupport:
+            return "12"
+        case .plug:
+            return "13"
+        }
+    }
+    var asDefString: String {
+        switch(self){
+        case .xpc:
+            return "$(CONTENTS_FOLDER_PATH)/XPCServices"
+        default:
+            return ""
+        }
+    }
 }
 
-enum Destination {
-    
-    case absolute
-    case dsym
-    case cfbundle
-    case folder
-    case asset
-    case stickers
-    case framework
-    case htmld
-    case mpkg
-    case pkg
-    case plug
-    
+public enum BuildActionMask:String{
+    case install    = "8"
+    case build      = "12"
+    case def        = "2147483647"
 }
+
+public enum ProjectFomat:String{
+    case xcode8_0    = "xcode 8.0"
+    case xcode6_3    = "xcode 6.3"
+    case xcode3_2    = "xcode 3.2"
+    case xcode3_1    = "xcode 3.1"
+}
+
+public enum FileEnding:String{
+    case CF      = "0"
+    case CR      = "1"
+    case CRLF    = "2"
+}
+
 
 

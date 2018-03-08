@@ -10,7 +10,7 @@
 
 /// A enum representing data types for legacy Plist type.
 /// see: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/PropertyLists/OldStylePlists/OldStylePLists.html
-enum Plist {
+public enum Plist {
     case string(String)
     case array([Plist])
     case dictionary([String: Plist])
