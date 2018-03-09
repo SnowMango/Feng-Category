@@ -17,7 +17,7 @@ public func projIdentifier() ->String
     return str
 }
 
-public class Proj {
+public class Xcodeproj {
     
     var archiveVersion:String = "1"
     var classes:[String:Any] = [String:Any]()
@@ -84,14 +84,38 @@ public class ConfigList : Base {
 
 // MARK: - PBXTarget
 // FIXME: - This element is an abstract parent for specialized targets.
-public protocol Target {
-    var identifier:String {get set}
-    var name:String {get set}
-    var productName:String {get set}
+public enum Target {
+    case native(NativeTarget)
+    case aggregate(AggregateTarget)
+
+    var isa:String {
+        switch self {
+        case .native(let item):
+            return item.isa!.rawValue
+        case .aggregate(let item):
+            return item.isa!.rawValue
+        }
+    }
+    var name:String {
+        switch self {
+        case .native(let item):
+            return item.name
+        case .aggregate(let item):
+            return item.name
+        }
+    }
+    var productName:String {
+        switch self {
+        case .native(let item):
+            return item.productName
+        case .aggregate(let item):
+            return item.productName
+        }
+    }
 }
 
 // FIXME: - This is the element for a build target that produces a binary content (application or library).
-public class NativeTarget : Base, Target {
+public class NativeTarget : Base {
     override var isa:Isa? { return Isa.native }
     
     var buildConfigurationList:ConfigList = ConfigList()
@@ -113,7 +137,7 @@ public class NativeTarget : Base, Target {
     }
 }
 // FIXME: This is the element for a build target that aggregates several others.
-public class AggregateTarget :Base, Target {
+public class AggregateTarget :Base {
     override var isa:Isa? { return Isa.aggregate }
     
     var buildConfigurationList:ConfigList = ConfigList()
@@ -130,11 +154,24 @@ public class AggregateTarget :Base, Target {
 
 // MARK: - PBXFileElement
 // FIXME: - This element is an abstract parent for file and group elements.
-public protocol FileElement {
-  
+public enum Reference {
+    case file(FileReference)
+    case variant(VariantGroup)
+    case proxy(RefProxy)
+    
+    var isa:String {
+        switch self {
+        case .file(let item):
+            return item.isa!.rawValue
+        case .variant(let item):
+            return item.isa!.rawValue
+        case .proxy(let item):
+            return item.isa!.rawValue
+        }
+    }
 }
 // FIXME: - A PBXFileReference is used to track every external file referenced by the project: source files, resource files, libraries, generated application files, and so on.
-public class FileReference :Base,FileElement {
+public class FileReference :Base {
     override var isa:Isa? { return Isa.fileReference }
     
     var fileEncoding:String?
@@ -159,7 +196,7 @@ public class FileReference :Base,FileElement {
 public class Group : Base {
     override var isa:Isa? { return Isa.group }
     
-    var children:[FileElement] = [FileElement]()
+    var children:[Reference] = [Reference]()
     var name:String
     var sourceTree:PathBase
     
@@ -169,7 +206,7 @@ public class Group : Base {
     }
 }
 // FIXME: - This is the element for referencing localized resources.
-public class VariantGroup : Base,FileElement {
+public class VariantGroup : Base {
     override var isa:Isa? { return Isa.variantGroup }
     
     var children:[FileReference] = [FileReference]()
@@ -190,10 +227,10 @@ let Private:[String:Any]    = ["ATTRIBUTES":["Private"]]
 public class BuildFile: Base{
     override var isa:Isa? { return Isa.buildFile }
     
-    var fileRef:FileElement
+    var fileRef:Reference
     var settings:[String:Any]?
     
-    init(_ fileRef: FileElement) {
+    init(_ fileRef: Reference) {
         self.fileRef = fileRef
     }
     //Public，Private or nil
@@ -207,6 +244,25 @@ public class BuildFile: Base{
 public protocol BuildPhase {
 
 }
+//public enum BuildPhase {
+//    case copyFiles(CopyFiles)
+//    case variant(VariantGroup)
+//    case proxy(RefProxy)
+//    case file(FileReference)
+//    case variant(VariantGroup)
+//    case proxy(RefProxy)
+//    
+//    var isa:String {
+//        switch self {
+//        case .file(let item):
+//            return item.isa!.rawValue
+//        case .variant(let item):
+//            return item.isa!.rawValue
+//        case .proxy(let item):
+//            return item.isa!.rawValue
+//        }
+//    }
+//}
 // MARK: - PBXCopyFilesBuildPhase
 // FIXME: -This is the element for the copy file build phase.
 public class CopyFiles :Base,BuildPhase {
@@ -305,6 +361,24 @@ public class Proxy :Base {
         self.containerPortal = project
         self.remoteGlobalIDString = target
         self.remoteInfo = target.name
+    }
+}
+
+// MARK: -PBXReferenceProxy
+
+public class RefProxy :Base {
+    override var isa:Isa? { return Isa.refProxy }
+    
+    var path:String=""
+    var fileType:Explicit
+    var remoteRef:Proxy
+    var sourceTree:PathBase
+    
+    init(path:String,ref:Proxy,type:Explicit,tree:PathBase) {
+        self.path = path
+        self.fileType = type
+        self.remoteRef = ref
+        self.sourceTree = tree
     }
 }
 

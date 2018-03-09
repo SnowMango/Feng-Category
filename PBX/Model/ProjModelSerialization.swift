@@ -8,10 +8,14 @@
 
 import Foundation
 
+
+
 public protocol Serialization
 {
     func plist() -> Plist
 }
+
+
 
 extension Project: Serialization{
     public func plist() -> Plist {
@@ -28,7 +32,7 @@ extension Project: Serialization{
         if projectReferences != nil {
             propreties["projectReferences"] = projectReferences
         }
-        propreties["targets"] = targets.map({ return $0.identifier })
+        propreties["targets"] = targets.map({ return $0.isa })
         return Plist.plistWithObj(propreties)!
     }
 }

@@ -23,6 +23,7 @@ public enum Isa:String  {
     case proxy              = "PBXContainerItemProxy"
     //FileElement
     case fileReference      = "PBXFileReference"
+    case refProxy           = "PBXReferenceProxy"
     case group              = "PBXGroup"
     case variantGroup       = "PBXVariantGroup"
     //Target

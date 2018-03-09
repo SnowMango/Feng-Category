@@ -31,7 +31,24 @@ extension Plist: ExpressibleByStringLiteral {
     }
 }
 
-extension Plist {
+// MARK: - Plist Extension (ExpressibleByArrayLiteral)
+extension Plist: ExpressibleByArrayLiteral {
+    
+    public init(arrayLiteral elements: Plist...) {
+        self = .array(elements)
+    }
+}
+// MARK: - Plist Extension (ExpressibleByDictionaryLiteral)
+extension Plist: ExpressibleByDictionaryLiteral {
+    
+    public init(dictionaryLiteral elements: (String, Plist)...) {
+        var dictionary: [String: Plist] = [:]
+        elements.forEach { dictionary[$0.0] = $0.1 }
+        self = .dictionary(dictionary)
+    }
+}
+
+public extension Plist {
     /// Serializes the Plist enum to string.
     func serialize() -> String {
         switch self {
