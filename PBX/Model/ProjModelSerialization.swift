@@ -10,7 +10,7 @@ import Foundation
 
 
 
-public protocol Serialization
+protocol Serialization
 {
     func plist() -> Plist
 }
@@ -18,7 +18,7 @@ public protocol Serialization
 
 
 extension Project: Serialization{
-    public func plist() -> Plist {
+     func plist() -> Plist {
         var propreties:[String:Any] = [String:Any]()
         propreties["isa"] = isa!.rawValue
         propreties["buildConfigurationList"] = buildConfigurationList.identifier
@@ -38,7 +38,7 @@ extension Project: Serialization{
 }
 
 extension NativeTarget: Serialization {
-    public func plist() -> Plist {
+     func plist() -> Plist {
         var propreties:[String:Any] = [String:Any]()
         propreties["isa"] = isa!.rawValue
 
@@ -47,7 +47,7 @@ extension NativeTarget: Serialization {
 }
 
 extension AggregateTarget : Serialization {
-    public func plist() -> Plist {
+     func plist() -> Plist {
         var propreties:[String:Any] = [String:Any]()
         propreties["isa"] = isa!.rawValue
         

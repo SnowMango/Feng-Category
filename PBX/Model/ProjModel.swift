@@ -27,7 +27,7 @@ public class Xcodeproj {
 }
 
 public class Base {
-    public var identifier:String = projIdentifier()
+    var identifier:String = projIdentifier()
     private(set) var isa:Isa?
 
 }
@@ -215,6 +215,20 @@ public class VariantGroup : Base {
     
     init(name:String,tree:PathBase) {
         self.name = name
+        self.sourceTree = tree
+    }
+}
+// FIXME: - This is the element for referencing localized resources.
+public class VersionGroup : Base {
+    override var isa:Isa? { return Isa.versionGroup }
+    
+    var children:[FileReference] = [FileReference]()
+    var path:String
+    var sourceTree:PathBase
+    var currentVersion:FileReference?
+    var versionGroupType:String?
+    init(path:String,tree:PathBase) {
+        self.path = path
         self.sourceTree = tree
     }
 }

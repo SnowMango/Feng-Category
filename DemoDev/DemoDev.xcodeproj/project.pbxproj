@@ -673,6 +673,7 @@
 		6A8B0DD21E2FCA79009482F5 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		6A8B0DD41E2FCAB0009482F5 /* ImageResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageResultViewController.h; sourceTree = "<group>"; };
 		6A8B0DD51E2FCAB0009482F5 /* ImageResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageResultViewController.m; sourceTree = "<group>"; };
+		6A9BCA03205A756B00321643 /* ThirdCoreData 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ThirdCoreData 2.xcdatamodel"; sourceTree = "<group>"; };
 		C77E2F7FA971FA45D39D1E28 /* Pods-TargetSetting-DemoDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetSetting-DemoDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetSetting-DemoDev/Pods-TargetSetting-DemoDev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1875,6 +1876,7 @@
 		6A051B401E2B069400C37900 /* ThirdCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6A9BCA03205A756B00321643 /* ThirdCoreData 2.xcdatamodel */,
 				6A051B411E2B069400C37900 /* ThirdCoreData.xcdatamodel */,
 			);
 			currentVersion = 6A051B411E2B069400C37900 /* ThirdCoreData.xcdatamodel */;

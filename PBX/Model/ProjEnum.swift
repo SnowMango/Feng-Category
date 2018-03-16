@@ -26,6 +26,7 @@ public enum Isa:String  {
     case refProxy           = "PBXReferenceProxy"
     case group              = "PBXGroup"
     case variantGroup       = "PBXVariantGroup"
+    case versionGroup       = "XCVersionGroup"
     //Target
     case aggregate          = "PBXAggregateTarget"
     case legacy             = "PBXLegacyTarget"

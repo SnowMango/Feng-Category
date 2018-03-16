@@ -10,7 +10,7 @@
 
 /// A enum representing data types for legacy Plist type.
 /// see: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/PropertyLists/OldStylePlists/OldStylePLists.html
-public enum Plist {
+enum Plist {
     case string(String)
     case array([Plist])
     case dictionary([String: Plist])
@@ -48,7 +48,7 @@ extension Plist: ExpressibleByDictionaryLiteral {
     }
 }
 
-public extension Plist {
+extension Plist {
     /// Serializes the Plist enum to string.
     func serialize() -> String {
         switch self {
