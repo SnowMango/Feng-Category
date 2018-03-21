@@ -45,7 +45,12 @@ const char * IVAR_LIST = "ivar_list";
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
+  
+    if([super conformsToProtocol:@protocol(NSCoding)] ){
+      self = [super encodeWithCoder:aCoder];
+    }
     unsigned int ivarCount = 0;
+  
     Ivar * ivars = class_copyIvarList([self class], &ivarCount);
     
     for (int i = 0; i < ivarCount; i++) {
@@ -60,7 +65,11 @@ const char * IVAR_LIST = "ivar_list";
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super init];
+    if([super conformsToProtocol:@protocol(NSCoding)] ){
+      self = [super initWithCoder:aDecoder];
+    }esle{
+      self = [super init];
+    }
     if (self) {
         
         unsigned int ivarCount = 0;
