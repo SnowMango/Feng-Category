@@ -40,14 +40,7 @@
     self.resourcePath = [[NSBundle mainBundle] pathForResource:@"logo1024" ofType:@"png"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidNotification:) name:NSControlTextDidChangeNotification object:nil];
     self.tempPath= [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/AppIcon.appiconset"];
-    NSLog(@"++++> %@", NSFileManager.defaultManager.currentDirectoryPath);
-    
-    self.iconTextField.stringValue = @"/Users/zhengfeng/Desktop/logo1024.png";
-    self.textField.stringValue = @"/Users/zhengfeng/Desktop/Contents.json";
-    NSString *path = self.iconTextField.stringValue;
-    self.iconIV.image = [[NSImage alloc] initWithContentsOfFile:path];
-    self.resourcePath = path;
-     self.sourcePath = self.textField.stringValue;
+
 }
 
 
@@ -82,7 +75,7 @@
     NSString * exePath = [[NSBundle mainBundle] pathForResource:@"copyfiles" ofType:@"sh"];
     NSTask *copytask = [[NSTask alloc] init];
     copytask.launchPath = bashPath;
-    copytask.arguments = @[exePath, self.tempPath, self.destinationPath];
+    copytask.arguments = @[exePath, self.tempPath];
     // 新建输出管道作为Task的输出
     NSPipe *pipe = [NSPipe pipe];
     copytask.standardOutput = pipe;
@@ -105,7 +98,40 @@
 }
 
 - (IBAction)save:(id)sender {
-    [self openPanelDirectory];
+//    [self openPanelDirectory];
+    [self checkSavePath];
+}
+
+-(void)checkSavePath
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+
+    BOOL dir;
+    if (![fm fileExistsAtPath:self.tempPath isDirectory:&dir]) {
+        NSError*err;
+        if ([fm createDirectoryAtPath:self.tempPath
+          withIntermediateDirectories:YES
+                           attributes:nil
+                                error:&err])
+        {
+            [self saveImages];
+        }else{
+            NSLog(@"%@",err);
+        }
+    }else{
+        if (dir) {
+            [fm removeItemAtPath:self.tempPath error:nil];
+            if ([fm createDirectoryAtPath:self.tempPath
+              withIntermediateDirectories:YES
+                               attributes:nil
+                                    error:nil])
+            {
+                [self saveImages];
+            }
+        }else{
+            [self saveImages];
+        }
+    }
 }
 
 - (void)saveImages
@@ -228,34 +254,7 @@
             NSString *path = open.URL.filePathURL.path;
             NSLog(@"path = %@",path);
             self.destinationPath = path ;
-            NSFileManager *fm = [NSFileManager defaultManager];
-          
-            BOOL dir;
-            if (![fm fileExistsAtPath:self.tempPath isDirectory:&dir]) {
-                NSError*err;
-                if ([fm createDirectoryAtPath:self.tempPath
-                  withIntermediateDirectories:YES
-                                   attributes:nil
-                                        error:&err])
-                {
-                    [self saveImages];
-                }else{
-                    NSLog(@"%@",err);
-                }
-            }else{
-                if (dir) {
-                    [fm removeItemAtPath:self.tempPath error:nil];
-                    if ([fm createDirectoryAtPath:self.tempPath
-                      withIntermediateDirectories:YES
-                                       attributes:nil
-                                            error:nil])
-                    {
-                        [self saveImages];
-                    }
-                }else{
-                    [self saveImages];
-                }
-            }
+            [self checkSavePath];
         }else{
             
         }
@@ -360,7 +359,7 @@
     CGImageRef oldImageRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
     
     CGColorSpaceRef colorSpace=  CGImageGetColorSpace(oldImageRef);
-    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
+    CGBitmapInfo bitmapInfo = kCGImageAlphaNoneSkipLast | kCGBitmapByteOrder32Little;
     size_t bitsPer = CGImageGetBitsPerComponent(oldImageRef);
     
     // Build a bitmap context
@@ -373,10 +372,7 @@
                                                 bitmapInfo);
 
     CGRect imageRect = CGRectMake(0, 0, size.width, size.height);
-    
-    [self drawArcRectangle:bitmap
-                  withRect:imageRect
-                    radius:size.width/2.0];
+
     
     // Draw into the context, this scales the image
     CGContextDrawImage(bitmap, imageRect, oldImageRef);
