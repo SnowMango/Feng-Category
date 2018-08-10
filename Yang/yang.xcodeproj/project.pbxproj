@@ -45,6 +45,7 @@
 		6A2CA41320230EB600E5807B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2CA41220230EB600E5807B /* MobileCoreServices.framework */; };
 		6A38A59C20247483005D06DA /* ZFPriceSystomEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A59B20247483005D06DA /* ZFPriceSystomEditViewController.m */; };
 		6A39A3C7202855ED00D8B1F7 /* DefaultData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A39A3C6202855ED00D8B1F7 /* DefaultData.plist */; };
+		6A8BF48F20D3A922006A0CB2 /* LZFCalendarMiniView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8BF48E20D3A922006A0CB2 /* LZFCalendarMiniView.m */; };
 		6A9E1D1B2024936200195E28 /* ZFPriceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E1D1A2024936200195E28 /* ZFPriceSettingViewController.m */; };
 		6A9E1D1D2024A5D600195E28 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A9E1D1C2024A5D600195E28 /* delete@2x.png */; };
 		6A9E1D212025DAAD00195E28 /* ZFBillStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E1D202025DAAD00195E28 /* ZFBillStatus.m */; };
@@ -128,6 +129,8 @@
 		6A38A59A20247483005D06DA /* ZFPriceSystomEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFPriceSystomEditViewController.h; sourceTree = "<group>"; };
 		6A38A59B20247483005D06DA /* ZFPriceSystomEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFPriceSystomEditViewController.m; sourceTree = "<group>"; };
 		6A39A3C6202855ED00D8B1F7 /* DefaultData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultData.plist; sourceTree = "<group>"; };
+		6A8BF48D20D3A922006A0CB2 /* LZFCalendarMiniView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZFCalendarMiniView.h; sourceTree = "<group>"; };
+		6A8BF48E20D3A922006A0CB2 /* LZFCalendarMiniView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZFCalendarMiniView.m; sourceTree = "<group>"; };
 		6A9E1D192024936200195E28 /* ZFPriceSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFPriceSettingViewController.h; sourceTree = "<group>"; };
 		6A9E1D1A2024936200195E28 /* ZFPriceSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFPriceSettingViewController.m; sourceTree = "<group>"; };
 		6A9E1D1C2024A5D600195E28 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 				6A173E442021C73B00D02FAA /* LZFCalendar.m */,
 				6A173E452021C73B00D02FAA /* LZFCalendarView.h */,
 				6A173E462021C73B00D02FAA /* LZFCalendarView.m */,
+				6A8BF48D20D3A922006A0CB2 /* LZFCalendarMiniView.h */,
+				6A8BF48E20D3A922006A0CB2 /* LZFCalendarMiniView.m */,
 			);
 			path = LZFCalendar;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				6A1ECCB62020164200F7FDF9 /* RootViewController.m in Sources */,
 				6A2CA3BF2022AD3500E5807B /* SVProgressHUD.m in Sources */,
 				6A9E1D212025DAAD00195E28 /* ZFBillStatus.m in Sources */,
+				6A8BF48F20D3A922006A0CB2 /* LZFCalendarMiniView.m in Sources */,
 				6A173E1420218BF100D02FAA /* BaseModel.m in Sources */,
 				6A173D9C2021603700D02FAA /* ZFPriceListViewController.m in Sources */,
 				6A2CA3BC2022AD3500E5807B /* SVIndefiniteAnimatedView.m in Sources */,

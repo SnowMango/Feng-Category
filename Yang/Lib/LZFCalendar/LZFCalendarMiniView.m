@@ -1,21 +1,20 @@
 //
-//  LZFCalendarView.m
-//  LayoutTest
+//  LZFCalendarMiniView.m
+//  yang
 //
-//  Created by zhengfeng on 2017/9/8.
-//  Copyright © 2017年 zhengfeng. All rights reserved.
+//  Created by 郑丰 on 2018/6/15.
+//  Copyright © 2018年 zhengfeng. All rights reserved.
 //
 
-#import "LZFCalendarView.h"
-
-
+#import "LZFCalendarMiniView.h"
+#import "LZFCalendar.h"
 #define CELL_HEIGHT 40
 #define HEADER_HEIGHT 50
 #define TITLE_HEIGHT 32
 
-#define CACHE_COUNT 5
+#define CACHE_COUNT 1
 
-@interface LZFCalendarView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface LZFCalendarMiniView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UIView * headerView;
 @property (nonatomic, strong) UICollectionView *calendarView;
@@ -29,7 +28,8 @@
 
 @end
 
-@implementation LZFCalendarView
+@implementation LZFCalendarMiniView
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -57,7 +57,7 @@
     self.headerView.backgroundColor = [UIColor clearColor];
     [self addSubview: self.headerView];
     NSArray *titles = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];
-    
+
     CGFloat weekH = CGRectGetHeight(self.headerView.frame);
     CGFloat offset = (int)CGRectGetWidth(self.frame)%7/2.0;
     CGFloat weekW = ceilf(CGRectGetWidth(self.headerView.frame)/7.0) - 1;
@@ -72,7 +72,7 @@
         [temp addObject:week];
     }
     self.headerItems = temp;
-    
+
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumLineSpacing = 10.0;
     flowLayout.minimumInteritemSpacing = 0;
@@ -81,8 +81,8 @@
                                            collectionViewLayout:flowLayout];
     self.calendarView.delegate = self;
     self.calendarView.dataSource = self;
-    [self.calendarView registerClass:[LZFCalendarCell class] forCellWithReuseIdentifier:@"CalendarCellId"];
-    [self.calendarView registerClass:[LZFCalendarHeaderCell class]  forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CalendarHeaderId"];
+    [self.calendarView registerClass:[LZFCalendarMiniCell class] forCellWithReuseIdentifier:@"CalendarMiniId"];
+
     self.calendarView.backgroundColor = [UIColor whiteColor];
     self.calendarView.showsVerticalScrollIndicator = NO;
     self.calendarView.showsHorizontalScrollIndicator = NO;
@@ -92,24 +92,25 @@
 
 - (void)setupProperty
 {
-   self.startDate = [NSDate date];
-   self.fireDate = [NSDate distantPast];
-   self.calendarSelectType = LZFCalendarViewSelectionMultiple;
-   self.selectDayList = [NSMutableArray array];
+    self.startDate = [NSDate date];
+    self.fireDate = [NSDate distantPast];
+    self.calendarSelectType = LZFCalendarMiniViewSelectionMultiple;
+    self.selectDayList = [NSMutableArray array];
 }
 
-- (void)setCalendarSelectType:(LZFCalendarViewSelectionType)calendarSelectType
+
+- (void)setCalendarSelectType:(LZFCalendarMiniViewSelectionType)calendarSelectType
 {
-   _calendarSelectType = calendarSelectType;
-   self.calendarView.allowsMultipleSelection = _calendarSelectType;
+    _calendarSelectType = calendarSelectType;
+    self.calendarView.allowsMultipleSelection = _calendarSelectType;
 }
 
 - (NSMutableArray *)selectDayList
 {
-   if (!_selectDayList) {
-      self.selectDayList = [NSMutableArray array];
-   }
-   return _selectDayList;
+    if (!_selectDayList) {
+        self.selectDayList = [NSMutableArray array];
+    }
+    return _selectDayList;
 }
 
 - (void)addSelectDay:(NSDate *)day
@@ -134,23 +135,23 @@
 
 - (NSArray *)currentSelectDays
 {
-   return self.selectDayList;
+    return self.selectDayList;
 }
 
 - (void)loadMonthData:(NSDate *)midMonth
 {
-   self.monthList = [NSMutableArray array];
-   self.currentMidMonth = midMonth;
-   NSDate *oneDay = [midMonth firstDayOfMonth];
-   NSInteger mid = floor(CACHE_COUNT/2.0);
-   for (int i = 0; i < CACHE_COUNT; i++) {
-      [self.monthList addObject:[oneDay addMonths:i - mid]];
-   }
+    self.monthList = [NSMutableArray array];
+    self.currentMidMonth = midMonth;
+    NSDate *oneDay = [midMonth firstDayOfMonth];
+    NSInteger mid = floor(CACHE_COUNT/2.0);
+    for (int i = 0; i < CACHE_COUNT; i++) {
+        [self.monthList addObject:[oneDay addMonths:i - mid]];
+    }
 }
 
 - (void)updateCalendarView
 {
-   [self.calendarView reloadData];
+    [self.calendarView reloadData];
 }
 
 - (void)layoutSubviews
@@ -162,14 +163,14 @@
 
 -(void)setStartDate:(NSDate *)startDate
 {
-   _startDate = startDate;
-   [self loadMonthData:_startDate];
-   CGFloat headerH = HEADER_HEIGHT;
-   NSIndexPath *fistIndex = [NSIndexPath indexPathForRow:0 inSection:floor(CACHE_COUNT/2.0)];
-   CGRect f = [self.calendarView layoutAttributesForItemAtIndexPath:fistIndex].frame;
-   CGFloat top = CGRectGetMinY(f);
-   self.org = top - headerH - 20;
-   self.calendarView.contentOffset = CGPointMake(0, self.org);
+    _startDate = startDate;
+    [self loadMonthData:_startDate];
+    CGFloat headerH = HEADER_HEIGHT;
+    NSIndexPath *fistIndex = [NSIndexPath indexPathForRow:0 inSection:floor(CACHE_COUNT/2.0)];
+    CGRect f = [self.calendarView layoutAttributesForItemAtIndexPath:fistIndex].frame;
+    CGFloat top = CGRectGetMinY(f);
+    self.org = top - headerH - 20;
+    self.calendarView.contentOffset = CGPointMake(0, self.org);
 }
 
 - (void)updateSubviewsLayout
@@ -198,56 +199,47 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-   return self.monthList.count;
+    return self.monthList.count;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-   NSDate *month = self.monthList[section];
-   NSInteger weak = [month numberOfWeeks];
-   return weak*7;
+    NSDate *month = self.monthList[section];
+    NSInteger weak = [month numberOfWeeks];
+    return weak*7;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-   LZFCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CalendarCellId" forIndexPath:indexPath];
-   
-   NSDate *month = self.monthList[indexPath.section];
-   NSInteger weak = [month weeklyOrdinality] - 1;
+    LZFCalendarMiniCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CalendarMiniCellId" forIndexPath:indexPath];
+
+    NSDate *month = self.monthList[indexPath.section];
+    NSInteger weak = [month weeklyOrdinality] - 1;
     if (weak == 0) {
         weak = 7;
     }
-   NSDate *day =  [month addDays:indexPath.row - weak];
-   if (indexPath.row >= weak && month.month == day.month) {
-      cell.cellDay = day;
-      NSTimeInterval max = MAX(self.startDate.timeIntervalSince1970, self.fireDate.timeIntervalSince1970);
-      NSTimeInterval min = MIN(self.startDate.timeIntervalSince1970, self.fireDate.timeIntervalSince1970);
-      if (cell.cellDay.timeIntervalSince1970 < min || cell.cellDay.timeIntervalSince1970 > max) {
-         cell.userInteractionEnabled = NO;
-      }else{
-         cell.userInteractionEnabled = YES;
-      }
-      if ([self isContentDay:cell.cellDay]) {
-         [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:0];
-         cell.selected = YES;
-      }
-       if ([[NSCalendar currentCalendar] isDate:day inSameDayAsDate:[NSDate date]]) {
-           cell.selectIV.hidden = cell.selected;
-       }else{
-           cell.selectIV.hidden = YES;
-       }
-   }else{
-      cell.cellDay = nil;
-       cell.selectIV.hidden = YES;
-   }
-   return cell;
-}
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    LZFCalendarHeaderCell*view= [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"CalendarHeaderId" forIndexPath:indexPath];
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-       NSDate *month = self.monthList[indexPath.section];
-       view.cellMonth = month;
+    NSDate *day =  [month addDays:indexPath.row - weak];
+    if (indexPath.row >= weak && month.month == day.month) {
+        cell.cellDay = day;
+        NSTimeInterval max = MAX(self.startDate.timeIntervalSince1970, self.fireDate.timeIntervalSince1970);
+        NSTimeInterval min = MIN(self.startDate.timeIntervalSince1970, self.fireDate.timeIntervalSince1970);
+        if (cell.cellDay.timeIntervalSince1970 < min || cell.cellDay.timeIntervalSince1970 > max) {
+            cell.userInteractionEnabled = NO;
+        }else{
+            cell.userInteractionEnabled = YES;
+        }
+        if ([self isContentDay:cell.cellDay]) {
+            [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:0];
+            cell.selected = YES;
+        }
+        if ([[NSCalendar currentCalendar] isDate:day inSameDayAsDate:[NSDate date]]) {
+            cell.selectIV.hidden = cell.selected;
+        }else{
+            cell.selectIV.hidden = YES;
+        }
+    }else{
+        cell.cellDay = nil;
+        cell.selectIV.hidden = YES;
     }
-    return view;
+    return cell;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -274,7 +266,7 @@
 #pragma mark - UICollectionViewDelegate
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LZFCalendarCell *cell = (LZFCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    LZFCalendarMiniCell *cell = (LZFCalendarMiniCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [self.selectDayList addObject:cell.cellDay];
     if (self.selectDay) {
         self.selectDay(cell.cellDay);
@@ -283,13 +275,13 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-   LZFCalendarCell *cell = (LZFCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
-   [self.selectDayList removeObject:cell.cellDay];
+    LZFCalendarMiniCell *cell = (LZFCalendarMiniCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    [self.selectDayList removeObject:cell.cellDay];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LZFCalendarCell *cell = (LZFCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    LZFCalendarMiniCell *cell = (LZFCalendarMiniCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (!cell.cellDay) {
         return NO;
     }
@@ -310,7 +302,7 @@
     if (changeSize <= fabs(sub) ) {
         BOOL upOrDown = scrollView.contentOffset.y > self.org;
         if (upOrDown) {
-           [self loadMonthData:[self.currentMidMonth addMonths:1]];
+            [self loadMonthData:[self.currentMidMonth addMonths:1]];
         }else{
             [self loadMonthData:[self.currentMidMonth addMonths:-1]];
         }
@@ -322,7 +314,7 @@
 @end
 
 static UIImage *todayImage = nil;
-@implementation LZFCalendarCell
+@implementation LZFCalendarMiniCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -359,20 +351,20 @@ static UIImage *todayImage = nil;
 
 - (void)setSelected:(BOOL)selected
 {
-   [super setSelected:selected];
-   if (!self.userInteractionEnabled) {
-      return;
-   }
-   if (self.cellDay == nil) {
+    [super setSelected:selected];
+    if (!self.userInteractionEnabled) {
         return;
     }
-   if (self.selected) {
-      self.solar.textColor = [self selcetColor];
-      self.Lunar.textColor = [self selcetColor];
-   }else{
-      self.solar.textColor = [self normalColor];
-      self.Lunar.textColor = [self normalColor];
-   }
+    if (self.cellDay == nil) {
+        return;
+    }
+    if (self.selected) {
+        self.solar.textColor = [self selcetColor];
+        self.Lunar.textColor = [self selcetColor];
+    }else{
+        self.solar.textColor = [self normalColor];
+        self.Lunar.textColor = [self normalColor];
+    }
 }
 
 - (UIImage*)tadayImage
@@ -393,150 +385,75 @@ static UIImage *todayImage = nil;
 
 - (void)setUserInteractionEnabled:(BOOL)userInteractionEnabled
 {
-   [super setUserInteractionEnabled:userInteractionEnabled];
-   if (self.cellDay == nil) {
-       return;
-   }
-   if (self.userInteractionEnabled) {
-      if (self.selected) {
-         self.solar.textColor = [self selcetColor];
-         self.Lunar.textColor = [self selcetColor];
-      }else{
-         self.solar.textColor = [self normalColor];
-         self.Lunar.textColor = [self normalColor];
-      }
-   }else{
-      self.solar.textColor = [self noEnabledbleColer];
-      self.Lunar.textColor = [self noEnabledbleColer];
-   }
+    [super setUserInteractionEnabled:userInteractionEnabled];
+    if (self.cellDay == nil) {
+        return;
+    }
+    if (self.userInteractionEnabled) {
+        if (self.selected) {
+            self.solar.textColor = [self selcetColor];
+            self.Lunar.textColor = [self selcetColor];
+        }else{
+            self.solar.textColor = [self normalColor];
+            self.Lunar.textColor = [self normalColor];
+        }
+    }else{
+        self.solar.textColor = [self noEnabledbleColer];
+        self.Lunar.textColor = [self noEnabledbleColer];
+    }
 }
 
 - (UIColor *)normalColor
 {
-   return  [UIColor colorWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1];
+    return  [UIColor colorWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1];
 }
 
 - (UIColor *)selcetColor
 {
-   return  [UIColor colorWithRed:80.0/255 green:200.0/255 blue:239.0/255 alpha:1];
+    return  [UIColor colorWithRed:80.0/255 green:200.0/255 blue:239.0/255 alpha:1];
 }
 - (UIColor *)noEnabledbleColer
 {
-   return  [UIColor colorWithRed:153.0/255 green:153.0/255 blue:153.0/255 alpha:1];
+    return  [UIColor colorWithRed:153.0/255 green:153.0/255 blue:153.0/255 alpha:1];
 }
 
 
 - (void)layoutSubviews
 {
-   [super layoutSubviews];
-   CGFloat size = MIN(CGRectGetWidth(self.contentView.frame), CGRectGetHeight(self.contentView.frame));
-   self.selectIV.frame = CGRectMake(0, 0, size, size);
-   self.selectIV.center = self.contentView.center;
-   self.solar.frame = CGRectMake(CGRectGetMidX(self.contentView.frame) - size/2.0,
-                                 CGRectGetMidY(self.contentView.frame) - self.solar.font.lineHeight,
-                                 size, self.solar.font.lineHeight);
-   self.Lunar.frame = CGRectMake(CGRectGetMidX(self.contentView.frame) - size/2.0, CGRectGetMaxY(self.solar.frame),
-                                 size, self.Lunar.font.lineHeight);
+    [super layoutSubviews];
+    CGFloat size = MIN(CGRectGetWidth(self.contentView.frame), CGRectGetHeight(self.contentView.frame));
+    self.selectIV.frame = CGRectMake(0, 0, size, size);
+    self.selectIV.center = self.contentView.center;
+    self.solar.frame = CGRectMake(CGRectGetMidX(self.contentView.frame) - size/2.0,
+                                  CGRectGetMidY(self.contentView.frame) - self.solar.font.lineHeight,
+                                  size, self.solar.font.lineHeight);
+    self.Lunar.frame = CGRectMake(CGRectGetMidX(self.contentView.frame) - size/2.0, CGRectGetMaxY(self.solar.frame),
+                                  size, self.Lunar.font.lineHeight);
 }
 
 - (void)setCellDay:(NSDate *)cellDay
 {
-   _cellDay = cellDay;
-   if (_cellDay) {
-      self.Lunar.text = [self lunarTextWithDay:_cellDay];
-      self.solar.text = [self solarTextWithDay:_cellDay];
-   }else{
-      self.Lunar.text = nil;
-      self.solar.text = nil;
-   }
-   
+    _cellDay = cellDay;
+    if (_cellDay) {
+        self.Lunar.text = [self lunarTextWithDay:_cellDay];
+        self.solar.text = [self solarTextWithDay:_cellDay];
+    }else{
+        self.Lunar.text = nil;
+        self.solar.text = nil;
+    }
+
 }
 
 - (NSString *)solarTextWithDay:(NSDate *)day
 {
-   NSCalendar *ca =[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-   NSDateComponents *com = [ca components:NSCalendarUnitDay fromDate:day];
-   return @(com.day).stringValue;
+    NSCalendar *ca =[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *com = [ca components:NSCalendarUnitDay fromDate:day];
+    return @(com.day).stringValue;
 }
 - (NSString *)lunarTextWithDay:(NSDate *)day
 {
-   Lunar *l = [LZFCalendar solarToLunar:day];
-   return [LZFCalendar lunarDays][l.lunarDay];
+    Lunar *l = [LZFCalendar solarToLunar:day];
+    return [LZFCalendar lunarDays][l.lunarDay];
 }
 
 @end
-
-
-@implementation LZFCalendarHeaderCell
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setupUI];
-    }
-    return self;
-}
-
-- (void)setupUI
-{
-   self.monthTitle = [[UILabel alloc] initWithFrame:self.bounds];
-   self.monthTitle.font = [UIFont systemFontOfSize:14];
-   self.monthTitle.textAlignment = NSTextAlignmentCenter;
-   self.monthTitle.textColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
-   [self addSubview:self.monthTitle];
-}
-
-- (void)layoutSubviews
-{
-   [super layoutSubviews];
-   [self updateTitleWithMonth:self.cellMonth];
-}
-
-- (void)updateTitleWithMonth:(NSDate*)month
-{
-   if (self.cellMonth) {
-      NSCalendar *ca =[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-      NSDateComponents *com = [ca components:NSCalendarUnitYear|NSCalendarUnitMonth fromDate:_cellMonth];
-      NSString *text = [NSString stringWithFormat:@"%@年%@月",@([com year]),@([com month])];
-      CGSize size = [text sizeWithAttributes:@{NSFontAttributeName:self.monthTitle.font}];
-      self.monthTitle.frame = CGRectMake(0, 0, size.width, size.height);
-      CGFloat weekW = ceilf(CGRectGetWidth(self.bounds)/7.0) - 1;
-      CGFloat weekH = CGRectGetHeight(self.frame);
-      CGFloat offset = (int)CGRectGetWidth(self.frame)%7/2.0;
-      NSInteger index = [_cellMonth weeklyOrdinality] - 1;
-      CGRect r = CGRectMake(offset+ index*weekW, 0, weekW, weekH);
-      self.monthTitle.text = text;
-      
-      if (CGRectGetMidX(r) + size.width/2.0 > CGRectGetWidth(self.bounds)) {
-         self.monthTitle.center = CGPointMake(CGRectGetWidth(self.bounds) - size.width/2.0, CGRectGetMidY(self.bounds));
-      }else if (CGRectGetMidX(r) > size.width/2.0) {
-         self.monthTitle.center = CGPointMake(CGRectGetMidX(r), CGRectGetMidY(self.bounds));
-      }else{
-         self.monthTitle.center = CGPointMake(size.width/2.0, CGRectGetMidY(self.bounds));
-      }
-      
-   }else{
-      self.monthTitle.text = nil;
-   }
-}
-
--(void)setCellMonth:(NSDate *)cellMonth
-{
-   _cellMonth = cellMonth;
-   [self updateTitleWithMonth:_cellMonth];
-}
-
-
-@end
-
-
-
-
-
-
-
-
-
-
-

@@ -28,7 +28,7 @@
 {
 
     if (!ip.length) {
-        ip = @"172.30.220.250";
+        ip = @"192.168.31.84";
     }
     [self performSegueWithIdentifier:@"Player" sender:ip];
     

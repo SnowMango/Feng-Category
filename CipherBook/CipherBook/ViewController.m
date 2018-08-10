@@ -37,8 +37,8 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
 
 @interface ViewController ()
 
-@property (nonatomic, strong) ZFCipherView *clipherView;
-
+//@property (nonatomic, strong) ZFCipherView *clipherView;
+@property (nonatomic, weak) IBOutlet ZFCipherView *clipherView;
 @end
 
 @implementation ViewController
@@ -50,7 +50,7 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
 - (NSString *)MD5:(NSString *)mdStr
 {
     const char *original_str = [mdStr UTF8String];
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    UInt8 result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(original_str, (CC_LONG)strlen(original_str), result);
     NSMutableString *hash = [NSMutableString string];
     for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
@@ -61,7 +61,7 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self testShow];
 }
 
 
@@ -71,7 +71,7 @@ BOOL saveCipher(NSString *path, NSData* dat, NSString*fileName)
     for (int i = 0; i < 30; i++) {
         [[ZFCipherManager defaultManager] addCipherWithData:nil];
     }
-    self.clipherView = [[ZFCipherView alloc] initWithFrame:self.view.bounds];
+
     self.clipherView.items = [[ZFCipherManager defaultManager] allCipher];
     self.clipherView.style = ZFCipherViewStyleFast;
     [self.view addSubview:self.clipherView];

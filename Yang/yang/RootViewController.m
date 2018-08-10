@@ -20,7 +20,7 @@
     [super viewDidLoad];
     NSLog(@"home =%@", NSHomeDirectory());
     
-    [self loadingDefault];
+//    [self loadingDefault];
 }
 
 - (void)loadingDefault

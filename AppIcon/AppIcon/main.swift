@@ -277,17 +277,17 @@ func testParseItem() -> Bool {
     print("name = \(result.0) size=\(NSStringFromSize(result.1))")
     return true
 }
-func test()
-{
-    let resourcePath = "/Users/zhengfeng/Desktop/feng1024.png"
-    let sourcePath = "/Users/zhengfeng/Desktop/Simp/Simp/Assets.xcassets/AppIcon.appiconset/Contents.json"
-    let destinationPath = "/Users/zhengfeng/Desktop/save"
-    startParse(resPath: resourcePath,
-               souPath: sourcePath,
-               desPath: destinationPath,
-               false)
-}
-//run()
+//func test()
+//{
+//    let resourcePath = "/Users/zhengfeng/Desktop/feng1024.png"
+//    let sourcePath = "/Users/zhengfeng/Desktop/Simp/Simp/Assets.xcassets/AppIcon.appiconset/Contents.json"
+//    let destinationPath = "/Users/zhengfeng/Desktop/save"
+//    startParse(resPath: resourcePath,
+//               souPath: sourcePath,
+//               desPath: destinationPath,
+//               false)
+//}
+run()
 
 
 test()
