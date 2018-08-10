@@ -39,11 +39,23 @@
 
     self.resourcePath = [[NSBundle mainBundle] pathForResource:@"logo1024" ofType:@"png"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidNotification:) name:NSControlTextDidChangeNotification object:nil];
-    self.tempPath= [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/AppIcon.appiconset"];
 
+    [self.iconTextField addObserver:self forKeyPath:@"stringValue" options:NSKeyValueObservingOptionNew context:nil ];
+    [self.textField addObserver:self forKeyPath:@"stringValue" options:NSKeyValueObservingOptionNew context:nil ];
+    self.tempPath= [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/AppIcon.appiconset"];
+    self.view.layer.backgroundColor =[NSColor whiteColor].CGColor;
 }
 
-
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if (self.iconTextField == object) {
+        NSString *path = self.iconTextField.stringValue;
+        self.iconIV.image = [[NSImage alloc] initWithContentsOfFile:path];
+        self.resourcePath = path;
+    }else if (self.textField == object){
+        self.sourcePath = self.textField.stringValue;
+    }
+}
 
 - (void)textDidNotification:(NSNotification*)noti
 {
@@ -223,7 +235,6 @@
 
 - (void)savePanel
 {
-    
     NSSavePanel *save = [NSSavePanel savePanel];
     save.directoryURL = [NSURL URLWithString:NSHomeDirectory()];
     save.delegate = self;
