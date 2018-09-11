@@ -680,13 +680,13 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370" y="480"/>
+            <point key="canvasLocation" x="-461" y="478"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="732" height="577"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -812,11 +812,26 @@
                                     <action selector="save:" target="XfG-lQ-9wD" id="anj-Pv-Nsp"/>
                                 </connections>
                             </button>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zEZ-8q-Tyr">
+                                <rect key="frame" x="581" y="328" width="123" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Ytc-E7-tqB">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="无圆角" width="58" selected="YES"/>
+                                        <segment label="圆" width="58" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="segValueChange:" target="XfG-lQ-9wD" id="Xp4-8l-iYT"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ctM-jD-iix" firstAttribute="top" secondItem="grI-pC-lxx" secondAttribute="bottom" constant="20" id="3td-Vj-a4C"/>
+                            <constraint firstItem="zEZ-8q-Tyr" firstAttribute="centerY" secondItem="3tQ-sB-0zc" secondAttribute="centerY" id="9Yw-lp-M9E"/>
                             <constraint firstItem="H4Y-w7-703" firstAttribute="leading" secondItem="ctM-jD-iix" secondAttribute="leading" id="9kM-Hk-aWF"/>
                             <constraint firstItem="h8i-4A-hSj" firstAttribute="centerY" secondItem="ctM-jD-iix" secondAttribute="centerY" id="DOQ-k3-iWA"/>
+                            <constraint firstAttribute="trailing" secondItem="zEZ-8q-Tyr" secondAttribute="trailing" constant="30" id="Fcp-sM-ZiJ"/>
                             <constraint firstItem="3tQ-sB-0zc" firstAttribute="top" secondItem="ctM-jD-iix" secondAttribute="bottom" constant="10" id="Kga-4T-ji8"/>
                             <constraint firstItem="grI-pC-lxx" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Qi7-zu-Y8M"/>
                             <constraint firstItem="V7L-Uy-oxS" firstAttribute="leading" secondItem="Plr-ch-LZ2" secondAttribute="trailing" constant="15" id="Qmp-vc-GjR"/>
@@ -846,12 +861,13 @@
                         <outlet property="iconTextField" destination="ctM-jD-iix" id="DtW-1x-yle"/>
                         <outlet property="logOutputView" destination="YbQ-KY-lrq" id="gDo-zF-Ieq"/>
                         <outlet property="logScroll" destination="V7L-Uy-oxS" id="VLK-gE-3db"/>
+                        <outlet property="seg" destination="zEZ-8q-Tyr" id="ka1-5Y-nL2"/>
                         <outlet property="textField" destination="H4Y-w7-703" id="5B5-zj-DeA"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="463"/>
+            <point key="canvasLocation" x="158" y="462.5"/>
         </scene>
     </scenes>
 </document>
