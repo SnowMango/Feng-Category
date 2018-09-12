@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4F21CAAE21460EB6002FAE33 /* ZFIconImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F21CAAD21460EB6002FAE33 /* ZFIconImage.m */; };
 		4F21CAB121461693002FAE33 /* ZFIconTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F21CAB021461693002FAE33 /* ZFIconTemplate.m */; };
-		4F21CAB4214616AB002FAE33 /* ZFIconPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F21CAB3214616AB002FAE33 /* ZFIconPath.m */; };
 		6A87EE9C211B06C300440C3E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A87EE9B211B06C300440C3E /* AppDelegate.m */; };
 		6A87EE9F211B06C300440C3E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A87EE9E211B06C300440C3E /* ViewController.m */; };
 		6A87EEA1211B06C500440C3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A87EEA0211B06C500440C3E /* Assets.xcassets */; };
@@ -22,8 +21,6 @@
 		4F21CAAD21460EB6002FAE33 /* ZFIconImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFIconImage.m; sourceTree = "<group>"; };
 		4F21CAAF21461693002FAE33 /* ZFIconTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFIconTemplate.h; sourceTree = "<group>"; };
 		4F21CAB021461693002FAE33 /* ZFIconTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFIconTemplate.m; sourceTree = "<group>"; };
-		4F21CAB2214616AB002FAE33 /* ZFIconPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFIconPath.h; sourceTree = "<group>"; };
-		4F21CAB3214616AB002FAE33 /* ZFIconPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFIconPath.m; sourceTree = "<group>"; };
 		6A87EE97211B06C300440C3E /* MySimp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySimp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A87EE9A211B06C300440C3E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6A87EE9B211B06C300440C3E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,8 +76,6 @@
 				4F21CAAD21460EB6002FAE33 /* ZFIconImage.m */,
 				4F21CAAF21461693002FAE33 /* ZFIconTemplate.h */,
 				4F21CAB021461693002FAE33 /* ZFIconTemplate.m */,
-				4F21CAB2214616AB002FAE33 /* ZFIconPath.h */,
-				4F21CAB3214616AB002FAE33 /* ZFIconPath.m */,
 			);
 			path = MySimp;
 			sourceTree = "<group>";
@@ -157,7 +152,6 @@
 				4F21CAB121461693002FAE33 /* ZFIconTemplate.m in Sources */,
 				4F21CAAE21460EB6002FAE33 /* ZFIconImage.m in Sources */,
 				6A87EE9F211B06C300440C3E /* ViewController.m in Sources */,
-				4F21CAB4214616AB002FAE33 /* ZFIconPath.m in Sources */,
 				6A87EEA7211B06C500440C3E /* main.m in Sources */,
 				6A87EE9C211B06C300440C3E /* AppDelegate.m in Sources */,
 			);
