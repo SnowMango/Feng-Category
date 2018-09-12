@@ -25,35 +25,50 @@
   }
 }
 
-- (NSImage*)imageIconWithFile:(NSString*)inputImagePath withSize:(NSSize)desSize
+- (ICON_IMAGE*)imageIconWithFile:(NSString*)inputImagePath withSize:(NSSize)desSize
 {
     CGImageRef ref = [self generateIconWithFile:inputImagePath withSize:desSize];
-    NSImage *icon = [[NSImage alloc] initWithCGImage:ref size:desSize];
+#if TARGET_OS_IPHONE || TARGET_OS_TV || TARGET_OS_SIMULATOR
+    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref];
+#elif TARGET_OS_MAC
+    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref size:desSize];
+#endif
+    
     CGImageRelease(ref);
     return icon;
 }
-- (NSImage*)imageIconWithImage:(NSImage*)inputImage withSize:(NSSize)desSize
+- (ICON_IMAGE*)imageIconWithImage:(ICON_IMAGE*)inputImage withSize:(NSSize)desSize
 {
     CGImageRef ref = [self generateIconWithImage:inputImage withSize:desSize];
-    NSImage *icon = [[NSImage alloc] initWithCGImage:ref size:desSize];
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref];
+#elif TARGET_OS_MAC
+    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref size:desSize];
+#endif
+    
     CGImageRelease(ref);
     return icon;
 }
 
 - (CGImageRef)generateIconWithFile:(NSString*)inputImagePath withSize:(NSSize)desSize {
     
-    NSImage *inputRetinaImage = [[NSImage alloc] initWithContentsOfFile:inputImagePath];
+    ICON_IMAGE *inputRetinaImage = [[ICON_IMAGE alloc] initWithContentsOfFile:inputImagePath];
     return [self generateIconWithImage:inputRetinaImage withSize:desSize];
 }
 
 
-- (CGImageRef)generateIconWithImage:(NSImage*)inputImage withSize:(NSSize)desSize
+- (CGImageRef)generateIconWithImage:(ICON_IMAGE*)inputImage withSize:(NSSize)desSize
 {
     if (!inputImage) {
         return nil;
     }
     NSSize size = desSize;
-    NSData *imageData = [inputImage TIFFRepresentation];
+    NSData *imageData = nil;
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+    imageData = UIImagePNGRepresentation(imageData);
+#elif TARGET_OS_MAC
+    imageData = [inputImage TIFFRepresentation];
+#endif
     CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)imageData, NULL);
     
     CGImageRef oldImageRef =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
@@ -118,7 +133,7 @@
 
 @end
 
-@implementation NSImage (ICONGEN)
+@implementation ICON_IMAGE (ICONGEN)
 
 - (CGImageRef)iconCImageithSize:(CGSize)size radius:(CGFloat)radius
 {
@@ -128,7 +143,7 @@
     return [icon generateIconWithImage:self withSize:size];
 }
 
-- (NSImage *)iconImageWithSize:(CGSize)size radius:(CGFloat)radius
+- (ICON_IMAGE *)iconImageWithSize:(CGSize)size radius:(CGFloat)radius
 {
     ZFIconImage *icon = [[ZFIconImage alloc] init];
     icon.radius =radius;

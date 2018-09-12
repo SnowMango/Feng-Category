@@ -10,6 +10,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <AppKit/AppKit.h>
 #import "ZFIconImage.h"
+#import "ZFIconTemplate.h"
 
 @interface ViewController ()<NSOpenSavePanelDelegate>
 
@@ -174,7 +175,7 @@
     if (!self.destinationPath.length || !data.count) {
         return NO ;
     }
-    
+
     NSData *json = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
     NSString *contentsPath = [self.destinationPath stringByAppendingPathComponent:@"Contents.json"];
     return [json writeToFile:contentsPath atomically:YES];

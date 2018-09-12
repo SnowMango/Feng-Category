@@ -12,11 +12,12 @@
 @interface ZFIconTemplate : NSObject
 +(instancetype)templateWithJsonFile:(NSString *)jsonFile;
 -(instancetype)initWithJsonFile:(NSString *)jsonFile;
+-(instancetype)initWithJsonData:(NSData *)jsonData;
 
 -(instancetype)init;
 
 @property (nonatomic, strong) NSDictionary *info;
-@property (nonatomic, strong) NSArray *images;
+@property (nonatomic, strong) NSArray<ZFAppIcon*> *images;
 
 - (BOOL)save:(BOOL)useAuxiliaryFile;
 - (BOOL)saveTemplateToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;
@@ -30,11 +31,17 @@
 @property (nonatomic) CGSize size;
 @property (nonatomic) NSInteger scale;
 
+@property (readonly, strong) NSString *role;
+@property (readonly, strong) NSString *subtype;
+
 + (instancetype)appIconWithDictionary:(NSDictionary*)dic;
 + (ZFAppIcon*)marketingIphone;
 + (ZFAppIcon*)marketingWatch;
 - (NSDictionary*)getSaveInfo;
 @end
+
+
+
 
 static NSString* kAppIconIdiomIphone    = @"iphone";
 static NSString* kAppIconIdiomIpad      = @"ipad";
