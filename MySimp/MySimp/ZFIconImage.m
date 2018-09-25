@@ -25,31 +25,6 @@
   }
 }
 
-- (ICON_IMAGE*)imageIconWithFile:(NSString*)inputImagePath withSize:(NSSize)desSize
-{
-    CGImageRef ref = [self generateIconWithFile:inputImagePath withSize:desSize];
-#if TARGET_OS_IPHONE || TARGET_OS_TV || TARGET_OS_SIMULATOR
-    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref];
-#elif TARGET_OS_MAC
-    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref size:desSize];
-#endif
-    
-    CGImageRelease(ref);
-    return icon;
-}
-- (ICON_IMAGE*)imageIconWithImage:(ICON_IMAGE*)inputImage withSize:(NSSize)desSize
-{
-    CGImageRef ref = [self generateIconWithImage:inputImage withSize:desSize];
-#if TARGET_OS_IPHONE || TARGET_OS_TV
-    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref];
-#elif TARGET_OS_MAC
-    ICON_IMAGE *icon = [[ICON_IMAGE alloc] initWithCGImage:ref size:desSize];
-#endif
-    
-    CGImageRelease(ref);
-    return icon;
-}
-
 - (CGImageRef)generateIconWithFile:(NSString*)inputImagePath withSize:(NSSize)desSize {
     
     ICON_IMAGE *inputRetinaImage = [[ICON_IMAGE alloc] initWithContentsOfFile:inputImagePath];
@@ -96,17 +71,15 @@
         CGFloat radius= CGRectGetHeight(imageRect)/self.radius;
         [self drawArcRectangle:bitmap withRect:imageRect radius:radius];
     }
-    
+
     // Draw into the context, this scales the image
     CGContextDrawImage(bitmap, imageRect, oldImageRef);
     CGImageRelease(oldImageRef);
     // Get an image from the context
     CGImageRef newImageRef = CGBitmapContextCreateImage(bitmap);
-
+    
     return newImageRef ;
 }
-
-
 
 #pragma mark - 绘制圆角矩形
 - (void)drawArcRectangle:(CGContextRef) context withRect:(CGRect)rect radius:(CGFloat)radius{
@@ -142,13 +115,4 @@
     
     return [icon generateIconWithImage:self withSize:size];
 }
-
-- (ICON_IMAGE *)iconImageWithSize:(CGSize)size radius:(CGFloat)radius
-{
-    ZFIconImage *icon = [[ZFIconImage alloc] init];
-    icon.radius =radius;
-    
-    return [icon imageIconWithImage:self withSize:size];
-}
-
 @end

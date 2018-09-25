@@ -47,21 +47,6 @@
         return NO;
     }
     
-    NSString *savePath = self.savePath;
-    if (!savePath && self.templatePath.length) {
-        savePath = self.templatePath;
-    }
-    
-    if ([savePath.lastPathComponent isEqualToString:@"Contents.json"]) {
-        NSString *parentPath = savePath.stringByDeletingLastPathComponent;
-        if (![parentPath.pathExtension isEqualToString:@".appiconset"]) {
-            savePath = [parentPath stringByAppendingPathComponent:@"AppIcon.appiconset"];
-        }else{
-            savePath = parentPath;
-        }
-    }else if (![savePath.pathExtension isEqualToString:@".appiconset"]){
-        savePath = [savePath stringByAppendingPathComponent:@"AppIcon.appiconset"];
-    }
     _iconTemplate = [[ZFIconTemplate alloc] initWithJsonData:json];
     return YES;
 }
@@ -97,17 +82,12 @@
     }
     
     for (ZFAppIcon*icon in iconTemplate.images) {
-        NSString *fileName = [NSString stringWithFormat:@"%@(%@x%@).png",icon.idiom, @(icon.size.width),@(icon.size.height)];
+        NSString *fileName = [icon genFilename];
         
-        CGSize drawSize = CGSizeMake(icon.size.width *icon.scale, icon.size.height *icon.scale);
-        
-        ICON_IMAGE *desImage = [srcImage iconImageWithSize:drawSize radius:raduis];
-        NSData *imageData = nil;
-#if TARGET_OS_IPHONE || TARGET_OS_TV
-        imageData = UIImagePNGRepresentation(desImage);
-#elif TARGET_OS_MAC
-        imageData = [desImage TIFFRepresentation];
-#endif
+        CGSize drawSize = [icon pxsize];
+        CGImageRef desImageRef = [srcImage iconCImageithSize:drawSize radius:raduis];
+        NSData *imageData = [self dataImageWithCGImage:desImageRef];
+
         NSString *filePath = [savePath stringByAppendingPathComponent:fileName];
         
         if (imageData) {
@@ -118,6 +98,21 @@
     }
     NSString* templateName = @"Contents.json";
     [iconTemplate saveTemplateToFile:[savePath stringByAppendingPathComponent:templateName] atomically:YES];
-
 }
+
+- (NSData*)dataImageWithCGImage:(CGImageRef)cgImage
+{
+    NSData *imageData = nil;
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+    UIImage*image = [UIImage imageWithCGImage:cgImage];;
+    imageData = UIImagePNGRepresentation(image);
+#elif TARGET_OS_MAC
+    NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithCGImage:cgImage];
+    imageData = [rep representationUsingType:NSBitmapImageFileTypePNG properties:@{NSImageInterlaced:@(YES)}];
+#endif
+    return imageData;
+    
+}
+
+
 @end

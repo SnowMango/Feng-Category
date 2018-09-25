@@ -38,6 +38,9 @@
 + (ZFAppIcon*)marketingIphone;
 + (ZFAppIcon*)marketingWatch;
 - (NSDictionary*)getSaveInfo;
+
+- (NSString *)genFilename;
+- (CGSize)pxsize;
 @end
 
 

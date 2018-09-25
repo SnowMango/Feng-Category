@@ -165,4 +165,19 @@
     return save;
 }
 
+- (NSString *)genFilename
+{
+    NSString *newName = [NSString stringWithFormat:@"%@-%@",self.idiom,@(self.size.width)];
+    if (self.scale > 1) {
+        newName = [newName stringByAppendingFormat:@"@%@x", @(self.scale)];
+    }
+    newName = [newName stringByAppendingPathExtension:@"png"];
+    return newName;
+}
+
+- (CGSize)pxsize
+{
+    return CGSizeMake(self.size.width*self.scale, self.size.height*self.scale);
+}
+
 @end

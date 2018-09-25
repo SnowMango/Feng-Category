@@ -23,8 +23,6 @@
 /*  0~0.5 */
 @property (nonatomic) CGFloat radius;
 
-- (ICON_IMAGE*)imageIconWithFile:(NSString*)inputImagePath withSize:(NSSize)desSize;
-- (ICON_IMAGE*)imageIconWithImage:(ICON_IMAGE*)inputImage withSize:(NSSize)desSize;
 
 - (CGImageRef)generateIconWithFile:(NSString*)inputImagePath withSize:(NSSize)desSize;
 - (CGImageRef)generateIconWithImage:(ICON_IMAGE*)inputImage withSize:(NSSize)desSize;
@@ -32,7 +30,6 @@
 
 @interface ICON_IMAGE (ICONGEN)
 - (CGImageRef)iconCImageithSize:(CGSize)size radius:(CGFloat)radius;
-- (ICON_IMAGE *)iconImageWithSize:(CGSize)size radius:(CGFloat)radius;
 @end
 
 

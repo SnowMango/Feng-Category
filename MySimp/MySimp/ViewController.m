@@ -102,32 +102,36 @@
 -(void)checkSavePath
 {
     NSFileManager *fm = [NSFileManager defaultManager];
-
     BOOL dir;
-    if (![fm fileExistsAtPath:self.destinationPath isDirectory:&dir]) {
-        NSError*err;
-        if ([fm createDirectoryAtPath:self.destinationPath
-          withIntermediateDirectories:YES
-                           attributes:nil
-                                error:&err])
-        {
-            [self saveImages];
-        }else{
-            NSLog(@"%@",err);
-        }
+    BOOL exists = [fm fileExistsAtPath:self.destinationPath isDirectory:&dir];
+    
+    
+    BOOL appiconset = [self.destinationPath hasSuffix:@".appiconset"];
+    BOOL json = [self.destinationPath hasSuffix:@".json"];
+    
+    BOOL enableSave = NO;
+    
+    if (exists && dir) {
+        
     }else{
-        if (dir) {
-            [fm removeItemAtPath:self.destinationPath error:nil];
-            if ([fm createDirectoryAtPath:self.destinationPath
-              withIntermediateDirectories:YES
-                               attributes:nil
-                                    error:nil])
-            {
-                [self saveImages];
-            }
-        }else{
-            [self saveImages];
+        if ([fm createDirectoryAtPath:self.destinationPath withIntermediateDirectories:YES attributes:nil error:nil]) {
+            exists = YES;
+            dir = YES;
         }
+    }
+    if (exists && dir) {
+        enableSave = YES;
+    }else{
+        return;
+    }
+    if (appiconset) {
+        
+    }else if (json){
+        
+    }
+    
+    if (enableSave) {
+        [self saveImages];
     }
 }
 
@@ -193,25 +197,29 @@
         suffix = [NSString stringWithFormat:@"@%@x",@(scale)];
     }
     NSString *fileType = @"png";
-    NSString * filename = [NSString stringWithFormat:@"%@(%@)%@.%@",idiom,item[@"size"],suffix,fileType];
-    NSImage *image = [self createImageWithSize:size];
-    
+    NSString * filename = [NSString stringWithFormat:@"%@-%@%@.%@",idiom,item[@"size"],suffix,fileType];
+
+    CGImageRef ref = [self createImageRefWithSize:size];
+    NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithCGImage:ref];
+    NSData *imageData = [rep representationUsingType:NSBitmapImageFileTypePNG properties:@{NSImageInterlaced:@(YES)}];
     BOOL finish = NO;
-    if (image) {
-       finish = [self saveFileWithName:filename withImage:image];
+    if (imageData) {
+
+        finish = [self saveFileWithName:filename withData:imageData];
     }
     if (compelete) {
         compelete(finish, filename);
     }
 }
 
-- (BOOL)saveFileWithName:(NSString *)fileName withImage:(NSImage*)image
+- (BOOL)saveFileWithName:(NSString *)fileName withData:(NSData*)imgData
 {
-    if (!self.destinationPath.length || !image) {
+    if (!self.destinationPath.length || !imgData) {
         return NO;
     }
     NSString *path = [self.destinationPath stringByAppendingPathComponent:fileName];
-    return [[image TIFFRepresentation] writeToFile:path atomically:YES];
+    
+    return [imgData writeToFile:path atomically:YES];
 }
 
 
@@ -307,19 +315,17 @@
     
 }
 
-
-- (NSImage*)createImageWithSize:(NSSize)desSize
+- (CGImageRef)createImageRefWithSize:(NSSize)desSize
 {
     if (!self.resourcePath.length) {
         return nil;
     }
     NSImage *source = [[NSImage alloc] initWithContentsOfFile:self.resourcePath];
     if (self.seg.segmentCount == 1) {
-        return [source iconImageWithSize:desSize radius:0.5];
+        return [source iconCImageithSize:desSize radius:0.5];
     }
-    return [source iconImageWithSize:desSize radius:0];
+    return [source iconCImageithSize:desSize radius:0];
 }
-
 
 
 @end
