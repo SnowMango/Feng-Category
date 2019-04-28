@@ -68,7 +68,7 @@
     
     
     if (self.radius != 0) {
-        CGFloat radius= CGRectGetHeight(imageRect)/self.radius;
+        CGFloat radius= CGRectGetHeight(imageRect)*self.radius;
         [self drawArcRectangle:bitmap withRect:imageRect radius:radius];
     }
 
